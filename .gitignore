@@ -1,7 +1,0 @@
-bin/build/*
-dist/*
-mageekguy.atoum.phar
-test/settings.ini*
-.DS_Store
-doc/api
-curl-output.txt

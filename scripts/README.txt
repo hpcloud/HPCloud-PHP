@@ -1,1 +1,0 @@
-Executable scripts for HPCloud-PHP.
