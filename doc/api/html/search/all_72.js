@@ -1,0 +1,19 @@
+var searchData=
+[
+  ['read',['READ',['../class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_a_c_l.html#add302975378da047de904daa059a332b',1,'HPCloud::Storage::ObjectStorage::ACL']]],
+  ['read_5fwrite',['READ_WRITE',['../class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_a_c_l.html#ae92384f4602b88ef3b46880f7d2f6c9f',1,'HPCloud::Storage::ObjectStorage::ACL']]],
+  ['readonlyobjectexception',['ReadOnlyObjectException',['../class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_read_only_object_exception.html',1,'HPCloud::Storage::ObjectStorage']]],
+  ['readonlyobjectexception_2ephp',['ReadOnlyObjectException.php',['../_read_only_object_exception_8php.html',1,'']]],
+  ['refresh',['refresh',['../class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_remote_object.html#aa6133c0ada5c2844823a38f10d91cabf',1,'HPCloud::Storage::ObjectStorage::RemoteObject']]],
+  ['remoteobject',['RemoteObject',['../class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_remote_object.html',1,'HPCloud::Storage::ObjectStorage']]],
+  ['remoteobject',['remoteObject',['../class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_container.html#a118705cf4575377b5682498990eb5237',1,'HPCloud::Storage::ObjectStorage::Container']]],
+  ['remoteobject_2ephp',['RemoteObject.php',['../_remote_object_8php.html',1,'']]],
+  ['rename',['rename',['../class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html#a6572ee8e63a1c3360385286ac209e0ff',1,'HPCloud::Storage::ObjectStorage::StreamWrapper']]],
+  ['req',['req',['../class_h_p_cloud_1_1_storage_1_1_object_storage.html#af2312750317848aa7cf451740878cadb',1,'HPCloud::Storage::ObjectStorage']]],
+  ['rescope',['rescope',['../class_h_p_cloud_1_1_services_1_1_identity_services.html#a4534fef9a9e00d2f005d79d30936ee83',1,'HPCloud::Services::IdentityServices']]],
+  ['reset',['reset',['../class_h_p_cloud_1_1_transport.html#a2325df26721fdbe820d577d2482725f8',1,'HPCloud::Transport']]],
+  ['response',['Response',['../class_h_p_cloud_1_1_transport_1_1_response.html',1,'HPCloud::Transport']]],
+  ['response_2ephp',['Response.php',['../_response_8php.html',1,'']]],
+  ['rules',['rules',['../class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_a_c_l.html#a17dba92d96b9dd48c62f3ede3eef94d4',1,'HPCloud::Storage::ObjectStorage::ACL']]],
+  ['ruletostring',['ruleToString',['../class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_a_c_l.html#a20abcc1eed5bc403a08db1e8c2c61b83',1,'HPCloud::Storage::ObjectStorage::ACL']]]
+];
