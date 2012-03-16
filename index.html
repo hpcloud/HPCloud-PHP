@@ -86,7 +86,7 @@ we're just getting started.
 							<h3>Only As Good As Its Documentation</h3>
               <p>
                   Admittedly, our imaginations are limited. We haven't thought of every use case, and we don't know what you are capable of building. But we'd
-                  love to hear about what you're doing, help solve problems, and evolve this library to better meet your needs. Feel free to drop requsts
+                  love to hear about what you're doing, help solve problems, and evolve this library to better meet your needs. Feel free to drop requests
                   into the issue queue or hunt us down in <code>#hpcloud</code> on <i>irc.freenode.net</i>. And, of course, we're always at
                   <a href="http://hpcloud.com">HPCloud.com</a>.
               </p>
@@ -100,69 +100,112 @@ we're just getting started.
 								</p>
 							</div>
 						</section>
-							<p>
-								<dl>
-						      <dt><dfn>Store It In The Cloud</dfn></dt>
-                  <dd>
-                  With a few lines of PHP, store your files in the cloud. You can configure private, public, and even CDN-backed object storage containers.
-						      </dd>
-						      <dt><dfn>Keep It Simple</dfn></dt>
-                  <dd>
-                  We believe a good API is a simple API. So we fully integrated with the PHP core. Using stream wrappers, you can be reading to and writing
-                  to Object Storage in a matter of minutes.
-						      </dd>
-						      <dt><dfn>Only As Good As Its Documentation</dfn></dt>
-                  <dd>
-                  Nothing is more frustrating than working with undocumented code. Time that could be spent building cool stuff is wasted hunting through
-                  somebody else's source code. So we documented everything we could. Because we'd rather you spent time making something awesome.
-						      </dd>
-						      <dt><dfn>Help Us Help You</dfn></dt>
-                  <dd>
-                  Admittedly, our imaginations are limited. We haven't thought of every use case, and we don't know what you are capable of building. But we'd
-                  love to hear about what you're doing, help solve problems, and evolve this library to better meet your needs. Feel free to drop requsts
-                  into the issue queue or hunt us down in <code>#hpcloud</code> on <i>irc.freenode.net</i>. And, of course, we're always at
-                  <a href="http://hpcloud.com">HPCloud.com</a>.
-						      </dd>
-						    </dl>
-						  </p>
-<pre class="prettyprint"><code>function foo($bar) {
-	// This is a comment.
-	return baz($bar);
+						<section>
+              <h2>Two APIs In One</h2>
+              <p>Sometimes you need quick and easy. Sometimes you need deep and thorough. We tried to build a library that accomodates both cases.</p>
+              <h3>Pedal to the Metal</h3>
+              <p>
+              We took advantage of PHP's built-in stream wrapper feature to expose object storage to PHP's file and stream functions. What does that mean?
+              It means connecting to the cloud is as easy as this:
+              </p>
+<pre class="prettyprint"><code>// Get all set up.
+require_once '/HPCloud/Bootstrap.php';
+use \HPCloud\Bootstrap;
+Bootstrap::useAutoloader();
+Bootstrap::useStreamWrappers();
+
+// Provide credentials
+$settings = array(
+  'account' =&gt; YOUR_ACCOUNT_NUMBER,
+  'key' =&gt; YOUR_SECRET_KEY,
+  'tenantid' =&gt; YOUR_TENANT_ID,
+  'endpoint' =&gt; IDENTITY_SERVICES_URL,
+);
+Bootstrap::setConfiguration($settings);
+
+// Create a new file and write it to the object store.
+$newfile = fopen('swift://mycontainer/my_file.txt', 'w');
+fwrite($newfile, "Good Morning!");
+fclose($newfile);
+
+// Check for an object:
+if (file_exists('swift://mycontainer/my_file.txt')) {
+  print "Found my_file.txt." . PHP_EOL;
 }
+
+// Get an entire object at once:
+$file = file_get_contents('swift://mycontainer/my_file.txt');
+print 'File: ' . $file . PHP_EOL;
 </code></pre>
-              <p>Our list of features is growing rapidly, but here are the one's we're particularly excited about.</p>
-						<section>
-							<h2>article section h2</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante. Etiam bibendum iaculis libero, eget molestie nisl pharetra in. In semper consequat est, eu porta velit mollis nec. Curabitur posuere enim eget turpis feugiat tempor. Etiam ullamcorper lorem dapibus velit suscipit ultrices. Proin in est sed erat facilisis pharetra.</p>
+              <p>
+              Once the library is loaded and ready, everything else is just plain old PHP.
+              </p>
+              <h3>Make Every Bit Count</h3>
+              <p>
+              Sophisticated applications need sophisticated APIs to build against. So in addition to the stream wrapper library, the HPCloud-PHP library
+              provides an feature-rich object-oriented interface.
+              </p><p>
+              This part of the library gives you access to every piece of HP Cloud functionality that
+              we could get our hands on. Right now, we have full support for <strong>Identity Services</strong> (the authentication and authorization service), 
+              <strong>Object Storage</strong>, and the Content Distribution Network (<strong>CDN</strong>) Service.
+
+              </p><p>
+              These are the services we use most often, so we started there. But we're
+              still going. As HP Cloud rolls out new services (and there are a lot coming), we're adding support.
+              </p>
+              <p>
+              So what does this API look like? Here is a brief example:
+              </p>
 						</section>
-						<section>
-							<h3>article section h3</h3>
-							<table>
-								<thead>
-									<tr>
-										<td>Foo</td>
-										<td>Bar</td>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>Foo</td>
-										<td>Bar</td>
-									</tr>
-									<tr>
-										<td>Foo</td>
-										<td>Bar</td>
-									</tr>
-									<tr>
-										<td>Foo</td>
-										<td>Bar</td>
-									</tr>
-								</tbody>
-							</table>
+<pre class="prettyprint"><code>// Set up.
+require_once '/HPCloud/Bootstrap.php';
+use \HPCloud\Bootstrap;
+Bootstrap::useAutoloader();
+
+// Authenticate to HP Cloud
+$account = 'ADD ACCOUNT HERE';
+$key = 'ADD KEY HERE';
+$tenantId = 'ADD TENANT ID HERE';
+$endpoint = 'ADD ENDPOINT URL HERE';
+
+$idService = new \HPCloud\Services\IdentityServices($endpoint);
+$token = $idService-&gt;authenticateAsAccount($account, $key, $tenantId);
+
+// Connect to Object Storage.
+$catalog = $idService-&gt;serviceCatalog();
+$store = ObjectStorage::newFromServiceCatalog($catalog, $token);
+
+// Create a Container.
+$store-&gt;createContainer('Example');
+$container = $store-&gt;container('Example');
+
+// Create an Object.
+$name = 'hello.txt';
+$content = 'Hello World';
+$mime = 'text/plain';
+$localObject = new Object($name, $content, $mime);
+
+// Put the Object in the Container.
+$container-&gt;save($localObject);
+
+// And get the Object back out again.
+$object = $container-&gt;proxyObject('hello.txt');
+
+printf("Name: %s \n", $object-&gt;name());
+printf("Size: %d \n", $object-&gt;contentLength());
+printf("Type: %s \n", $object-&gt;contentType());
+print $object-&gt;content() . PHP_EOL;
+</code></pre>
+              <p>
+              This example shows a few of the basics for working with HP Cloud using the HPCloud-PHP library. But there is plenty more.
+              </p>
 						</section>
 						<section class="box">
-							<h5 class="title">article section h5</h5>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante. Etiam bibendum iaculis libero, eget molestie nisl pharetra in. In semper consequat est, eu porta velit mollis nec. Curabitur posuere enim eget turpis feugiat tempor. Etiam ullamcorper lorem dapibus velit suscipit ultrices. Proin in est sed erat facilisis pharetra.</p>
+              <h5 class="title">Ready to Learn More?</h5>
+              <p>
+              Take a look at the documentation. We have tutorials for the stream wrappers
+              and for the object oriented library.
+              </p>
 						</section>
 						<section class="box">
 							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante. Etiam bibendum iaculis libero, eget molestie nisl pharetra in.</p>
@@ -183,8 +226,12 @@ we're just getting started.
 						  </p>
 						</section>
 						<footer>
-							<h3>article footer h3</h3>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante. Etiam bibendum iaculis libero, eget molestie nisl pharetra in. In semper consequat est, eu porta velit mollis nec. Curabitur posuere enim eget turpis feugiat tempor.</p>
+            <h3>We Who Built This</h3>
+            <p>
+            The HPCloud-PHP library is written and maintained by the Developer Experience team in HP's Cloud Services. In DevEx,
+            we have one goal: We want developers to love working with HP Cloud. Stop in at <a href="http://connect.hpcloud.com">http://connect.hpcloud.com</a>
+            to ask us questions and let us know how we're doing.
+            </p>
 						</footer>
 					</article>
 				</div>
