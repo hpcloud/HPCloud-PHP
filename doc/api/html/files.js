@@ -1,6 +1,7 @@
 var files =
 [
     [ "doc/documentation.php", "documentation_8php.html", null ],
+    [ "doc/introduction.md", "introduction_8md.html", null ],
     [ "doc/oo-tutorial-code.php", "oo-tutorial-code_8php.html", "oo-tutorial-code_8php" ],
     [ "doc/oo-tutorial.md", "oo-tutorial_8md.html", null ],
     [ "doc/streams-tutorial-example.php", "streams-tutorial-example_8php.html", "streams-tutorial-example_8php" ],

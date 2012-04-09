@@ -5,6 +5,7 @@ var searchData=
   ['initializecdn',['initializeCDN',['../class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html#a552ead9e4216e3b68da11cd65c1e014b',1,'HPCloud::Storage::ObjectStorage::StreamWrapper']]],
   ['initializeobjectstorage',['initializeObjectStorage',['../class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html#aed9ba4286dcfbda7b4255bd01767096b',1,'HPCloud::Storage::ObjectStorage::StreamWrapper']]],
   ['instance',['instance',['../class_h_p_cloud_1_1_transport.html#a0deb004950b8dc4f51836316fd19c111',1,'HPCloud::Transport']]],
+  ['introduction_2emd',['introduction.md',['../introduction_8md.html',1,'']]],
   ['iscaching',['isCaching',['../class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_remote_object.html#aee954a9976108ebcec479fa4a4983de7',1,'HPCloud::Storage::ObjectStorage::RemoteObject']]],
   ['ischunked',['isChunked',['../class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_object.html#a8f1577b250cc933eb225882a1ebb4f27',1,'HPCloud::Storage::ObjectStorage::Object']]],
   ['isdirty',['isDirty',['../class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_remote_object.html#a5f16771bbc33743d0eba257646ce88c4',1,'HPCloud::Storage::ObjectStorage::RemoteObject']]],

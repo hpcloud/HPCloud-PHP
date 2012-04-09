@@ -2,6 +2,7 @@ var NAVTREE =
 [
   [ "HPCloud-PHP", "index.html", [
     [ "About HPCloud-PHP", "index.html", null ],
+    [ "Using the HPCloud PHP API", "md_introduction.html", null ],
     [ "Tutorial: Using HPCloud-PHP", "oo-tutorial.html", null ],
     [ "Tutorial: Using Stream Wrappers", "streams-tutorial.html", null ],
     [ "Coding and Documentation Style Guide", "styleguide.html", null ],

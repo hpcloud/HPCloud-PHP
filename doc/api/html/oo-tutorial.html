@@ -30,12 +30,10 @@
  <tbody>
  <tr style="height: 56px;">
   
-  <td id="projectlogo"><img alt="Logo" src="hpcloud-logo.png"/></td>
-  
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">HPCloud-PHP
-   &#160;<span id="projectnumber">1.0.0-beta1</span>
+   &#160;<span id="projectnumber">-UNSTABLE%</span>
    </div>
    <div id="projectbrief">PHP bindings for HPCloud and OpenStack services.</div>
   </td>
@@ -131,7 +129,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="fragment"><pre class="fragment">src/HPCloud/Storage/ObjectStorage/RemoteObject.php
 </pre></div><p>The pattern of matching namespace to file name should (we hope) make it easier for you to navigate our code.</p>
 <p>If this namespace stuff continues to confuse you, you may want to take a look at <a href="http://us3.php.net/manual/en/language.namespaces.php">the PHP documentation</a>, or you may just prefer to keep on reading and learn by example. We don't do anything really fancy with namespaces.</p>
-<p>**In this document, we sometimes replace the backslash () with double colons (<code>::</code>) so that links are automatically generated.** So <code>\<a class="el" href="namespace_h_p_cloud.html" title="The HPCloud PHP library.">HPCloud</a>\Bootstrap</code> may appear as <a class="el" href="class_h_p_cloud_1_1_bootstrap.html" title="Bootstrapping services.">HPCloud::Bootstrap</a>. The reason for this is <a class="el" href="styleguide.html">explained elsewhere</a>.</p>
+<p>**In this document, we sometimes replace the backslash (\) with double colons (<code>::</code>) so that links are automatically generated.** So <code>\<a class="el" href="namespace_h_p_cloud.html" title="The HPCloud PHP library.">HPCloud</a>\Bootstrap</code> may appear as <a class="el" href="class_h_p_cloud_1_1_bootstrap.html" title="Bootstrapping services.">HPCloud::Bootstrap</a>. The reason for this is <a class="el" href="styleguide.html">explained elsewhere</a>.</p>
 <h2>Step 1: Getting the Library</h2>
 <p>You can get the HPCloud-PHP library at the <a href="https://github.com/hpcloud">HPCloud GitHub Repository</a>. The latest code is always available there.</p>
 <p>The project also uses <a href="http://packagist.org/">Composer</a>, and this is the best method for adding HPCloud-PHP to your PHP project.</p>
@@ -169,7 +167,7 @@ use \HPCloud\Storage\ObjectStorage\Object;
 <h3>Identity Services</h3>
 <p>The <a class="el" href="namespace_h_p_cloud.html" title="The HPCloud PHP library.">HPCloud</a> is composed of numerous services. There's the Compute service, the Object Storage service, the CDN service... and so on.</p>
 <p>Authenticating separately to each of these would be a collosal waste of network resources. And behind the scenes, account management would be difficult on the server side.</p>
-<p>That's where Identity Services comes in. It is a central service that handles all things authorization and authentication related. Rouughly, it works as follows:</p>
+<p>That's where Identity Services comes in. It is a central service that handles all things authorization and authentication related. Roughly, it works as follows:</p>
 <ul>
 <li>The client sends an authentication request</li>
 <li>If it fails, the service returns an error</li>
@@ -195,7 +193,7 @@ use \HPCloud\Storage\ObjectStorage\Object;
 <p>Note that the <code>IdentityServices</code> object may throw various exceptions (all subclasses of <a class="el" href="class_h_p_cloud_1_1_exception.html" title="The top-level HPCloud exception.">HPCloud::Exception</a>) during authentication. Failed authentication results in an <a class="el" href="class_h_p_cloud_1_1_transport_1_1_authorization_exception.html" title="Thrown when an access constraint is not met.">HPCloud::Transport::AuthorizationException</a>, while a network failure may result in an <a class="el" href="class_h_p_cloud_1_1_transport_1_1_server_exception.html" title="Represents an HTTP 500 error.">HPCloud::Transport::ServerException</a>.</p>
 <p>Earlier, we talked about the service catalog. Once we've authenticated, we can get the service catalog from <code>$idService-&gt;serviceCatalog()</code>. It is an associative array, and you can get an idea of what it contains by dumping it with <code>var_dump()</code>, should you so desire.</p>
 <p>At this point, we have what we need from Identity Services. It's time to look at Object Storage.</p>
-<h3>IdentityServices in a Nushell</h3>
+<h3>IdentityServices in a Nutshell</h3>
 <p>Instances of <a class="el" href="class_h_p_cloud_1_1_services_1_1_identity_services.html" title="IdentityServices provides authentication and authorization.">HPCloud::Services::IdentityServices</a> are responsible for:</p>
 <ul>
 <li>Authentication</li>
@@ -238,7 +236,7 @@ use \HPCloud\Storage\ObjectStorage\Object;
 <a class="code" href="oo-tutorial-code_8php.html#a827b42f70d98e1bf51ff54dbbe771421">$store</a>-&gt;createContainer(<span class="stringliteral">&#39;Example&#39;</span>);
 <a class="code" href="oo-tutorial-code_8php.html#ab97dd40df90f4ce6f0fce9091e7c7872">$container</a> = <a class="code" href="oo-tutorial-code_8php.html#a827b42f70d98e1bf51ff54dbbe771421">$store</a>-&gt;container(<span class="stringliteral">&#39;Example&#39;</span>);
 ?&gt;
-</pre></div><p>Recall that <code>$store</code> is the name of our <code>ObjectStorage</code> instance. In the first of the two lines above, we create a new containe named <code>Example</code>. Then in the second line, we get that container.</p>
+</pre></div><p>Recall that <code>$store</code> is the name of our <code>ObjectStorage</code> instance. In the first of the two lines above, we create a new container named <code>Example</code>. Then in the second line, we get that container.</p>
 <p>Why is this two steps? The answer is that the <a class="el" href="namespace_h_p_cloud.html" title="The HPCloud PHP library.">HPCloud</a> PHP library mimics the architecture of the underlying API. This is two operations (which means it requires two network requests to the remote host), and so we must perform two operations.</p>
 <p>The <code>createContainer()</code> call actually creates the new container on the cloud's Object Storage. The second call connects to the remote object storage, and gets the new container. The container that is returned will have some additional information, such as the amount of space it takes up on the remote storage, and the access control rules for that container. All of this information will be available on the <code>$container</code> instance.</p>
 <p>Our <code>$container</code> instance is an instance of <a class="el" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_container.html" title="A container in an ObjectStorage.">HPCloud::Storage::ObjectStorage::Container</a>. This object can be used not only to find out about a container, but also to get information about the objects in that container.</p>
@@ -258,7 +256,7 @@ use \HPCloud\Storage\ObjectStorage\Object;
 <h2>Step 6: Storing an Object</h2>
 <p>Now we are ready to create an object, and then store it in our container.</p>
 <p>Before diving too deeply, it is important to point out a detail: When working with a remote data storage service, we are typically working with a local copy and a remote copy. If our code isn't constructed correctly, it is possible for these two to get out of sync.</p>
-<p>Earlier, we created a container directly on the remote side, and then featched the container. As we create an object, we are going to do the opposite: We will create a local object, and then save it to the remote storage. Later, we will fetch the remote object.</p>
+<p>Earlier, we created a container directly on the remote side, and then fetched the container. As we create an object, we are going to do the opposite: We will create a local object, and then save it to the remote storage. Later, we will fetch the remote object.</p>
 <div class="fragment"><pre class="fragment">&lt;?php
 <a class="code" href="oo-tutorial-code_8php.html#ab2fc40d43824ea3e1ce5d86dee0d763b">$name</a> = <span class="stringliteral">&#39;hello.txt&#39;</span>;
 <a class="code" href="oo-tutorial-code_8php.html#a57b284fe00866494b33afa80ba729bed">$content</a> = <span class="stringliteral">&#39;Hello World&#39;</span>;
@@ -327,7 +325,7 @@ print $object-&gt;content() . <a class="code" href="streams-tutorial-example_8ph
   <div id="nav-path" class="navpath">
     <ul>
 
-    <li class="footer">Generated on Fri Mar 16 2012 17:22:32 for HPCloud-PHP by
+    <li class="footer">Generated on Mon Apr 9 2012 16:22:31 for HPCloud-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.0 </li>
    </ul>

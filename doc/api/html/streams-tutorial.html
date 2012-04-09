@@ -30,12 +30,10 @@
  <tbody>
  <tr style="height: 56px;">
   
-  <td id="projectlogo"><img alt="Logo" src="hpcloud-logo.png"/></td>
-  
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">HPCloud-PHP
-   &#160;<span id="projectnumber">1.0.0-beta1</span>
+   &#160;<span id="projectnumber">-UNSTABLE%</span>
    </div>
    <div id="projectbrief">PHP bindings for HPCloud and OpenStack services.</div>
   </td>
@@ -187,7 +185,7 @@ Bootstrap::setConfiguration(<a class="code" href="streams-tutorial-example_8php.
 <p>Early in the tutorial we saw some swift URLs like this: <code>swift://Example/my_file.txt</code> . What is this URL referencing?</p>
 <p>The URL above has three important parts, in the form <code>swift://CONTAINER/OBJECT_NAME</code>.</p>
 <ul>
-<li><em>swift://</em>: This is the schema. This part of the URL tells PHP to pass the request to the <a class="el" href="namespace_h_p_cloud.html" title="The HPCloud PHP library.">HPCloud</a> stream wrapper. (Siwft, by the way, is the <a href="http://openstack.org/projects/storage/">OpenStack name for object storage</a>.</li>
+<li><em>swift://</em>: This is the schema. This part of the URL tells PHP to pass the request to the <a class="el" href="namespace_h_p_cloud.html" title="The HPCloud PHP library.">HPCloud</a> stream wrapper. (Swift, by the way, is the <a href="http://openstack.org/projects/storage/">OpenStack name for object storage</a>.</li>
 <li><em>Example</em>: This is the <em>container name</em>. In Object Storage parlance, a container is a place to store documents. One account can have lots of containers, and each container can have lots of objects.</li>
 <li><em>my_file.txt</em>: This is the object name. An object is basically the same as a file.</li>
 </ul>
@@ -236,7 +234,7 @@ print file_get_contents(<span class="stringliteral">&#39;swift://Example/my_file
   <div id="nav-path" class="navpath">
     <ul>
 
-    <li class="footer">Generated on Fri Mar 16 2012 17:22:32 for HPCloud-PHP by
+    <li class="footer">Generated on Mon Apr 9 2012 16:22:31 for HPCloud-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.0 </li>
    </ul>

@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>HPCloud-PHP: Member List</title>
+<title>HPCloud-PHP: Using the HPCloud PHP API</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -52,9 +52,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li class="current"><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
-      <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -74,14 +74,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       </li>
     </ul>
   </div>
-  <div id="navrow2" class="tabs2">
-    <ul class="tablist">
-      <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
-      <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
-      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
-    </ul>
-  </div>
 </div>
 <div id="side-nav" class="ui-resizable side-nav-resizable">
   <div id="nav-tree">
@@ -93,7 +85,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
 </div>
 <script type="text/javascript">
-  initNavTree('class_h_p_cloud_1_1_bootstrap.html','');
+  initNavTree('md_introduction.html','');
 </script>
 <div id="doc-content">
 <!-- window showing the filter options -->
@@ -112,19 +104,37 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div class="header">
   <div class="headertitle">
-<div class="title">Bootstrap Member List</div>  </div>
+<div class="title">Using the <a class="el" href="namespace_h_p_cloud.html" title="The HPCloud PHP library.">HPCloud</a> PHP API </div>  </div>
 </div><!--header-->
 <div class="contents">
-This is the complete list of members for <a class="el" href="class_h_p_cloud_1_1_bootstrap.html">Bootstrap</a>, including all inherited members.<table>
-  <tr class="memlist"><td><a class="el" href="class_h_p_cloud_1_1_bootstrap.html#aaa31838e86513cb3a51e398894ee4b35">$basedir</a></td><td><a class="el" href="class_h_p_cloud_1_1_bootstrap.html">Bootstrap</a></td><td><code> [static]</code></td></tr>
-  <tr class="memlist"><td><a class="el" href="class_h_p_cloud_1_1_bootstrap.html#a49c7011be9c979d9174c52a8b83e5d8e">$config</a></td><td><a class="el" href="class_h_p_cloud_1_1_bootstrap.html">Bootstrap</a></td><td><code> [static]</code></td></tr>
-  <tr class="memlist"><td><a class="el" href="class_h_p_cloud_1_1_bootstrap.html#a77cf521c7b0191ae5283dbe49bd7e87a">autoload</a>($klass)</td><td><a class="el" href="class_h_p_cloud_1_1_bootstrap.html">Bootstrap</a></td><td><code> [static]</code></td></tr>
-  <tr class="memlist"><td><a class="el" href="class_h_p_cloud_1_1_bootstrap.html#ae1f97d5c8b781c6cddfdc250230a6161">config</a>($name=NULL, $default=NULL)</td><td><a class="el" href="class_h_p_cloud_1_1_bootstrap.html">Bootstrap</a></td><td><code> [static]</code></td></tr>
-  <tr class="memlist"><td><a class="el" href="class_h_p_cloud_1_1_bootstrap.html#a65b07819fcdece885234e14751d06814">hasConfig</a>($name)</td><td><a class="el" href="class_h_p_cloud_1_1_bootstrap.html">Bootstrap</a></td><td><code> [static]</code></td></tr>
-  <tr class="memlist"><td><a class="el" href="class_h_p_cloud_1_1_bootstrap.html#ad616b4b781e11d863e7421361b49233e">setConfiguration</a>($array)</td><td><a class="el" href="class_h_p_cloud_1_1_bootstrap.html">Bootstrap</a></td><td><code> [static]</code></td></tr>
-  <tr class="memlist"><td><a class="el" href="class_h_p_cloud_1_1_bootstrap.html#afc845c2cef6046a452d2e4e98c8e9cb5">useAutoloader</a>()</td><td><a class="el" href="class_h_p_cloud_1_1_bootstrap.html">Bootstrap</a></td><td><code> [static]</code></td></tr>
-  <tr class="memlist"><td><a class="el" href="class_h_p_cloud_1_1_bootstrap.html#a85cfd8fa4a9ec193757c1dcdcb68ea62">useStreamWrappers</a>()</td><td><a class="el" href="class_h_p_cloud_1_1_bootstrap.html">Bootstrap</a></td><td><code> [static]</code></td></tr>
-</table></div><!-- contents -->
+<div class="textblock"><p>This tutorial explains how you can use the PHP API to connect to your HP Cloud services and interact programmatically.</p>
+<h2>Object Storage (Swift)</h2>
+<p>One of the services that HP Cloud offers is called "Object Storage". This service provides a useful means of storing objects (usually files) on a service that you control, but that is available to other services in your cloud (and optionally is availably publically).</p>
+<p>This section of the tutorial describes how you can write PHP code to interact with the Object Storage service.</p>
+<h2>Authenticating to Object Storage</h2>
+<p>There are two ways to authenticate to Object Storage:</p>
+<ul>
+<li>Legacy Swift authentication</li>
+<li>Control Services authentication (Coming soon!)</li>
+</ul>
+<p>For legacy swift authentication, you will need to use your Account ID and your secret Key, along with the URL to the Object Storage endpoint. If you are an existing HP Cloud customer, you can find all of this information on your management dashboard.</p>
+<h3>Using Stream Wrappers</h3>
+<p>There are two main methods for accessing <a class="el" href="namespace_h_p_cloud.html" title="The HPCloud PHP library.">HPCloud</a> through this library. The first is through PHP <em>stream wrappers</em>. In PHP, stream wrappers provide a facility with which you can access various data streams (like a webpage, the data in a ZIP file, or an HP Cloud object store) as if they were local files on your file system.</p>
+<p>Stream wrappers have a huge advantage for you: You can use the normal file system functions (<code>fread()</code>, <code>mkdir()</code>, <code>file_get_contents()</code>, etc) to access things not necessarily on your local filesystem. The HP Cloud library integrates with this facility of PHP.</p>
+<h3>Using the <a class="el" href="namespace_h_p_cloud.html" title="The HPCloud PHP library.">HPCloud</a> Classes</h3>
+<p>While the stream wrappers are a fantastic way to accomplish many common tasks, sometimes you need a finer level of control, or you wish to use an Object-Oriented API. We provide you with the classes you need to work this way.</p>
+<p>(Deep dark secret: Actually, these are the classes that underly the stream wrappers.)</p>
+<p>In this section of the tutorial, we focus on using this API as a data-access layer.</p>
+<h4>Main Classes</h4>
+<ul>
+<li>: Provides services for bootstrapping the library. It's not necessary, but it can be helpful.</li>
+<li>: The main interface to the OpenStack object storage.</li>
+</ul>
+<h2>Slightly Irreverant Glossary</h2>
+<p><em>Account ID:</em> You service provider (ahem, <a class="el" href="namespace_h_p_cloud.html" title="The HPCloud PHP library.">HPCloud</a>) will provide you with an account ID and a secret key, along with a URL, that can be used to access the cloud APIs.</p>
+<p><em>Container:</em> A namespace extension useful for differentiating object space with pseudo-containment logical units. Or, a directory. (see <em>Object Storage</em>)</p>
+<p><em>Object Storage:</em> A service provided by OpenStack (and implemented by <a class="el" href="namespace_h_p_cloud.html" title="The HPCloud PHP library.">HPCloud</a>) that allows you to store entire files on the cloud. Files can be organized into <em>containers</em>, which are rough analogs to file system directories (or folders). </p>
+</div></div><!-- contents -->
 </div>
   <div id="nav-path" class="navpath">
     <ul>
