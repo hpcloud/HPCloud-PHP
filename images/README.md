@@ -1,0 +1,1 @@
+Web optimized images to server to client browsers.
