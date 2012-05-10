@@ -33,7 +33,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">HPCloud-PHP
-   &#160;<span id="projectnumber">-UNSTABLE%</span>
+   &#160;<span id="projectnumber">DEV</span>
    </div>
    <div id="projectbrief">PHP bindings for HPCloud and OpenStack services.</div>
   </td>
@@ -114,12 +114,12 @@ Overview</h2>
 <p>The HPCloud-PHP library provides PHP developers with a fully tested, robust, and feature-rich library for working with the <a class="el" href="namespace_h_p_cloud.html" title="The HPCloud PHP library.">HPCloud</a> services.</p>
 <dl class="section attention"><dt>Attention:</dt><dd>Making use of this library will require that you have several pieces of account information for your <a class="el" href="namespace_h_p_cloud.html" title="The HPCloud PHP library.">HPCloud</a> account (or OpenStack account, if you're using this library with non-HP OpenStack implentations):<ul>
 <li>account ID and secret key: For cases where you want account-wide authentication/authorization.</li>
-<li>username/password: Typically, this is the same username/password you use to access the <a class="el" href="namespace_h_p_cloud.html" title="The HPCloud PHP library.">HPCloud</a> management console.</li>
-<li>tenant ID: This associates an account or user with a bundle of services. You can find this information in your management console.</li>
-<li>endpoint: You will need the URL to the <a class="el" href="namespace_h_p_cloud.html" title="The HPCloud PHP library.">HPCloud</a> endpoint responsible for <em>authenticating users</em>. This can be found in your management console.</li>
+<li>username/password: Typically, this is the same username/password you use to access the <a class="el" href="namespace_h_p_cloud.html" title="The HPCloud PHP library.">HPCloud</a> console.</li>
+<li>tenant ID: This associates an account or user with a bundle of services. You can find this information in your console.</li>
+<li>endpoint: You will need the URL to the <a class="el" href="namespace_h_p_cloud.html" title="The HPCloud PHP library.">HPCloud</a> endpoint responsible for <em>authenticating users</em>. This can be found in your console.</li>
 </ul>
 </dd></dl>
-<p>(If you are not sure what the "HPCloud Management Console" is, head over to <a href="http://build.hpcloud.com">http://build.hpcloud.com</a>. There you will find some articles and videos explaining the <a class="el" href="namespace_h_p_cloud.html" title="The HPCloud PHP library.">HPCloud</a> structure.)</p>
+<p>(If you are not sure what the "HPCloud Console" is, head over to <a href="http://docs.hpcloud.com">http://docs.hpcloud.com</a>. There you will find some articles and videos explaining the <a class="el" href="namespace_h_p_cloud.html" title="The HPCloud PHP library.">HPCloud</a> structure.)</p>
 <h2><a class="anchor" id="where_to_start"></a>
 Where To Start</h2>
 <p>Cruising a list of methods and classes is not exactly the best way to get started with a library. It's better to know where to start. Here's what we suggest:</p>
@@ -135,7 +135,7 @@ Where To Start</h2>
 <h2><a class="anchor" id="learn_more"></a>
 Learn More</h2>
 <p>This documentation is intended to provide a detailed reference to the HPCloud-PHP library. But this ain't all we've got. Tutorials, videos, screencasts, a knowledge base, and active community forums are just a click away.</p>
-<p>Head over to <a href="http://build.hpcloud.com">http://build.hpcloud.com</a> to find these and other resources.</p>
+<p>Head over to <a href="http://docs.hpcloud.com">http://docs.hpcloud.com</a> to find these and other resources.</p>
 <p>Or maybe you'd just like to see a couple of examples.</p>
 <h2><a class="anchor" id="intro_example_sw"></a>
 Basic Example: Stream Wrappers</h2>
@@ -154,7 +154,7 @@ Basic Example: Stream Wrappers</h2>
 
  <span class="comment">// Create a stream context. You can get this</span>
  <span class="comment">// information (including tenant ID) from your</span>
- <span class="comment">// HPCloud management console.</span>
+ <span class="comment">// HPCloud console.</span>
  $cxt = stream_context_create(array(
    <span class="stringliteral">&#39;username&#39;</span> =&gt; <span class="stringliteral">&#39;matthew.butcher@hp.com&#39;</span>,
    <span class="stringliteral">&#39;password&#39;</span> =&gt; <span class="stringliteral">&#39;secret&#39;</span>,
@@ -194,12 +194,12 @@ Basic Example: Identity Services</h2>
 
  <span class="comment">// Create a new identity service object, and tell it where to</span>
  <span class="comment">// go to authenticate. This URL can be found in your HPCloud</span>
- <span class="comment">// management console.</span>
+ <span class="comment">// console.</span>
  $identity = <span class="keyword">new</span> IdentityServices(<span class="stringliteral">&#39;http://get.url.from.hpcloud.com&#39;</span>);
 
  <span class="comment">// You can authenticate either with username/password (IdentityServices::authenticateAsUser())</span>
  <span class="comment">// or as an account/secret key (IdentityServices::authenticateAsAccount()). In either</span>
- <span class="comment">// case you can get the info you need from the management console.</span>
+ <span class="comment">// case you can get the info you need from the console.</span>
  <a class="code" href="oo-tutorial-code_8php.html#a19ec872392da5d6131f9ad03b6c98339">$account</a> = <span class="stringliteral">&#39;123456789098765&#39;</span>;
  $secret = <span class="stringliteral">&#39;dgasgasd&#39;</span>;
  <a class="code" href="oo-tutorial-code_8php.html#a26979ce90bf4105e2b0abbf108d64dec">$tenantId</a> = <span class="stringliteral">&#39;56545654&#39;</span>;
@@ -270,7 +270,7 @@ Basic Example: Object Storage</h2>
   <div id="nav-path" class="navpath">
     <ul>
 
-    <li class="footer">Generated on Thu Apr 12 2012 15:26:52 for HPCloud-PHP by
+    <li class="footer">Generated on Thu May 10 2012 14:49:42 for HPCloud-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.0 </li>
    </ul>

@@ -33,7 +33,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">HPCloud-PHP
-   &#160;<span id="projectnumber">-UNSTABLE%</span>
+   &#160;<span id="projectnumber">DEV</span>
    </div>
    <div id="projectbrief">PHP bindings for HPCloud and OpenStack services.</div>
   </td>
@@ -134,8 +134,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a5ac2733c3e9b3044271f9def429e1808"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_h_p_cloud_1_1_storage_1_1_object_storage.html#a5ac2733c3e9b3044271f9def429e1808">useCDN</a> ($cdn)</td></tr>
 <tr class="memdesc:a5ac2733c3e9b3044271f9def429e1808"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicate that this <a class="el" href="class_h_p_cloud_1_1_storage_1_1_object_storage.html" title="Access to ObjectStorage (Swift).">ObjectStorage</a> instance should use the given <a class="el" href="class_h_p_cloud_1_1_storage_1_1_c_d_n.html" title="Provides CDN services for ObjectStorage.">CDN</a> service.  <a href="#a5ac2733c3e9b3044271f9def429e1808"></a><br/></td></tr>
 <tr class="memitem:a5c3b766effadeea4d418711e19290d91"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_h_p_cloud_1_1_storage_1_1_object_storage.html#a5c3b766effadeea4d418711e19290d91">hasCDN</a> ()</td></tr>
-<tr class="memitem:abde12c756be449ae3e9678356767a56d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_h_p_cloud_1_1_storage_1_1_object_storage.html#abde12c756be449ae3e9678356767a56d">cdnUrl</a> ($containerName)</td></tr>
-<tr class="memdesc:abde12c756be449ae3e9678356767a56d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the <a class="el" href="class_h_p_cloud_1_1_storage_1_1_c_d_n.html" title="Provides CDN services for ObjectStorage.">CDN</a> URL for a particular container.  <a href="#abde12c756be449ae3e9678356767a56d"></a><br/></td></tr>
+<tr class="memitem:ad5a7f2ceaec44fd2501b42700f7aacb8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_h_p_cloud_1_1_storage_1_1_object_storage.html#ad5a7f2ceaec44fd2501b42700f7aacb8">cdnUrl</a> ($containerName, $ssl=TRUE)</td></tr>
+<tr class="memdesc:ad5a7f2ceaec44fd2501b42700f7aacb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the <a class="el" href="class_h_p_cloud_1_1_storage_1_1_c_d_n.html" title="Provides CDN services for ObjectStorage.">CDN</a> URL for a particular container.  <a href="#ad5a7f2ceaec44fd2501b42700f7aacb8"></a><br/></td></tr>
 <tr class="memitem:ad854e194dde5dc5422ee0f3221e48ba5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_h_p_cloud_1_1_storage_1_1_object_storage.html#ad854e194dde5dc5422ee0f3221e48ba5">token</a> ()</td></tr>
 <tr class="memdesc:ad854e194dde5dc5422ee0f3221e48ba5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the authentication token.  <a href="#ad854e194dde5dc5422ee0f3221e48ba5"></a><br/></td></tr>
 <tr class="memitem:abc5ed2ad3f9365fb31cc1eb625b974d9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_h_p_cloud_1_1_storage_1_1_object_storage.html#abc5ed2ad3f9365fb31cc1eb625b974d9">url</a> ()</td></tr>
@@ -237,7 +237,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="_object_storage_8php_source.html#l00214">214</a> of file <a class="el" href="_object_storage_8php_source.html">ObjectStorage.php</a>.</p>
 
-<p>References <a class="el" href="_object_storage_8php_source.html#l00088">ObjectStorage\$url</a>, <a class="el" href="_object_storage_8php_source.html#l00273">ObjectStorage\token()</a>, and <a class="el" href="_object_storage_8php_source.html#l00283">ObjectStorage\url()</a>.</p>
+<p>References <a class="el" href="_object_storage_8php_source.html#l00088">ObjectStorage\$url</a>, <a class="el" href="_object_storage_8php_source.html#l00280">ObjectStorage\token()</a>, and <a class="el" href="_object_storage_8php_source.html#l00290">ObjectStorage\url()</a>.</p>
 
 </div>
 </div>
@@ -282,22 +282,32 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_object_storage_8php_source.html#l00601">601</a> of file <a class="el" href="_object_storage_8php_source.html">ObjectStorage.php</a>.</p>
+<p>Definition at line <a class="el" href="_object_storage_8php_source.html#l00610">610</a> of file <a class="el" href="_object_storage_8php_source.html">ObjectStorage.php</a>.</p>
 
-<p>References <a class="el" href="_object_storage_8php_source.html#l00088">ObjectStorage\$url</a>, <a class="el" href="_object_storage_8php_source.html#l00627">ObjectStorage\req()</a>, and <a class="el" href="_object_storage_8php_source.html#l00283">ObjectStorage\url()</a>.</p>
+<p>References <a class="el" href="_object_storage_8php_source.html#l00088">ObjectStorage\$url</a>, <a class="el" href="_object_storage_8php_source.html#l00636">ObjectStorage\req()</a>, and <a class="el" href="_object_storage_8php_source.html#l00290">ObjectStorage\url()</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="abde12c756be449ae3e9678356767a56d"></a>
+<a class="anchor" id="ad5a7f2ceaec44fd2501b42700f7aacb8"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_h_p_cloud_1_1_storage_1_1_object_storage.html#abde12c756be449ae3e9678356767a56d">cdnUrl</a> </td>
+          <td class="memname"><a class="el" href="class_h_p_cloud_1_1_storage_1_1_object_storage.html#ad5a7f2ceaec44fd2501b42700f7aacb8">cdnUrl</a> </td>
           <td>(</td>
           <td class="paramtype">$&#160;</td>
-          <td class="paramname"><em>containerName</em></td><td>)</td>
+          <td class="paramname"><em>containerName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>ssl</em> = <code>TRUE</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div>
@@ -308,6 +318,7 @@ Protected Attributes</h2></td></tr>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramtype">string</td><td class="paramname">$containerName</td><td>The name of the container. </td></tr>
+    <tr><td class="paramtype">boolean</td><td class="paramname">$ssl</td><td>If this is TRUE (default), get the URL to the SSL <a class="el" href="class_h_p_cloud_1_1_storage_1_1_c_d_n.html" title="Provides CDN services for ObjectStorage.">CDN</a>; otherwise get the URL to the plain HTTP <a class="el" href="class_h_p_cloud_1_1_storage_1_1_c_d_n.html" title="Provides CDN services for ObjectStorage.">CDN</a>. </td></tr>
   </table>
   </dd>
 </dl>
@@ -318,9 +329,11 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_object_storage_8php_source.html#l00261">261</a> of file <a class="el" href="_object_storage_8php_source.html">ObjectStorage.php</a>.</p>
+<p>Definition at line <a class="el" href="_object_storage_8php_source.html#l00267">267</a> of file <a class="el" href="_object_storage_8php_source.html">ObjectStorage.php</a>.</p>
 
-<p>Referenced by <a class="el" href="_remote_object_8php_source.html#l00534">RemoteObject\fetchObject()</a>, <a class="el" href="_container_8php_source.html#l00687">Container\object()</a>, <a class="el" href="_container_8php_source.html#l00748">Container\proxyObject()</a>, <a class="el" href="_remote_object_8php_source.html#l00210">RemoteObject\url()</a>, <a class="el" href="_remote_object_8php_source.html#l00180">RemoteObject\useCDN()</a>, and <a class="el" href="_container_8php_source.html#l00339">Container\useCDN()</a>.</p>
+<p>References <a class="el" href="oo-tutorial-code_8php_source.html#l00014">$key</a>.</p>
+
+<p>Referenced by <a class="el" href="_remote_object_8php_source.html#l00546">RemoteObject\fetchObject()</a>, <a class="el" href="_container_8php_source.html#l00695">Container\object()</a>, <a class="el" href="_container_8php_source.html#l00759">Container\proxyObject()</a>, <a class="el" href="_remote_object_8php_source.html#l00222">RemoteObject\url()</a>, <a class="el" href="_remote_object_8php_source.html#l00186">RemoteObject\useCDN()</a>, and <a class="el" href="_container_8php_source.html#l00342">Container\useCDN()</a>.</p>
 
 </div>
 </div>
@@ -365,9 +378,9 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_object_storage_8php_source.html#l00529">529</a> of file <a class="el" href="_object_storage_8php_source.html">ObjectStorage.php</a>.</p>
+<p>Definition at line <a class="el" href="_object_storage_8php_source.html#l00538">538</a> of file <a class="el" href="_object_storage_8php_source.html">ObjectStorage.php</a>.</p>
 
-<p>References <a class="el" href="oo-tutorial-code_8php_source.html#l00028">$name</a>, and <a class="el" href="_object_storage_8php_source.html#l00467">ObjectStorage\createContainer()</a>.</p>
+<p>References <a class="el" href="oo-tutorial-code_8php_source.html#l00028">$name</a>, and <a class="el" href="_object_storage_8php_source.html#l00476">ObjectStorage\createContainer()</a>.</p>
 
 </div>
 </div>
@@ -407,11 +420,11 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_object_storage_8php_source.html#l00361">361</a> of file <a class="el" href="_object_storage_8php_source.html">ObjectStorage.php</a>.</p>
+<p>Definition at line <a class="el" href="_object_storage_8php_source.html#l00369">369</a> of file <a class="el" href="_object_storage_8php_source.html">ObjectStorage.php</a>.</p>
 
-<p>References <a class="el" href="oo-tutorial-code_8php_source.html#l00026">$container</a>, <a class="el" href="oo-tutorial-code_8php_source.html#l00028">$name</a>, <a class="el" href="_object_storage_8php_source.html#l00088">ObjectStorage\$url</a>, <a class="el" href="_object_storage_8php_source.html#l00627">ObjectStorage\req()</a>, <a class="el" href="_object_storage_8php_source.html#l00273">ObjectStorage\token()</a>, and <a class="el" href="_object_storage_8php_source.html#l00283">ObjectStorage\url()</a>.</p>
+<p>References <a class="el" href="oo-tutorial-code_8php_source.html#l00026">$container</a>, <a class="el" href="oo-tutorial-code_8php_source.html#l00028">$name</a>, <a class="el" href="_object_storage_8php_source.html#l00088">ObjectStorage\$url</a>, <a class="el" href="_object_storage_8php_source.html#l00636">ObjectStorage\req()</a>, <a class="el" href="_object_storage_8php_source.html#l00280">ObjectStorage\token()</a>, and <a class="el" href="_object_storage_8php_source.html#l00290">ObjectStorage\url()</a>.</p>
 
-<p>Referenced by <a class="el" href="_object_storage_8php_source.html#l00395">ObjectStorage\hasContainer()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l00768">StreamWrapper\stream_open()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01025">StreamWrapper\stream_stat()</a>, and <a class="el" href="_stream_wrapper_8php_source.html#l00680">StreamWrapper\writeRemote()</a>.</p>
+<p>Referenced by <a class="el" href="_object_storage_8php_source.html#l00404">ObjectStorage\hasContainer()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l00771">StreamWrapper\stream_open()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01030">StreamWrapper\stream_stat()</a>, and <a class="el" href="_stream_wrapper_8php_source.html#l00683">StreamWrapper\writeRemote()</a>.</p>
 
 </div>
 </div>
@@ -459,9 +472,9 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_object_storage_8php_source.html#l00323">323</a> of file <a class="el" href="_object_storage_8php_source.html">ObjectStorage.php</a>.</p>
+<p>Definition at line <a class="el" href="_object_storage_8php_source.html#l00330">330</a> of file <a class="el" href="_object_storage_8php_source.html">ObjectStorage.php</a>.</p>
 
-<p>References <a class="el" href="oo-tutorial-code_8php_source.html#l00026">$container</a>, <a class="el" href="_object_storage_8php_source.html#l00088">ObjectStorage\$url</a>, <a class="el" href="_object_storage_8php_source.html#l00273">ObjectStorage\token()</a>, and <a class="el" href="_object_storage_8php_source.html#l00283">ObjectStorage\url()</a>.</p>
+<p>References <a class="el" href="oo-tutorial-code_8php_source.html#l00026">$container</a>, <a class="el" href="_object_storage_8php_source.html#l00088">ObjectStorage\$url</a>, <a class="el" href="_object_storage_8php_source.html#l00280">ObjectStorage\token()</a>, and <a class="el" href="_object_storage_8php_source.html#l00290">ObjectStorage\url()</a>.</p>
 
 </div>
 </div>
@@ -539,11 +552,11 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_object_storage_8php_source.html#l00467">467</a> of file <a class="el" href="_object_storage_8php_source.html">ObjectStorage.php</a>.</p>
+<p>Definition at line <a class="el" href="_object_storage_8php_source.html#l00476">476</a> of file <a class="el" href="_object_storage_8php_source.html">ObjectStorage.php</a>.</p>
 
-<p>References <a class="el" href="oo-tutorial-code_8php_source.html#l00028">$name</a>, <a class="el" href="_object_storage_8php_source.html#l00088">ObjectStorage\$url</a>, <a class="el" href="_object_storage_8php_source.html#l00273">ObjectStorage\token()</a>, and <a class="el" href="_object_storage_8php_source.html#l00283">ObjectStorage\url()</a>.</p>
+<p>References <a class="el" href="oo-tutorial-code_8php_source.html#l00028">$name</a>, <a class="el" href="_object_storage_8php_source.html#l00088">ObjectStorage\$url</a>, <a class="el" href="_object_storage_8php_source.html#l00280">ObjectStorage\token()</a>, and <a class="el" href="_object_storage_8php_source.html#l00290">ObjectStorage\url()</a>.</p>
 
-<p>Referenced by <a class="el" href="_object_storage_8php_source.html#l00529">ObjectStorage\changeContainerACL()</a>, and <a class="el" href="_object_storage_8php_source.html#l00508">ObjectStorage\updateContainer()</a>.</p>
+<p>Referenced by <a class="el" href="_object_storage_8php_source.html#l00538">ObjectStorage\changeContainerACL()</a>, and <a class="el" href="_object_storage_8php_source.html#l00517">ObjectStorage\updateContainer()</a>.</p>
 
 </div>
 </div>
@@ -585,9 +598,9 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_object_storage_8php_source.html#l00557">557</a> of file <a class="el" href="_object_storage_8php_source.html">ObjectStorage.php</a>.</p>
+<p>Definition at line <a class="el" href="_object_storage_8php_source.html#l00566">566</a> of file <a class="el" href="_object_storage_8php_source.html">ObjectStorage.php</a>.</p>
 
-<p>References <a class="el" href="oo-tutorial-code_8php_source.html#l00028">$name</a>, <a class="el" href="_object_storage_8php_source.html#l00088">ObjectStorage\$url</a>, <a class="el" href="_object_storage_8php_source.html#l00627">ObjectStorage\req()</a>, and <a class="el" href="_object_storage_8php_source.html#l00283">ObjectStorage\url()</a>.</p>
+<p>References <a class="el" href="oo-tutorial-code_8php_source.html#l00028">$name</a>, <a class="el" href="_object_storage_8php_source.html#l00088">ObjectStorage\$url</a>, <a class="el" href="_object_storage_8php_source.html#l00636">ObjectStorage\req()</a>, and <a class="el" href="_object_storage_8php_source.html#l00290">ObjectStorage\url()</a>.</p>
 
 </div>
 </div>
@@ -619,9 +632,9 @@ Protected Attributes</h2></td></tr>
 <p>Do a GET on Swift. </p>
 <p>This is a convenience method that handles the most common case of Swift requests. </p>
 
-<p>Definition at line <a class="el" href="_object_storage_8php_source.html#l00620">620</a> of file <a class="el" href="_object_storage_8php_source.html">ObjectStorage.php</a>.</p>
+<p>Definition at line <a class="el" href="_object_storage_8php_source.html#l00629">629</a> of file <a class="el" href="_object_storage_8php_source.html">ObjectStorage.php</a>.</p>
 
-<p>References <a class="el" href="_object_storage_8php_source.html#l00088">ObjectStorage\$url</a>, and <a class="el" href="_object_storage_8php_source.html#l00627">ObjectStorage\req()</a>.</p>
+<p>References <a class="el" href="_object_storage_8php_source.html#l00088">ObjectStorage\$url</a>, and <a class="el" href="_object_storage_8php_source.html#l00636">ObjectStorage\req()</a>.</p>
 
 </div>
 </div>
@@ -639,7 +652,7 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_object_storage_8php_source.html#l00245">245</a> of file <a class="el" href="_object_storage_8php_source.html">ObjectStorage.php</a>.</p>
+<p>Definition at line <a class="el" href="_object_storage_8php_source.html#l00248">248</a> of file <a class="el" href="_object_storage_8php_source.html">ObjectStorage.php</a>.</p>
 
 </div>
 </div>
@@ -679,9 +692,9 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_object_storage_8php_source.html#l00395">395</a> of file <a class="el" href="_object_storage_8php_source.html">ObjectStorage.php</a>.</p>
+<p>Definition at line <a class="el" href="_object_storage_8php_source.html#l00404">404</a> of file <a class="el" href="_object_storage_8php_source.html">ObjectStorage.php</a>.</p>
 
-<p>References <a class="el" href="oo-tutorial-code_8php_source.html#l00026">$container</a>, <a class="el" href="oo-tutorial-code_8php_source.html#l00028">$name</a>, and <a class="el" href="_object_storage_8php_source.html#l00361">ObjectStorage\container()</a>.</p>
+<p>References <a class="el" href="oo-tutorial-code_8php_source.html#l00026">$container</a>, <a class="el" href="oo-tutorial-code_8php_source.html#l00028">$name</a>, and <a class="el" href="_object_storage_8php_source.html#l00369">ObjectStorage\container()</a>.</p>
 
 </div>
 </div>
@@ -731,7 +744,7 @@ Protected Attributes</h2></td></tr>
 
 <p>References <a class="el" href="oo-tutorial-code_8php_source.html#l00021">$catalog</a>, and <a class="el" href="oo-tutorial-code_8php_source.html#l00016">$endpoint</a>.</p>
 
-<p>Referenced by <a class="el" href="_stream_wrapper_8php_source.html#l01573">StreamWrapper\initializeCDN()</a>, and <a class="el" href="_stream_wrapper_8php_source.html#l01489">StreamWrapper\initializeObjectStorage()</a>.</p>
+<p>Referenced by <a class="el" href="_stream_wrapper_8php_source.html#l01581">StreamWrapper\initializeCDN()</a>, and <a class="el" href="_stream_wrapper_8php_source.html#l01494">StreamWrapper\initializeObjectStorage()</a>.</p>
 
 </div>
 </div>
@@ -800,7 +813,7 @@ Protected Attributes</h2></td></tr>
 
 <p>References <a class="el" href="oo-tutorial-code_8php_source.html#l00013">$account</a>, <a class="el" href="oo-tutorial-code_8php_source.html#l00014">$key</a>, <a class="el" href="oo-tutorial-code_8php_source.html#l00023">$store</a>, <a class="el" href="_object_storage_8php_source.html#l00084">ObjectStorage\$token</a>, and <a class="el" href="_object_storage_8php_source.html#l00088">ObjectStorage\$url</a>.</p>
 
-<p>Referenced by <a class="el" href="_stream_wrapper_8php_source.html#l01489">StreamWrapper\initializeObjectStorage()</a>.</p>
+<p>Referenced by <a class="el" href="_stream_wrapper_8php_source.html#l01494">StreamWrapper\initializeObjectStorage()</a>.</p>
 
 </div>
 </div>
@@ -843,11 +856,11 @@ Protected Attributes</h2></td></tr>
 
 <p>Internal request issuing command. </p>
 
-<p>Definition at line <a class="el" href="_object_storage_8php_source.html#l00627">627</a> of file <a class="el" href="_object_storage_8php_source.html">ObjectStorage.php</a>.</p>
+<p>Definition at line <a class="el" href="_object_storage_8php_source.html#l00636">636</a> of file <a class="el" href="_object_storage_8php_source.html">ObjectStorage.php</a>.</p>
 
-<p>References <a class="el" href="_object_storage_8php_source.html#l00088">ObjectStorage\$url</a>, and <a class="el" href="_object_storage_8php_source.html#l00273">ObjectStorage\token()</a>.</p>
+<p>References <a class="el" href="_object_storage_8php_source.html#l00088">ObjectStorage\$url</a>, and <a class="el" href="_object_storage_8php_source.html#l00280">ObjectStorage\token()</a>.</p>
 
-<p>Referenced by <a class="el" href="_object_storage_8php_source.html#l00601">ObjectStorage\accountInfo()</a>, <a class="el" href="_object_storage_8php_source.html#l00361">ObjectStorage\container()</a>, <a class="el" href="_object_storage_8php_source.html#l00557">ObjectStorage\deleteContainer()</a>, and <a class="el" href="_object_storage_8php_source.html#l00620">ObjectStorage\get()</a>.</p>
+<p>Referenced by <a class="el" href="_object_storage_8php_source.html#l00610">ObjectStorage\accountInfo()</a>, <a class="el" href="_object_storage_8php_source.html#l00369">ObjectStorage\container()</a>, <a class="el" href="_object_storage_8php_source.html#l00566">ObjectStorage\deleteContainer()</a>, and <a class="el" href="_object_storage_8php_source.html#l00629">ObjectStorage\get()</a>.</p>
 
 </div>
 </div>
@@ -873,11 +886,11 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_object_storage_8php_source.html#l00273">273</a> of file <a class="el" href="_object_storage_8php_source.html">ObjectStorage.php</a>.</p>
+<p>Definition at line <a class="el" href="_object_storage_8php_source.html#l00280">280</a> of file <a class="el" href="_object_storage_8php_source.html">ObjectStorage.php</a>.</p>
 
 <p>References <a class="el" href="_object_storage_8php_source.html#l00084">ObjectStorage\$token</a>.</p>
 
-<p>Referenced by <a class="el" href="_object_storage_8php_source.html#l00214">ObjectStorage\__construct()</a>, <a class="el" href="_container_8php_source.html#l00319">Container\__construct()</a>, <a class="el" href="_object_storage_8php_source.html#l00361">ObjectStorage\container()</a>, <a class="el" href="_object_storage_8php_source.html#l00323">ObjectStorage\containers()</a>, <a class="el" href="_container_8php_source.html#l00630">Container\copy()</a>, <a class="el" href="_object_storage_8php_source.html#l00467">ObjectStorage\createContainer()</a>, <a class="el" href="_container_8php_source.html#l01104">Container\delete()</a>, <a class="el" href="_remote_object_8php_source.html#l00534">RemoteObject\fetchObject()</a>, <a class="el" href="_container_8php_source.html#l00981">Container\loadExtraData()</a>, <a class="el" href="_container_8php_source.html#l01014">Container\objectQuery()</a>, <a class="el" href="_container_8php_source.html#l00748">Container\proxyObject()</a>, <a class="el" href="_object_storage_8php_source.html#l00627">ObjectStorage\req()</a>, <a class="el" href="_container_8php_source.html#l00463">Container\save()</a>, and <a class="el" href="_stream_wrapper_8php_source.html#l01223">StreamWrapper\serviceCatalog()</a>.</p>
+<p>Referenced by <a class="el" href="_object_storage_8php_source.html#l00214">ObjectStorage\__construct()</a>, <a class="el" href="_container_8php_source.html#l00320">Container\__construct()</a>, <a class="el" href="_object_storage_8php_source.html#l00369">ObjectStorage\container()</a>, <a class="el" href="_object_storage_8php_source.html#l00330">ObjectStorage\containers()</a>, <a class="el" href="_container_8php_source.html#l00634">Container\copy()</a>, <a class="el" href="_object_storage_8php_source.html#l00476">ObjectStorage\createContainer()</a>, <a class="el" href="_container_8php_source.html#l01116">Container\delete()</a>, <a class="el" href="_remote_object_8php_source.html#l00546">RemoteObject\fetchObject()</a>, <a class="el" href="_container_8php_source.html#l00993">Container\loadExtraData()</a>, <a class="el" href="_container_8php_source.html#l01026">Container\objectQuery()</a>, <a class="el" href="_container_8php_source.html#l00759">Container\proxyObject()</a>, <a class="el" href="_object_storage_8php_source.html#l00636">ObjectStorage\req()</a>, <a class="el" href="_container_8php_source.html#l00467">Container\save()</a>, and <a class="el" href="_stream_wrapper_8php_source.html#l01228">StreamWrapper\serviceCatalog()</a>.</p>
 
 </div>
 </div>
@@ -915,9 +928,9 @@ Protected Attributes</h2></td></tr>
 <p>Alias of <a class="el" href="class_h_p_cloud_1_1_storage_1_1_object_storage.html#adcfacd79bb4c0d4136b33368a329c526" title="Create a container with the given name.">createContainer()</a>. </p>
 <p>At present, there is no distinction in the Swift REST API between creating an updating a container. In the future this may change, so you are encouraged to use this alias in cases where you clearly intend to update an existing container. </p>
 
-<p>Definition at line <a class="el" href="_object_storage_8php_source.html#l00508">508</a> of file <a class="el" href="_object_storage_8php_source.html">ObjectStorage.php</a>.</p>
+<p>Definition at line <a class="el" href="_object_storage_8php_source.html#l00517">517</a> of file <a class="el" href="_object_storage_8php_source.html">ObjectStorage.php</a>.</p>
 
-<p>References <a class="el" href="oo-tutorial-code_8php_source.html#l00028">$name</a>, and <a class="el" href="_object_storage_8php_source.html#l00467">ObjectStorage\createContainer()</a>.</p>
+<p>References <a class="el" href="oo-tutorial-code_8php_source.html#l00028">$name</a>, and <a class="el" href="_object_storage_8php_source.html#l00476">ObjectStorage\createContainer()</a>.</p>
 
 </div>
 </div>
@@ -943,11 +956,11 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_object_storage_8php_source.html#l00283">283</a> of file <a class="el" href="_object_storage_8php_source.html">ObjectStorage.php</a>.</p>
+<p>Definition at line <a class="el" href="_object_storage_8php_source.html#l00290">290</a> of file <a class="el" href="_object_storage_8php_source.html">ObjectStorage.php</a>.</p>
 
 <p>References <a class="el" href="_object_storage_8php_source.html#l00088">ObjectStorage\$url</a>.</p>
 
-<p>Referenced by <a class="el" href="_object_storage_8php_source.html#l00214">ObjectStorage\__construct()</a>, <a class="el" href="_container_8php_source.html#l00319">Container\__construct()</a>, <a class="el" href="_object_storage_8php_source.html#l00601">ObjectStorage\accountInfo()</a>, <a class="el" href="_object_storage_8php_source.html#l00361">ObjectStorage\container()</a>, <a class="el" href="_object_storage_8php_source.html#l00323">ObjectStorage\containers()</a>, <a class="el" href="_container_8php_source.html#l00630">Container\copy()</a>, <a class="el" href="_object_storage_8php_source.html#l00467">ObjectStorage\createContainer()</a>, <a class="el" href="_container_8php_source.html#l01104">Container\delete()</a>, <a class="el" href="_object_storage_8php_source.html#l00557">ObjectStorage\deleteContainer()</a>, <a class="el" href="_remote_object_8php_source.html#l00534">RemoteObject\fetchObject()</a>, <a class="el" href="_container_8php_source.html#l00981">Container\loadExtraData()</a>, <a class="el" href="_container_8php_source.html#l00687">Container\object()</a>, <a class="el" href="_container_8php_source.html#l01014">Container\objectQuery()</a>, <a class="el" href="_container_8php_source.html#l00748">Container\proxyObject()</a>, <a class="el" href="_container_8php_source.html#l00463">Container\save()</a>, and <a class="el" href="_container_8php_source.html#l00575">Container\updateMetadata()</a>.</p>
+<p>Referenced by <a class="el" href="_object_storage_8php_source.html#l00214">ObjectStorage\__construct()</a>, <a class="el" href="_container_8php_source.html#l00320">Container\__construct()</a>, <a class="el" href="_object_storage_8php_source.html#l00610">ObjectStorage\accountInfo()</a>, <a class="el" href="_object_storage_8php_source.html#l00369">ObjectStorage\container()</a>, <a class="el" href="_object_storage_8php_source.html#l00330">ObjectStorage\containers()</a>, <a class="el" href="_container_8php_source.html#l00634">Container\copy()</a>, <a class="el" href="_object_storage_8php_source.html#l00476">ObjectStorage\createContainer()</a>, <a class="el" href="_container_8php_source.html#l01116">Container\delete()</a>, <a class="el" href="_object_storage_8php_source.html#l00566">ObjectStorage\deleteContainer()</a>, <a class="el" href="_remote_object_8php_source.html#l00546">RemoteObject\fetchObject()</a>, <a class="el" href="_container_8php_source.html#l00993">Container\loadExtraData()</a>, <a class="el" href="_container_8php_source.html#l00695">Container\object()</a>, <a class="el" href="_container_8php_source.html#l01026">Container\objectQuery()</a>, <a class="el" href="_container_8php_source.html#l00759">Container\proxyObject()</a>, <a class="el" href="_container_8php_source.html#l00467">Container\save()</a>, and <a class="el" href="_container_8php_source.html#l00579">Container\updateMetadata()</a>.</p>
 
 </div>
 </div>
@@ -1008,7 +1021,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="_object_storage_8php_source.html#l00084">84</a> of file <a class="el" href="_object_storage_8php_source.html">ObjectStorage.php</a>.</p>
 
-<p>Referenced by <a class="el" href="_container_8php_source.html#l00319">Container\__construct()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01598">StreamWrapper\authenticate()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01573">StreamWrapper\initializeCDN()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01489">StreamWrapper\initializeObjectStorage()</a>, <a class="el" href="_remote_object_8php_source.html#l00122">RemoteObject\newFromHeaders()</a>, <a class="el" href="_remote_object_8php_source.html#l00082">RemoteObject\newFromJSON()</a>, <a class="el" href="_container_8php_source.html#l00214">Container\newFromJSON()</a>, <a class="el" href="_container_8php_source.html#l00257">Container\newFromResponse()</a>, <a class="el" href="_object_storage_8php_source.html#l00137">ObjectStorage\newFromSwiftAuth()</a>, <a class="el" href="_container_8php_source.html#l00687">Container\object()</a>, <a class="el" href="_container_8php_source.html#l00463">Container\save()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l00768">StreamWrapper\stream_open()</a>, <a class="el" href="_object_storage_8php_source.html#l00273">ObjectStorage\token()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01085">StreamWrapper\unlink()</a>, <a class="el" href="_container_8php_source.html#l00575">Container\updateMetadata()</a>, and <a class="el" href="_stream_wrapper_8php_source.html#l01121">StreamWrapper\url_stat()</a>.</p>
+<p>Referenced by <a class="el" href="_container_8php_source.html#l00320">Container\__construct()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01606">StreamWrapper\authenticate()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01581">StreamWrapper\initializeCDN()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01494">StreamWrapper\initializeObjectStorage()</a>, <a class="el" href="_remote_object_8php_source.html#l00125">RemoteObject\newFromHeaders()</a>, <a class="el" href="_remote_object_8php_source.html#l00083">RemoteObject\newFromJSON()</a>, <a class="el" href="_container_8php_source.html#l00215">Container\newFromJSON()</a>, <a class="el" href="_container_8php_source.html#l00258">Container\newFromResponse()</a>, <a class="el" href="_object_storage_8php_source.html#l00137">ObjectStorage\newFromSwiftAuth()</a>, <a class="el" href="_container_8php_source.html#l00695">Container\object()</a>, <a class="el" href="_container_8php_source.html#l00467">Container\save()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l00771">StreamWrapper\stream_open()</a>, <a class="el" href="_object_storage_8php_source.html#l00280">ObjectStorage\token()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01090">StreamWrapper\unlink()</a>, <a class="el" href="_container_8php_source.html#l00579">Container\updateMetadata()</a>, and <a class="el" href="_stream_wrapper_8php_source.html#l01126">StreamWrapper\url_stat()</a>.</p>
 
 </div>
 </div>
@@ -1027,7 +1040,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="_object_storage_8php_source.html#l00088">88</a> of file <a class="el" href="_object_storage_8php_source.html">ObjectStorage.php</a>.</p>
 
-<p>Referenced by <a class="el" href="_object_storage_8php_source.html#l00214">ObjectStorage\__construct()</a>, <a class="el" href="_container_8php_source.html#l00319">Container\__construct()</a>, <a class="el" href="_object_storage_8php_source.html#l00601">ObjectStorage\accountInfo()</a>, <a class="el" href="_object_storage_8php_source.html#l00361">ObjectStorage\container()</a>, <a class="el" href="_object_storage_8php_source.html#l00323">ObjectStorage\containers()</a>, <a class="el" href="_object_storage_8php_source.html#l00467">ObjectStorage\createContainer()</a>, <a class="el" href="_container_8php_source.html#l01104">Container\delete()</a>, <a class="el" href="_object_storage_8php_source.html#l00557">ObjectStorage\deleteContainer()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l00398">StreamWrapper\dir_opendir()</a>, <a class="el" href="_object_storage_8php_source.html#l00620">ObjectStorage\get()</a>, <a class="el" href="_remote_object_8php_source.html#l00122">RemoteObject\newFromHeaders()</a>, <a class="el" href="_remote_object_8php_source.html#l00082">RemoteObject\newFromJSON()</a>, <a class="el" href="_container_8php_source.html#l00214">Container\newFromJSON()</a>, <a class="el" href="_container_8php_source.html#l00257">Container\newFromResponse()</a>, <a class="el" href="_object_storage_8php_source.html#l00137">ObjectStorage\newFromSwiftAuth()</a>, <a class="el" href="_container_8php_source.html#l00687">Container\object()</a>, <a class="el" href="_container_8php_source.html#l01014">Container\objectQuery()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01442">StreamWrapper\parseUrl()</a>, <a class="el" href="_container_8php_source.html#l00748">Container\proxyObject()</a>, <a class="el" href="_object_storage_8php_source.html#l00627">ObjectStorage\req()</a>, <a class="el" href="_container_8php_source.html#l00463">Container\save()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l00768">StreamWrapper\stream_open()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01085">StreamWrapper\unlink()</a>, <a class="el" href="_container_8php_source.html#l00575">Container\updateMetadata()</a>, <a class="el" href="_remote_object_8php_source.html#l00210">RemoteObject\url()</a>, <a class="el" href="_object_storage_8php_source.html#l00283">ObjectStorage\url()</a>, <a class="el" href="_container_8php_source.html#l00943">Container\url()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01121">StreamWrapper\url_stat()</a>, <a class="el" href="_remote_object_8php_source.html#l00180">RemoteObject\useCDN()</a>, and <a class="el" href="_container_8php_source.html#l00339">Container\useCDN()</a>.</p>
+<p>Referenced by <a class="el" href="_object_storage_8php_source.html#l00214">ObjectStorage\__construct()</a>, <a class="el" href="_container_8php_source.html#l00320">Container\__construct()</a>, <a class="el" href="_object_storage_8php_source.html#l00610">ObjectStorage\accountInfo()</a>, <a class="el" href="_object_storage_8php_source.html#l00369">ObjectStorage\container()</a>, <a class="el" href="_object_storage_8php_source.html#l00330">ObjectStorage\containers()</a>, <a class="el" href="_object_storage_8php_source.html#l00476">ObjectStorage\createContainer()</a>, <a class="el" href="_container_8php_source.html#l01116">Container\delete()</a>, <a class="el" href="_object_storage_8php_source.html#l00566">ObjectStorage\deleteContainer()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l00401">StreamWrapper\dir_opendir()</a>, <a class="el" href="_object_storage_8php_source.html#l00629">ObjectStorage\get()</a>, <a class="el" href="_remote_object_8php_source.html#l00125">RemoteObject\newFromHeaders()</a>, <a class="el" href="_remote_object_8php_source.html#l00083">RemoteObject\newFromJSON()</a>, <a class="el" href="_container_8php_source.html#l00215">Container\newFromJSON()</a>, <a class="el" href="_container_8php_source.html#l00258">Container\newFromResponse()</a>, <a class="el" href="_object_storage_8php_source.html#l00137">ObjectStorage\newFromSwiftAuth()</a>, <a class="el" href="_container_8php_source.html#l00695">Container\object()</a>, <a class="el" href="_container_8php_source.html#l01026">Container\objectQuery()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01447">StreamWrapper\parseUrl()</a>, <a class="el" href="_container_8php_source.html#l00759">Container\proxyObject()</a>, <a class="el" href="_object_storage_8php_source.html#l00636">ObjectStorage\req()</a>, <a class="el" href="_container_8php_source.html#l00467">Container\save()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l00771">StreamWrapper\stream_open()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01090">StreamWrapper\unlink()</a>, <a class="el" href="_container_8php_source.html#l00579">Container\updateMetadata()</a>, <a class="el" href="_remote_object_8php_source.html#l00222">RemoteObject\url()</a>, <a class="el" href="_object_storage_8php_source.html#l00290">ObjectStorage\url()</a>, <a class="el" href="_container_8php_source.html#l00955">Container\url()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01126">StreamWrapper\url_stat()</a>, <a class="el" href="_remote_object_8php_source.html#l00186">RemoteObject\useCDN()</a>, and <a class="el" href="_container_8php_source.html#l00342">Container\useCDN()</a>.</p>
 
 </div>
 </div>
@@ -1075,7 +1088,7 @@ Protected Attributes</h2></td></tr>
       <li class="navelem"><a class="el" href="namespace_h_p_cloud_1_1_storage.html">Storage</a>      </li>
       <li class="navelem"><a class="el" href="class_h_p_cloud_1_1_storage_1_1_object_storage.html">ObjectStorage</a>      </li>
 
-    <li class="footer">Generated on Thu Apr 12 2012 15:26:52 for HPCloud-PHP by
+    <li class="footer">Generated on Thu May 10 2012 14:49:41 for HPCloud-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.0 </li>
    </ul>

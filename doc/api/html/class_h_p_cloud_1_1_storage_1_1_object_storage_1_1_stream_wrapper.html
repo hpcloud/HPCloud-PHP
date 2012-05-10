@@ -33,7 +33,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">HPCloud-PHP
-   &#160;<span id="projectnumber">-UNSTABLE%</span>
+   &#160;<span id="projectnumber">DEV</span>
    </div>
    <div id="projectbrief">PHP bindings for HPCloud and OpenStack services.</div>
   </td>
@@ -372,13 +372,14 @@ Static Protected Attributes</h2></td></tr>
 <li>Authentication info must be accessible to the stream wrapper.</li>
 </ul>
 </li>
+<li>cdn_require_ssl: If this is set to FALSE, then CDN-based requests may use plain HTTP instead of HTTPS. This will spead up <a class="el" href="class_h_p_cloud_1_1_storage_1_1_c_d_n.html" title="Provides CDN services for ObjectStorage.">CDN</a> fetches at the cost of security.</li>
 </ul>
 </li>
 </ul>
 <dl class="section attention"><dt>Attention:</dt><dd>ADVANCED: You can also pass an <a class="el" href="class_h_p_cloud_1_1_storage_1_1_c_d_n.html" title="Provides CDN services for ObjectStorage.">HPCloud::Storage::CDN</a> object in use_cdn instead of a boolean.</dd></dl>
 <dl class="section see"><dt>See also:</dt><dd><a href="http://us3.php.net/manual/en/class.streamwrapper.php">http://us3.php.net/manual/en/class.streamwrapper.php</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00258">258</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
+<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00261">261</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 </div><hr/><h2>Member Function Documentation</h2>
 <a class="anchor" id="a750c93a7dfab5314f2bf662a407bc5a6"></a>
 <div class="memitem">
@@ -394,11 +395,11 @@ Static Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l01598">1598</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
+<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l01606">1606</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
-<p>References <a class="el" href="oo-tutorial-code_8php_source.html#l00013">$account</a>, <a class="el" href="oo-tutorial-code_8php_source.html#l00014">$key</a>, <a class="el" href="oo-tutorial-code_8php_source.html#l00015">$tenantId</a>, <a class="el" href="_object_storage_8php_source.html#l00084">ObjectStorage\$token</a>, and <a class="el" href="_stream_wrapper_8php_source.html#l01396">StreamWrapper\cxt()</a>.</p>
+<p>References <a class="el" href="oo-tutorial-code_8php_source.html#l00013">$account</a>, <a class="el" href="oo-tutorial-code_8php_source.html#l00014">$key</a>, <a class="el" href="oo-tutorial-code_8php_source.html#l00015">$tenantId</a>, <a class="el" href="_object_storage_8php_source.html#l00084">ObjectStorage\$token</a>, and <a class="el" href="_stream_wrapper_8php_source.html#l01401">StreamWrapper\cxt()</a>.</p>
 
-<p>Referenced by <a class="el" href="_stream_wrapper_8php_source.html#l01573">StreamWrapper\initializeCDN()</a>, and <a class="el" href="_stream_wrapper_8php_source.html#l01489">StreamWrapper\initializeObjectStorage()</a>.</p>
+<p>Referenced by <a class="el" href="_stream_wrapper_8php_source.html#l01581">StreamWrapper\initializeCDN()</a>, and <a class="el" href="_stream_wrapper_8php_source.html#l01494">StreamWrapper\initializeObjectStorage()</a>.</p>
 
 </div>
 </div>
@@ -443,11 +444,11 @@ Static Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l01396">1396</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
+<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l01401">1401</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
 <p>References <a class="el" href="streams-tutorial-example_8php_source.html#l00031">$cxt</a>, and <a class="el" href="oo-tutorial-code_8php_source.html#l00028">$name</a>.</p>
 
-<p>Referenced by <a class="el" href="_stream_wrapper_8php_source.html#l01598">StreamWrapper\authenticate()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01573">StreamWrapper\initializeCDN()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01489">StreamWrapper\initializeObjectStorage()</a>, and <a class="el" href="_stream_wrapper_8php_source.html#l00680">StreamWrapper\writeRemote()</a>.</p>
+<p>Referenced by <a class="el" href="_stream_wrapper_8php_source.html#l01606">StreamWrapper\authenticate()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01581">StreamWrapper\initializeCDN()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01494">StreamWrapper\initializeObjectStorage()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l00771">StreamWrapper\stream_open()</a>, and <a class="el" href="_stream_wrapper_8php_source.html#l00683">StreamWrapper\writeRemote()</a>.</p>
 
 </div>
 </div>
@@ -480,7 +481,7 @@ Static Protected Attributes</h2></td></tr>
  ?&gt;
 </pre></div><p>NB: Some versions of PHP 5.3 don't clear all buffers when closing, and the handle can occasionally remain accessible for some period of time. </p>
 
-<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00363">363</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
+<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00366">366</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
 </div>
 </div>
@@ -536,9 +537,9 @@ Static Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00398">398</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
+<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00401">401</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
-<p>References <a class="el" href="oo-tutorial-code_8php_source.html#l00026">$container</a>, <a class="el" href="_object_storage_8php_source.html#l00088">ObjectStorage\$url</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01489">StreamWrapper\initializeObjectStorage()</a>, and <a class="el" href="_stream_wrapper_8php_source.html#l01442">StreamWrapper\parseUrl()</a>.</p>
+<p>References <a class="el" href="oo-tutorial-code_8php_source.html#l00026">$container</a>, <a class="el" href="_object_storage_8php_source.html#l00088">ObjectStorage\$url</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01494">StreamWrapper\initializeObjectStorage()</a>, and <a class="el" href="_stream_wrapper_8php_source.html#l01447">StreamWrapper\parseUrl()</a>.</p>
 
 </div>
 </div>
@@ -578,7 +579,7 @@ Static Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00454">454</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
+<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00457">457</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
 </div>
 </div>
@@ -616,7 +617,7 @@ Static Protected Attributes</h2></td></tr>
  closedir($dir);
  ?&gt;
 </pre></div> 
-<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00503">503</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
+<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00506">506</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
 </div>
 </div>
@@ -670,11 +671,11 @@ Static Protected Attributes</h2></td></tr>
 <li>Size must be calculated externally, as it will sometimes be the remote's Content-Length, and it will sometimes be the cached stat['size'] for the underlying buffer. </li>
 </ul>
 
-<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l01247">1247</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
+<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l01252">1252</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
 <p>References <a class="el" href="oo-tutorial-code_8php_source.html#l00026">$container</a>, and <a class="el" href="oo-tutorial-code_8php_source.html#l00035">$object</a>.</p>
 
-<p>Referenced by <a class="el" href="_stream_wrapper_8php_source.html#l01025">StreamWrapper\stream_stat()</a>, and <a class="el" href="_stream_wrapper_8php_source.html#l01121">StreamWrapper\url_stat()</a>.</p>
+<p>Referenced by <a class="el" href="_stream_wrapper_8php_source.html#l01030">StreamWrapper\stream_stat()</a>, and <a class="el" href="_stream_wrapper_8php_source.html#l01126">StreamWrapper\url_stat()</a>.</p>
 
 </div>
 </div>
@@ -706,13 +707,14 @@ Static Protected Attributes</h2></td></tr>
 <p>Initialize <a class="el" href="class_h_p_cloud_1_1_storage_1_1_c_d_n.html" title="Provides CDN services for ObjectStorage.">CDN</a> service. </p>
 <p>When the <code>use_cdn</code> parameter is passed into the context, we try to use a <a class="el" href="class_h_p_cloud_1_1_storage_1_1_c_d_n.html" title="Provides CDN services for ObjectStorage.">CDN</a> service wherever possible.</p>
 <p>If <code>use_cdn</code> is set to TRUE, we try to create a new <a class="el" href="class_h_p_cloud_1_1_storage_1_1_c_d_n.html" title="Provides CDN services for ObjectStorage.">CDN</a> object. This will require a service catalog.</p>
-<p>When use_cdn is set to TRUE, the wrapper tries to use <a class="el" href="class_h_p_cloud_1_1_storage_1_1_c_d_n.html" title="Provides CDN services for ObjectStorage.">CDN</a> service. In such cases, we need a handle to the <a class="el" href="class_h_p_cloud_1_1_storage_1_1_c_d_n.html" title="Provides CDN services for ObjectStorage.">CDN</a> object. This initializes that handle, which can later be used to get other information. </p>
+<p>When use_cdn is set to TRUE, the wrapper tries to use <a class="el" href="class_h_p_cloud_1_1_storage_1_1_c_d_n.html" title="Provides CDN services for ObjectStorage.">CDN</a> service. In such cases, we need a handle to the <a class="el" href="class_h_p_cloud_1_1_storage_1_1_c_d_n.html" title="Provides CDN services for ObjectStorage.">CDN</a> object. This initializes that handle, which can later be used to get other information.</p>
+<p>Also note that <a class="el" href="class_h_p_cloud_1_1_storage_1_1_c_d_n.html" title="Provides CDN services for ObjectStorage.">CDN</a>'s default behavior is to fetch over SSL <a class="el" href="class_h_p_cloud_1_1_storage_1_1_c_d_n.html" title="Provides CDN services for ObjectStorage.">CDN</a>. To disable this, set 'cdn_require_ssl' to FALSE. </p>
 
-<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l01573">1573</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
+<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l01581">1581</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
-<p>References <a class="el" href="oo-tutorial-code_8php_source.html#l00021">$catalog</a>, <a class="el" href="_object_storage_8php_source.html#l00084">ObjectStorage\$token</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01598">StreamWrapper\authenticate()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01396">StreamWrapper\cxt()</a>, and <a class="el" href="_object_storage_8php_source.html#l00184">ObjectStorage\newFromServiceCatalog()</a>.</p>
+<p>References <a class="el" href="oo-tutorial-code_8php_source.html#l00021">$catalog</a>, <a class="el" href="_object_storage_8php_source.html#l00084">ObjectStorage\$token</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01606">StreamWrapper\authenticate()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01401">StreamWrapper\cxt()</a>, and <a class="el" href="_object_storage_8php_source.html#l00184">ObjectStorage\newFromServiceCatalog()</a>.</p>
 
-<p>Referenced by <a class="el" href="_stream_wrapper_8php_source.html#l01489">StreamWrapper\initializeObjectStorage()</a>.</p>
+<p>Referenced by <a class="el" href="_stream_wrapper_8php_source.html#l01494">StreamWrapper\initializeObjectStorage()</a>.</p>
 
 </div>
 </div>
@@ -747,11 +749,11 @@ Static Protected Attributes</h2></td></tr>
 <p>To find these params, the method first checks the supplied context. If the key is not found there, it checks the Bootstrap::conf().</p>
 <p>This should be rewritten to use <a class="el" href="class_h_p_cloud_1_1_storage_1_1_object_storage.html#a10cdf00002869db50b278e55d4a2ec4d" title="Given a service catalog and an token, create an ObjectStorage instance.">ObjectStorage::newFromServiceCatalog()</a>. </p>
 
-<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l01489">1489</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
+<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l01494">1494</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
-<p>References <a class="el" href="oo-tutorial-code_8php_source.html#l00013">$account</a>, <a class="el" href="oo-tutorial-code_8php_source.html#l00016">$endpoint</a>, <a class="el" href="oo-tutorial-code_8php_source.html#l00014">$key</a>, <a class="el" href="oo-tutorial-code_8php_source.html#l00015">$tenantId</a>, <a class="el" href="_object_storage_8php_source.html#l00084">ObjectStorage\$token</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01598">StreamWrapper\authenticate()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01396">StreamWrapper\cxt()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01573">StreamWrapper\initializeCDN()</a>, <a class="el" href="_object_storage_8php_source.html#l00184">ObjectStorage\newFromServiceCatalog()</a>, and <a class="el" href="_object_storage_8php_source.html#l00137">ObjectStorage\newFromSwiftAuth()</a>.</p>
+<p>References <a class="el" href="oo-tutorial-code_8php_source.html#l00013">$account</a>, <a class="el" href="oo-tutorial-code_8php_source.html#l00016">$endpoint</a>, <a class="el" href="oo-tutorial-code_8php_source.html#l00014">$key</a>, <a class="el" href="oo-tutorial-code_8php_source.html#l00015">$tenantId</a>, <a class="el" href="_object_storage_8php_source.html#l00084">ObjectStorage\$token</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01606">StreamWrapper\authenticate()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01401">StreamWrapper\cxt()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01581">StreamWrapper\initializeCDN()</a>, <a class="el" href="_object_storage_8php_source.html#l00184">ObjectStorage\newFromServiceCatalog()</a>, and <a class="el" href="_object_storage_8php_source.html#l00137">ObjectStorage\newFromSwiftAuth()</a>.</p>
 
-<p>Referenced by <a class="el" href="_stream_wrapper_8php_source.html#l00398">StreamWrapper\dir_opendir()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l00552">StreamWrapper\rename()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l00768">StreamWrapper\stream_open()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01085">StreamWrapper\unlink()</a>, and <a class="el" href="_stream_wrapper_8php_source.html#l01121">StreamWrapper\url_stat()</a>.</p>
+<p>Referenced by <a class="el" href="_stream_wrapper_8php_source.html#l00401">StreamWrapper\dir_opendir()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l00555">StreamWrapper\rename()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l00771">StreamWrapper\stream_open()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01090">StreamWrapper\unlink()</a>, and <a class="el" href="_stream_wrapper_8php_source.html#l01126">StreamWrapper\url_stat()</a>.</p>
 
 </div>
 </div>
@@ -780,7 +782,7 @@ Static Protected Attributes</h2></td></tr>
   <a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html#a9008ed94ba185855b1723e367744b87e" title="The Object.">$obj</a> = $md[<span class="stringliteral">&#39;wrapper_data&#39;</span>]-&gt;object();
  ?&gt;
 </pre></div> 
-<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l01188">1188</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
+<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l01193">1193</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
 </div>
 </div>
@@ -807,7 +809,7 @@ Static Protected Attributes</h2></td></tr>
 </dl>
 <dl class="section see"><dt>See also:</dt><dd>object() </dd></dl>
 
-<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l01199">1199</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
+<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l01204">1204</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
 <p>References <a class="el" href="oo-tutorial-code_8php_source.html#l00023">$store</a>.</p>
 
@@ -844,11 +846,11 @@ Static Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l01442">1442</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
+<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l01447">1447</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
 <p>References <a class="el" href="oo-tutorial-code_8php_source.html#l00014">$key</a>, and <a class="el" href="_object_storage_8php_source.html#l00088">ObjectStorage\$url</a>.</p>
 
-<p>Referenced by <a class="el" href="_stream_wrapper_8php_source.html#l00398">StreamWrapper\dir_opendir()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l00552">StreamWrapper\rename()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l00768">StreamWrapper\stream_open()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01085">StreamWrapper\unlink()</a>, and <a class="el" href="_stream_wrapper_8php_source.html#l01121">StreamWrapper\url_stat()</a>.</p>
+<p>Referenced by <a class="el" href="_stream_wrapper_8php_source.html#l00401">StreamWrapper\dir_opendir()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l00555">StreamWrapper\rename()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l00771">StreamWrapper\stream_open()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01090">StreamWrapper\unlink()</a>, and <a class="el" href="_stream_wrapper_8php_source.html#l01126">StreamWrapper\url_stat()</a>.</p>
 
 </div>
 </div>
@@ -910,9 +912,9 @@ Static Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00552">552</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
+<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00555">555</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
-<p>References <a class="el" href="oo-tutorial-code_8php_source.html#l00026">$container</a>, <a class="el" href="oo-tutorial-code_8php_source.html#l00035">$object</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01489">StreamWrapper\initializeObjectStorage()</a>, and <a class="el" href="_stream_wrapper_8php_source.html#l01442">StreamWrapper\parseUrl()</a>.</p>
+<p>References <a class="el" href="oo-tutorial-code_8php_source.html#l00026">$container</a>, <a class="el" href="oo-tutorial-code_8php_source.html#l00035">$object</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01494">StreamWrapper\initializeObjectStorage()</a>, and <a class="el" href="_stream_wrapper_8php_source.html#l01447">StreamWrapper\parseUrl()</a>.</p>
 
 </div>
 </div>
@@ -940,9 +942,9 @@ Static Protected Attributes</h2></td></tr>
 </dl>
 <dl class="section see"><dt>See also:</dt><dd>object() </dd></dl>
 
-<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l01223">1223</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
+<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l01228">1228</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
-<p>References <a class="el" href="_object_storage_8php_source.html#l00273">ObjectStorage\token()</a>.</p>
+<p>References <a class="el" href="_object_storage_8php_source.html#l00280">ObjectStorage\token()</a>.</p>
 
 </div>
 </div>
@@ -969,9 +971,9 @@ Static Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l01310">1310</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
+<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l01315">1315</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
-<p>Referenced by <a class="el" href="_stream_wrapper_8php_source.html#l00768">StreamWrapper\stream_open()</a>.</p>
+<p>Referenced by <a class="el" href="_stream_wrapper_8php_source.html#l00771">StreamWrapper\stream_open()</a>.</p>
 
 </div>
 </div>
@@ -999,7 +1001,7 @@ Static Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00599">599</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
+<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00602">602</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
 </div>
 </div>
@@ -1030,9 +1032,9 @@ Static Protected Attributes</h2></td></tr>
 </pre></div><p>This will close the present stream. Importantly, this will also write to the remote object storage if any changes have been made locally.</p>
 <p>See stream_open(). </p>
 
-<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00624">624</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
+<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00627">627</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
-<p>References <a class="el" href="_stream_wrapper_8php_source.html#l00680">StreamWrapper\writeRemote()</a>.</p>
+<p>References <a class="el" href="_stream_wrapper_8php_source.html#l00683">StreamWrapper\writeRemote()</a>.</p>
 
 </div>
 </div>
@@ -1061,7 +1063,7 @@ Static Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00652">652</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
+<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00655">655</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
 </div>
 </div>
@@ -1083,9 +1085,9 @@ Static Protected Attributes</h2></td></tr>
 <p>If the local copy of this object has been modified, it is written remotely.</p>
 <p>Called when <code>fflush()</code> is called on a stream. </p>
 
-<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00664">664</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
+<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00667">667</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
-<p>References <a class="el" href="_stream_wrapper_8php_source.html#l00680">StreamWrapper\writeRemote()</a>.</p>
+<p>References <a class="el" href="_stream_wrapper_8php_source.html#l00683">StreamWrapper\writeRemote()</a>.</p>
 
 </div>
 </div>
@@ -1155,9 +1157,9 @@ Static Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00768">768</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
+<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00771">771</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
-<p>References <a class="el" href="_object_storage_8php_source.html#l00084">ObjectStorage\$token</a>, <a class="el" href="_object_storage_8php_source.html#l00088">ObjectStorage\$url</a>, <a class="el" href="_object_storage_8php_source.html#l00361">ObjectStorage\container()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01489">StreamWrapper\initializeObjectStorage()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01442">StreamWrapper\parseUrl()</a>, and <a class="el" href="_stream_wrapper_8php_source.html#l01310">StreamWrapper\setMode()</a>.</p>
+<p>References <a class="el" href="_object_storage_8php_source.html#l00084">ObjectStorage\$token</a>, <a class="el" href="_object_storage_8php_source.html#l00088">ObjectStorage\$url</a>, <a class="el" href="_object_storage_8php_source.html#l00369">ObjectStorage\container()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01401">StreamWrapper\cxt()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01494">StreamWrapper\initializeObjectStorage()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01447">StreamWrapper\parseUrl()</a>, and <a class="el" href="_stream_wrapper_8php_source.html#l01315">StreamWrapper\setMode()</a>.</p>
 
 </div>
 </div>
@@ -1202,7 +1204,7 @@ Static Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00960">960</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
+<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00965">965</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
 </div>
 </div>
@@ -1235,7 +1237,7 @@ Static Protected Attributes</h2></td></tr>
 <p>This is called whenever <code>fseek()</code> or <code>rewind()</code> is called on a Swift stream.</p>
 <dl class="section attention"><dt>Attention:</dt><dd>IMPORTANT: Unlike the PHP core, this library allows you to fseek() inside of a file opened in append mode ('a' or 'a+'). </dd></dl>
 
-<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00975">975</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
+<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00980">980</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
 </div>
 </div>
@@ -1274,7 +1276,7 @@ Static Protected Attributes</h2></td></tr>
 <p>The settings here do not trickle down to the network socket, which is left open for only a brief period of time. Instead, they impact the middle buffer stream, where the file is read and written to between flush/close operations. Thus, tuning these will not have any impact on network performance.</p>
 <p>See stream_set_blocking(), stream_set_timeout(), and stream_write_buffer(). </p>
 
-<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00994">994</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
+<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00999">999</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
 </div>
 </div>
@@ -1305,9 +1307,9 @@ Static Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l01025">1025</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
+<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l01030">1030</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
-<p>References <a class="el" href="_object_storage_8php_source.html#l00361">ObjectStorage\container()</a>, and <a class="el" href="_stream_wrapper_8php_source.html#l01247">StreamWrapper\generateStat()</a>.</p>
+<p>References <a class="el" href="_object_storage_8php_source.html#l00369">ObjectStorage\container()</a>, and <a class="el" href="_stream_wrapper_8php_source.html#l01252">StreamWrapper\generateStat()</a>.</p>
 
 </div>
 </div>
@@ -1334,7 +1336,7 @@ Static Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l01043">1043</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
+<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l01048">1048</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
 </div>
 </div>
@@ -1368,7 +1370,7 @@ Static Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l01059">1059</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
+<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l01064">1064</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
 </div>
 </div>
@@ -1395,7 +1397,7 @@ Static Protected Attributes</h2></td></tr>
 </dl>
 <dl class="section see"><dt>See also:</dt><dd>object() </dd></dl>
 
-<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l01210">1210</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
+<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l01215">1215</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
 </div>
 </div>
@@ -1431,9 +1433,9 @@ Static Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l01085">1085</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
+<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l01090">1090</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
-<p>References <a class="el" href="oo-tutorial-code_8php_source.html#l00026">$container</a>, <a class="el" href="oo-tutorial-code_8php_source.html#l00028">$name</a>, <a class="el" href="_object_storage_8php_source.html#l00084">ObjectStorage\$token</a>, <a class="el" href="_object_storage_8php_source.html#l00088">ObjectStorage\$url</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01489">StreamWrapper\initializeObjectStorage()</a>, and <a class="el" href="_stream_wrapper_8php_source.html#l01442">StreamWrapper\parseUrl()</a>.</p>
+<p>References <a class="el" href="oo-tutorial-code_8php_source.html#l00026">$container</a>, <a class="el" href="oo-tutorial-code_8php_source.html#l00028">$name</a>, <a class="el" href="_object_storage_8php_source.html#l00084">ObjectStorage\$token</a>, <a class="el" href="_object_storage_8php_source.html#l00088">ObjectStorage\$url</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01494">StreamWrapper\initializeObjectStorage()</a>, and <a class="el" href="_stream_wrapper_8php_source.html#l01447">StreamWrapper\parseUrl()</a>.</p>
 
 </div>
 </div>
@@ -1463,9 +1465,9 @@ Static Protected Attributes</h2></td></tr>
 <div class="memdoc">
 <dl class="section see"><dt>See also:</dt><dd>stream_stat(). </dd></dl>
 
-<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l01121">1121</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
+<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l01126">1126</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
-<p>References <a class="el" href="oo-tutorial-code_8php_source.html#l00026">$container</a>, <a class="el" href="oo-tutorial-code_8php_source.html#l00028">$name</a>, <a class="el" href="_stream_wrapper_8php_source.html#l00324">StreamWrapper\$obj</a>, <a class="el" href="_object_storage_8php_source.html#l00084">ObjectStorage\$token</a>, <a class="el" href="_object_storage_8php_source.html#l00088">ObjectStorage\$url</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01247">StreamWrapper\generateStat()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01489">StreamWrapper\initializeObjectStorage()</a>, and <a class="el" href="_stream_wrapper_8php_source.html#l01442">StreamWrapper\parseUrl()</a>.</p>
+<p>References <a class="el" href="oo-tutorial-code_8php_source.html#l00026">$container</a>, <a class="el" href="oo-tutorial-code_8php_source.html#l00028">$name</a>, <a class="el" href="_stream_wrapper_8php_source.html#l00327">StreamWrapper\$obj</a>, <a class="el" href="_object_storage_8php_source.html#l00084">ObjectStorage\$token</a>, <a class="el" href="_object_storage_8php_source.html#l00088">ObjectStorage\$url</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01252">StreamWrapper\generateStat()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01494">StreamWrapper\initializeObjectStorage()</a>, and <a class="el" href="_stream_wrapper_8php_source.html#l01447">StreamWrapper\parseUrl()</a>.</p>
 
 </div>
 </div>
@@ -1486,11 +1488,11 @@ Static Protected Attributes</h2></td></tr>
 <p>Write data to the remote object storage. </p>
 <p>Internally, this is used by flush and close. </p>
 
-<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00680">680</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
+<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00683">683</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
-<p>References <a class="el" href="_object_storage_8php_source.html#l00361">ObjectStorage\container()</a>, and <a class="el" href="_stream_wrapper_8php_source.html#l01396">StreamWrapper\cxt()</a>.</p>
+<p>References <a class="el" href="_object_storage_8php_source.html#l00369">ObjectStorage\container()</a>, and <a class="el" href="_stream_wrapper_8php_source.html#l01401">StreamWrapper\cxt()</a>.</p>
 
-<p>Referenced by <a class="el" href="_stream_wrapper_8php_source.html#l00624">StreamWrapper\stream_close()</a>, and <a class="el" href="_stream_wrapper_8php_source.html#l00664">StreamWrapper\stream_flush()</a>.</p>
+<p>Referenced by <a class="el" href="_stream_wrapper_8php_source.html#l00627">StreamWrapper\stream_close()</a>, and <a class="el" href="_stream_wrapper_8php_source.html#l00667">StreamWrapper\stream_flush()</a>.</p>
 
 </div>
 </div>
@@ -1506,7 +1508,7 @@ Static Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00282">282</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
+<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00285">285</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
 </div>
 </div>
@@ -1523,7 +1525,7 @@ Static Protected Attributes</h2></td></tr>
 
 <p>The <a class="el" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_container.html" title="A container in an ObjectStorage.">Container</a>. </p>
 
-<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00319">319</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
+<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00322">322</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
 </div>
 </div>
@@ -1541,7 +1543,7 @@ Static Protected Attributes</h2></td></tr>
 <p>The stream context. </p>
 <p>This is set automatically when the stream wrapper is created by PHP. Note that it is not set through a constructor. </p>
 
-<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00278">278</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
+<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00281">281</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
 </div>
 </div>
@@ -1556,7 +1558,7 @@ Static Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00279">279</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
+<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00282">282</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
 </div>
 </div>
@@ -1571,7 +1573,7 @@ Static Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00293">293</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
+<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00296">296</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
 </div>
 </div>
@@ -1586,7 +1588,7 @@ Static Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00337">337</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
+<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00340">340</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
 </div>
 </div>
@@ -1604,7 +1606,7 @@ Static Protected Attributes</h2></td></tr>
 <p>Directory listing. </p>
 <p>Used for directory methods. </p>
 
-<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00336">336</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
+<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00339">339</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
 </div>
 </div>
@@ -1619,7 +1621,7 @@ Static Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00338">338</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
+<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00341">341</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
 </div>
 </div>
@@ -1634,7 +1636,7 @@ Static Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00291">291</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
+<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00294">294</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
 </div>
 </div>
@@ -1649,7 +1651,7 @@ Static Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00286">286</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
+<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00289">289</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
 </div>
 </div>
@@ -1667,7 +1669,7 @@ Static Protected Attributes</h2></td></tr>
 <p>Indicate whether the local differs from remote. </p>
 <p>When the file is modified in such a way that it needs to be written remotely, the isDirty flag is set to TRUE. </p>
 
-<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00309">309</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
+<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00312">312</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
 </div>
 </div>
@@ -1684,7 +1686,7 @@ Static Protected Attributes</h2></td></tr>
 
 <p>If this is TRUE, no data is ever sent to the remote server. </p>
 
-<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00298">298</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
+<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00301">301</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
 </div>
 </div>
@@ -1699,7 +1701,7 @@ Static Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00289">289</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
+<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00292">292</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
 </div>
 </div>
@@ -1714,7 +1716,7 @@ Static Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00287">287</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
+<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00290">290</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
 </div>
 </div>
@@ -1729,7 +1731,7 @@ Static Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00290">290</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
+<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00293">293</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
 </div>
 </div>
@@ -1744,7 +1746,7 @@ Static Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00288">288</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
+<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00291">291</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
 </div>
 </div>
@@ -1759,7 +1761,7 @@ Static Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00292">292</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
+<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00295">295</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
 </div>
 </div>
@@ -1776,9 +1778,9 @@ Static Protected Attributes</h2></td></tr>
 
 <p>The <a class="el" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_object.html" title="An object for ObjectStorage.">Object</a>. </p>
 
-<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00324">324</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
+<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00327">327</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
-<p>Referenced by <a class="el" href="_stream_wrapper_8php_source.html#l01121">StreamWrapper\url_stat()</a>.</p>
+<p>Referenced by <a class="el" href="_stream_wrapper_8php_source.html#l01126">StreamWrapper\url_stat()</a>.</p>
 
 </div>
 </div>
@@ -1795,7 +1797,7 @@ Static Protected Attributes</h2></td></tr>
 
 <p>The IO stream for the <a class="el" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_object.html" title="An object for ObjectStorage.">Object</a>. </p>
 
-<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00329">329</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
+<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00332">332</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
 </div>
 </div>
@@ -1810,7 +1812,7 @@ Static Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00281">281</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
+<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00284">284</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
 </div>
 </div>
@@ -1828,7 +1830,7 @@ Static Protected Attributes</h2></td></tr>
 <p>Cache of auth token -&gt; service catalog. </p>
 <p>This will eventually be replaced by a better system, but for a system of moderate complexity, many, many file operations may be run during the course of a request. Caching the catalog can prevent numerous calls to identity services. </p>
 
-<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00270">270</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
+<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00273">273</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
 </div>
 </div>
@@ -1845,7 +1847,7 @@ Static Protected Attributes</h2></td></tr>
 
 <p><a class="el" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_object.html" title="An object for ObjectStorage.">Object</a> storage instance. </p>
 
-<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00314">314</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
+<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00317">317</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
 </div>
 </div>
@@ -1860,7 +1862,7 @@ Static Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00300">300</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
+<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00303">303</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
 </div>
 </div>
@@ -1875,7 +1877,7 @@ Static Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00260">260</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
+<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00263">263</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
 </div>
 </div>
@@ -1891,7 +1893,7 @@ Static Protected Attributes</h2></td></tr>
       <li class="navelem"><a class="el" href="namespace_h_p_cloud_1_1_storage_1_1_object_storage.html">ObjectStorage</a>      </li>
       <li class="navelem"><a class="el" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html">StreamWrapper</a>      </li>
 
-    <li class="footer">Generated on Thu Apr 12 2012 15:26:52 for HPCloud-PHP by
+    <li class="footer">Generated on Thu May 10 2012 14:49:41 for HPCloud-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.0 </li>
    </ul>

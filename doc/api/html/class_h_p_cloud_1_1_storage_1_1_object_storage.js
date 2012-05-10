@@ -2,7 +2,7 @@ var class_h_p_cloud_1_1_storage_1_1_object_storage =
 [
     [ "__construct", "class_h_p_cloud_1_1_storage_1_1_object_storage.html#a2b844ecec554a7a644c8f7d6333edd47", null ],
     [ "accountInfo", "class_h_p_cloud_1_1_storage_1_1_object_storage.html#adacd2690f698f160c2ec5065c760ba46", null ],
-    [ "cdnUrl", "class_h_p_cloud_1_1_storage_1_1_object_storage.html#abde12c756be449ae3e9678356767a56d", null ],
+    [ "cdnUrl", "class_h_p_cloud_1_1_storage_1_1_object_storage.html#ad5a7f2ceaec44fd2501b42700f7aacb8", null ],
     [ "changeContainerACL", "class_h_p_cloud_1_1_storage_1_1_object_storage.html#ae7584e3e9278e7c30bf02dcef490d8e0", null ],
     [ "container", "class_h_p_cloud_1_1_storage_1_1_object_storage.html#a653db5e4640b0c47104ff55fe6ca4a5a", null ],
     [ "containers", "class_h_p_cloud_1_1_storage_1_1_object_storage.html#a8ed5bfcf9a8ec7d0cb34ead0b4ecb1dc", null ],
