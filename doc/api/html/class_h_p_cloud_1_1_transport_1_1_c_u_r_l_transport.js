@@ -1,5 +1,6 @@
 var class_h_p_cloud_1_1_transport_1_1_c_u_r_l_transport =
 [
+    [ "__destruct", "class_h_p_cloud_1_1_transport_1_1_c_u_r_l_transport.html#a421831a265621325e1fdd19aace0c758", null ],
     [ "determineMethod", "class_h_p_cloud_1_1_transport_1_1_c_u_r_l_transport.html#a7d4ab2e3d808744c34569b9bf0462bb5", null ],
     [ "doRequest", "class_h_p_cloud_1_1_transport_1_1_c_u_r_l_transport.html#a99e5570b2fd21c80d6244ad1665a85db", null ],
     [ "doRequestWithResource", "class_h_p_cloud_1_1_transport_1_1_c_u_r_l_transport.html#a959e766c0228e247c0f5ab687e2d98e2", null ],

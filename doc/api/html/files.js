@@ -21,6 +21,7 @@ var files =
     [ "src/HPCloud/Storage/ObjectStorage/ReadOnlyObjectException.php", "_read_only_object_exception_8php.html", null ],
     [ "src/HPCloud/Storage/ObjectStorage/RemoteObject.php", "_remote_object_8php.html", null ],
     [ "src/HPCloud/Storage/ObjectStorage/StreamWrapper.php", "_stream_wrapper_8php.html", null ],
+    [ "src/HPCloud/Storage/ObjectStorage/StreamWrapperFS.php", "_stream_wrapper_f_s_8php.html", null ],
     [ "src/HPCloud/Storage/ObjectStorage/Subdir.php", "_subdir_8php.html", null ],
     [ "src/HPCloud/Transport/AuthorizationException.php", "_authorization_exception_8php.html", null ],
     [ "src/HPCloud/Transport/ConflictException.php", "_conflict_exception_8php.html", null ],

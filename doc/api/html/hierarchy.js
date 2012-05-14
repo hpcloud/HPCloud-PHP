@@ -26,7 +26,9 @@ var hierarchy =
     ] ],
     [ "ObjectStorage", "class_h_p_cloud_1_1_storage_1_1_object_storage.html", null ],
     [ "Response", "class_h_p_cloud_1_1_transport_1_1_response.html", null ],
-    [ "StreamWrapper", "class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html", null ],
+    [ "StreamWrapper", "class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html", [
+      [ "StreamWrapperFS", "class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper_f_s.html", null ]
+    ] ],
     [ "Subdir", "class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_subdir.html", null ],
     [ "Transport", "class_h_p_cloud_1_1_transport.html", null ],
     [ "Transporter", "interface_h_p_cloud_1_1_transport_1_1_transporter.html", [

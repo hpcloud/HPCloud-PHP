@@ -7,5 +7,6 @@ var searchData=
   ['metadata_5fheader_5fprefix',['METADATA_HEADER_PREFIX',['../class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_container.html#ac90763348fb645a3808a189fa0fe1ef0',1,'HPCloud::Storage::ObjectStorage::Container']]],
   ['methodnotallowedexception',['MethodNotAllowedException',['../class_h_p_cloud_1_1_transport_1_1_method_not_allowed_exception.html',1,'HPCloud::Transport']]],
   ['methodnotallowedexception_2ephp',['MethodNotAllowedException.php',['../_method_not_allowed_exception_8php.html',1,'']]],
+  ['mkdir',['mkdir',['../class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper_f_s.html#a5de26f02a5f6b6da7cf45db6ccf46c21',1,'HPCloud::Storage::ObjectStorage::StreamWrapperFS']]],
   ['modifycontainer',['modifyContainer',['../class_h_p_cloud_1_1_storage_1_1_c_d_n.html#a280cd614e7005c0abe40792910e3fbdf',1,'HPCloud::Storage::CDN']]]
 ];

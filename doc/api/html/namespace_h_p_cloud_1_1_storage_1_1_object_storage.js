@@ -8,5 +8,6 @@ var namespace_h_p_cloud_1_1_storage_1_1_object_storage =
     [ "ReadOnlyObjectException", "class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_read_only_object_exception.html", null ],
     [ "RemoteObject", "class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_remote_object.html", null ],
     [ "StreamWrapper", "class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html", null ],
+    [ "StreamWrapperFS", "class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper_f_s.html", null ],
     [ "Subdir", "class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_subdir.html", null ]
 ];

@@ -36,6 +36,8 @@ var searchData=
   ['streams_2dtutorial_2emd',['streams-tutorial.md',['../streams-tutorial_8md.html',1,'']]],
   ['streamwrapper',['StreamWrapper',['../class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html',1,'HPCloud::Storage::ObjectStorage']]],
   ['streamwrapper_2ephp',['StreamWrapper.php',['../_stream_wrapper_8php.html',1,'']]],
+  ['streamwrapperfs',['StreamWrapperFS',['../class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper_f_s.html',1,'HPCloud::Storage::ObjectStorage']]],
+  ['streamwrapperfs_2ephp',['StreamWrapperFS.php',['../_stream_wrapper_f_s_8php.html',1,'']]],
   ['style_2emd',['style.md',['../style_8md.html',1,'']]],
   ['subdir',['Subdir',['../class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_subdir.html',1,'HPCloud::Storage::ObjectStorage']]],
   ['subdir_2ephp',['Subdir.php',['../_subdir_8php.html',1,'']]]

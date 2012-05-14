@@ -33,7 +33,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">HPCloud-PHP
-   &#160;<span id="projectnumber">DEV</span>
+   &#160;<span id="projectnumber">1.0.0-beta5</span>
    </div>
    <div id="projectbrief">PHP bindings for HPCloud and OpenStack services.</div>
   </td>
@@ -118,11 +118,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <dd>Determine how to get the ACL from JSON data.  </dd>
 <dt><a class="anchor" id="_todo000001"></a>Member <a class="el" href="class_h_p_cloud_1_1_services_1_1_identity_services.html#a4a14184aef00e1b7ee4d42b57a9e0f8b">IdentityServices::serviceCatalog</a>  ($type=NULL)</dt>
 <dd>Paging on the service catalog is not yet implemented. </dd>
-<dt><a class="anchor" id="_todo000006"></a>Class <a class="el" href="class_h_p_cloud_1_1_storage_1_1_object_storage.html">ObjectStorage</a>  </dt>
+<dt><a class="anchor" id="_todo000007"></a>Class <a class="el" href="class_h_p_cloud_1_1_storage_1_1_object_storage.html">ObjectStorage</a>  </dt>
 <dd>ObjectStorage is not yet constrained to a particular version of the API. It attempts to use whatever version is passed in to the URL. This is different than IdentityServices and CDN, which use a fixed version.  </dd>
-<dt><a class="anchor" id="_todo000007"></a>Member <a class="el" href="class_h_p_cloud_1_1_storage_1_1_object_storage.html#a8ed5bfcf9a8ec7d0cb34ead0b4ecb1dc">ObjectStorage::containers</a>  ($limit=0, $marker=NULL)</dt>
+<dt><a class="anchor" id="_todo000008"></a>Member <a class="el" href="class_h_p_cloud_1_1_storage_1_1_object_storage.html#a8ed5bfcf9a8ec7d0cb34ead0b4ecb1dc">ObjectStorage::containers</a>  ($limit=0, $marker=NULL)</dt>
 <dd>For some reason, ACL information does not seem to be returned in the JSON data. Need to determine how to get that. As a stop-gap, when a container object returned from here has its ACL requested, it makes an additional round-trip to the server to fetch that data. </dd>
-<dt><a class="anchor" id="_todo000005"></a>Member <a class="el" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html#ac7dca652857324a5d2636b80654909b5">StreamWrapper::cxt</a>  ($name, $default=NULL)</dt>
+<dt><a class="anchor" id="_todo000005"></a>Class <a class="el" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html">StreamWrapper</a>  </dt>
+<dd>The service catalog should be cached in the context like the token so that it can be retrieved later.  </dd>
+<dt><a class="anchor" id="_todo000006"></a>Member <a class="el" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html#ac7dca652857324a5d2636b80654909b5">StreamWrapper::cxt</a>  ($name, $default=NULL)</dt>
 <dd>Should there be an option to NOT query the Bootstrap::conf()?</dd>
 </dl>
 </div></div><!-- contents -->
@@ -130,7 +132,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="nav-path" class="navpath">
     <ul>
 
-    <li class="footer">Generated on Thu May 10 2012 14:49:41 for HPCloud-PHP by
+    <li class="footer">Generated on Mon May 14 2012 16:48:22 for HPCloud-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.0 </li>
    </ul>

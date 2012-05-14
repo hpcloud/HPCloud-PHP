@@ -23,6 +23,7 @@ var annotated =
     [ "Response", "class_h_p_cloud_1_1_transport_1_1_response.html", "class_h_p_cloud_1_1_transport_1_1_response" ],
     [ "ServerException", "class_h_p_cloud_1_1_transport_1_1_server_exception.html", null ],
     [ "StreamWrapper", "class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html", "class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper" ],
+    [ "StreamWrapperFS", "class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper_f_s.html", "class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper_f_s" ],
     [ "Subdir", "class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_subdir.html", "class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_subdir" ],
     [ "Transport", "class_h_p_cloud_1_1_transport.html", "class_h_p_cloud_1_1_transport" ],
     [ "Transporter", "interface_h_p_cloud_1_1_transport_1_1_transporter.html", "interface_h_p_cloud_1_1_transport_1_1_transporter" ],

@@ -6,6 +6,7 @@ var searchData=
   ['req',['req',['../class_h_p_cloud_1_1_storage_1_1_object_storage.html#af2312750317848aa7cf451740878cadb',1,'HPCloud::Storage::ObjectStorage']]],
   ['rescope',['rescope',['../class_h_p_cloud_1_1_services_1_1_identity_services.html#a4534fef9a9e00d2f005d79d30936ee83',1,'HPCloud::Services::IdentityServices']]],
   ['reset',['reset',['../class_h_p_cloud_1_1_transport.html#a2325df26721fdbe820d577d2482725f8',1,'HPCloud::Transport']]],
+  ['rmdir',['rmdir',['../class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper_f_s.html#a62be97a557af790550eb7558dfa5859a',1,'HPCloud::Storage::ObjectStorage::StreamWrapperFS']]],
   ['rules',['rules',['../class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_a_c_l.html#a17dba92d96b9dd48c62f3ede3eef94d4',1,'HPCloud::Storage::ObjectStorage::ACL']]],
   ['ruletostring',['ruleToString',['../class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_a_c_l.html#a20abcc1eed5bc403a08db1e8c2c61b83',1,'HPCloud::Storage::ObjectStorage::ACL']]]
 ];

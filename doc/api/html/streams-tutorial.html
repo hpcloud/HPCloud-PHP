@@ -33,7 +33,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">HPCloud-PHP
-   &#160;<span id="projectnumber">DEV</span>
+   &#160;<span id="projectnumber">1.0.0-beta5</span>
    </div>
    <div id="projectbrief">PHP bindings for HPCloud and OpenStack services.</div>
   </td>
@@ -225,6 +225,15 @@ Bootstrap::useStreamWrappers();
 print file_get_contents(<span class="stringliteral">&#39;swift://Example/my_file.txt&#39;</span>, FALSE, <a class="code" href="streams-tutorial-example_8php.html#ab8dcbed10863cd3734ef850387337cf4">$cxt</a>);
 ?&gt;
 </pre></div><p>The main difference is the creation of <code>$cxt</code> using PHP's <code>stream_context_create()</code>. To fully understand this, you may want to take a look at the <a href="http://us3.php.net/manual/en/book.stream.php">PHP documentation</a> for streams.</p>
+<h2>Stream Wrapper As A File System</h2>
+<p>As it was noted earlier in this tutorial, swift does not support directories. Instead the names of a file can be path like with a separator. For example, <code>swiftfs://Example/path/to/my_file.txt</code> has a name of <code>path/to/my_file.txt</code>.</p>
+<p>To enable applications to use swift in a more directory like manner there is a second stream wrapper with a prefix <code>swiftfs://</code>. swiftfs stands for swift file system. It works in a similar manner to to the standard stream wrappers with a few key differences:</p>
+<ul>
+<li>mkdir will return TRUE is no objects start with the directory you are trying to crate. Otherwise it will return FALSE.</li>
+<li>rmdir will return FALSE if any objects start with the directory prefix you are trying to remove. rmdir does not allow you to remove directories with files in them.</li>
+<li>Running stat on a directory that is a prefix for some objects (e.g., <code>swiftfs://Example/path/to/</code>) will see this is a prefix for a file and treat it as if it were a directory.</li>
+</ul>
+<p>To use this stream wrapper instead of the standard swift one simple replace the usage of <code>swift://</code> with <code>swiftfs://</code>.</p>
 <h2>Summary</h2>
 <p>This tutorial is focused on using stream wrappers to interact with your <a class="el" href="namespace_h_p_cloud.html" title="The HPCloud PHP library.">HPCloud</a> Object Storage service. We focused on configuring the environment for transparently using PHP functions like <code>fopen()</code> and <code>file_get_contents()</code> to work with objects in <a class="el" href="namespace_h_p_cloud.html" title="The HPCloud PHP library.">HPCloud</a>'s object storage.</p>
 <p>This is just one way of interoperating with the <a class="el" href="namespace_h_p_cloud.html" title="The HPCloud PHP library.">HPCloud</a> library. For more detail-oriented work, you may find the Object Oriented facilities better suited. You can read <a class="el" href="oo-tutorial.html">the OO tutorial</a> to learn more about that.</p>
@@ -234,7 +243,7 @@ print file_get_contents(<span class="stringliteral">&#39;swift://Example/my_file
   <div id="nav-path" class="navpath">
     <ul>
 
-    <li class="footer">Generated on Thu May 10 2012 14:49:41 for HPCloud-PHP by
+    <li class="footer">Generated on Mon May 14 2012 16:48:22 for HPCloud-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.0 </li>
    </ul>

@@ -1,7 +1,7 @@
 var searchData=
 [
   ['default_5fcontent_5ftype',['DEFAULT_CONTENT_TYPE',['../class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_object.html#a24051453c98e567a1e1264e7662b82f8',1,'HPCloud::Storage::ObjectStorage::Object']]],
-  ['default_5fscheme',['DEFAULT_SCHEME',['../class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html#aed0e317ab7e39747995de2d1985b09d3',1,'HPCloud::Storage::ObjectStorage::StreamWrapper']]],
+  ['default_5fscheme',['DEFAULT_SCHEME',['../class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html#aed0e317ab7e39747995de2d1985b09d3',1,'HPCloud\Storage\ObjectStorage\StreamWrapper\DEFAULT_SCHEME()'],['../class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper_f_s.html#aed0e317ab7e39747995de2d1985b09d3',1,'HPCloud\Storage\ObjectStorage\StreamWrapperFS\DEFAULT_SCHEME()']]],
   ['delete',['delete',['../class_h_p_cloud_1_1_storage_1_1_c_d_n.html#af7c3ea3150164bc92700134803f277be',1,'HPCloud\Storage\CDN\delete()'],['../class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_container.html#af7c3ea3150164bc92700134803f277be',1,'HPCloud\Storage\ObjectStorage\Container\delete()']]],
   ['deletecontainer',['deleteContainer',['../class_h_p_cloud_1_1_storage_1_1_object_storage.html#a577a1d33d13c710065dc7961812f3fc1',1,'HPCloud::Storage::ObjectStorage']]],
   ['delimiter',['delimiter',['../class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_subdir.html#abd3ff01481656bce82b7ab7b739457f4',1,'HPCloud::Storage::ObjectStorage::Subdir']]],
