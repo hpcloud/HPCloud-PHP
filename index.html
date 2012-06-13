@@ -117,7 +117,7 @@ Bootstrap::useStreamWrappers();
 // Provide credentials
 $settings = array(
   'account' =&gt; YOUR_ACCOUNT_NUMBER,
-  'key' =&gt; YOUR_SECRET_KEY,
+  'secret' =&gt; YOUR_SECRET_KEY,
   'tenantid' =&gt; YOUR_TENANT_ID,
   'endpoint' =&gt; IDENTITY_SERVICES_URL,
 );
@@ -164,12 +164,12 @@ Bootstrap::useAutoloader();
 
 // Authenticate to HP Cloud
 $account = 'ADD ACCOUNT HERE';
-$key = 'ADD KEY HERE';
+$secret = 'ADD KEY HERE';
 $tenantId = 'ADD TENANT ID HERE';
 $endpoint = 'ADD ENDPOINT URL HERE';
 
 $idService = new \HPCloud\Services\IdentityServices($endpoint);
-$token = $idService-&gt;authenticateAsAccount($account, $key, $tenantId);
+$token = $idService-&gt;authenticateAsAccount($account, $secret, $tenantId);
 
 // Connect to Object Storage.
 $catalog = $idService-&gt;serviceCatalog();
