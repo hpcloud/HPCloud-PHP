@@ -13,5 +13,7 @@ var searchData=
   ['objecturl',['objectUrl',['../class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_container.html#af173a8ec9add958f29aaed69e6b939d4',1,'HPCloud::Storage::ObjectStorage::Container']]],
   ['onnotification',['onNotification',['../class_h_p_cloud_1_1_transport_1_1_p_h_p_stream_transport.html#a629fe8be65fb8cba282ac4901ac12877',1,'HPCloud::Transport::PHPStreamTransport']]],
   ['oo_2dtutorial_2dcode_2ephp',['oo-tutorial-code.php',['../oo-tutorial-code_8php.html',1,'']]],
-  ['oo_2dtutorial_2emd',['oo-tutorial.md',['../oo-tutorial_8md.html',1,'']]]
+  ['oo_2dtutorial_2emd',['oo-tutorial.md',['../oo-tutorial_8md.html',1,'']]],
+  ['operations',['Operations',['../class_h_p_cloud_1_1_services_1_1_d_baa_s_1_1_operations.html',1,'HPCloud::Services::DBaaS']]],
+  ['operations_2ephp',['Operations.php',['../_operations_8php.html',1,'']]]
 ];

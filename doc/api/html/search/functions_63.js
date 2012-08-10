@@ -10,6 +10,8 @@ var searchData=
   ['contenttype',['contentType',['../class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_object.html#abc4b18a737c82bd6b75210317ad38b8b',1,'HPCloud::Storage::ObjectStorage::Object']]],
   ['copy',['copy',['../class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_container.html#a45dbf91fdb51032a386509abce2c5bad',1,'HPCloud::Storage::ObjectStorage::Container']]],
   ['count',['count',['../class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_container.html#ac751e87b3d4c4bf2feb03bee8b092755',1,'HPCloud::Storage::ObjectStorage::Container']]],
+  ['create',['create',['../class_h_p_cloud_1_1_services_1_1_d_baa_s_1_1_instance.html#a161b715c459933531c96d39f79ce3e09',1,'HPCloud\Services\DBaaS\Instance\create()'],['../class_h_p_cloud_1_1_services_1_1_d_baa_s_1_1_snapshot.html#a0c8e8f52b166db70622c1e17997dc127',1,'HPCloud\Services\DBaaS\Snapshot\create()']]],
   ['createcontainer',['createContainer',['../class_h_p_cloud_1_1_storage_1_1_object_storage.html#adcfacd79bb4c0d4136b33368a329c526',1,'HPCloud::Storage::ObjectStorage']]],
+  ['createdon',['createdOn',['../class_h_p_cloud_1_1_services_1_1_d_baa_s_1_1_instance_details.html#a9eafe4e9e75876d9580313f6ea8fa0eb',1,'HPCloud\Services\DBaaS\InstanceDetails\createdOn()'],['../class_h_p_cloud_1_1_services_1_1_d_baa_s_1_1_snapshot_details.html#a9eafe4e9e75876d9580313f6ea8fa0eb',1,'HPCloud\Services\DBaaS\SnapshotDetails\createdOn()']]],
   ['cxt',['cxt',['../class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html#ac7dca652857324a5d2636b80654909b5',1,'HPCloud::Storage::ObjectStorage::StreamWrapper']]]
 ];

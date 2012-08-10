@@ -6,6 +6,7 @@ var class_h_p_cloud_1_1_storage_1_1_c_d_n =
     [ "delete", "class_h_p_cloud_1_1_storage_1_1_c_d_n.html#af7c3ea3150164bc92700134803f277be", null ],
     [ "enable", "class_h_p_cloud_1_1_storage_1_1_c_d_n.html#a492f5de07326499bdcd08cf7bc3b11d8", null ],
     [ "modifyContainer", "class_h_p_cloud_1_1_storage_1_1_c_d_n.html#a280cd614e7005c0abe40792910e3fbdf", null ],
+    [ "newFromIdentity", "class_h_p_cloud_1_1_storage_1_1_c_d_n.html#a72023483f2440367a5de1a9849e2fda7", null ],
     [ "newFromServiceCatalog", "class_h_p_cloud_1_1_storage_1_1_c_d_n.html#a355aa73bf541528609416c058093e07e", null ],
     [ "update", "class_h_p_cloud_1_1_storage_1_1_c_d_n.html#a07268b57a00f444996933b835312a178", null ],
     [ "$token", "class_h_p_cloud_1_1_storage_1_1_c_d_n.html#a00ae4fcafb1145f5e968bdf920f83e2e", null ],

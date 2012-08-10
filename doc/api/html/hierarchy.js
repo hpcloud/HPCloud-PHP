@@ -4,6 +4,7 @@ var hierarchy =
     [ "Bootstrap", "class_h_p_cloud_1_1_bootstrap.html", null ],
     [ "CDN", "class_h_p_cloud_1_1_storage_1_1_c_d_n.html", null ],
     [ "Container", "class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_container.html", null ],
+    [ "DBaaS", "class_h_p_cloud_1_1_services_1_1_d_baa_s.html", null ],
     [ "Exception", "class_h_p_cloud_1_1_exception.html", [
       [ "ContentVerificationException", "class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_content_verification_exception.html", null ],
       [ "ReadOnlyObjectException", "class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_read_only_object_exception.html", null ],
@@ -14,6 +15,7 @@ var hierarchy =
       [ "ConflictException", "class_h_p_cloud_1_1_transport_1_1_conflict_exception.html", null ],
       [ "FileNotFoundException", "class_h_p_cloud_1_1_transport_1_1_file_not_found_exception.html", null ],
       [ "LengthRequiredException", "class_h_p_cloud_1_1_transport_1_1_length_required_exception.html", null ],
+      [ "LockedException", "class_h_p_cloud_1_1_transport_1_1_locked_exception.html", null ],
       [ "MethodNotAllowedException", "class_h_p_cloud_1_1_transport_1_1_method_not_allowed_exception.html", null ],
       [ "ServerException", "class_h_p_cloud_1_1_transport_1_1_server_exception.html", [
         [ "ContainerNotEmptyException", "class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_container_not_empty_exception.html", null ]
@@ -21,11 +23,17 @@ var hierarchy =
       [ "UnprocessableEntityException", "class_h_p_cloud_1_1_transport_1_1_unprocessable_entity_exception.html", null ]
     ] ],
     [ "IdentityServices", "class_h_p_cloud_1_1_services_1_1_identity_services.html", null ],
+    [ "InstanceDetails", "class_h_p_cloud_1_1_services_1_1_d_baa_s_1_1_instance_details.html", null ],
     [ "Object", "class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_object.html", [
       [ "RemoteObject", "class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_remote_object.html", null ]
     ] ],
     [ "ObjectStorage", "class_h_p_cloud_1_1_storage_1_1_object_storage.html", null ],
+    [ "Operations", "class_h_p_cloud_1_1_services_1_1_d_baa_s_1_1_operations.html", [
+      [ "Instance", "class_h_p_cloud_1_1_services_1_1_d_baa_s_1_1_instance.html", null ],
+      [ "Snapshot", "class_h_p_cloud_1_1_services_1_1_d_baa_s_1_1_snapshot.html", null ]
+    ] ],
     [ "Response", "class_h_p_cloud_1_1_transport_1_1_response.html", null ],
+    [ "SnapshotDetails", "class_h_p_cloud_1_1_services_1_1_d_baa_s_1_1_snapshot_details.html", null ],
     [ "StreamWrapper", "class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html", [
       [ "StreamWrapperFS", "class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper_f_s.html", null ]
     ] ],

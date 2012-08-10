@@ -1,4 +1,4 @@
-var streams-tutorial-example_8php =
+var streams_tutorial_example_8php =
 [
     [ "$cxt", "streams-tutorial-example_8php.html#ab8dcbed10863cd3734ef850387337cf4", null ],
     [ "$file", "streams-tutorial-example_8php.html#ad49a2659ea99542f3b17418b5e20f1a6", null ],

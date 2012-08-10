@@ -11,6 +11,7 @@ var class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_object =
     [ "isChunked", "class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_object.html#a8f1577b250cc933eb225882a1ebb4f27", null ],
     [ "metadata", "class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_object.html#a2f029b29f22502e145433d3a5618d2f6", null ],
     [ "name", "class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_object.html#a4b516aaa5fa38da4fed24ab6001627e2", null ],
+    [ "removeHeaders", "class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_object.html#aa431c6f9cd3c3fc4a66c8abc0b8d3629", null ],
     [ "setAdditionalHeaders", "class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_object.html#aa841d306148b561ac2b9c7e31e861b9a", null ],
     [ "setContent", "class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_object.html#aeaeb6e169d1fbcff14e96582b69fd449", null ],
     [ "setContentType", "class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_object.html#a6dcde4eabba25c2d428ae6939a5e82b5", null ],

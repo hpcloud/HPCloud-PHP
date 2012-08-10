@@ -1,6 +1,8 @@
 var searchData=
 [
   ['serverexception_2ephp',['ServerException.php',['../_server_exception_8php.html',1,'']]],
+  ['snapshot_2ephp',['Snapshot.php',['../_snapshot_8php.html',1,'']]],
+  ['snapshotdetails_2ephp',['SnapshotDetails.php',['../_snapshot_details_8php.html',1,'']]],
   ['streams_2dtutorial_2dexample_2ephp',['streams-tutorial-example.php',['../streams-tutorial-example_8php.html',1,'']]],
   ['streams_2dtutorial_2emd',['streams-tutorial.md',['../streams-tutorial_8md.html',1,'']]],
   ['streamwrapper_2ephp',['StreamWrapper.php',['../_stream_wrapper_8php.html',1,'']]],

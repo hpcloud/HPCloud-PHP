@@ -1,4 +1,4 @@
-var oo-tutorial-code_8php =
+var oo_tutorial_code_8php =
 [
     [ "$account", "oo-tutorial-code_8php.html#a19ec872392da5d6131f9ad03b6c98339", null ],
     [ "$catalog", "oo-tutorial-code_8php.html#ab30d2fd9b2fc63b1367117f70356e858", null ],

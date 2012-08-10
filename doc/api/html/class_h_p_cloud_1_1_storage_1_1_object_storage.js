@@ -11,6 +11,7 @@ var class_h_p_cloud_1_1_storage_1_1_object_storage =
     [ "get", "class_h_p_cloud_1_1_storage_1_1_object_storage.html#a4a83df30f350104b880f73cef2a3d660", null ],
     [ "hasCDN", "class_h_p_cloud_1_1_storage_1_1_object_storage.html#a5c3b766effadeea4d418711e19290d91", null ],
     [ "hasContainer", "class_h_p_cloud_1_1_storage_1_1_object_storage.html#a43a4f17f4926a7a9db991e0563b6be10", null ],
+    [ "newFromIdentity", "class_h_p_cloud_1_1_storage_1_1_object_storage.html#a72023483f2440367a5de1a9849e2fda7", null ],
     [ "newFromServiceCatalog", "class_h_p_cloud_1_1_storage_1_1_object_storage.html#a10cdf00002869db50b278e55d4a2ec4d", null ],
     [ "newFromSwiftAuth", "class_h_p_cloud_1_1_storage_1_1_object_storage.html#a9f557913e8a25b98bb687c3cbfd15c8f", null ],
     [ "req", "class_h_p_cloud_1_1_storage_1_1_object_storage.html#af2312750317848aa7cf451740878cadb", null ],

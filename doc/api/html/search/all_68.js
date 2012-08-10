@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['dbaas',['DBaaS',['../namespace_h_p_cloud_1_1_services_1_1_d_baa_s.html',1,'HPCloud::Services']]],
   ['handledorequest',['handleDoRequest',['../class_h_p_cloud_1_1_transport_1_1_c_u_r_l_transport.html#ae613cf283c40d4f408dc677068ccb9fa',1,'HPCloud::Transport::CURLTransport']]],
   ['handleresponse',['handleResponse',['../class_h_p_cloud_1_1_services_1_1_identity_services.html#a96ec0ecd21308180ae399d9c70c3d148',1,'HPCloud::Services::IdentityServices']]],
   ['hascdn',['hasCDN',['../class_h_p_cloud_1_1_storage_1_1_object_storage.html#a5c3b766effadeea4d418711e19290d91',1,'HPCloud::Storage::ObjectStorage']]],
@@ -8,7 +9,8 @@ var searchData=
   ['header',['header',['../class_h_p_cloud_1_1_transport_1_1_response.html#a99c34a6e9a6c741bbce79c497399a30f',1,'HPCloud::Transport::Response']]],
   ['header_5fread',['HEADER_READ',['../class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_a_c_l.html#a1979ed046dce99ec83b1bd1d7baab8c0',1,'HPCloud::Storage::ObjectStorage::ACL']]],
   ['header_5fwrite',['HEADER_WRITE',['../class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_a_c_l.html#aebb769c05aac820f942a2516d9c8b607',1,'HPCloud::Storage::ObjectStorage::ACL']]],
-  ['headers',['headers',['../class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_a_c_l.html#acf17788084df5a3d3415f4d9e346471d',1,'HPCloud\Storage\ObjectStorage\ACL\headers()'],['../class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_remote_object.html#acf17788084df5a3d3415f4d9e346471d',1,'HPCloud\Storage\ObjectStorage\RemoteObject\headers()'],['../class_h_p_cloud_1_1_transport_1_1_response.html#acf17788084df5a3d3415f4d9e346471d',1,'HPCloud\Transport\Response\headers()']]],
+  ['headers',['headers',['../class_h_p_cloud_1_1_services_1_1_d_baa_s_1_1_operations.html#a512c93d177d77f9741bf1cf7dbb16b1f',1,'HPCloud\Services\DBaaS\Operations\headers()'],['../class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_a_c_l.html#acf17788084df5a3d3415f4d9e346471d',1,'HPCloud\Storage\ObjectStorage\ACL\headers()'],['../class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_remote_object.html#acf17788084df5a3d3415f4d9e346471d',1,'HPCloud\Storage\ObjectStorage\RemoteObject\headers()'],['../class_h_p_cloud_1_1_transport_1_1_response.html#acf17788084df5a3d3415f4d9e346471d',1,'HPCloud\Transport\Response\headers()']]],
+  ['hostname',['hostname',['../class_h_p_cloud_1_1_services_1_1_d_baa_s_1_1_instance_details.html#abcb142f59a0c5d9f12a964395ee2ec66',1,'HPCloud::Services::DBaaS::InstanceDetails']]],
   ['hpcloud',['HPCloud',['../namespace_h_p_cloud.html',1,'']]],
   ['http_5fuser_5fagent',['HTTP_USER_AGENT',['../interface_h_p_cloud_1_1_transport_1_1_transporter.html#a0a0a7e580efe549e01780677170720ac',1,'HPCloud::Transport::Transporter']]],
   ['http_5fuser_5fagent_5fsuffix',['HTTP_USER_AGENT_SUFFIX',['../class_h_p_cloud_1_1_transport_1_1_c_u_r_l_transport.html#ae6324ee82189c6077b985b6b77327738',1,'HPCloud\Transport\CURLTransport\HTTP_USER_AGENT_SUFFIX()'],['../class_h_p_cloud_1_1_transport_1_1_p_h_p_stream_transport.html#ae6324ee82189c6077b985b6b77327738',1,'HPCloud\Transport\PHPStreamTransport\HTTP_USER_AGENT_SUFFIX()']]],

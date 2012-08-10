@@ -1,10 +1,12 @@
 var class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_remote_object =
 [
+    [ "additionalHeaders", "class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_remote_object.html#a08e55c36d36edb8b9f1ec0c4b9a35ad5", null ],
     [ "content", "class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_remote_object.html#a9b80bb36f89498eac4f43bf08461240d", null ],
     [ "contentLength", "class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_remote_object.html#a0f23f9896966cf7d1d94d2660e0ed299", null ],
     [ "eTag", "class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_remote_object.html#a3883a2f716f38aee99bd431f9419c931", null ],
     [ "extractFromHeaders", "class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_remote_object.html#aba2f82d64a3f6317c700ba44b5003f5c", null ],
     [ "fetchObject", "class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_remote_object.html#a7a96a6828b0f98f3d30b7dc8e320db4a", null ],
+    [ "filterHeaders", "class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_remote_object.html#a52bb53893bac35b986095f763c5a5f68", null ],
     [ "headers", "class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_remote_object.html#acf17788084df5a3d3415f4d9e346471d", null ],
     [ "isCaching", "class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_remote_object.html#aee954a9976108ebcec479fa4a4983de7", null ],
     [ "isDirty", "class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_remote_object.html#a5f16771bbc33743d0eba257646ce88c4", null ],
@@ -15,8 +17,10 @@ var class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_remote_object =
     [ "newFromHeaders", "class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_remote_object.html#addb7862a83559cac87db3f7ddf4db6f3", null ],
     [ "newFromJSON", "class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_remote_object.html#af3a9d2cd526d6cf0f86f368aab9ecc41", null ],
     [ "refresh", "class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_remote_object.html#aa6133c0ada5c2844823a38f10d91cabf", null ],
+    [ "removeHeaders", "class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_remote_object.html#aa431c6f9cd3c3fc4a66c8abc0b8d3629", null ],
     [ "setCaching", "class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_remote_object.html#a8e2403f3bcee4a20c2a4f0031e30f419", null ],
     [ "setContentVerification", "class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_remote_object.html#af401409023198b47a43a44c53108320a", null ],
+    [ "setHeaders", "class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_remote_object.html#ac1f59fefc1b33175a734321e13b42253", null ],
     [ "stream", "class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_remote_object.html#a6350b777e73275981278e738a1f86938", null ],
     [ "url", "class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_remote_object.html#aff9f9ec364bc6f5cff82de304d537bef", null ],
     [ "useCDN", "class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_remote_object.html#af58ed5b34aac3875105fa08b9cb8540b", null ],
@@ -27,5 +31,6 @@ var class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_remote_object =
     [ "$contentLength", "class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_remote_object.html#a1c4137efb369e34f26ae04f18b0df771", null ],
     [ "$contentVerification", "class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_remote_object.html#ad3966e1c086b0ca4fbcecc942d7bf04f", null ],
     [ "$etag", "class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_remote_object.html#a25a00a46f10aa5a5ef0755d447dba00f", null ],
-    [ "$lastModified", "class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_remote_object.html#a6ab0d97ce9c68912add86fba1acc87aa", null ]
+    [ "$lastModified", "class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_remote_object.html#a6ab0d97ce9c68912add86fba1acc87aa", null ],
+    [ "$reservedHeaders", "class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_remote_object.html#a375b3524fe846df941f1dc734120640e", null ]
 ];
