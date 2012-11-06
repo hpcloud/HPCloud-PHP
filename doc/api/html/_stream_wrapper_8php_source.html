@@ -28,7 +28,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">HPCloud-PHP
-   &#160;<span id="projectnumber">1.0.0</span>
+   &#160;<span id="projectnumber">1.1.0</span>
    </div>
    <div id="projectbrief">PHP bindings for HPCloud and OpenStack services.</div>
   </td>
@@ -215,7 +215,7 @@ $(document).ready(function(){initNavTree('_stream_wrapper_8php_source.html','');
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="comment"> * $context = stream_context_create(</span></div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="comment"> *   array(&#39;swift&#39; =&gt; array(</span></div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="comment"> *     &#39;account&#39; =&gt; ACCOUNT_NUMBER,</span></div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="comment"> *     &#39;key&#39; =&gt; SECRET_KEY,</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="comment"> *     &#39;secret&#39; =&gt; SECRET_KEY,</span></div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="comment"> *     &#39;tenantid&#39; =&gt; TENANT_ID,</span></div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="comment"> *     &#39;tenantname&#39; =&gt; TENANT_NAME, // Optional instead of tenantid.</span></div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="comment"> *     &#39;endpoint&#39; =&gt; AUTH_ENDPOINT_URL,</span></div>
@@ -269,7 +269,7 @@ $(document).ready(function(){initNavTree('_stream_wrapper_8php_source.html','');
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="comment"> *   would normally pass into a stream context:</span></div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="comment"> *   * endpoint</span></div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="comment"> *   * account</span></div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="comment"> *   * key</span></div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="comment"> *   * secret</span></div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="comment"> * - Most of the information from this family of calls can also be obtained using</span></div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="comment"> *   fstat(). If you were going to open a stream anyway, you might as well use</span></div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="comment"> *   fopen()/fstat().</span></div>
@@ -323,7 +323,7 @@ $(document).ready(function(){initNavTree('_stream_wrapper_8php_source.html','');
 <div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;<span class="comment"> * You are &lt;i&gt;required&lt;/i&gt; to pass in authentication information. This</span></div>
 <div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;<span class="comment"> * comes in one of three forms:</span></div>
 <div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;<span class="comment"> * -# API keys: acccount, key, tenantid, endpoint</span></div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;<span class="comment"> * -# API keys: acccount, secret, tenantid, endpoint</span></div>
 <div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;<span class="comment"> * -# User login: username, password, tenantid, endpoint</span></div>
 <div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;<span class="comment"> * -# Existing (valid) token: token, swift_endpoint</span></div>
 <div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;<span class="comment"> *</span></div>
@@ -344,8 +344,8 @@ $(document).ready(function(){initNavTree('_stream_wrapper_8php_source.html','');
 <div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;<span class="comment"> *     &#39;token&#39; is set. Otherwise it is ignored.</span></div>
 <div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;<span class="comment"> * - username: A username. MUST be accompanied by &#39;password&#39; and &#39;tenantid&#39; (or &#39;tenantname&#39;).</span></div>
 <div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;<span class="comment"> * - password: A password. MUST be accompanied by &#39;username&#39; and &#39;tenantid&#39; (or &#39;tenantname&#39;).</span></div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;<span class="comment"> * - account: An account ID. MUST be accompanied by a &#39;key&#39; and &#39;tenantid&#39; (or &#39;tenantname&#39;).</span></div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;<span class="comment"> * - key: A secret key. MUST be accompanied by an &#39;account&#39; and &#39;tenantid&#39; (or &#39;tenantname&#39;).</span></div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;<span class="comment"> * - account: An account ID. MUST be accompanied by a &#39;secret&#39; and &#39;tenantid&#39; (or &#39;tenantname&#39;).</span></div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;<span class="comment"> * - secret: A secret key. MUST be accompanied by an &#39;account&#39; and &#39;tenantid&#39; (or &#39;tenantname&#39;).</span></div>
 <div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;<span class="comment"> * - endpoint: The URL to the authentication endpoint. Necessary if you are not</span></div>
 <div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;<span class="comment"> *     using a &#39;token&#39; and &#39;swift_endpoint&#39;.</span></div>
 <div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;<span class="comment"> * - use_swift_auth: If this is set to TRUE, it will force the app to use</span></div>
@@ -1611,8 +1611,8 @@ $(document).ready(function(){initNavTree('_stream_wrapper_8php_source.html','');
 <div class="line"><a name="l01503"></a><span class="lineno"> 1503</span>&#160;<span class="comment">   *     &#39;token&#39; is set. Otherwise it is ignored.</span></div>
 <div class="line"><a name="l01504"></a><span class="lineno"> 1504</span>&#160;<span class="comment">   * - username: A username. MUST be accompanied by &#39;password&#39; and &#39;tenantname&#39;.</span></div>
 <div class="line"><a name="l01505"></a><span class="lineno"> 1505</span>&#160;<span class="comment">   * - password: A password. MUST be accompanied by &#39;username&#39; and &#39;tenantname&#39;.</span></div>
-<div class="line"><a name="l01506"></a><span class="lineno"> 1506</span>&#160;<span class="comment">   * - account: An account ID. MUST be accompanied by a &#39;key&#39; and &#39;tenantname&#39;.</span></div>
-<div class="line"><a name="l01507"></a><span class="lineno"> 1507</span>&#160;<span class="comment">   * - key: A secret key. MUST be accompanied by an &#39;account&#39; and &#39;tenantname&#39;.</span></div>
+<div class="line"><a name="l01506"></a><span class="lineno"> 1506</span>&#160;<span class="comment">   * - account: An account ID. MUST be accompanied by a &#39;secret&#39; and &#39;tenantname&#39;.</span></div>
+<div class="line"><a name="l01507"></a><span class="lineno"> 1507</span>&#160;<span class="comment">   * - secret: A secret key. MUST be accompanied by an &#39;account&#39; and &#39;tenantname&#39;.</span></div>
 <div class="line"><a name="l01508"></a><span class="lineno"> 1508</span>&#160;<span class="comment">   * - endpoint: The URL to the authentication endpoint. Necessary if you are not</span></div>
 <div class="line"><a name="l01509"></a><span class="lineno"> 1509</span>&#160;<span class="comment">   *     using a &#39;token&#39; and &#39;swift_endpoint&#39;.</span></div>
 <div class="line"><a name="l01510"></a><span class="lineno"> 1510</span>&#160;<span class="comment">   * - use_swift_auth: If this is set to TRUE, it will force the app to use</span></div>
@@ -1629,157 +1629,159 @@ $(document).ready(function(){initNavTree('_stream_wrapper_8php_source.html','');
 <div class="line"><a name="l01521"></a><span class="lineno"> 1521</span>&#160;    <a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage.html#a00ae4fcafb1145f5e968bdf920f83e2e" title="The authorization token.">$token</a> = $this-&gt;<a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html#ac7dca652857324a5d2636b80654909b5" title="Get an item out of the context.">cxt</a>(<span class="stringliteral">&#39;token&#39;</span>);</div>
 <div class="line"><a name="l01522"></a><span class="lineno"> 1522</span>&#160;</div>
 <div class="line"><a name="l01523"></a><span class="lineno"> 1523</span>&#160;    <a class="code" href="oo-tutorial-code_8php.html#a19ec872392da5d6131f9ad03b6c98339">$account</a> = $this-&gt;<a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html#ac7dca652857324a5d2636b80654909b5" title="Get an item out of the context.">cxt</a>(<span class="stringliteral">&#39;account&#39;</span>);</div>
-<div class="line"><a name="l01524"></a><span class="lineno"> 1524</span>&#160;    <a class="code" href="oo-tutorial-code_8php.html#aa60b0284e0dfa2463495481cf11e3cf4">$key</a> = $this-&gt;<a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html#ac7dca652857324a5d2636b80654909b5" title="Get an item out of the context.">cxt</a>(<span class="stringliteral">&#39;key&#39;</span>);</div>
-<div class="line"><a name="l01525"></a><span class="lineno"> 1525</span>&#160;</div>
-<div class="line"><a name="l01526"></a><span class="lineno"> 1526</span>&#160;    <a class="code" href="oo-tutorial-code_8php.html#a26979ce90bf4105e2b0abbf108d64dec">$tenantId</a> = $this-&gt;<a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html#ac7dca652857324a5d2636b80654909b5" title="Get an item out of the context.">cxt</a>(<span class="stringliteral">&#39;tenantid&#39;</span>);</div>
-<div class="line"><a name="l01527"></a><span class="lineno"> 1527</span>&#160;    $tenantName = $this-&gt;<a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html#ac7dca652857324a5d2636b80654909b5" title="Get an item out of the context.">cxt</a>(<span class="stringliteral">&#39;tenantname&#39;</span>);</div>
-<div class="line"><a name="l01528"></a><span class="lineno"> 1528</span>&#160;    $authUrl = $this-&gt;<a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html#ac7dca652857324a5d2636b80654909b5" title="Get an item out of the context.">cxt</a>(<span class="stringliteral">&#39;endpoint&#39;</span>);</div>
-<div class="line"><a name="l01529"></a><span class="lineno"> 1529</span>&#160;    <a class="code" href="oo-tutorial-code_8php.html#afb5204f7604df2f50a0058cb0e024875">$endpoint</a> = $this-&gt;<a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html#ac7dca652857324a5d2636b80654909b5" title="Get an item out of the context.">cxt</a>(<span class="stringliteral">&#39;swift_endpoint&#39;</span>);</div>
-<div class="line"><a name="l01530"></a><span class="lineno"> 1530</span>&#160;</div>
-<div class="line"><a name="l01531"></a><span class="lineno"> 1531</span>&#160;    $serviceCatalog = NULL;</div>
-<div class="line"><a name="l01532"></a><span class="lineno"> 1532</span>&#160;</div>
-<div class="line"><a name="l01533"></a><span class="lineno"> 1533</span>&#160;    <span class="keywordflow">if</span> (!empty(<a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage.html#a00ae4fcafb1145f5e968bdf920f83e2e" title="The authorization token.">$token</a>) &amp;&amp; isset(self::$serviceCatalogCache[<a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage.html#a00ae4fcafb1145f5e968bdf920f83e2e" title="The authorization token.">$token</a>])) {</div>
-<div class="line"><a name="l01534"></a><span class="lineno"> 1534</span>&#160;      $serviceCatalog = self::$serviceCatalogCache[<a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage.html#a00ae4fcafb1145f5e968bdf920f83e2e" title="The authorization token.">$token</a>];</div>
-<div class="line"><a name="l01535"></a><span class="lineno"> 1535</span>&#160;    }</div>
-<div class="line"><a name="l01536"></a><span class="lineno"> 1536</span>&#160;</div>
-<div class="line"><a name="l01537"></a><span class="lineno"> 1537</span>&#160;    <span class="comment">// FIXME: If a token is invalidated, we should try to re-authenticate.</span></div>
-<div class="line"><a name="l01538"></a><span class="lineno"> 1538</span>&#160;    <span class="comment">// If context has the info we need, start from there.</span></div>
-<div class="line"><a name="l01539"></a><span class="lineno"> 1539</span>&#160;    <span class="keywordflow">if</span> (!empty($token) &amp;&amp; !empty(<a class="code" href="oo-tutorial-code_8php.html#afb5204f7604df2f50a0058cb0e024875">$endpoint</a>)) {</div>
-<div class="line"><a name="l01540"></a><span class="lineno"> 1540</span>&#160;      $this-&gt;store = new \HPCloud\Storage\ObjectStorage($token, <a class="code" href="oo-tutorial-code_8php.html#afb5204f7604df2f50a0058cb0e024875">$endpoint</a>);</div>
-<div class="line"><a name="l01541"></a><span class="lineno"> 1541</span>&#160;    }</div>
-<div class="line"><a name="l01542"></a><span class="lineno"> 1542</span>&#160;    <span class="comment">// DEPRECATED: For old swift auth.</span></div>
-<div class="line"><a name="l01543"></a><span class="lineno"> 1543</span>&#160;    elseif ($this-&gt;<a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html#ac7dca652857324a5d2636b80654909b5" title="Get an item out of the context.">cxt</a>(<span class="stringliteral">&#39;use_swift_auth&#39;</span>, FALSE)) {</div>
-<div class="line"><a name="l01544"></a><span class="lineno"> 1544</span>&#160;</div>
-<div class="line"><a name="l01545"></a><span class="lineno"> 1545</span>&#160;      <span class="keywordflow">if</span> (empty($authUrl) || empty(<a class="code" href="oo-tutorial-code_8php.html#a19ec872392da5d6131f9ad03b6c98339">$account</a>) || empty(<a class="code" href="oo-tutorial-code_8php.html#aa60b0284e0dfa2463495481cf11e3cf4">$key</a>)) {</div>
-<div class="line"><a name="l01546"></a><span class="lineno"> 1546</span>&#160;        <span class="keywordflow">throw</span> new \HPCloud\Exception(<span class="stringliteral">&#39;account, endpoint, key are required stream parameters.&#39;</span>);</div>
-<div class="line"><a name="l01547"></a><span class="lineno"> 1547</span>&#160;      }</div>
-<div class="line"><a name="l01548"></a><span class="lineno"> 1548</span>&#160;      $this-&gt;store = <a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage.html#a9f557913e8a25b98bb687c3cbfd15c8f" title="Create a new instance after getting an authenitcation token.">\HPCloud\Storage\ObjectStorage::newFromSwiftAuth</a>(<a class="code" href="oo-tutorial-code_8php.html#a19ec872392da5d6131f9ad03b6c98339">$account</a>, <a class="code" href="oo-tutorial-code_8php.html#aa60b0284e0dfa2463495481cf11e3cf4">$key</a>, $authUrl);</div>
-<div class="line"><a name="l01549"></a><span class="lineno"> 1549</span>&#160;</div>
-<div class="line"><a name="l01550"></a><span class="lineno"> 1550</span>&#160;    }</div>
-<div class="line"><a name="l01551"></a><span class="lineno"> 1551</span>&#160;    <span class="comment">// If we get here and tenant ID is not set, we can&#39;t get a container.</span></div>
-<div class="line"><a name="l01552"></a><span class="lineno"> 1552</span>&#160;    elseif (empty(<a class="code" href="oo-tutorial-code_8php.html#a26979ce90bf4105e2b0abbf108d64dec">$tenantId</a>) &amp;&amp; empty($tenantName)) {</div>
-<div class="line"><a name="l01553"></a><span class="lineno"> 1553</span>&#160;      <span class="keywordflow">throw</span> new \HPCloud\Exception(<span class="stringliteral">&#39;Either Tenant ID (tenantid) or Tenant Name (tenantname) is required.&#39;</span>);</div>
-<div class="line"><a name="l01554"></a><span class="lineno"> 1554</span>&#160;    }</div>
-<div class="line"><a name="l01555"></a><span class="lineno"> 1555</span>&#160;    elseif (empty($authUrl)) {</div>
-<div class="line"><a name="l01556"></a><span class="lineno"> 1556</span>&#160;      <span class="keywordflow">throw</span> new \HPCloud\Exception(<span class="stringliteral">&#39;An Identity Service Endpoint (endpoint) is required.&#39;</span>);</div>
-<div class="line"><a name="l01557"></a><span class="lineno"> 1557</span>&#160;    }</div>
-<div class="line"><a name="l01558"></a><span class="lineno"> 1558</span>&#160;    <span class="comment">// Try to authenticate and get a new token.</span></div>
-<div class="line"><a name="l01559"></a><span class="lineno"> 1559</span>&#160;    <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l01560"></a><span class="lineno"> 1560</span>&#160;      $ident = $this-&gt;<a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html#a750c93a7dfab5314f2bf662a407bc5a6">authenticate</a>();</div>
-<div class="line"><a name="l01561"></a><span class="lineno"> 1561</span>&#160;</div>
-<div class="line"><a name="l01562"></a><span class="lineno"> 1562</span>&#160;      <span class="comment">// Update token and service catalog. The old pair may be out of date.</span></div>
-<div class="line"><a name="l01563"></a><span class="lineno"> 1563</span>&#160;      $token = $ident-&gt;token();</div>
-<div class="line"><a name="l01564"></a><span class="lineno"> 1564</span>&#160;      $serviceCatalog = $ident-&gt;serviceCatalog();</div>
-<div class="line"><a name="l01565"></a><span class="lineno"> 1565</span>&#160;      self::$serviceCatalogCache[<a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage.html#a00ae4fcafb1145f5e968bdf920f83e2e" title="The authorization token.">$token</a>] = $serviceCatalog;</div>
-<div class="line"><a name="l01566"></a><span class="lineno"> 1566</span>&#160;</div>
-<div class="line"><a name="l01567"></a><span class="lineno"> 1567</span>&#160;      $this-&gt;store = <a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage.html#a10cdf00002869db50b278e55d4a2ec4d" title="Given a service catalog and an token, create an ObjectStorage instance.">ObjectStorage::newFromServiceCatalog</a>($serviceCatalog, $token);</div>
-<div class="line"><a name="l01568"></a><span class="lineno"> 1568</span>&#160;</div>
-<div class="line"><a name="l01569"></a><span class="lineno"> 1569</span>&#160;      <span class="comment">/*</span></div>
-<div class="line"><a name="l01570"></a><span class="lineno"> 1570</span>&#160;<span class="comment">      $catalog = $ident-&gt;serviceCatalog(ObjectStorage::SERVICE_TYPE);</span></div>
-<div class="line"><a name="l01571"></a><span class="lineno"> 1571</span>&#160;<span class="comment">      if (empty($catalog) || empty($catalog[0][&#39;endpoints&#39;][0][&#39;publicURL&#39;])) {</span></div>
-<div class="line"><a name="l01572"></a><span class="lineno"> 1572</span>&#160;<span class="comment">        //throw new \HPCloud\Exception(&#39;No object storage services could be found for this tenant ID.&#39; . print_r($catalog, TRUE));</span></div>
-<div class="line"><a name="l01573"></a><span class="lineno"> 1573</span>&#160;<span class="comment">        throw new \HPCloud\Exception(&#39;No object storage services could be found for this tenant ID.&#39;);</span></div>
-<div class="line"><a name="l01574"></a><span class="lineno"> 1574</span>&#160;<span class="comment">      }</span></div>
-<div class="line"><a name="l01575"></a><span class="lineno"> 1575</span>&#160;<span class="comment">      $serviceURL = $catalog[0][&#39;endpoints&#39;][0][&#39;publicURL&#39;];</span></div>
-<div class="line"><a name="l01576"></a><span class="lineno"> 1576</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l01577"></a><span class="lineno"> 1577</span>&#160;<span class="comment">      $this-&gt;store = new ObjectStorage($token, $serviceURL);</span></div>
-<div class="line"><a name="l01578"></a><span class="lineno"> 1578</span>&#160;<span class="comment">       */</span></div>
-<div class="line"><a name="l01579"></a><span class="lineno"> 1579</span>&#160;    }</div>
-<div class="line"><a name="l01580"></a><span class="lineno"> 1580</span>&#160;</div>
-<div class="line"><a name="l01581"></a><span class="lineno"> 1581</span>&#160;    <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l01582"></a><span class="lineno"> 1582</span>&#160;      $this-&gt;<a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html#a552ead9e4216e3b68da11cd65c1e014b" title="Initialize CDN service.">initializeCDN</a>($token, $serviceCatalog);</div>
-<div class="line"><a name="l01583"></a><span class="lineno"> 1583</span>&#160;    }</div>
-<div class="line"><a name="l01584"></a><span class="lineno"> 1584</span>&#160;    <span class="keywordflow">catch</span> (\HPCloud\<a class="code" href="class_h_p_cloud_1_1_exception.html" title="The top-level HPCloud exception.">Exception</a> $e) {</div>
-<div class="line"><a name="l01585"></a><span class="lineno"> 1585</span>&#160;      <span class="comment">//fwrite(STDOUT, $e);</span></div>
-<div class="line"><a name="l01586"></a><span class="lineno"> 1586</span>&#160;      <span class="keywordflow">throw</span> new \HPCloud\Exception(<span class="stringliteral">&#39;CDN could not be initialized&#39;</span>, 1, $e);</div>
-<div class="line"><a name="l01587"></a><span class="lineno"> 1587</span>&#160;</div>
-<div class="line"><a name="l01588"></a><span class="lineno"> 1588</span>&#160;    }</div>
-<div class="line"><a name="l01589"></a><span class="lineno"> 1589</span>&#160;</div>
-<div class="line"><a name="l01590"></a><span class="lineno"> 1590</span>&#160;    <span class="keywordflow">return</span> !empty($this-&gt;store);</div>
-<div class="line"><a name="l01591"></a><span class="lineno"> 1591</span>&#160;</div>
-<div class="line"><a name="l01592"></a><span class="lineno"> 1592</span>&#160;  }</div>
-<div class="line"><a name="l01593"></a><span class="lineno"> 1593</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l01594"></a><span class="lineno"> 1594</span>&#160;<span class="comment">  /**</span></div>
-<div class="line"><a name="l01595"></a><span class="lineno"> 1595</span>&#160;<span class="comment">   * Initialize CDN service.</span></div>
-<div class="line"><a name="l01596"></a><span class="lineno"> 1596</span>&#160;<span class="comment">   *</span></div>
-<div class="line"><a name="l01597"></a><span class="lineno"> 1597</span>&#160;<span class="comment">   * When the `use_cdn` parameter is passed into the context, we try</span></div>
-<div class="line"><a name="l01598"></a><span class="lineno"> 1598</span>&#160;<span class="comment">   * to use a CDN service wherever possible.</span></div>
-<div class="line"><a name="l01599"></a><span class="lineno"> 1599</span>&#160;<span class="comment">   *</span></div>
-<div class="line"><a name="l01600"></a><span class="lineno"> 1600</span>&#160;<span class="comment">   * If `use_cdn` is set to TRUE, we try to create a new CDN object.</span></div>
-<div class="line"><a name="l01601"></a><span class="lineno"> 1601</span>&#160;<span class="comment">   * This will require a service catalog.</span></div>
-<div class="line"><a name="l01602"></a><span class="lineno"> 1602</span>&#160;<span class="comment">   *</span></div>
-<div class="line"><a name="l01603"></a><span class="lineno"> 1603</span>&#160;<span class="comment">   * When use_cdn is set to TRUE, the wrapper tries to use CDN service.</span></div>
-<div class="line"><a name="l01604"></a><span class="lineno"> 1604</span>&#160;<span class="comment">   * In such cases, we need a handle to the CDN object. This initializes</span></div>
-<div class="line"><a name="l01605"></a><span class="lineno"> 1605</span>&#160;<span class="comment">   * that handle, which can later be used to get other information.</span></div>
-<div class="line"><a name="l01606"></a><span class="lineno"> 1606</span>&#160;<span class="comment">   *</span></div>
-<div class="line"><a name="l01607"></a><span class="lineno"> 1607</span>&#160;<span class="comment">   * Also note that CDN&#39;s default behavior is to fetch over SSL CDN.</span></div>
-<div class="line"><a name="l01608"></a><span class="lineno"> 1608</span>&#160;<span class="comment">   * To disable this, set &#39;cdn_require_ssl&#39; to FALSE.</span></div>
-<div class="line"><a name="l01609"></a><span class="lineno"> 1609</span>&#160;<span class="comment">   */</span></div>
-<div class="line"><a name="l01610"></a><span class="lineno"><a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html#a552ead9e4216e3b68da11cd65c1e014b"> 1610</a></span>&#160;  <span class="keyword">protected</span> <span class="keyword">function</span> <a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html#a552ead9e4216e3b68da11cd65c1e014b" title="Initialize CDN service.">initializeCDN</a>(<a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage.html#a00ae4fcafb1145f5e968bdf920f83e2e" title="The authorization token.">$token</a>, <a class="code" href="oo-tutorial-code_8php.html#ab30d2fd9b2fc63b1367117f70356e858">$catalog</a>) {</div>
-<div class="line"><a name="l01611"></a><span class="lineno"> 1611</span>&#160;    $cdn = $this-&gt;<a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html#ac7dca652857324a5d2636b80654909b5" title="Get an item out of the context.">cxt</a>(<span class="stringliteral">&#39;use_cdn&#39;</span>, FALSE);</div>
-<div class="line"><a name="l01612"></a><span class="lineno"> 1612</span>&#160;</div>
-<div class="line"><a name="l01613"></a><span class="lineno"> 1613</span>&#160;    <span class="comment">// No CDN should be enabled.</span></div>
-<div class="line"><a name="l01614"></a><span class="lineno"> 1614</span>&#160;    <span class="keywordflow">if</span> (empty($cdn)) {</div>
-<div class="line"><a name="l01615"></a><span class="lineno"> 1615</span>&#160;      <span class="keywordflow">return</span> FALSE;</div>
-<div class="line"><a name="l01616"></a><span class="lineno"> 1616</span>&#160;    }</div>
-<div class="line"><a name="l01617"></a><span class="lineno"> 1617</span>&#160;    <span class="comment">// Use the CDN object, if provided.</span></div>
-<div class="line"><a name="l01618"></a><span class="lineno"> 1618</span>&#160;    elseif ($cdn instanceof \HPCloud\Storage\<a class="code" href="class_h_p_cloud_1_1_storage_1_1_c_d_n.html" title="Provides CDN services for ObjectStorage.">CDN</a>) {</div>
-<div class="line"><a name="l01619"></a><span class="lineno"> 1619</span>&#160;      $this-&gt;cdn = $cdn;</div>
-<div class="line"><a name="l01620"></a><span class="lineno"> 1620</span>&#160;    }</div>
-<div class="line"><a name="l01621"></a><span class="lineno"> 1621</span>&#160;    <span class="comment">// Or try to create a new CDN from the catalog.</span></div>
-<div class="line"><a name="l01622"></a><span class="lineno"> 1622</span>&#160;    <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l01623"></a><span class="lineno"> 1623</span>&#160;      <span class="keywordflow">if</span> (empty(<a class="code" href="oo-tutorial-code_8php.html#ab30d2fd9b2fc63b1367117f70356e858">$catalog</a>)) {</div>
-<div class="line"><a name="l01624"></a><span class="lineno"> 1624</span>&#160;        $ident = $this-&gt;<a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html#a750c93a7dfab5314f2bf662a407bc5a6">authenticate</a>();</div>
-<div class="line"><a name="l01625"></a><span class="lineno"> 1625</span>&#160;        <a class="code" href="oo-tutorial-code_8php.html#ab30d2fd9b2fc63b1367117f70356e858">$catalog</a> = $ident-&gt;serviceCatalog();</div>
-<div class="line"><a name="l01626"></a><span class="lineno"> 1626</span>&#160;        <a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage.html#a00ae4fcafb1145f5e968bdf920f83e2e" title="The authorization token.">$token</a> = $ident-&gt;token();</div>
-<div class="line"><a name="l01627"></a><span class="lineno"> 1627</span>&#160;      }</div>
-<div class="line"><a name="l01628"></a><span class="lineno"> 1628</span>&#160;      $this-&gt;cdn = <a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage.html#a10cdf00002869db50b278e55d4a2ec4d" title="Given a service catalog and an token, create an ObjectStorage instance.">\HPCloud\Storage\CDN::newFromServiceCatalog</a>(<a class="code" href="oo-tutorial-code_8php.html#ab30d2fd9b2fc63b1367117f70356e858">$catalog</a>, <a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage.html#a00ae4fcafb1145f5e968bdf920f83e2e" title="The authorization token.">$token</a>);</div>
-<div class="line"><a name="l01629"></a><span class="lineno"> 1629</span>&#160;    }</div>
-<div class="line"><a name="l01630"></a><span class="lineno"> 1630</span>&#160;</div>
-<div class="line"><a name="l01631"></a><span class="lineno"> 1631</span>&#160;    <span class="keywordflow">if</span> (!empty($this-&gt;cdn)) {</div>
-<div class="line"><a name="l01632"></a><span class="lineno"> 1632</span>&#160;      $this-&gt;store-&gt;useCDN($this-&gt;cdn);</div>
-<div class="line"><a name="l01633"></a><span class="lineno"> 1633</span>&#160;    }</div>
-<div class="line"><a name="l01634"></a><span class="lineno"> 1634</span>&#160;    <span class="keywordflow">return</span> TRUE;</div>
-<div class="line"><a name="l01635"></a><span class="lineno"> 1635</span>&#160;  }</div>
-<div class="line"><a name="l01636"></a><span class="lineno"> 1636</span>&#160;</div>
-<div class="line"><a name="l01637"></a><span class="lineno"><a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html#a750c93a7dfab5314f2bf662a407bc5a6"> 1637</a></span>&#160;  <span class="keyword">protected</span> <span class="keyword">function</span> <a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html#a750c93a7dfab5314f2bf662a407bc5a6">authenticate</a>() {</div>
-<div class="line"><a name="l01638"></a><span class="lineno"> 1638</span>&#160;    $username = $this-&gt;<a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html#ac7dca652857324a5d2636b80654909b5" title="Get an item out of the context.">cxt</a>(<span class="stringliteral">&#39;username&#39;</span>);</div>
-<div class="line"><a name="l01639"></a><span class="lineno"> 1639</span>&#160;    $password = $this-&gt;<a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html#ac7dca652857324a5d2636b80654909b5" title="Get an item out of the context.">cxt</a>(<span class="stringliteral">&#39;password&#39;</span>);</div>
-<div class="line"><a name="l01640"></a><span class="lineno"> 1640</span>&#160;</div>
-<div class="line"><a name="l01641"></a><span class="lineno"> 1641</span>&#160;    <a class="code" href="oo-tutorial-code_8php.html#a19ec872392da5d6131f9ad03b6c98339">$account</a> = $this-&gt;<a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html#ac7dca652857324a5d2636b80654909b5" title="Get an item out of the context.">cxt</a>(<span class="stringliteral">&#39;account&#39;</span>);</div>
-<div class="line"><a name="l01642"></a><span class="lineno"> 1642</span>&#160;    <a class="code" href="oo-tutorial-code_8php.html#aa60b0284e0dfa2463495481cf11e3cf4">$key</a> = $this-&gt;<a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html#ac7dca652857324a5d2636b80654909b5" title="Get an item out of the context.">cxt</a>(<span class="stringliteral">&#39;key&#39;</span>);</div>
-<div class="line"><a name="l01643"></a><span class="lineno"> 1643</span>&#160;</div>
-<div class="line"><a name="l01644"></a><span class="lineno"> 1644</span>&#160;    <a class="code" href="oo-tutorial-code_8php.html#a26979ce90bf4105e2b0abbf108d64dec">$tenantId</a> = $this-&gt;<a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html#ac7dca652857324a5d2636b80654909b5" title="Get an item out of the context.">cxt</a>(<span class="stringliteral">&#39;tenantid&#39;</span>);</div>
-<div class="line"><a name="l01645"></a><span class="lineno"> 1645</span>&#160;    $tenantName = $this-&gt;<a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html#ac7dca652857324a5d2636b80654909b5" title="Get an item out of the context.">cxt</a>(<span class="stringliteral">&#39;tenantname&#39;</span>);</div>
-<div class="line"><a name="l01646"></a><span class="lineno"> 1646</span>&#160;    $authUrl = $this-&gt;<a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html#ac7dca652857324a5d2636b80654909b5" title="Get an item out of the context.">cxt</a>(<span class="stringliteral">&#39;endpoint&#39;</span>);</div>
-<div class="line"><a name="l01647"></a><span class="lineno"> 1647</span>&#160;</div>
-<div class="line"><a name="l01648"></a><span class="lineno"> 1648</span>&#160;    $ident = new \HPCloud\Services\IdentityServices($authUrl);</div>
+<div class="line"><a name="l01524"></a><span class="lineno"> 1524</span>&#160;    <span class="comment">// Legacy support for old &#39;key&#39; param.</span></div>
+<div class="line"><a name="l01525"></a><span class="lineno"> 1525</span>&#160;    <a class="code" href="oo-tutorial-code_8php.html#aa60b0284e0dfa2463495481cf11e3cf4">$key</a> = $this-&gt;<a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html#ac7dca652857324a5d2636b80654909b5" title="Get an item out of the context.">cxt</a>(<span class="stringliteral">&#39;key&#39;</span>, $this-&gt;<a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html#ac7dca652857324a5d2636b80654909b5" title="Get an item out of the context.">cxt</a>(<span class="stringliteral">&#39;secret&#39;</span>));</div>
+<div class="line"><a name="l01526"></a><span class="lineno"> 1526</span>&#160;</div>
+<div class="line"><a name="l01527"></a><span class="lineno"> 1527</span>&#160;    <a class="code" href="oo-tutorial-code_8php.html#a26979ce90bf4105e2b0abbf108d64dec">$tenantId</a> = $this-&gt;<a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html#ac7dca652857324a5d2636b80654909b5" title="Get an item out of the context.">cxt</a>(<span class="stringliteral">&#39;tenantid&#39;</span>);</div>
+<div class="line"><a name="l01528"></a><span class="lineno"> 1528</span>&#160;    $tenantName = $this-&gt;<a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html#ac7dca652857324a5d2636b80654909b5" title="Get an item out of the context.">cxt</a>(<span class="stringliteral">&#39;tenantname&#39;</span>);</div>
+<div class="line"><a name="l01529"></a><span class="lineno"> 1529</span>&#160;    $authUrl = $this-&gt;<a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html#ac7dca652857324a5d2636b80654909b5" title="Get an item out of the context.">cxt</a>(<span class="stringliteral">&#39;endpoint&#39;</span>);</div>
+<div class="line"><a name="l01530"></a><span class="lineno"> 1530</span>&#160;    <a class="code" href="oo-tutorial-code_8php.html#afb5204f7604df2f50a0058cb0e024875">$endpoint</a> = $this-&gt;<a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html#ac7dca652857324a5d2636b80654909b5" title="Get an item out of the context.">cxt</a>(<span class="stringliteral">&#39;swift_endpoint&#39;</span>);</div>
+<div class="line"><a name="l01531"></a><span class="lineno"> 1531</span>&#160;</div>
+<div class="line"><a name="l01532"></a><span class="lineno"> 1532</span>&#160;    $serviceCatalog = NULL;</div>
+<div class="line"><a name="l01533"></a><span class="lineno"> 1533</span>&#160;</div>
+<div class="line"><a name="l01534"></a><span class="lineno"> 1534</span>&#160;    <span class="keywordflow">if</span> (!empty(<a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage.html#a00ae4fcafb1145f5e968bdf920f83e2e" title="The authorization token.">$token</a>) &amp;&amp; isset(self::$serviceCatalogCache[<a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage.html#a00ae4fcafb1145f5e968bdf920f83e2e" title="The authorization token.">$token</a>])) {</div>
+<div class="line"><a name="l01535"></a><span class="lineno"> 1535</span>&#160;      $serviceCatalog = self::$serviceCatalogCache[<a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage.html#a00ae4fcafb1145f5e968bdf920f83e2e" title="The authorization token.">$token</a>];</div>
+<div class="line"><a name="l01536"></a><span class="lineno"> 1536</span>&#160;    }</div>
+<div class="line"><a name="l01537"></a><span class="lineno"> 1537</span>&#160;</div>
+<div class="line"><a name="l01538"></a><span class="lineno"> 1538</span>&#160;    <span class="comment">// FIXME: If a token is invalidated, we should try to re-authenticate.</span></div>
+<div class="line"><a name="l01539"></a><span class="lineno"> 1539</span>&#160;    <span class="comment">// If context has the info we need, start from there.</span></div>
+<div class="line"><a name="l01540"></a><span class="lineno"> 1540</span>&#160;    <span class="keywordflow">if</span> (!empty($token) &amp;&amp; !empty(<a class="code" href="oo-tutorial-code_8php.html#afb5204f7604df2f50a0058cb0e024875">$endpoint</a>)) {</div>
+<div class="line"><a name="l01541"></a><span class="lineno"> 1541</span>&#160;      $this-&gt;store = new \HPCloud\Storage\ObjectStorage($token, <a class="code" href="oo-tutorial-code_8php.html#afb5204f7604df2f50a0058cb0e024875">$endpoint</a>);</div>
+<div class="line"><a name="l01542"></a><span class="lineno"> 1542</span>&#160;    }</div>
+<div class="line"><a name="l01543"></a><span class="lineno"> 1543</span>&#160;    <span class="comment">// DEPRECATED: For old swift auth.</span></div>
+<div class="line"><a name="l01544"></a><span class="lineno"> 1544</span>&#160;    elseif ($this-&gt;<a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html#ac7dca652857324a5d2636b80654909b5" title="Get an item out of the context.">cxt</a>(<span class="stringliteral">&#39;use_swift_auth&#39;</span>, FALSE)) {</div>
+<div class="line"><a name="l01545"></a><span class="lineno"> 1545</span>&#160;</div>
+<div class="line"><a name="l01546"></a><span class="lineno"> 1546</span>&#160;      <span class="keywordflow">if</span> (empty($authUrl) || empty(<a class="code" href="oo-tutorial-code_8php.html#a19ec872392da5d6131f9ad03b6c98339">$account</a>) || empty(<a class="code" href="oo-tutorial-code_8php.html#aa60b0284e0dfa2463495481cf11e3cf4">$key</a>)) {</div>
+<div class="line"><a name="l01547"></a><span class="lineno"> 1547</span>&#160;        <span class="keywordflow">throw</span> new \HPCloud\Exception(<span class="stringliteral">&#39;account, endpoint, key are required stream parameters.&#39;</span>);</div>
+<div class="line"><a name="l01548"></a><span class="lineno"> 1548</span>&#160;      }</div>
+<div class="line"><a name="l01549"></a><span class="lineno"> 1549</span>&#160;      $this-&gt;store = <a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage.html#a9f557913e8a25b98bb687c3cbfd15c8f" title="Create a new instance after getting an authenitcation token.">\HPCloud\Storage\ObjectStorage::newFromSwiftAuth</a>(<a class="code" href="oo-tutorial-code_8php.html#a19ec872392da5d6131f9ad03b6c98339">$account</a>, <a class="code" href="oo-tutorial-code_8php.html#aa60b0284e0dfa2463495481cf11e3cf4">$key</a>, $authUrl);</div>
+<div class="line"><a name="l01550"></a><span class="lineno"> 1550</span>&#160;</div>
+<div class="line"><a name="l01551"></a><span class="lineno"> 1551</span>&#160;    }</div>
+<div class="line"><a name="l01552"></a><span class="lineno"> 1552</span>&#160;    <span class="comment">// If we get here and tenant ID is not set, we can&#39;t get a container.</span></div>
+<div class="line"><a name="l01553"></a><span class="lineno"> 1553</span>&#160;    elseif (empty(<a class="code" href="oo-tutorial-code_8php.html#a26979ce90bf4105e2b0abbf108d64dec">$tenantId</a>) &amp;&amp; empty($tenantName)) {</div>
+<div class="line"><a name="l01554"></a><span class="lineno"> 1554</span>&#160;      <span class="keywordflow">throw</span> new \HPCloud\Exception(<span class="stringliteral">&#39;Either Tenant ID (tenantid) or Tenant Name (tenantname) is required.&#39;</span>);</div>
+<div class="line"><a name="l01555"></a><span class="lineno"> 1555</span>&#160;    }</div>
+<div class="line"><a name="l01556"></a><span class="lineno"> 1556</span>&#160;    elseif (empty($authUrl)) {</div>
+<div class="line"><a name="l01557"></a><span class="lineno"> 1557</span>&#160;      <span class="keywordflow">throw</span> new \HPCloud\Exception(<span class="stringliteral">&#39;An Identity Service Endpoint (endpoint) is required.&#39;</span>);</div>
+<div class="line"><a name="l01558"></a><span class="lineno"> 1558</span>&#160;    }</div>
+<div class="line"><a name="l01559"></a><span class="lineno"> 1559</span>&#160;    <span class="comment">// Try to authenticate and get a new token.</span></div>
+<div class="line"><a name="l01560"></a><span class="lineno"> 1560</span>&#160;    <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l01561"></a><span class="lineno"> 1561</span>&#160;      $ident = $this-&gt;<a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html#a750c93a7dfab5314f2bf662a407bc5a6">authenticate</a>();</div>
+<div class="line"><a name="l01562"></a><span class="lineno"> 1562</span>&#160;</div>
+<div class="line"><a name="l01563"></a><span class="lineno"> 1563</span>&#160;      <span class="comment">// Update token and service catalog. The old pair may be out of date.</span></div>
+<div class="line"><a name="l01564"></a><span class="lineno"> 1564</span>&#160;      $token = $ident-&gt;token();</div>
+<div class="line"><a name="l01565"></a><span class="lineno"> 1565</span>&#160;      $serviceCatalog = $ident-&gt;serviceCatalog();</div>
+<div class="line"><a name="l01566"></a><span class="lineno"> 1566</span>&#160;      self::$serviceCatalogCache[<a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage.html#a00ae4fcafb1145f5e968bdf920f83e2e" title="The authorization token.">$token</a>] = $serviceCatalog;</div>
+<div class="line"><a name="l01567"></a><span class="lineno"> 1567</span>&#160;</div>
+<div class="line"><a name="l01568"></a><span class="lineno"> 1568</span>&#160;      $this-&gt;store = <a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage.html#ade9f87d642ca7bc398d79754130a2b74" title="Given a service catalog and an token, create an ObjectStorage instance.">ObjectStorage::newFromServiceCatalog</a>($serviceCatalog, $token);</div>
+<div class="line"><a name="l01569"></a><span class="lineno"> 1569</span>&#160;</div>
+<div class="line"><a name="l01570"></a><span class="lineno"> 1570</span>&#160;      <span class="comment">/*</span></div>
+<div class="line"><a name="l01571"></a><span class="lineno"> 1571</span>&#160;<span class="comment">      $catalog = $ident-&gt;serviceCatalog(ObjectStorage::SERVICE_TYPE);</span></div>
+<div class="line"><a name="l01572"></a><span class="lineno"> 1572</span>&#160;<span class="comment">      if (empty($catalog) || empty($catalog[0][&#39;endpoints&#39;][0][&#39;publicURL&#39;])) {</span></div>
+<div class="line"><a name="l01573"></a><span class="lineno"> 1573</span>&#160;<span class="comment">        //throw new \HPCloud\Exception(&#39;No object storage services could be found for this tenant ID.&#39; . print_r($catalog, TRUE));</span></div>
+<div class="line"><a name="l01574"></a><span class="lineno"> 1574</span>&#160;<span class="comment">        throw new \HPCloud\Exception(&#39;No object storage services could be found for this tenant ID.&#39;);</span></div>
+<div class="line"><a name="l01575"></a><span class="lineno"> 1575</span>&#160;<span class="comment">      }</span></div>
+<div class="line"><a name="l01576"></a><span class="lineno"> 1576</span>&#160;<span class="comment">      $serviceURL = $catalog[0][&#39;endpoints&#39;][0][&#39;publicURL&#39;];</span></div>
+<div class="line"><a name="l01577"></a><span class="lineno"> 1577</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l01578"></a><span class="lineno"> 1578</span>&#160;<span class="comment">      $this-&gt;store = new ObjectStorage($token, $serviceURL);</span></div>
+<div class="line"><a name="l01579"></a><span class="lineno"> 1579</span>&#160;<span class="comment">       */</span></div>
+<div class="line"><a name="l01580"></a><span class="lineno"> 1580</span>&#160;    }</div>
+<div class="line"><a name="l01581"></a><span class="lineno"> 1581</span>&#160;</div>
+<div class="line"><a name="l01582"></a><span class="lineno"> 1582</span>&#160;    <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l01583"></a><span class="lineno"> 1583</span>&#160;      $this-&gt;<a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html#a552ead9e4216e3b68da11cd65c1e014b" title="Initialize CDN service.">initializeCDN</a>($token, $serviceCatalog);</div>
+<div class="line"><a name="l01584"></a><span class="lineno"> 1584</span>&#160;    }</div>
+<div class="line"><a name="l01585"></a><span class="lineno"> 1585</span>&#160;    <span class="keywordflow">catch</span> (\HPCloud\<a class="code" href="class_h_p_cloud_1_1_exception.html" title="The top-level HPCloud exception.">Exception</a> $e) {</div>
+<div class="line"><a name="l01586"></a><span class="lineno"> 1586</span>&#160;      <span class="comment">//fwrite(STDOUT, $e);</span></div>
+<div class="line"><a name="l01587"></a><span class="lineno"> 1587</span>&#160;      <span class="keywordflow">throw</span> new \HPCloud\Exception(<span class="stringliteral">&#39;CDN could not be initialized&#39;</span>, 1, $e);</div>
+<div class="line"><a name="l01588"></a><span class="lineno"> 1588</span>&#160;</div>
+<div class="line"><a name="l01589"></a><span class="lineno"> 1589</span>&#160;    }</div>
+<div class="line"><a name="l01590"></a><span class="lineno"> 1590</span>&#160;</div>
+<div class="line"><a name="l01591"></a><span class="lineno"> 1591</span>&#160;    <span class="keywordflow">return</span> !empty($this-&gt;store);</div>
+<div class="line"><a name="l01592"></a><span class="lineno"> 1592</span>&#160;</div>
+<div class="line"><a name="l01593"></a><span class="lineno"> 1593</span>&#160;  }</div>
+<div class="line"><a name="l01594"></a><span class="lineno"> 1594</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l01595"></a><span class="lineno"> 1595</span>&#160;<span class="comment">  /**</span></div>
+<div class="line"><a name="l01596"></a><span class="lineno"> 1596</span>&#160;<span class="comment">   * Initialize CDN service.</span></div>
+<div class="line"><a name="l01597"></a><span class="lineno"> 1597</span>&#160;<span class="comment">   *</span></div>
+<div class="line"><a name="l01598"></a><span class="lineno"> 1598</span>&#160;<span class="comment">   * When the `use_cdn` parameter is passed into the context, we try</span></div>
+<div class="line"><a name="l01599"></a><span class="lineno"> 1599</span>&#160;<span class="comment">   * to use a CDN service wherever possible.</span></div>
+<div class="line"><a name="l01600"></a><span class="lineno"> 1600</span>&#160;<span class="comment">   *</span></div>
+<div class="line"><a name="l01601"></a><span class="lineno"> 1601</span>&#160;<span class="comment">   * If `use_cdn` is set to TRUE, we try to create a new CDN object.</span></div>
+<div class="line"><a name="l01602"></a><span class="lineno"> 1602</span>&#160;<span class="comment">   * This will require a service catalog.</span></div>
+<div class="line"><a name="l01603"></a><span class="lineno"> 1603</span>&#160;<span class="comment">   *</span></div>
+<div class="line"><a name="l01604"></a><span class="lineno"> 1604</span>&#160;<span class="comment">   * When use_cdn is set to TRUE, the wrapper tries to use CDN service.</span></div>
+<div class="line"><a name="l01605"></a><span class="lineno"> 1605</span>&#160;<span class="comment">   * In such cases, we need a handle to the CDN object. This initializes</span></div>
+<div class="line"><a name="l01606"></a><span class="lineno"> 1606</span>&#160;<span class="comment">   * that handle, which can later be used to get other information.</span></div>
+<div class="line"><a name="l01607"></a><span class="lineno"> 1607</span>&#160;<span class="comment">   *</span></div>
+<div class="line"><a name="l01608"></a><span class="lineno"> 1608</span>&#160;<span class="comment">   * Also note that CDN&#39;s default behavior is to fetch over SSL CDN.</span></div>
+<div class="line"><a name="l01609"></a><span class="lineno"> 1609</span>&#160;<span class="comment">   * To disable this, set &#39;cdn_require_ssl&#39; to FALSE.</span></div>
+<div class="line"><a name="l01610"></a><span class="lineno"> 1610</span>&#160;<span class="comment">   */</span></div>
+<div class="line"><a name="l01611"></a><span class="lineno"><a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html#a552ead9e4216e3b68da11cd65c1e014b"> 1611</a></span>&#160;  <span class="keyword">protected</span> <span class="keyword">function</span> <a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html#a552ead9e4216e3b68da11cd65c1e014b" title="Initialize CDN service.">initializeCDN</a>(<a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage.html#a00ae4fcafb1145f5e968bdf920f83e2e" title="The authorization token.">$token</a>, <a class="code" href="oo-tutorial-code_8php.html#ab30d2fd9b2fc63b1367117f70356e858">$catalog</a>) {</div>
+<div class="line"><a name="l01612"></a><span class="lineno"> 1612</span>&#160;    $cdn = $this-&gt;<a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html#ac7dca652857324a5d2636b80654909b5" title="Get an item out of the context.">cxt</a>(<span class="stringliteral">&#39;use_cdn&#39;</span>, FALSE);</div>
+<div class="line"><a name="l01613"></a><span class="lineno"> 1613</span>&#160;</div>
+<div class="line"><a name="l01614"></a><span class="lineno"> 1614</span>&#160;    <span class="comment">// No CDN should be enabled.</span></div>
+<div class="line"><a name="l01615"></a><span class="lineno"> 1615</span>&#160;    <span class="keywordflow">if</span> (empty($cdn)) {</div>
+<div class="line"><a name="l01616"></a><span class="lineno"> 1616</span>&#160;      <span class="keywordflow">return</span> FALSE;</div>
+<div class="line"><a name="l01617"></a><span class="lineno"> 1617</span>&#160;    }</div>
+<div class="line"><a name="l01618"></a><span class="lineno"> 1618</span>&#160;    <span class="comment">// Use the CDN object, if provided.</span></div>
+<div class="line"><a name="l01619"></a><span class="lineno"> 1619</span>&#160;    elseif ($cdn instanceof \HPCloud\Storage\<a class="code" href="class_h_p_cloud_1_1_storage_1_1_c_d_n.html" title="Provides CDN services for ObjectStorage.">CDN</a>) {</div>
+<div class="line"><a name="l01620"></a><span class="lineno"> 1620</span>&#160;      $this-&gt;cdn = $cdn;</div>
+<div class="line"><a name="l01621"></a><span class="lineno"> 1621</span>&#160;    }</div>
+<div class="line"><a name="l01622"></a><span class="lineno"> 1622</span>&#160;    <span class="comment">// Or try to create a new CDN from the catalog.</span></div>
+<div class="line"><a name="l01623"></a><span class="lineno"> 1623</span>&#160;    <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l01624"></a><span class="lineno"> 1624</span>&#160;      <span class="keywordflow">if</span> (empty(<a class="code" href="oo-tutorial-code_8php.html#ab30d2fd9b2fc63b1367117f70356e858">$catalog</a>)) {</div>
+<div class="line"><a name="l01625"></a><span class="lineno"> 1625</span>&#160;        $ident = $this-&gt;<a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html#a750c93a7dfab5314f2bf662a407bc5a6">authenticate</a>();</div>
+<div class="line"><a name="l01626"></a><span class="lineno"> 1626</span>&#160;        <a class="code" href="oo-tutorial-code_8php.html#ab30d2fd9b2fc63b1367117f70356e858">$catalog</a> = $ident-&gt;serviceCatalog();</div>
+<div class="line"><a name="l01627"></a><span class="lineno"> 1627</span>&#160;        <a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage.html#a00ae4fcafb1145f5e968bdf920f83e2e" title="The authorization token.">$token</a> = $ident-&gt;token();</div>
+<div class="line"><a name="l01628"></a><span class="lineno"> 1628</span>&#160;      }</div>
+<div class="line"><a name="l01629"></a><span class="lineno"> 1629</span>&#160;      $this-&gt;cdn = <a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage.html#ade9f87d642ca7bc398d79754130a2b74" title="Given a service catalog and an token, create an ObjectStorage instance.">\HPCloud\Storage\CDN::newFromServiceCatalog</a>(<a class="code" href="oo-tutorial-code_8php.html#ab30d2fd9b2fc63b1367117f70356e858">$catalog</a>, <a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage.html#a00ae4fcafb1145f5e968bdf920f83e2e" title="The authorization token.">$token</a>);</div>
+<div class="line"><a name="l01630"></a><span class="lineno"> 1630</span>&#160;    }</div>
+<div class="line"><a name="l01631"></a><span class="lineno"> 1631</span>&#160;</div>
+<div class="line"><a name="l01632"></a><span class="lineno"> 1632</span>&#160;    <span class="keywordflow">if</span> (!empty($this-&gt;cdn)) {</div>
+<div class="line"><a name="l01633"></a><span class="lineno"> 1633</span>&#160;      $this-&gt;store-&gt;useCDN($this-&gt;cdn);</div>
+<div class="line"><a name="l01634"></a><span class="lineno"> 1634</span>&#160;    }</div>
+<div class="line"><a name="l01635"></a><span class="lineno"> 1635</span>&#160;    <span class="keywordflow">return</span> TRUE;</div>
+<div class="line"><a name="l01636"></a><span class="lineno"> 1636</span>&#160;  }</div>
+<div class="line"><a name="l01637"></a><span class="lineno"> 1637</span>&#160;</div>
+<div class="line"><a name="l01638"></a><span class="lineno"><a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html#a750c93a7dfab5314f2bf662a407bc5a6"> 1638</a></span>&#160;  <span class="keyword">protected</span> <span class="keyword">function</span> <a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html#a750c93a7dfab5314f2bf662a407bc5a6">authenticate</a>() {</div>
+<div class="line"><a name="l01639"></a><span class="lineno"> 1639</span>&#160;    $username = $this-&gt;<a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html#ac7dca652857324a5d2636b80654909b5" title="Get an item out of the context.">cxt</a>(<span class="stringliteral">&#39;username&#39;</span>);</div>
+<div class="line"><a name="l01640"></a><span class="lineno"> 1640</span>&#160;    $password = $this-&gt;<a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html#ac7dca652857324a5d2636b80654909b5" title="Get an item out of the context.">cxt</a>(<span class="stringliteral">&#39;password&#39;</span>);</div>
+<div class="line"><a name="l01641"></a><span class="lineno"> 1641</span>&#160;</div>
+<div class="line"><a name="l01642"></a><span class="lineno"> 1642</span>&#160;    <a class="code" href="oo-tutorial-code_8php.html#a19ec872392da5d6131f9ad03b6c98339">$account</a> = $this-&gt;<a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html#ac7dca652857324a5d2636b80654909b5" title="Get an item out of the context.">cxt</a>(<span class="stringliteral">&#39;account&#39;</span>);</div>
+<div class="line"><a name="l01643"></a><span class="lineno"> 1643</span>&#160;    <span class="comment">// Legacy support for old &#39;key&#39; param.</span></div>
+<div class="line"><a name="l01644"></a><span class="lineno"> 1644</span>&#160;    <a class="code" href="oo-tutorial-code_8php.html#aa60b0284e0dfa2463495481cf11e3cf4">$key</a> = $this-&gt;<a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html#ac7dca652857324a5d2636b80654909b5" title="Get an item out of the context.">cxt</a>(<span class="stringliteral">&#39;key&#39;</span>, $this-&gt;<a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html#ac7dca652857324a5d2636b80654909b5" title="Get an item out of the context.">cxt</a>(<span class="stringliteral">&#39;secret&#39;</span>));</div>
+<div class="line"><a name="l01645"></a><span class="lineno"> 1645</span>&#160;</div>
+<div class="line"><a name="l01646"></a><span class="lineno"> 1646</span>&#160;    <a class="code" href="oo-tutorial-code_8php.html#a26979ce90bf4105e2b0abbf108d64dec">$tenantId</a> = $this-&gt;<a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html#ac7dca652857324a5d2636b80654909b5" title="Get an item out of the context.">cxt</a>(<span class="stringliteral">&#39;tenantid&#39;</span>);</div>
+<div class="line"><a name="l01647"></a><span class="lineno"> 1647</span>&#160;    $tenantName = $this-&gt;<a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html#ac7dca652857324a5d2636b80654909b5" title="Get an item out of the context.">cxt</a>(<span class="stringliteral">&#39;tenantname&#39;</span>);</div>
+<div class="line"><a name="l01648"></a><span class="lineno"> 1648</span>&#160;    $authUrl = $this-&gt;<a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html#ac7dca652857324a5d2636b80654909b5" title="Get an item out of the context.">cxt</a>(<span class="stringliteral">&#39;endpoint&#39;</span>);</div>
 <div class="line"><a name="l01649"></a><span class="lineno"> 1649</span>&#160;</div>
-<div class="line"><a name="l01650"></a><span class="lineno"> 1650</span>&#160;    <span class="comment">// Frustrated? Go burninate. http://www.homestarrunner.com/trogdor.html</span></div>
+<div class="line"><a name="l01650"></a><span class="lineno"> 1650</span>&#160;    $ident = new \HPCloud\Services\IdentityServices($authUrl);</div>
 <div class="line"><a name="l01651"></a><span class="lineno"> 1651</span>&#160;</div>
-<div class="line"><a name="l01652"></a><span class="lineno"> 1652</span>&#160;    <span class="keywordflow">if</span> (!empty($username) &amp;&amp; !empty($password)) {</div>
-<div class="line"><a name="l01653"></a><span class="lineno"> 1653</span>&#160;      <a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage.html#a00ae4fcafb1145f5e968bdf920f83e2e" title="The authorization token.">$token</a> = $ident-&gt;authenticateAsUser($username, $password, <a class="code" href="oo-tutorial-code_8php.html#a26979ce90bf4105e2b0abbf108d64dec">$tenantId</a>, $tenantName);</div>
-<div class="line"><a name="l01654"></a><span class="lineno"> 1654</span>&#160;    }</div>
-<div class="line"><a name="l01655"></a><span class="lineno"> 1655</span>&#160;    elseif (!empty(<a class="code" href="oo-tutorial-code_8php.html#a19ec872392da5d6131f9ad03b6c98339">$account</a>) &amp;&amp; !empty(<a class="code" href="oo-tutorial-code_8php.html#aa60b0284e0dfa2463495481cf11e3cf4">$key</a>)) {</div>
-<div class="line"><a name="l01656"></a><span class="lineno"> 1656</span>&#160;      <a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage.html#a00ae4fcafb1145f5e968bdf920f83e2e" title="The authorization token.">$token</a> = $ident-&gt;authenticateAsAccount(<a class="code" href="oo-tutorial-code_8php.html#a19ec872392da5d6131f9ad03b6c98339">$account</a>, <a class="code" href="oo-tutorial-code_8php.html#aa60b0284e0dfa2463495481cf11e3cf4">$key</a>, <a class="code" href="oo-tutorial-code_8php.html#a26979ce90bf4105e2b0abbf108d64dec">$tenantId</a>, $tenantName);</div>
-<div class="line"><a name="l01657"></a><span class="lineno"> 1657</span>&#160;    }</div>
-<div class="line"><a name="l01658"></a><span class="lineno"> 1658</span>&#160;    <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l01659"></a><span class="lineno"> 1659</span>&#160;      <span class="keywordflow">throw</span> new \HPCloud\Exception(<span class="stringliteral">&#39;Either username/password or account/key must be provided.&#39;</span>);</div>
-<div class="line"><a name="l01660"></a><span class="lineno"> 1660</span>&#160;    }</div>
-<div class="line"><a name="l01661"></a><span class="lineno"> 1661</span>&#160;    <span class="comment">// Cache the service catalog.</span></div>
-<div class="line"><a name="l01662"></a><span class="lineno"> 1662</span>&#160;    self::$serviceCatalogCache[<a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage.html#a00ae4fcafb1145f5e968bdf920f83e2e" title="The authorization token.">$token</a>] = $ident-&gt;serviceCatalog();</div>
-<div class="line"><a name="l01663"></a><span class="lineno"> 1663</span>&#160;</div>
-<div class="line"><a name="l01664"></a><span class="lineno"> 1664</span>&#160;    <span class="keywordflow">return</span> $ident;</div>
-<div class="line"><a name="l01665"></a><span class="lineno"> 1665</span>&#160;  }</div>
-<div class="line"><a name="l01666"></a><span class="lineno"> 1666</span>&#160;</div>
-<div class="line"><a name="l01667"></a><span class="lineno"> 1667</span>&#160;}</div>
+<div class="line"><a name="l01652"></a><span class="lineno"> 1652</span>&#160;    <span class="comment">// Frustrated? Go burninate. http://www.homestarrunner.com/trogdor.html</span></div>
+<div class="line"><a name="l01653"></a><span class="lineno"> 1653</span>&#160;</div>
+<div class="line"><a name="l01654"></a><span class="lineno"> 1654</span>&#160;    <span class="keywordflow">if</span> (!empty($username) &amp;&amp; !empty($password)) {</div>
+<div class="line"><a name="l01655"></a><span class="lineno"> 1655</span>&#160;      <a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage.html#a00ae4fcafb1145f5e968bdf920f83e2e" title="The authorization token.">$token</a> = $ident-&gt;authenticateAsUser($username, $password, <a class="code" href="oo-tutorial-code_8php.html#a26979ce90bf4105e2b0abbf108d64dec">$tenantId</a>, $tenantName);</div>
+<div class="line"><a name="l01656"></a><span class="lineno"> 1656</span>&#160;    }</div>
+<div class="line"><a name="l01657"></a><span class="lineno"> 1657</span>&#160;    elseif (!empty(<a class="code" href="oo-tutorial-code_8php.html#a19ec872392da5d6131f9ad03b6c98339">$account</a>) &amp;&amp; !empty(<a class="code" href="oo-tutorial-code_8php.html#aa60b0284e0dfa2463495481cf11e3cf4">$key</a>)) {</div>
+<div class="line"><a name="l01658"></a><span class="lineno"> 1658</span>&#160;      <a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage.html#a00ae4fcafb1145f5e968bdf920f83e2e" title="The authorization token.">$token</a> = $ident-&gt;authenticateAsAccount(<a class="code" href="oo-tutorial-code_8php.html#a19ec872392da5d6131f9ad03b6c98339">$account</a>, <a class="code" href="oo-tutorial-code_8php.html#aa60b0284e0dfa2463495481cf11e3cf4">$key</a>, <a class="code" href="oo-tutorial-code_8php.html#a26979ce90bf4105e2b0abbf108d64dec">$tenantId</a>, $tenantName);</div>
+<div class="line"><a name="l01659"></a><span class="lineno"> 1659</span>&#160;    }</div>
+<div class="line"><a name="l01660"></a><span class="lineno"> 1660</span>&#160;    <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l01661"></a><span class="lineno"> 1661</span>&#160;      <span class="keywordflow">throw</span> new \HPCloud\Exception(<span class="stringliteral">&#39;Either username/password or account/key must be provided.&#39;</span>);</div>
+<div class="line"><a name="l01662"></a><span class="lineno"> 1662</span>&#160;    }</div>
+<div class="line"><a name="l01663"></a><span class="lineno"> 1663</span>&#160;    <span class="comment">// Cache the service catalog.</span></div>
+<div class="line"><a name="l01664"></a><span class="lineno"> 1664</span>&#160;    self::$serviceCatalogCache[<a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage.html#a00ae4fcafb1145f5e968bdf920f83e2e" title="The authorization token.">$token</a>] = $ident-&gt;serviceCatalog();</div>
+<div class="line"><a name="l01665"></a><span class="lineno"> 1665</span>&#160;</div>
+<div class="line"><a name="l01666"></a><span class="lineno"> 1666</span>&#160;    <span class="keywordflow">return</span> $ident;</div>
+<div class="line"><a name="l01667"></a><span class="lineno"> 1667</span>&#160;  }</div>
+<div class="line"><a name="l01668"></a><span class="lineno"> 1668</span>&#160;</div>
+<div class="line"><a name="l01669"></a><span class="lineno"> 1669</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_e7fde51b7d0f7837d6838145ad268ad8.html">src</a></li><li class="navelem"><a class="el" href="dir_c55ff1ab2ea2694bf18094bf6344045b.html">HPCloud</a></li><li class="navelem"><a class="el" href="dir_9e2c7e9e67e7039e770f84d67b774ba5.html">Storage</a></li><li class="navelem"><a class="el" href="dir_2b802851fa6182a56c7bc57d721d895d.html">ObjectStorage</a></li><li class="navelem"><a class="el" href="_stream_wrapper_8php.html">StreamWrapper.php</a></li>
-    <li class="footer">Generated on Fri Aug 10 2012 09:59:51 for HPCloud-PHP by
+    <li class="navelem"><a class="el" href="dir_be9e4374303c7e194b459701b7b510f4.html">src</a></li><li class="navelem"><a class="el" href="dir_6c8945618b1013d2ea959b155c0141b9.html">HPCloud</a></li><li class="navelem"><a class="el" href="dir_4e505132f758faed0829a277d2220c65.html">Storage</a></li><li class="navelem"><a class="el" href="dir_9efa06c00ef7db5b37d16f9e0d1e36e9.html">ObjectStorage</a></li><li class="navelem"><a class="el" href="_stream_wrapper_8php.html">StreamWrapper.php</a></li>
+    <li class="footer">Generated on Tue Nov 6 2012 10:50:36 for HPCloud-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.1.2 </li>
   </ul>

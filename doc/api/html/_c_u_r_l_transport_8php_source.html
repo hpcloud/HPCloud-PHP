@@ -28,7 +28,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">HPCloud-PHP
-   &#160;<span id="projectnumber">1.0.0</span>
+   &#160;<span id="projectnumber">1.1.0</span>
    </div>
    <div id="projectbrief">PHP bindings for HPCloud and OpenStack services.</div>
   </td>
@@ -334,182 +334,199 @@ $(document).ready(function(){initNavTree('_c_u_r_l_transport_8php_source.html','
 <div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;      $opts[CURLOPT_SSL_VERIFYPEER] = $validate;</div>
 <div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    }</div>
 <div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    <span class="comment">// Set all of the curl opts and then execute.</span></div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    curl_setopt_array($curl, $opts);</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    $ret = $this-&gt;<a class="code" href="class_h_p_cloud_1_1_transport_1_1_c_u_r_l_transport.html#ae74b8d3c2c0a45733bcc632705409c7a" title="Poor man&#39;s connection pooling.">execCurl</a>($curl);<span class="comment">//curl_exec($curl);</span></div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    $info = curl_getinfo($curl);</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    $status = $info[<span class="stringliteral">&#39;http_code&#39;</span>];</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    rewind($headerFile);</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    $responseHeaders = $this-&gt;<a class="code" href="class_h_p_cloud_1_1_transport_1_1_c_u_r_l_transport.html#a02b87280ccafde066ca4f283c82372e7" title="This function reads the header file into an array.">fetchHeaders</a>($headerFile);</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    fclose($headerFile);</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    <span class="keywordflow">if</span> (!$ret || $status &lt; 200 || $status &gt; 299) {</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;      <span class="keywordflow">if</span> (empty($responseHeaders)) {</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;        $err = <span class="stringliteral">&#39;Unknown (non-HTTP) error: &#39;</span> . $status;</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;      }</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;      <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;        $err = $responseHeaders[0];</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;      }</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;      <span class="comment">//rewind($out);</span></div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;      <span class="comment">//fwrite(STDERR, stream_get_contents($out));</span></div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;      Response::failure($status, $err, $info[<span class="stringliteral">&#39;url&#39;</span>], $method, $info);</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    }</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    <span class="comment">// PROXY settings</span></div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    $proxyMap = array(</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;      <span class="stringliteral">&#39;proxy&#39;</span> =&gt; CURLOPT_PROXY,</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;      <span class="stringliteral">&#39;proxy.tunnel&#39;</span> =&gt; CURLOPT_HTTPPROXYTUNNEL,</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;      <span class="stringliteral">&#39;proxy.auth&#39;</span> =&gt; CURLOPT_PROXYAUTH,</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;      <span class="stringliteral">&#39;proxy.port&#39;</span> =&gt; CURLOPT_PROXYPORT,</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;      <span class="stringliteral">&#39;proxy.type&#39;</span> =&gt; CURLOPT_PROXYTYPE,</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;      <span class="stringliteral">&#39;proxy.userpwd&#39;</span> =&gt; CURLOPT_PROXYUSERPWD,</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    );</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    <span class="keywordflow">foreach</span> ($proxyMap as $conf =&gt; $opt) {</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;      <span class="keywordflow">if</span> (<a class="code" href="class_h_p_cloud_1_1_bootstrap.html#a65b07819fcdece885234e14751d06814" title="Check whether the given configuration option is set.">Bootstrap::hasConfig</a>($conf)) {</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        $val = <a class="code" href="class_h_p_cloud_1_1_bootstrap.html#ae1f97d5c8b781c6cddfdc250230a6161" title="Get a configuration option.">Bootstrap::config</a>($conf);</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;        $opts[$opt] = $val;</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;      }</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    }</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    <span class="comment">// Set all of the curl opts and then execute.</span></div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    curl_setopt_array($curl, $opts);</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    $ret = $this-&gt;<a class="code" href="class_h_p_cloud_1_1_transport_1_1_c_u_r_l_transport.html#ae74b8d3c2c0a45733bcc632705409c7a" title="Poor man&#39;s connection pooling.">execCurl</a>($curl);<span class="comment">//curl_exec($curl);</span></div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    $info = curl_getinfo($curl);</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    $status = $info[<span class="stringliteral">&#39;http_code&#39;</span>];</div>
 <div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    rewind($out);</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    <span class="comment">// Now we need to build a response.</span></div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    $resp = <span class="keyword">new</span> <a class="code" href="class_h_p_cloud_1_1_transport_1_1_response.html" title="A Transport response.">Response</a>($out, $info, $responseHeaders);</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    <span class="comment">//curl_close($curl);</span></div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    <span class="keywordflow">if</span> (is_resource($copy)) {</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;      fclose($copy);</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    }</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    <span class="keywordflow">return</span> $resp;</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;  }</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;<span class="comment">  /**</span></div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;<span class="comment">   * Poor man&#39;s connection pooling.</span></div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;<span class="comment">   *</span></div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;<span class="comment">   * Instead of using curl_exec(), we use curl_multi_* to</span></div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;<span class="comment">   * handle the processing The CURL multi library tracks connections, and</span></div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;<span class="comment">   * basically provides connection sharing across requests. So two requests made to</span></div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;<span class="comment">   * the same server will use the same connection (even when they are executed</span></div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;<span class="comment">   * separately) assuming that the remote server supports this.</span></div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;<span class="comment">   *</span></div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;<span class="comment">   * We&#39;ve noticed that this improves performance substantially, especially since</span></div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;<span class="comment">   * SSL requests only require the SSL handshake once.</span></div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;<span class="comment">   *</span></div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;<span class="comment">   * @param resource $handle</span></div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;<span class="comment">   *   A CURL handle from curl_init().</span></div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;<span class="comment">   * @retval boolean</span></div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;<span class="comment">   * @return boolean</span></div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;<span class="comment">   *   Returns a boolean value indicating whether or not CURL could process the</span></div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;<span class="comment">   *   request.</span></div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;<span class="comment">   */</span></div>
-<div class="line"><a name="l00285"></a><span class="lineno"><a class="code" href="class_h_p_cloud_1_1_transport_1_1_c_u_r_l_transport.html#ae74b8d3c2c0a45733bcc632705409c7a">  285</a></span>&#160;  <span class="keyword">protected</span> <span class="keyword">function</span> <a class="code" href="class_h_p_cloud_1_1_transport_1_1_c_u_r_l_transport.html#ae74b8d3c2c0a45733bcc632705409c7a" title="Poor man&#39;s connection pooling.">execCurl</a>($handle) {</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    <span class="keywordflow">if</span> (empty($this-&gt;multi)) {</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;      <a class="code" href="class_h_p_cloud_1_1_transport_1_1_c_u_r_l_transport.html#ae0d6fd4f745b74b55ab17eb86a9fffe6" title="The curl_multi instance.">$multi</a> = curl_multi_init();</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;      $this-&gt;multi = <a class="code" href="class_h_p_cloud_1_1_transport_1_1_c_u_r_l_transport.html#ae0d6fd4f745b74b55ab17eb86a9fffe6" title="The curl_multi instance.">$multi</a>;</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;      <span class="comment">// fwrite(STDOUT, &quot;Creating MULTI handle.\n&quot;);</span></div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    }</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;      <span class="comment">// fwrite(STDOUT, &quot;Reusing MULTI handle.\n&quot;);</span></div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;      <a class="code" href="class_h_p_cloud_1_1_transport_1_1_c_u_r_l_transport.html#ae0d6fd4f745b74b55ab17eb86a9fffe6" title="The curl_multi instance.">$multi</a> = $this-&gt;multi;</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    }</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    curl_multi_add_handle(<a class="code" href="class_h_p_cloud_1_1_transport_1_1_c_u_r_l_transport.html#ae0d6fd4f745b74b55ab17eb86a9fffe6" title="The curl_multi instance.">$multi</a>, $handle);</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    $active = NULL;</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    <span class="keywordflow">do</span> {</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;      $ret = curl_multi_exec(<a class="code" href="class_h_p_cloud_1_1_transport_1_1_c_u_r_l_transport.html#ae0d6fd4f745b74b55ab17eb86a9fffe6" title="The curl_multi instance.">$multi</a>, $active);</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    } <span class="keywordflow">while</span> ($ret == CURLM_CALL_MULTI_PERFORM);</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    <span class="keywordflow">while</span> ($active &amp;&amp; $ret == CURLM_OK) {</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;      <span class="keywordflow">if</span> (curl_multi_select(<a class="code" href="class_h_p_cloud_1_1_transport_1_1_c_u_r_l_transport.html#ae0d6fd4f745b74b55ab17eb86a9fffe6" title="The curl_multi instance.">$multi</a>) != -1) {</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;        <span class="keywordflow">do</span> {</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;           $mrc = curl_multi_exec(<a class="code" href="class_h_p_cloud_1_1_transport_1_1_c_u_r_l_transport.html#ae0d6fd4f745b74b55ab17eb86a9fffe6" title="The curl_multi instance.">$multi</a>, $active);</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;        } <span class="keywordflow">while</span> ($mrc == CURLM_CALL_MULTI_PERFORM);</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;      }</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    }</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    curl_multi_remove_handle(<a class="code" href="class_h_p_cloud_1_1_transport_1_1_c_u_r_l_transport.html#ae0d6fd4f745b74b55ab17eb86a9fffe6" title="The curl_multi instance.">$multi</a>, $handle);</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    <span class="comment">//curl_multi_close($multi);</span></div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    rewind($headerFile);</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    $responseHeaders = $this-&gt;<a class="code" href="class_h_p_cloud_1_1_transport_1_1_c_u_r_l_transport.html#a02b87280ccafde066ca4f283c82372e7" title="This function reads the header file into an array.">fetchHeaders</a>($headerFile);</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    fclose($headerFile);</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    <span class="keywordflow">if</span> (!$ret || $status &lt; 200 || $status &gt; 299) {</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;      <span class="keywordflow">if</span> (empty($responseHeaders)) {</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        $err = <span class="stringliteral">&#39;Unknown (non-HTTP) error: &#39;</span> . $status;</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;      }</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;      <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;        $err = $responseHeaders[0];</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;      }</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;      <span class="comment">//rewind($out);</span></div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;      <span class="comment">//fwrite(STDERR, stream_get_contents($out));</span></div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;      Response::failure($status, $err, $info[<span class="stringliteral">&#39;url&#39;</span>], $method, $info);</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    }</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    rewind($out);</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    <span class="comment">// Now we need to build a response.</span></div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    $resp = <span class="keyword">new</span> <a class="code" href="class_h_p_cloud_1_1_transport_1_1_response.html" title="A Transport response.">Response</a>($out, $info, $responseHeaders);</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    <span class="comment">//curl_close($curl);</span></div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;    <span class="keywordflow">if</span> (is_resource($copy)) {</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;      fclose($copy);</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    }</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    <span class="keywordflow">return</span> $resp;</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;  }</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;<span class="comment">  /**</span></div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;<span class="comment">   * Poor man&#39;s connection pooling.</span></div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;<span class="comment">   *</span></div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;<span class="comment">   * Instead of using curl_exec(), we use curl_multi_* to</span></div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;<span class="comment">   * handle the processing The CURL multi library tracks connections, and</span></div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;<span class="comment">   * basically provides connection sharing across requests. So two requests made to</span></div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;<span class="comment">   * the same server will use the same connection (even when they are executed</span></div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;<span class="comment">   * separately) assuming that the remote server supports this.</span></div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;<span class="comment">   *</span></div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;<span class="comment">   * We&#39;ve noticed that this improves performance substantially, especially since</span></div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;<span class="comment">   * SSL requests only require the SSL handshake once.</span></div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;<span class="comment">   *</span></div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;<span class="comment">   * @param resource $handle</span></div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;<span class="comment">   *   A CURL handle from curl_init().</span></div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;<span class="comment">   * @retval boolean</span></div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;<span class="comment">   * @return boolean</span></div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;<span class="comment">   *   Returns a boolean value indicating whether or not CURL could process the</span></div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;<span class="comment">   *   request.</span></div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;<span class="comment">   */</span></div>
+<div class="line"><a name="l00301"></a><span class="lineno"><a class="code" href="class_h_p_cloud_1_1_transport_1_1_c_u_r_l_transport.html#ae74b8d3c2c0a45733bcc632705409c7a">  301</a></span>&#160;  <span class="keyword">protected</span> <span class="keyword">function</span> <a class="code" href="class_h_p_cloud_1_1_transport_1_1_c_u_r_l_transport.html#ae74b8d3c2c0a45733bcc632705409c7a" title="Poor man&#39;s connection pooling.">execCurl</a>($handle) {</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    <span class="keywordflow">if</span> (empty($this-&gt;multi)) {</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;      <a class="code" href="class_h_p_cloud_1_1_transport_1_1_c_u_r_l_transport.html#ae0d6fd4f745b74b55ab17eb86a9fffe6" title="The curl_multi instance.">$multi</a> = curl_multi_init();</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;      $this-&gt;multi = <a class="code" href="class_h_p_cloud_1_1_transport_1_1_c_u_r_l_transport.html#ae0d6fd4f745b74b55ab17eb86a9fffe6" title="The curl_multi instance.">$multi</a>;</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;      <span class="comment">// fwrite(STDOUT, &quot;Creating MULTI handle.\n&quot;);</span></div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    }</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;      <span class="comment">// fwrite(STDOUT, &quot;Reusing MULTI handle.\n&quot;);</span></div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;      <a class="code" href="class_h_p_cloud_1_1_transport_1_1_c_u_r_l_transport.html#ae0d6fd4f745b74b55ab17eb86a9fffe6" title="The curl_multi instance.">$multi</a> = $this-&gt;multi;</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    }</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    curl_multi_add_handle(<a class="code" href="class_h_p_cloud_1_1_transport_1_1_c_u_r_l_transport.html#ae0d6fd4f745b74b55ab17eb86a9fffe6" title="The curl_multi instance.">$multi</a>, $handle);</div>
 <div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    <span class="keywordflow">return</span> TRUE;</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;  }</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;<span class="comment">  /**</span></div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;<span class="comment">   * This function reads the header file into an array.</span></div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;<span class="comment">   *</span></div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;<span class="comment">   * This format mataches the format returned by the stream handlers, so</span></div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;<span class="comment">   * we can re-use the header parsing logic in Response.</span></div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;<span class="comment">   *</span></div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;<span class="comment">   * @param resource $file</span></div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;<span class="comment">   *   A file pointer to the file that has the headers.</span></div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;<span class="comment">   * @retval array</span></div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;<span class="comment">   * @return array</span></div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;<span class="comment">   *   An array of headers, one header per line.</span></div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;<span class="comment">   */</span></div>
-<div class="line"><a name="l00329"></a><span class="lineno"><a class="code" href="class_h_p_cloud_1_1_transport_1_1_c_u_r_l_transport.html#a02b87280ccafde066ca4f283c82372e7">  329</a></span>&#160;  <span class="keyword">protected</span> <span class="keyword">function</span> <a class="code" href="class_h_p_cloud_1_1_transport_1_1_c_u_r_l_transport.html#a02b87280ccafde066ca4f283c82372e7" title="This function reads the header file into an array.">fetchHeaders</a>(<a class="code" href="streams-tutorial-example_8php.html#ad49a2659ea99542f3b17418b5e20f1a6">$file</a>) {</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    $buffer = array();</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    <span class="keywordflow">while</span> ($header = fgets(<a class="code" href="streams-tutorial-example_8php.html#ad49a2659ea99542f3b17418b5e20f1a6">$file</a>)) {</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;      $header = trim($header);</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;      <span class="keywordflow">if</span> ($header == <span class="stringliteral">&#39;HTTP/1.1 100 Continue&#39;</span>) {</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;        <span class="comment">// Obey the command.</span></div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;        <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;      }</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;      <span class="keywordflow">if</span> (!empty($header)) {</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;        $buffer[] = $header;</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;      }</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;    }</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;    <span class="keywordflow">return</span> $buffer;</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;  }</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;<span class="comment">  /**</span></div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;<span class="comment">   * Set the appropriate constant on the CURL object.</span></div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;<span class="comment">   *</span></div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;<span class="comment">   * Curl handles method name setting in a slightly counter-intuitive </span></div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;<span class="comment">   * way, so we have a special function for setting the method </span></div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;<span class="comment">   * correctly. Note that since we do not POST as www-form-*, we </span></div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;<span class="comment">   * use a custom post.</span></div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;<span class="comment">   *</span></div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;<span class="comment">   * @param resource $curl</span></div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;<span class="comment">   *   A curl object.</span></div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;<span class="comment">   * @param string $method</span></div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;<span class="comment">   *   An HTTP method name.</span></div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;<span class="comment">   */</span></div>
-<div class="line"><a name="l00357"></a><span class="lineno"><a class="code" href="class_h_p_cloud_1_1_transport_1_1_c_u_r_l_transport.html#a7d4ab2e3d808744c34569b9bf0462bb5">  357</a></span>&#160;  <span class="keyword">protected</span> <span class="keyword">function</span> <a class="code" href="class_h_p_cloud_1_1_transport_1_1_c_u_r_l_transport.html#a7d4ab2e3d808744c34569b9bf0462bb5" title="Set the appropriate constant on the CURL object.">determineMethod</a>($curl, $method) {</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;    $method = strtoupper($method);</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;</div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;    <span class="keywordflow">switch</span> ($method) {</div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;      <span class="keywordflow">case</span> <span class="stringliteral">&#39;GET&#39;</span>:</div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;        curl_setopt($curl, CURLOPT_HTTPGET, TRUE);</div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;      <span class="keywordflow">case</span> <span class="stringliteral">&#39;HEAD&#39;</span>:</div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;        curl_setopt($curl, CURLOPT_NOBODY, TRUE);</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;</div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;      <span class="comment">// Put is problematic: Some PUT requests might not have</span></div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;      <span class="comment">// a body.</span></div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;      <span class="keywordflow">case</span> <span class="stringliteral">&#39;PUT&#39;</span>:</div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;        curl_setopt($curl, CURLOPT_PUT, TRUE);</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;</div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;      <span class="comment">// We use customrequest for post because we are</span></div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;      <span class="comment">// not submitting form data.</span></div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;      <span class="keywordflow">case</span> <span class="stringliteral">&#39;POST&#39;</span>:</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;      <span class="keywordflow">case</span> <span class="stringliteral">&#39;DELETE&#39;</span>:</div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;      <span class="keywordflow">case</span> <span class="stringliteral">&#39;COPY&#39;</span>:</div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;      <span class="keywordflow">default</span>:</div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $method);</div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;    }</div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;  }</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    <span class="comment">// Initialize all of the listeners</span></div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    $active = NULL;</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    <span class="keywordflow">do</span> {</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;      $ret = curl_multi_exec(<a class="code" href="class_h_p_cloud_1_1_transport_1_1_c_u_r_l_transport.html#ae0d6fd4f745b74b55ab17eb86a9fffe6" title="The curl_multi instance.">$multi</a>, $active);</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    } <span class="keywordflow">while</span> ($ret == CURLM_CALL_MULTI_PERFORM);</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    <span class="keywordflow">while</span> ($active &amp;&amp; $ret == CURLM_OK) {</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;      <span class="keywordflow">if</span> (curl_multi_select(<a class="code" href="class_h_p_cloud_1_1_transport_1_1_c_u_r_l_transport.html#ae0d6fd4f745b74b55ab17eb86a9fffe6" title="The curl_multi instance.">$multi</a>) != -1) {</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;        <span class="keywordflow">do</span> {</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;           $mrc = curl_multi_exec(<a class="code" href="class_h_p_cloud_1_1_transport_1_1_c_u_r_l_transport.html#ae0d6fd4f745b74b55ab17eb86a9fffe6" title="The curl_multi instance.">$multi</a>, $active);</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;        } <span class="keywordflow">while</span> ($mrc == CURLM_CALL_MULTI_PERFORM);</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;      }</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;    }</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    curl_multi_remove_handle(<a class="code" href="class_h_p_cloud_1_1_transport_1_1_c_u_r_l_transport.html#ae0d6fd4f745b74b55ab17eb86a9fffe6" title="The curl_multi instance.">$multi</a>, $handle);</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    <span class="comment">//curl_multi_close($multi);</span></div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    <span class="keywordflow">return</span> TRUE;</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;  }</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;<span class="comment">  /**</span></div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;<span class="comment">   * This function reads the header file into an array.</span></div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;<span class="comment">   *</span></div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;<span class="comment">   * This format mataches the format returned by the stream handlers, so</span></div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;<span class="comment">   * we can re-use the header parsing logic in Response.</span></div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;<span class="comment">   *</span></div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;<span class="comment">   * @param resource $file</span></div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;<span class="comment">   *   A file pointer to the file that has the headers.</span></div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;<span class="comment">   * @retval array</span></div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;<span class="comment">   * @return array</span></div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;<span class="comment">   *   An array of headers, one header per line.</span></div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;<span class="comment">   */</span></div>
+<div class="line"><a name="l00346"></a><span class="lineno"><a class="code" href="class_h_p_cloud_1_1_transport_1_1_c_u_r_l_transport.html#a02b87280ccafde066ca4f283c82372e7">  346</a></span>&#160;  <span class="keyword">protected</span> <span class="keyword">function</span> <a class="code" href="class_h_p_cloud_1_1_transport_1_1_c_u_r_l_transport.html#a02b87280ccafde066ca4f283c82372e7" title="This function reads the header file into an array.">fetchHeaders</a>(<a class="code" href="streams-tutorial-example_8php.html#ad49a2659ea99542f3b17418b5e20f1a6">$file</a>) {</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    $buffer = array();</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;    <span class="keywordflow">while</span> ($header = fgets(<a class="code" href="streams-tutorial-example_8php.html#ad49a2659ea99542f3b17418b5e20f1a6">$file</a>)) {</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;      $header = trim($header);</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;      <span class="keywordflow">if</span> ($header == <span class="stringliteral">&#39;HTTP/1.1 100 Continue&#39;</span>) {</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;        <span class="comment">// Obey the command.</span></div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;        <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;      }</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;      <span class="keywordflow">if</span> (!empty($header)) {</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;        $buffer[] = $header;</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;      }</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;    }</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;    <span class="keywordflow">return</span> $buffer;</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;  }</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;<span class="comment">  /**</span></div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;<span class="comment">   * Set the appropriate constant on the CURL object.</span></div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;<span class="comment">   *</span></div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;<span class="comment">   * Curl handles method name setting in a slightly counter-intuitive </span></div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;<span class="comment">   * way, so we have a special function for setting the method </span></div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;<span class="comment">   * correctly. Note that since we do not POST as www-form-*, we </span></div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;<span class="comment">   * use a custom post.</span></div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;<span class="comment">   *</span></div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;<span class="comment">   * @param resource $curl</span></div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;<span class="comment">   *   A curl object.</span></div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;<span class="comment">   * @param string $method</span></div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;<span class="comment">   *   An HTTP method name.</span></div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;<span class="comment">   */</span></div>
+<div class="line"><a name="l00374"></a><span class="lineno"><a class="code" href="class_h_p_cloud_1_1_transport_1_1_c_u_r_l_transport.html#a7d4ab2e3d808744c34569b9bf0462bb5">  374</a></span>&#160;  <span class="keyword">protected</span> <span class="keyword">function</span> <a class="code" href="class_h_p_cloud_1_1_transport_1_1_c_u_r_l_transport.html#a7d4ab2e3d808744c34569b9bf0462bb5" title="Set the appropriate constant on the CURL object.">determineMethod</a>($curl, $method) {</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;    $method = strtoupper($method);</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;    <span class="keywordflow">switch</span> ($method) {</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;      <span class="keywordflow">case</span> <span class="stringliteral">&#39;GET&#39;</span>:</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;        curl_setopt($curl, CURLOPT_HTTPGET, TRUE);</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;      <span class="keywordflow">case</span> <span class="stringliteral">&#39;HEAD&#39;</span>:</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;        curl_setopt($curl, CURLOPT_NOBODY, TRUE);</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;        <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;</div>
-<div class="line"><a name="l00385"></a><span class="lineno"><a class="code" href="class_h_p_cloud_1_1_transport_1_1_c_u_r_l_transport.html#abeefab02f826c67acad349b6d3e62c23">  385</a></span>&#160;  <span class="keyword">public</span> <span class="keyword">function</span> <a class="code" href="class_h_p_cloud_1_1_transport_1_1_c_u_r_l_transport.html#abeefab02f826c67acad349b6d3e62c23">setHeaders</a>($curl, $headers) {</div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;    $buffer = array();</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;    $format = <span class="stringliteral">&#39;%s: %s&#39;</span>;</div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;    <span class="keywordflow">foreach</span> ($headers as <a class="code" href="oo-tutorial-code_8php.html#ab2fc40d43824ea3e1ce5d86dee0d763b">$name</a> =&gt; $value) {</div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;      $buffer[] = sprintf($format, <a class="code" href="oo-tutorial-code_8php.html#ab2fc40d43824ea3e1ce5d86dee0d763b">$name</a>, $value);</div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    }</div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;</div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;    curl_setopt($curl, CURLOPT_HTTPHEADER, $buffer);</div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;</div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;    <span class="keywordflow">return</span> $this;</div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;  }</div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;}</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;      <span class="comment">// Put is problematic: Some PUT requests might not have</span></div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;      <span class="comment">// a body.</span></div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;      <span class="keywordflow">case</span> <span class="stringliteral">&#39;PUT&#39;</span>:</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;        curl_setopt($curl, CURLOPT_PUT, TRUE);</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;      <span class="comment">// We use customrequest for post because we are</span></div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;      <span class="comment">// not submitting form data.</span></div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;      <span class="keywordflow">case</span> <span class="stringliteral">&#39;POST&#39;</span>:</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;      <span class="keywordflow">case</span> <span class="stringliteral">&#39;DELETE&#39;</span>:</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;      <span class="keywordflow">case</span> <span class="stringliteral">&#39;COPY&#39;</span>:</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;      <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $method);</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;    }</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;  }</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;</div>
+<div class="line"><a name="l00402"></a><span class="lineno"><a class="code" href="class_h_p_cloud_1_1_transport_1_1_c_u_r_l_transport.html#abeefab02f826c67acad349b6d3e62c23">  402</a></span>&#160;  <span class="keyword">public</span> <span class="keyword">function</span> <a class="code" href="class_h_p_cloud_1_1_transport_1_1_c_u_r_l_transport.html#abeefab02f826c67acad349b6d3e62c23">setHeaders</a>($curl, $headers) {</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;    $buffer = array();</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;    $format = <span class="stringliteral">&#39;%s: %s&#39;</span>;</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;    <span class="keywordflow">foreach</span> ($headers as <a class="code" href="oo-tutorial-code_8php.html#ab2fc40d43824ea3e1ce5d86dee0d763b">$name</a> =&gt; $value) {</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;      $buffer[] = sprintf($format, <a class="code" href="oo-tutorial-code_8php.html#ab2fc40d43824ea3e1ce5d86dee0d763b">$name</a>, $value);</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;    }</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;    curl_setopt($curl, CURLOPT_HTTPHEADER, $buffer);</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;    <span class="keywordflow">return</span> $this;</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;  }</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_e7fde51b7d0f7837d6838145ad268ad8.html">src</a></li><li class="navelem"><a class="el" href="dir_c55ff1ab2ea2694bf18094bf6344045b.html">HPCloud</a></li><li class="navelem"><a class="el" href="dir_5a6cd14c48dd5dbac05de8a6840fe2a0.html">Transport</a></li><li class="navelem"><a class="el" href="_c_u_r_l_transport_8php.html">CURLTransport.php</a></li>
-    <li class="footer">Generated on Fri Aug 10 2012 09:59:51 for HPCloud-PHP by
+    <li class="navelem"><a class="el" href="dir_be9e4374303c7e194b459701b7b510f4.html">src</a></li><li class="navelem"><a class="el" href="dir_6c8945618b1013d2ea959b155c0141b9.html">HPCloud</a></li><li class="navelem"><a class="el" href="dir_509306a57963c6125ad2dcdaab79832c.html">Transport</a></li><li class="navelem"><a class="el" href="_c_u_r_l_transport_8php.html">CURLTransport.php</a></li>
+    <li class="footer">Generated on Tue Nov 6 2012 10:50:36 for HPCloud-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.1.2 </li>
   </ul>

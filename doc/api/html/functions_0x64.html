@@ -28,7 +28,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">HPCloud-PHP
-   &#160;<span id="projectnumber">1.0.0</span>
+   &#160;<span id="projectnumber">1.1.0</span>
    </div>
    <div id="projectbrief">PHP bindings for HPCloud and OpenStack services.</div>
   </td>
@@ -142,15 +142,20 @@ $(document).ready(function(){initNavTree('functions_0x64.html','');});
 <li>DEFAULT_CONTENT_TYPE
 : <a class="el" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_object.html#a24051453c98e567a1e1264e7662b82f8">Object</a>
 </li>
+<li>DEFAULT_REGION
+: <a class="el" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#a221c08de54366b1349cd15f8835b551a">DBaaS</a>
+, <a class="el" href="class_h_p_cloud_1_1_storage_1_1_object_storage.html#a221c08de54366b1349cd15f8835b551a">ObjectStorage</a>
+, <a class="el" href="class_h_p_cloud_1_1_storage_1_1_c_d_n.html#a221c08de54366b1349cd15f8835b551a">CDN</a>
+</li>
 <li>DEFAULT_SCHEME
 : <a class="el" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html#aed0e317ab7e39747995de2d1985b09d3">StreamWrapper</a>
 , <a class="el" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper_f_s.html#aed0e317ab7e39747995de2d1985b09d3">StreamWrapperFS</a>
 </li>
 <li>delete()
-: <a class="el" href="class_h_p_cloud_1_1_services_1_1_d_baa_s_1_1_instance.html#add14ebafddc13cddb8f75e7ea0edc358">Instance</a>
-, <a class="el" href="class_h_p_cloud_1_1_services_1_1_d_baa_s_1_1_snapshot.html#aac7650b10e69984f9898f6aa48357c41">Snapshot</a>
+: <a class="el" href="class_h_p_cloud_1_1_services_1_1_d_baa_s_1_1_snapshot.html#aac7650b10e69984f9898f6aa48357c41">Snapshot</a>
 , <a class="el" href="class_h_p_cloud_1_1_storage_1_1_c_d_n.html#af7c3ea3150164bc92700134803f277be">CDN</a>
 , <a class="el" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_container.html#af7c3ea3150164bc92700134803f277be">Container</a>
+, <a class="el" href="class_h_p_cloud_1_1_services_1_1_d_baa_s_1_1_instance.html#add14ebafddc13cddb8f75e7ea0edc358">Instance</a>
 </li>
 <li>deleteContainer()
 : <a class="el" href="class_h_p_cloud_1_1_storage_1_1_object_storage.html#a577a1d33d13c710065dc7961812f3fc1">ObjectStorage</a>
@@ -181,14 +186,14 @@ $(document).ready(function(){initNavTree('functions_0x64.html','');});
 : <a class="el" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_object.html#ac6669f1e6c0591e92e6db3bf2bf47446">Object</a>
 </li>
 <li>doRequest()
-: <a class="el" href="class_h_p_cloud_1_1_transport_1_1_c_u_r_l_transport.html#a99e5570b2fd21c80d6244ad1665a85db">CURLTransport</a>
+: <a class="el" href="class_h_p_cloud_1_1_transport_1_1_p_h_p_stream_transport.html#a8c602b141c5f9bef86a982a1826a9140">PHPStreamTransport</a>
+, <a class="el" href="class_h_p_cloud_1_1_transport_1_1_c_u_r_l_transport.html#a99e5570b2fd21c80d6244ad1665a85db">CURLTransport</a>
 , <a class="el" href="interface_h_p_cloud_1_1_transport_1_1_transporter.html#a8c602b141c5f9bef86a982a1826a9140">Transporter</a>
-, <a class="el" href="class_h_p_cloud_1_1_transport_1_1_p_h_p_stream_transport.html#a8c602b141c5f9bef86a982a1826a9140">PHPStreamTransport</a>
 </li>
 <li>doRequestWithResource()
-: <a class="el" href="class_h_p_cloud_1_1_transport_1_1_p_h_p_stream_transport.html#a959e766c0228e247c0f5ab687e2d98e2">PHPStreamTransport</a>
+: <a class="el" href="interface_h_p_cloud_1_1_transport_1_1_transporter.html#a959e766c0228e247c0f5ab687e2d98e2">Transporter</a>
 , <a class="el" href="class_h_p_cloud_1_1_transport_1_1_c_u_r_l_transport.html#a959e766c0228e247c0f5ab687e2d98e2">CURLTransport</a>
-, <a class="el" href="interface_h_p_cloud_1_1_transport_1_1_transporter.html#a959e766c0228e247c0f5ab687e2d98e2">Transporter</a>
+, <a class="el" href="class_h_p_cloud_1_1_transport_1_1_p_h_p_stream_transport.html#a959e766c0228e247c0f5ab687e2d98e2">PHPStreamTransport</a>
 </li>
 <li>dsn()
 : <a class="el" href="class_h_p_cloud_1_1_services_1_1_d_baa_s_1_1_instance_details.html#aabbc8b4d1b3b09cfc633d0795d6a7ac6">InstanceDetails</a>
@@ -199,7 +204,7 @@ $(document).ready(function(){initNavTree('functions_0x64.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Aug 10 2012 09:59:53 for HPCloud-PHP by
+    <li class="footer">Generated on Tue Nov 6 2012 10:50:37 for HPCloud-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.1.2 </li>
   </ul>

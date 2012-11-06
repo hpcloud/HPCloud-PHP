@@ -28,7 +28,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">HPCloud-PHP
-   &#160;<span id="projectnumber">1.0.0</span>
+   &#160;<span id="projectnumber">1.1.0</span>
    </div>
    <div id="projectbrief">PHP bindings for HPCloud and OpenStack services.</div>
   </td>
@@ -268,7 +268,7 @@ Static Protected Attributes</h2></td></tr>
 <div class="line"><a class="code" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html#ae05dedb802ada0155efdece2044fed64" title="The stream context.">$context</a> = stream_context_create(</div>
 <div class="line">  array(<span class="stringliteral">&#39;swift&#39;</span> =&gt; array(</div>
 <div class="line">    <span class="stringliteral">&#39;account&#39;</span> =&gt; ACCOUNT_NUMBER,</div>
-<div class="line">    <span class="stringliteral">&#39;key&#39;</span> =&gt; SECRET_KEY,</div>
+<div class="line">    <span class="stringliteral">&#39;secret&#39;</span> =&gt; SECRET_KEY,</div>
 <div class="line">    <span class="stringliteral">&#39;tenantid&#39;</span> =&gt; TENANT_ID,</div>
 <div class="line">    <span class="stringliteral">&#39;tenantname&#39;</span> =&gt; TENANT_NAME, <span class="comment">// Optional instead of tenantid.</span></div>
 <div class="line">    <span class="stringliteral">&#39;endpoint&#39;</span> =&gt; AUTH_ENDPOINT_URL,</div>
@@ -311,7 +311,7 @@ Static Protected Attributes</h2></td></tr>
 <li>You must use <a class="el" href="class_h_p_cloud_1_1_bootstrap.html#ad616b4b781e11d863e7421361b49233e" title="Set configuration directives for HPCloud.">Bootstrap::setConfiguration()</a> to pass in all of the values you would normally pass into a stream context:<ul>
 <li>endpoint</li>
 <li>account</li>
-<li>key</li>
+<li>secret</li>
 </ul>
 </li>
 <li>Most of the information from this family of calls can also be obtained using fstat(). If you were going to open a stream anyway, you might as well use fopen()/fstat().</li>
@@ -343,7 +343,7 @@ in the 'foo' container whose names start with 'bar/'".</p>
 <dl class="section attention"><dt>Attention</dt><dd>PHP functions that do not allow you to pass a context may still be supported here <em>IF</em> you have set options using <a class="el" href="class_h_p_cloud_1_1_bootstrap.html#ad616b4b781e11d863e7421361b49233e" title="Set configuration directives for HPCloud.">Bootstrap::setConfiguration()</a>.</dd></dl>
 <p>You are <em>required</em> to pass in authentication information. This comes in one of three forms:</p>
 <ol type="1">
-<li>API keys: acccount, key, tenantid, endpoint</li>
+<li>API keys: acccount, secret, tenantid, endpoint</li>
 <li>User login: username, password, tenantid, endpoint</li>
 <li>Existing (valid) token: token, swift_endpoint</li>
 </ol>
@@ -355,8 +355,8 @@ in the 'foo' container whose names start with 'bar/'".</p>
 <li>swift_endpoint: The URL to the swift instance. This is only necessary if 'token' is set. Otherwise it is ignored.</li>
 <li>username: A username. MUST be accompanied by 'password' and 'tenantid' (or 'tenantname').</li>
 <li>password: A password. MUST be accompanied by 'username' and 'tenantid' (or 'tenantname').</li>
-<li>account: An account ID. MUST be accompanied by a 'key' and 'tenantid' (or 'tenantname').</li>
-<li>key: A secret key. MUST be accompanied by an 'account' and 'tenantid' (or 'tenantname').</li>
+<li>account: An account ID. MUST be accompanied by a 'secret' and 'tenantid' (or 'tenantname').</li>
+<li>secret: A secret key. MUST be accompanied by an 'account' and 'tenantid' (or 'tenantname').</li>
 <li>endpoint: The URL to the authentication endpoint. Necessary if you are not using a 'token' and 'swift_endpoint'.</li>
 <li>use_swift_auth: If this is set to TRUE, it will force the app to use the deprecated swiftAuth instead of IdentityServices authentication. In general, you should avoid using this.</li>
 <li>content_type: This is effective only when writing files. It will set the Content-Type of the file during upload.</li>
@@ -398,11 +398,11 @@ in the 'foo' container whose names start with 'bar/'".</p>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l01637">1637</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
+<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l01638">1638</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
-<p>References <a class="el" href="oo-tutorial-code_8php_source.html#l00013">$account</a>, <a class="el" href="oo-tutorial-code_8php_source.html#l00014">$key</a>, <a class="el" href="oo-tutorial-code_8php_source.html#l00015">$tenantId</a>, <a class="el" href="_object_storage_8php_source.html#l00084">ObjectStorage\$token</a>, and <a class="el" href="_stream_wrapper_8php_source.html#l01426">StreamWrapper\cxt()</a>.</p>
+<p>References <a class="el" href="oo-tutorial-code_8php_source.html#l00013">$account</a>, <a class="el" href="oo-tutorial-code_8php_source.html#l00014">$key</a>, <a class="el" href="oo-tutorial-code_8php_source.html#l00015">$tenantId</a>, <a class="el" href="_object_storage_8php_source.html#l00086">ObjectStorage\$token</a>, and <a class="el" href="_stream_wrapper_8php_source.html#l01426">StreamWrapper\cxt()</a>.</p>
 
-<p>Referenced by <a class="el" href="_stream_wrapper_8php_source.html#l01610">StreamWrapper\initializeCDN()</a>, and <a class="el" href="_stream_wrapper_8php_source.html#l01519">StreamWrapper\initializeObjectStorage()</a>.</p>
+<p>Referenced by <a class="el" href="_stream_wrapper_8php_source.html#l01611">StreamWrapper\initializeCDN()</a>, and <a class="el" href="_stream_wrapper_8php_source.html#l01519">StreamWrapper\initializeObjectStorage()</a>.</p>
 
 </div>
 </div>
@@ -459,7 +459,7 @@ in the 'foo' container whose names start with 'bar/'".</p>
 
 <p>References <a class="el" href="streams-tutorial-example_8php_source.html#l00031">$cxt</a>, and <a class="el" href="oo-tutorial-code_8php_source.html#l00028">$name</a>.</p>
 
-<p>Referenced by <a class="el" href="_stream_wrapper_8php_source.html#l01637">StreamWrapper\authenticate()</a>, <a class="el" href="_stream_wrapper_f_s_8php_source.html#l00193">StreamWrapperFS\fakeStat()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01610">StreamWrapper\initializeCDN()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01519">StreamWrapper\initializeObjectStorage()</a>, <a class="el" href="_stream_wrapper_f_s_8php_source.html#l00093">StreamWrapperFS\mkdir()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l00782">StreamWrapper\stream_open()</a>, <a class="el" href="_stream_wrapper_f_s_8php_source.html#l00115">StreamWrapperFS\url_stat()</a>, and <a class="el" href="_stream_wrapper_8php_source.html#l00700">StreamWrapper\writeRemote()</a>.</p>
+<p>Referenced by <a class="el" href="_stream_wrapper_8php_source.html#l01638">StreamWrapper\authenticate()</a>, <a class="el" href="_stream_wrapper_f_s_8php_source.html#l00193">StreamWrapperFS\fakeStat()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01611">StreamWrapper\initializeCDN()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01519">StreamWrapper\initializeObjectStorage()</a>, <a class="el" href="_stream_wrapper_f_s_8php_source.html#l00093">StreamWrapperFS\mkdir()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l00782">StreamWrapper\stream_open()</a>, <a class="el" href="_stream_wrapper_f_s_8php_source.html#l00115">StreamWrapperFS\url_stat()</a>, and <a class="el" href="_stream_wrapper_8php_source.html#l00700">StreamWrapper\writeRemote()</a>.</p>
 
 </div>
 </div>
@@ -549,7 +549,7 @@ in the 'foo' container whose names start with 'bar/'".</p>
 
 <p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00413">413</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
-<p>References <a class="el" href="oo-tutorial-code_8php_source.html#l00026">$container</a>, <a class="el" href="_object_storage_8php_source.html#l00088">ObjectStorage\$url</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01519">StreamWrapper\initializeObjectStorage()</a>, and <a class="el" href="_stream_wrapper_8php_source.html#l01472">StreamWrapper\parseUrl()</a>.</p>
+<p>References <a class="el" href="oo-tutorial-code_8php_source.html#l00026">$container</a>, <a class="el" href="_object_storage_8php_source.html#l00090">ObjectStorage\$url</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01519">StreamWrapper\initializeObjectStorage()</a>, and <a class="el" href="_stream_wrapper_8php_source.html#l01472">StreamWrapper\parseUrl()</a>.</p>
 
 </div>
 </div>
@@ -733,9 +733,9 @@ in the 'foo' container whose names start with 'bar/'".</p>
 <p>When use_cdn is set to TRUE, the wrapper tries to use <a class="el" href="class_h_p_cloud_1_1_storage_1_1_c_d_n.html" title="Provides CDN services for ObjectStorage.">CDN</a> service. In such cases, we need a handle to the <a class="el" href="class_h_p_cloud_1_1_storage_1_1_c_d_n.html" title="Provides CDN services for ObjectStorage.">CDN</a> object. This initializes that handle, which can later be used to get other information.</p>
 <p>Also note that <a class="el" href="class_h_p_cloud_1_1_storage_1_1_c_d_n.html" title="Provides CDN services for ObjectStorage.">CDN</a>'s default behavior is to fetch over SSL <a class="el" href="class_h_p_cloud_1_1_storage_1_1_c_d_n.html" title="Provides CDN services for ObjectStorage.">CDN</a>. To disable this, set 'cdn_require_ssl' to FALSE. </p>
 
-<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l01610">1610</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
+<p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l01611">1611</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
-<p>References <a class="el" href="oo-tutorial-code_8php_source.html#l00021">$catalog</a>, <a class="el" href="_object_storage_8php_source.html#l00084">ObjectStorage\$token</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01637">StreamWrapper\authenticate()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01426">StreamWrapper\cxt()</a>, and <a class="el" href="_object_storage_8php_source.html#l00204">ObjectStorage\newFromServiceCatalog()</a>.</p>
+<p>References <a class="el" href="oo-tutorial-code_8php_source.html#l00021">$catalog</a>, <a class="el" href="_object_storage_8php_source.html#l00086">ObjectStorage\$token</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01638">StreamWrapper\authenticate()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01426">StreamWrapper\cxt()</a>, and <a class="el" href="_object_storage_8php_source.html#l00206">ObjectStorage\newFromServiceCatalog()</a>.</p>
 
 <p>Referenced by <a class="el" href="_stream_wrapper_8php_source.html#l01519">StreamWrapper\initializeObjectStorage()</a>.</p>
 
@@ -769,17 +769,17 @@ in the 'foo' container whose names start with 'bar/'".</p>
 <li>swift_endpoint: The URL to the swift instance. This is only necessary if 'token' is set. Otherwise it is ignored.</li>
 <li>username: A username. MUST be accompanied by 'password' and 'tenantname'.</li>
 <li>password: A password. MUST be accompanied by 'username' and 'tenantname'.</li>
-<li>account: An account ID. MUST be accompanied by a 'key' and 'tenantname'.</li>
-<li>key: A secret key. MUST be accompanied by an 'account' and 'tenantname'.</li>
+<li>account: An account ID. MUST be accompanied by a 'secret' and 'tenantname'.</li>
+<li>secret: A secret key. MUST be accompanied by an 'account' and 'tenantname'.</li>
 <li>endpoint: The URL to the authentication endpoint. Necessary if you are not using a 'token' and 'swift_endpoint'.</li>
 <li>use_swift_auth: If this is set to TRUE, it will force the app to use the deprecated swiftAuth instead of IdentityServices authentication. In general, you should avoid using this.</li>
 </ul>
 <p>To find these params, the method first checks the supplied context. If the key is not found there, it checks the Bootstrap::conf().</p>
-<p>This should be rewritten to use <a class="el" href="class_h_p_cloud_1_1_storage_1_1_object_storage.html#a10cdf00002869db50b278e55d4a2ec4d" title="Given a service catalog and an token, create an ObjectStorage instance.">ObjectStorage::newFromServiceCatalog()</a>. </p>
+<p>This should be rewritten to use <a class="el" href="class_h_p_cloud_1_1_storage_1_1_object_storage.html#ade9f87d642ca7bc398d79754130a2b74" title="Given a service catalog and an token, create an ObjectStorage instance.">ObjectStorage::newFromServiceCatalog()</a>. </p>
 
 <p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l01519">1519</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
-<p>References <a class="el" href="oo-tutorial-code_8php_source.html#l00013">$account</a>, <a class="el" href="oo-tutorial-code_8php_source.html#l00016">$endpoint</a>, <a class="el" href="oo-tutorial-code_8php_source.html#l00014">$key</a>, <a class="el" href="oo-tutorial-code_8php_source.html#l00015">$tenantId</a>, <a class="el" href="_object_storage_8php_source.html#l00084">ObjectStorage\$token</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01637">StreamWrapper\authenticate()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01426">StreamWrapper\cxt()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01610">StreamWrapper\initializeCDN()</a>, <a class="el" href="_object_storage_8php_source.html#l00204">ObjectStorage\newFromServiceCatalog()</a>, and <a class="el" href="_object_storage_8php_source.html#l00137">ObjectStorage\newFromSwiftAuth()</a>.</p>
+<p>References <a class="el" href="oo-tutorial-code_8php_source.html#l00013">$account</a>, <a class="el" href="oo-tutorial-code_8php_source.html#l00016">$endpoint</a>, <a class="el" href="oo-tutorial-code_8php_source.html#l00014">$key</a>, <a class="el" href="oo-tutorial-code_8php_source.html#l00015">$tenantId</a>, <a class="el" href="_object_storage_8php_source.html#l00086">ObjectStorage\$token</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01638">StreamWrapper\authenticate()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01426">StreamWrapper\cxt()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01611">StreamWrapper\initializeCDN()</a>, <a class="el" href="_object_storage_8php_source.html#l00206">ObjectStorage\newFromServiceCatalog()</a>, and <a class="el" href="_object_storage_8php_source.html#l00139">ObjectStorage\newFromSwiftAuth()</a>.</p>
 
 <p>Referenced by <a class="el" href="_stream_wrapper_8php_source.html#l00413">StreamWrapper\dir_opendir()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l00570">StreamWrapper\rename()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l00782">StreamWrapper\stream_open()</a>, <a class="el" href="_stream_wrapper_f_s_8php_source.html#l00155">StreamWrapperFS\testDirectoryExists()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01109">StreamWrapper\unlink()</a>, and <a class="el" href="_stream_wrapper_8php_source.html#l01145">StreamWrapper\url_stat()</a>.</p>
 
@@ -882,7 +882,7 @@ in the 'foo' container whose names start with 'bar/'".</p>
 
 <p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l01472">1472</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
-<p>References <a class="el" href="oo-tutorial-code_8php_source.html#l00014">$key</a>, and <a class="el" href="_object_storage_8php_source.html#l00088">ObjectStorage\$url</a>.</p>
+<p>References <a class="el" href="oo-tutorial-code_8php_source.html#l00014">$key</a>, and <a class="el" href="_object_storage_8php_source.html#l00090">ObjectStorage\$url</a>.</p>
 
 <p>Referenced by <a class="el" href="_stream_wrapper_8php_source.html#l00413">StreamWrapper\dir_opendir()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l00570">StreamWrapper\rename()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l00782">StreamWrapper\stream_open()</a>, <a class="el" href="_stream_wrapper_f_s_8php_source.html#l00155">StreamWrapperFS\testDirectoryExists()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01109">StreamWrapper\unlink()</a>, and <a class="el" href="_stream_wrapper_8php_source.html#l01145">StreamWrapper\url_stat()</a>.</p>
 
@@ -978,7 +978,7 @@ in the 'foo' container whose names start with 'bar/'".</p>
 
 <p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l01247">1247</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
-<p>References <a class="el" href="_object_storage_8php_source.html#l00315">ObjectStorage\token()</a>.</p>
+<p>References <a class="el" href="_object_storage_8php_source.html#l00317">ObjectStorage\token()</a>.</p>
 
 </div>
 </div>
@@ -1204,7 +1204,7 @@ in the 'foo' container whose names start with 'bar/'".</p>
 
 <p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00782">782</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
-<p>References <a class="el" href="_object_storage_8php_source.html#l00084">ObjectStorage\$token</a>, <a class="el" href="_object_storage_8php_source.html#l00088">ObjectStorage\$url</a>, <a class="el" href="_object_storage_8php_source.html#l00407">ObjectStorage\container()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01426">StreamWrapper\cxt()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01519">StreamWrapper\initializeObjectStorage()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01472">StreamWrapper\parseUrl()</a>, and <a class="el" href="_stream_wrapper_8php_source.html#l01338">StreamWrapper\setMode()</a>.</p>
+<p>References <a class="el" href="_object_storage_8php_source.html#l00086">ObjectStorage\$token</a>, <a class="el" href="_object_storage_8php_source.html#l00090">ObjectStorage\$url</a>, <a class="el" href="_object_storage_8php_source.html#l00409">ObjectStorage\container()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01426">StreamWrapper\cxt()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01519">StreamWrapper\initializeObjectStorage()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01472">StreamWrapper\parseUrl()</a>, and <a class="el" href="_stream_wrapper_8php_source.html#l01338">StreamWrapper\setMode()</a>.</p>
 
 </div>
 </div>
@@ -1352,7 +1352,7 @@ in the 'foo' container whose names start with 'bar/'".</p>
 
 <p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l01046">1046</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
-<p>References <a class="el" href="_object_storage_8php_source.html#l00407">ObjectStorage\container()</a>, and <a class="el" href="_stream_wrapper_8php_source.html#l01271">StreamWrapper\generateStat()</a>.</p>
+<p>References <a class="el" href="_object_storage_8php_source.html#l00409">ObjectStorage\container()</a>, and <a class="el" href="_stream_wrapper_8php_source.html#l01271">StreamWrapper\generateStat()</a>.</p>
 
 </div>
 </div>
@@ -1477,7 +1477,7 @@ in the 'foo' container whose names start with 'bar/'".</p>
 
 <p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l01109">1109</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
-<p>References <a class="el" href="oo-tutorial-code_8php_source.html#l00026">$container</a>, <a class="el" href="oo-tutorial-code_8php_source.html#l00028">$name</a>, <a class="el" href="_object_storage_8php_source.html#l00084">ObjectStorage\$token</a>, <a class="el" href="_object_storage_8php_source.html#l00088">ObjectStorage\$url</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01519">StreamWrapper\initializeObjectStorage()</a>, and <a class="el" href="_stream_wrapper_8php_source.html#l01472">StreamWrapper\parseUrl()</a>.</p>
+<p>References <a class="el" href="oo-tutorial-code_8php_source.html#l00026">$container</a>, <a class="el" href="oo-tutorial-code_8php_source.html#l00028">$name</a>, <a class="el" href="_object_storage_8php_source.html#l00086">ObjectStorage\$token</a>, <a class="el" href="_object_storage_8php_source.html#l00090">ObjectStorage\$url</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01519">StreamWrapper\initializeObjectStorage()</a>, and <a class="el" href="_stream_wrapper_8php_source.html#l01472">StreamWrapper\parseUrl()</a>.</p>
 
 </div>
 </div>
@@ -1510,7 +1510,7 @@ in the 'foo' container whose names start with 'bar/'".</p>
 
 <p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l01145">1145</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
-<p>References <a class="el" href="oo-tutorial-code_8php_source.html#l00026">$container</a>, <a class="el" href="oo-tutorial-code_8php_source.html#l00028">$name</a>, <a class="el" href="_stream_wrapper_8php_source.html#l00338">StreamWrapper\$obj</a>, <a class="el" href="_object_storage_8php_source.html#l00084">ObjectStorage\$token</a>, <a class="el" href="_object_storage_8php_source.html#l00088">ObjectStorage\$url</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01271">StreamWrapper\generateStat()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01519">StreamWrapper\initializeObjectStorage()</a>, and <a class="el" href="_stream_wrapper_8php_source.html#l01472">StreamWrapper\parseUrl()</a>.</p>
+<p>References <a class="el" href="oo-tutorial-code_8php_source.html#l00026">$container</a>, <a class="el" href="oo-tutorial-code_8php_source.html#l00028">$name</a>, <a class="el" href="_stream_wrapper_8php_source.html#l00338">StreamWrapper\$obj</a>, <a class="el" href="_object_storage_8php_source.html#l00086">ObjectStorage\$token</a>, <a class="el" href="_object_storage_8php_source.html#l00090">ObjectStorage\$url</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01271">StreamWrapper\generateStat()</a>, <a class="el" href="_stream_wrapper_8php_source.html#l01519">StreamWrapper\initializeObjectStorage()</a>, and <a class="el" href="_stream_wrapper_8php_source.html#l01472">StreamWrapper\parseUrl()</a>.</p>
 
 </div>
 </div>
@@ -1540,7 +1540,7 @@ in the 'foo' container whose names start with 'bar/'".</p>
 
 <p>Definition at line <a class="el" href="_stream_wrapper_8php_source.html#l00700">700</a> of file <a class="el" href="_stream_wrapper_8php_source.html">StreamWrapper.php</a>.</p>
 
-<p>References <a class="el" href="_object_storage_8php_source.html#l00407">ObjectStorage\container()</a>, and <a class="el" href="_stream_wrapper_8php_source.html#l01426">StreamWrapper\cxt()</a>.</p>
+<p>References <a class="el" href="_object_storage_8php_source.html#l00409">ObjectStorage\container()</a>, and <a class="el" href="_stream_wrapper_8php_source.html#l01426">StreamWrapper\cxt()</a>.</p>
 
 <p>Referenced by <a class="el" href="_stream_wrapper_8php_source.html#l00643">StreamWrapper\stream_close()</a>, and <a class="el" href="_stream_wrapper_8php_source.html#l00684">StreamWrapper\stream_flush()</a>.</p>
 
@@ -2094,7 +2094,7 @@ in the 'foo' container whose names start with 'bar/'".</p>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_h_p_cloud.html">HPCloud</a></li><li class="navelem"><a class="el" href="namespace_h_p_cloud_1_1_storage.html">Storage</a></li><li class="navelem"><a class="el" href="namespace_h_p_cloud_1_1_storage_1_1_object_storage.html">ObjectStorage</a></li><li class="navelem"><a class="el" href="class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_stream_wrapper.html">StreamWrapper</a></li>
-    <li class="footer">Generated on Fri Aug 10 2012 09:59:52 for HPCloud-PHP by
+    <li class="footer">Generated on Tue Nov 6 2012 10:50:36 for HPCloud-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.1.2 </li>
   </ul>

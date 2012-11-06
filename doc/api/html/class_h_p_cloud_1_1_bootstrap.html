@@ -28,7 +28,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">HPCloud-PHP
-   &#160;<span id="projectnumber">1.0.0</span>
+   &#160;<span id="projectnumber">1.1.0</span>
    </div>
    <div id="projectbrief">PHP bindings for HPCloud and OpenStack services.</div>
   </td>
@@ -219,7 +219,7 @@ Static Public Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_bootstrap_8php_source.html#l00251">251</a> of file <a class="el" href="_bootstrap_8php_source.html">Bootstrap.php</a>.</p>
+<p>Definition at line <a class="el" href="_bootstrap_8php_source.html#l00264">264</a> of file <a class="el" href="_bootstrap_8php_source.html">Bootstrap.php</a>.</p>
 
 </div>
 </div>
@@ -272,7 +272,7 @@ Static Public Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>mixed The value, if found; or the default, if set; or NULL. </dd></dl>
 
-<p>Definition at line <a class="el" href="_bootstrap_8php_source.html#l00291">291</a> of file <a class="el" href="_bootstrap_8php_source.html">Bootstrap.php</a>.</p>
+<p>Definition at line <a class="el" href="_bootstrap_8php_source.html#l00304">304</a> of file <a class="el" href="_bootstrap_8php_source.html">Bootstrap.php</a>.</p>
 
 <p>References <a class="el" href="oo-tutorial-code_8php_source.html#l00028">$name</a>.</p>
 
@@ -320,7 +320,7 @@ Static Public Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>boolean TRUE if the named option is set, FALSE otherwise. Note that the value may be falsey (FALSE, 0, etc.), but if the value is NULL, this will return false. </dd></dl>
 
-<p>Definition at line <a class="el" href="_bootstrap_8php_source.html#l00324">324</a> of file <a class="el" href="_bootstrap_8php_source.html">Bootstrap.php</a>.</p>
+<p>Definition at line <a class="el" href="_bootstrap_8php_source.html#l00337">337</a> of file <a class="el" href="_bootstrap_8php_source.html">Bootstrap.php</a>.</p>
 
 <p>References <a class="el" href="oo-tutorial-code_8php_source.html#l00028">$name</a>.</p>
 
@@ -372,7 +372,7 @@ Static Public Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_bootstrap_8php_source.html#l00343">343</a> of file <a class="el" href="_bootstrap_8php_source.html">Bootstrap.php</a>.</p>
+<p>Definition at line <a class="el" href="_bootstrap_8php_source.html#l00356">356</a> of file <a class="el" href="_bootstrap_8php_source.html">Bootstrap.php</a>.</p>
 
 <p>References <a class="el" href="oo-tutorial-code_8php_source.html#l00013">$account</a>.</p>
 
@@ -409,10 +409,20 @@ Static Public Attributes</h2></td></tr>
 </div><!-- fragment --></li>
 <li>'transport.debug': The integer 1 for enabling debug, 0 for disabling. Enabling will turn on verbose debugging output for any transport that supports it.</li>
 <li>'transport.timeout': An integer value indicating how long the transport layer should wait for an HTTP request. A transport MAY ignore this parameter, but the ones included with the library honor it.</li>
+<li>'transport.ssl.verify': Set this to FALSE to turn off SSL certificate verification. This is NOT recommended, but is sometimes necessary for certain proxy configurations.</li>
 <li>'account' and 'secret'</li>
 <li>'username' and 'password'</li>
 <li>'tenantid'</li>
 <li>'endpoint': The full URL to identity services. This is used by stream wrappers.</li>
+</ul>
+<p>The CURL wrapper supports proxy settings:</p>
+<ul>
+<li>proxy: the proxy server URL (CURLOPT_PROXY)</li>
+<li>proxy.userpwd: the proxy username:password (CURLOPT_PROXYUSERPWD)</li>
+<li>proxy.auth: See CURLOPT_PROXYAUTH</li>
+<li>proxy.port: The proxy port. (CURLOPT_PROXYPORT)</li>
+<li>proxy.type: see CURLOPT_PROXYTYPE</li>
+<li>proxy.tunnel: If this is set to TRUE, attempt to tunnel through the proxy. This is recommended when using a proxy. (CURLOPT_HTTPPROXYTUNNEL)</li>
 </ul>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -421,7 +431,7 @@ Static Public Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_bootstrap_8php_source.html#l00223">223</a> of file <a class="el" href="_bootstrap_8php_source.html">Bootstrap.php</a>.</p>
+<p>Definition at line <a class="el" href="_bootstrap_8php_source.html#l00236">236</a> of file <a class="el" href="_bootstrap_8php_source.html">Bootstrap.php</a>.</p>
 
 </div>
 </div>
@@ -583,7 +593,7 @@ Static Public Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_h_p_cloud.html">HPCloud</a></li><li class="navelem"><a class="el" href="class_h_p_cloud_1_1_bootstrap.html">Bootstrap</a></li>
-    <li class="footer">Generated on Fri Aug 10 2012 09:59:51 for HPCloud-PHP by
+    <li class="footer">Generated on Tue Nov 6 2012 10:50:36 for HPCloud-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.1.2 </li>
   </ul>

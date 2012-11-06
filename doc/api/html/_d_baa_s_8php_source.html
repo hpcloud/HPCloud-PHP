@@ -28,7 +28,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">HPCloud-PHP
-   &#160;<span id="projectnumber">1.0.0</span>
+   &#160;<span id="projectnumber">1.1.0</span>
    </div>
    <div id="projectbrief">PHP bindings for HPCloud and OpenStack services.</div>
   </td>
@@ -182,94 +182,96 @@ $(document).ready(function(){initNavTree('_d_baa_s_8php_source.html','');});
 <div class="line"><a name="l00074"></a><span class="lineno"><a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#adfb06b593915cb98c65845a2cc60a3be">   74</a></span>&#160;  <span class="keyword">const</span> <a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#adfb06b593915cb98c65845a2cc60a3be">SERVICE_TYPE</a> = <span class="stringliteral">&#39;hpext:dbaas&#39;</span>;</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
 <div class="line"><a name="l00076"></a><span class="lineno"><a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#a0ed0d8617b3abaac92e82720d9fab3f3">   76</a></span>&#160;  <span class="keyword">const</span> <a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#a0ed0d8617b3abaac92e82720d9fab3f3">API_VERSION</a> = <span class="charliteral">&#39;1&#39;</span>;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">  /**</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">   * The auth token for the current session.</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">   */</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno"><a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#a00ae4fcafb1145f5e968bdf920f83e2e">   81</a></span>&#160;  <span class="keyword">protected</span> <a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#a00ae4fcafb1145f5e968bdf920f83e2e" title="The auth token for the current session.">$token</a>;<span class="comment"></span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment">  /**</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment">   * The base URL to the DBaaS for a given account.</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">   */</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno"><a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#acf215f34a917d014776ce684a9ee8909">   85</a></span>&#160;  <span class="keyword">protected</span> <a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#acf215f34a917d014776ce684a9ee8909" title="The base URL to the DBaaS for a given account.">$url</a>;<span class="comment"></span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment">  /**</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment">   * The tenant name.</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment">   *</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment">   * Typically, this is an email address.</span></div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment">   */</span></div>
-<div class="line"><a name="l00091"></a><span class="lineno"><a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#abd3456b4e729909d1b123ae303302391">   91</a></span>&#160;  <span class="keyword">protected</span> <a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#abd3456b4e729909d1b123ae303302391" title="The tenant name.">$projectId</a>;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
-<div class="line"><a name="l00093"></a><span class="lineno"><a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#a72023483f2440367a5de1a9849e2fda7">   93</a></span>&#160;  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">function</span> <a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#a72023483f2440367a5de1a9849e2fda7">newFromIdentity</a>($identity) {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#a221c08de54366b1349cd15f8835b551a">   78</a></span>&#160;  <span class="keyword">const</span> <a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#a221c08de54366b1349cd15f8835b551a">DEFAULT_REGION</a> = <span class="stringliteral">&#39;region-a.geo-1&#39;</span>;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">  /**</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment">   * The auth token for the current session.</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment">   */</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#a00ae4fcafb1145f5e968bdf920f83e2e">   83</a></span>&#160;  <span class="keyword">protected</span> <a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#a00ae4fcafb1145f5e968bdf920f83e2e" title="The auth token for the current session.">$token</a>;<span class="comment"></span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">  /**</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">   * The base URL to the DBaaS for a given account.</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment">   */</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#acf215f34a917d014776ce684a9ee8909">   87</a></span>&#160;  <span class="keyword">protected</span> <a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#acf215f34a917d014776ce684a9ee8909" title="The base URL to the DBaaS for a given account.">$url</a>;<span class="comment"></span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment">  /**</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment">   * The tenant name.</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment">   *</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment">   * Typically, this is an email address.</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment">   */</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno"><a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#abd3456b4e729909d1b123ae303302391">   93</a></span>&#160;  <span class="keyword">protected</span> <a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#abd3456b4e729909d1b123ae303302391" title="The tenant name.">$projectId</a>;</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <a class="code" href="oo-tutorial-code_8php.html#ab30d2fd9b2fc63b1367117f70356e858">$catalog</a> = $identity-&gt;serviceCatalog();</div>
+<div class="line"><a name="l00095"></a><span class="lineno"><a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#ac0c13bf633c8a2ac32c5c851a1db594c">   95</a></span>&#160;  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">function</span> <a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#ac0c13bf633c8a2ac32c5c851a1db594c">newFromIdentity</a>($identity, $region = <a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#a221c08de54366b1349cd15f8835b551a">DBaaS::DEFAULT_REGION</a>) {</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    $c = count(<a class="code" href="oo-tutorial-code_8php.html#ab30d2fd9b2fc63b1367117f70356e858">$catalog</a>);</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordflow">for</span> ($i = 0; $i &lt; $c; ++$i) {</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;      <span class="keywordflow">if</span> (<a class="code" href="oo-tutorial-code_8php.html#ab30d2fd9b2fc63b1367117f70356e858">$catalog</a>[$i][<span class="stringliteral">&#39;type&#39;</span>] == self::SERVICE_TYPE) {</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="keywordflow">foreach</span> (<a class="code" href="oo-tutorial-code_8php.html#ab30d2fd9b2fc63b1367117f70356e858">$catalog</a>[$i][<span class="stringliteral">&#39;endpoints&#39;</span>] as <a class="code" href="oo-tutorial-code_8php.html#afb5204f7604df2f50a0058cb0e024875">$endpoint</a>) {</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;          <span class="keywordflow">if</span> (isset($endpoint[<span class="stringliteral">&#39;publicURL&#39;</span>])) {</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            $dbaas = <span class="keyword">new</span> <a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html" title="Database As A Service.">DBaaS</a>($identity-&gt;token(), $endpoint[<span class="stringliteral">&#39;publicURL&#39;</span>] . <span class="charliteral">&#39;/&#39;</span> . $identity-&gt;tenantId(), $identity-&gt;tenantName());</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            <span class="keywordflow">return</span> $dbaas;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;          }</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        }</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;      }</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    }</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  }</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="comment">  /**</span></div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="comment">   * Build a new DBaaS object.</span></div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="comment">   *</span></div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="comment">   * @param string $token</span></div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="comment">   *   The auth token from identity services.</span></div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="comment">   * @param string $endpoint</span></div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="comment">   *   The endpoint URL, typically from IdentityServices.</span></div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="comment">   * @param string $projectId</span></div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="comment">   *   The project ID. Typically, this is the tenant name.</span></div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="comment">   */</span></div>
-<div class="line"><a name="l00121"></a><span class="lineno"><a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#ac27ca1db0d8af01fade8291ded6094fe">  121</a></span>&#160;  <span class="keyword">public</span> <span class="keyword">function</span> <a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#ac27ca1db0d8af01fade8291ded6094fe" title="Build a new DBaaS object.">__construct</a>(<a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#a00ae4fcafb1145f5e968bdf920f83e2e" title="The auth token for the current session.">$token</a>, <a class="code" href="oo-tutorial-code_8php.html#afb5204f7604df2f50a0058cb0e024875">$endpoint</a>, <a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#abd3456b4e729909d1b123ae303302391" title="The tenant name.">$projectId</a>) {</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    $this-&gt;token = <a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#a00ae4fcafb1145f5e968bdf920f83e2e" title="The auth token for the current session.">$token</a>;</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    $this-&gt;<a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#abc5ed2ad3f9365fb31cc1eb625b974d9" title="Get the endpoint URL to the DBaaS session.">url</a>= <a class="code" href="oo-tutorial-code_8php.html#afb5204f7604df2f50a0058cb0e024875">$endpoint</a>;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    $this-&gt;<a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#a3c0708f94a4c81bcd8cb22510cf919d7" title="Get the project ID for this session.">projectId</a> = <a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#abd3456b4e729909d1b123ae303302391" title="The tenant name.">$projectId</a>;</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;  }</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;</div>
-<div class="line"><a name="l00128"></a><span class="lineno"><a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#ad4931a504a0385d67dee9a66bd891be3">  128</a></span>&#160;  <span class="keyword">public</span> <span class="keyword">function</span> <a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#ad4931a504a0385d67dee9a66bd891be3">instance</a>() {</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s_1_1_instance.html">Instance</a>($this-&gt;token, $this-&gt;<a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#a3c0708f94a4c81bcd8cb22510cf919d7" title="Get the project ID for this session.">projectId</a>, $this-&gt;<a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#abc5ed2ad3f9365fb31cc1eb625b974d9" title="Get the endpoint URL to the DBaaS session.">url</a>);</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;  }</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;</div>
-<div class="line"><a name="l00132"></a><span class="lineno"><a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#adde0c57ed2b9fa407a395deacf5f91be">  132</a></span>&#160;  <span class="keyword">public</span> <span class="keyword">function</span> <a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#adde0c57ed2b9fa407a395deacf5f91be">snapshot</a>() {</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s_1_1_snapshot.html" title="Manage snapshots.">Snapshot</a>($this-&gt;token, $this-&gt;<a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#a3c0708f94a4c81bcd8cb22510cf919d7" title="Get the project ID for this session.">projectId</a>, $this-&gt;<a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#abc5ed2ad3f9365fb31cc1eb625b974d9" title="Get the endpoint URL to the DBaaS session.">url</a>);</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;  }</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="comment">  /**</span></div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="comment">   * Get the project ID for this session.</span></div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="comment">   *</span></div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="comment">   * @retval string</span></div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;<span class="comment">   * @return string</span></div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;<span class="comment">   *   The project ID.</span></div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="comment">   */</span></div>
-<div class="line"><a name="l00143"></a><span class="lineno"><a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#a3c0708f94a4c81bcd8cb22510cf919d7">  143</a></span>&#160;  <span class="keyword">public</span> <span class="keyword">function</span> <a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#a3c0708f94a4c81bcd8cb22510cf919d7" title="Get the project ID for this session.">projectId</a>() {</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#abd3456b4e729909d1b123ae303302391" title="The tenant name.">$this-&gt;projectId</a>;</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;  }</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="comment">  /**</span></div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="comment">   * Get the endpoint URL to the DBaaS session.</span></div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="comment">   *</span></div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="comment">   * @retval string</span></div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="comment">   * @return string</span></div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="comment">   *   The URL.</span></div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="comment">   */</span></div>
-<div class="line"><a name="l00154"></a><span class="lineno"><a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#abc5ed2ad3f9365fb31cc1eb625b974d9">  154</a></span>&#160;  <span class="keyword">public</span> <span class="keyword">function</span> <a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#abc5ed2ad3f9365fb31cc1eb625b974d9" title="Get the endpoint URL to the DBaaS session.">url</a>() {</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#acf215f34a917d014776ce684a9ee8909" title="The base URL to the DBaaS for a given account.">$this-&gt;url</a>;</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;  }</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;}</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <a class="code" href="oo-tutorial-code_8php.html#ab30d2fd9b2fc63b1367117f70356e858">$catalog</a> = $identity-&gt;serviceCatalog();</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    $c = count(<a class="code" href="oo-tutorial-code_8php.html#ab30d2fd9b2fc63b1367117f70356e858">$catalog</a>);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keywordflow">for</span> ($i = 0; $i &lt; $c; ++$i) {</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;      <span class="keywordflow">if</span> (<a class="code" href="oo-tutorial-code_8php.html#ab30d2fd9b2fc63b1367117f70356e858">$catalog</a>[$i][<span class="stringliteral">&#39;type&#39;</span>] == self::SERVICE_TYPE) {</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keywordflow">foreach</span> (<a class="code" href="oo-tutorial-code_8php.html#ab30d2fd9b2fc63b1367117f70356e858">$catalog</a>[$i][<span class="stringliteral">&#39;endpoints&#39;</span>] as <a class="code" href="oo-tutorial-code_8php.html#afb5204f7604df2f50a0058cb0e024875">$endpoint</a>) {</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;          <span class="keywordflow">if</span> (isset($endpoint[<span class="stringliteral">&#39;publicURL&#39;</span>]) &amp;&amp; $endpoint[<span class="stringliteral">&#39;region&#39;</span>] == $region) {</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            $dbaas = <span class="keyword">new</span> <a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html" title="Database As A Service.">DBaaS</a>($identity-&gt;token(), $endpoint[<span class="stringliteral">&#39;publicURL&#39;</span>], $identity-&gt;tenantName());</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            <span class="keywordflow">return</span> $dbaas;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;          }</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        }</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;      }</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    }</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  }</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="comment">  /**</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="comment">   * Build a new DBaaS object.</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="comment">   *</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="comment">   * @param string $token</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="comment">   *   The auth token from identity services.</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="comment">   * @param string $endpoint</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="comment">   *   The endpoint URL, typically from IdentityServices.</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="comment">   * @param string $projectId</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="comment">   *   The project ID. Typically, this is the tenant name.</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="comment">   */</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno"><a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#ac27ca1db0d8af01fade8291ded6094fe">  123</a></span>&#160;  <span class="keyword">public</span> <span class="keyword">function</span> <a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#ac27ca1db0d8af01fade8291ded6094fe" title="Build a new DBaaS object.">__construct</a>(<a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#a00ae4fcafb1145f5e968bdf920f83e2e" title="The auth token for the current session.">$token</a>, <a class="code" href="oo-tutorial-code_8php.html#afb5204f7604df2f50a0058cb0e024875">$endpoint</a>, <a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#abd3456b4e729909d1b123ae303302391" title="The tenant name.">$projectId</a>) {</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    $this-&gt;token = <a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#a00ae4fcafb1145f5e968bdf920f83e2e" title="The auth token for the current session.">$token</a>;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    $this-&gt;<a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#abc5ed2ad3f9365fb31cc1eb625b974d9" title="Get the endpoint URL to the DBaaS session.">url</a>= <a class="code" href="oo-tutorial-code_8php.html#afb5204f7604df2f50a0058cb0e024875">$endpoint</a>;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    $this-&gt;<a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#a3c0708f94a4c81bcd8cb22510cf919d7" title="Get the project ID for this session.">projectId</a> = <a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#abd3456b4e729909d1b123ae303302391" title="The tenant name.">$projectId</a>;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;  }</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
+<div class="line"><a name="l00130"></a><span class="lineno"><a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#ad4931a504a0385d67dee9a66bd891be3">  130</a></span>&#160;  <span class="keyword">public</span> <span class="keyword">function</span> <a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#ad4931a504a0385d67dee9a66bd891be3">instance</a>() {</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s_1_1_instance.html">Instance</a>($this-&gt;token, $this-&gt;<a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#a3c0708f94a4c81bcd8cb22510cf919d7" title="Get the project ID for this session.">projectId</a>, $this-&gt;<a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#abc5ed2ad3f9365fb31cc1eb625b974d9" title="Get the endpoint URL to the DBaaS session.">url</a>);</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;  }</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
+<div class="line"><a name="l00134"></a><span class="lineno"><a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#adde0c57ed2b9fa407a395deacf5f91be">  134</a></span>&#160;  <span class="keyword">public</span> <span class="keyword">function</span> <a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#adde0c57ed2b9fa407a395deacf5f91be">snapshot</a>() {</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s_1_1_snapshot.html" title="Manage snapshots.">Snapshot</a>($this-&gt;token, $this-&gt;<a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#a3c0708f94a4c81bcd8cb22510cf919d7" title="Get the project ID for this session.">projectId</a>, $this-&gt;<a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#abc5ed2ad3f9365fb31cc1eb625b974d9" title="Get the endpoint URL to the DBaaS session.">url</a>);</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;  }</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="comment">  /**</span></div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="comment">   * Get the project ID for this session.</span></div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;<span class="comment">   *</span></div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;<span class="comment">   * @retval string</span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="comment">   * @return string</span></div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="comment">   *   The project ID.</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;<span class="comment">   */</span></div>
+<div class="line"><a name="l00145"></a><span class="lineno"><a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#a3c0708f94a4c81bcd8cb22510cf919d7">  145</a></span>&#160;  <span class="keyword">public</span> <span class="keyword">function</span> <a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#a3c0708f94a4c81bcd8cb22510cf919d7" title="Get the project ID for this session.">projectId</a>() {</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#abd3456b4e729909d1b123ae303302391" title="The tenant name.">$this-&gt;projectId</a>;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;  }</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="comment">  /**</span></div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="comment">   * Get the endpoint URL to the DBaaS session.</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="comment">   *</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="comment">   * @retval string</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="comment">   * @return string</span></div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="comment">   *   The URL.</span></div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="comment">   */</span></div>
+<div class="line"><a name="l00156"></a><span class="lineno"><a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#abc5ed2ad3f9365fb31cc1eb625b974d9">  156</a></span>&#160;  <span class="keyword">public</span> <span class="keyword">function</span> <a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#abc5ed2ad3f9365fb31cc1eb625b974d9" title="Get the endpoint URL to the DBaaS session.">url</a>() {</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#acf215f34a917d014776ce684a9ee8909" title="The base URL to the DBaaS for a given account.">$this-&gt;url</a>;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;  }</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_e7fde51b7d0f7837d6838145ad268ad8.html">src</a></li><li class="navelem"><a class="el" href="dir_c55ff1ab2ea2694bf18094bf6344045b.html">HPCloud</a></li><li class="navelem"><a class="el" href="dir_ef11710734faf0dca200d2ff9c27cfc1.html">Services</a></li><li class="navelem"><a class="el" href="_d_baa_s_8php.html">DBaaS.php</a></li>
-    <li class="footer">Generated on Fri Aug 10 2012 09:59:51 for HPCloud-PHP by
+    <li class="navelem"><a class="el" href="dir_be9e4374303c7e194b459701b7b510f4.html">src</a></li><li class="navelem"><a class="el" href="dir_6c8945618b1013d2ea959b155c0141b9.html">HPCloud</a></li><li class="navelem"><a class="el" href="dir_3cc1321aec7a270b598ca541fc3b4bab.html">Services</a></li><li class="navelem"><a class="el" href="_d_baa_s_8php.html">DBaaS.php</a></li>
+    <li class="footer">Generated on Tue Nov 6 2012 10:50:36 for HPCloud-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.1.2 </li>
   </ul>
