@@ -8,6 +8,11 @@ var searchData=
   ['filenotfoundexception',['FileNotFoundException',['../class_h_p_cloud_1_1_transport_1_1_file_not_found_exception.html',1,'HPCloud::Transport']]],
   ['filenotfoundexception_2ephp',['FileNotFoundException.php',['../_file_not_found_exception_8php.html',1,'']]],
   ['filterheaders',['filterHeaders',['../class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_remote_object.html#a52bb53893bac35b986095f763c5a5f68',1,'HPCloud::Storage::ObjectStorage::RemoteObject']]],
+  ['flavor',['Flavor',['../class_h_p_cloud_1_1_services_1_1_d_baa_s_1_1_flavor.html',1,'HPCloud::Services::DBaaS']]],
+  ['flavor',['flavor',['../class_h_p_cloud_1_1_services_1_1_d_baa_s.html#a9b3485d16b9466e71ce53732c52521e5',1,'HPCloud::Services::DBaaS']]],
+  ['flavor_2ephp',['Flavor.php',['../_flavor_8php.html',1,'']]],
+  ['flavordetails',['FlavorDetails',['../class_h_p_cloud_1_1_services_1_1_d_baa_s_1_1_flavor_details.html',1,'HPCloud::Services::DBaaS']]],
+  ['flavordetails_2ephp',['FlavorDetails.php',['../_flavor_details_8php.html',1,'']]],
   ['forbiddenexception',['ForbiddenException',['../class_h_p_cloud_1_1_transport_1_1_forbidden_exception.html',1,'HPCloud::Transport']]],
   ['forbiddenexception_2ephp',['ForbiddenException.php',['../_forbidden_exception_8php.html',1,'']]]
 ];

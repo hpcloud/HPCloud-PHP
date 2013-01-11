@@ -1,5 +1,11 @@
 var dir_70f187e3a5b2d00a6701ae1f491b6494 =
 [
+    [ "Flavor.php", "_flavor_8php.html", [
+      [ "Flavor", "class_h_p_cloud_1_1_services_1_1_d_baa_s_1_1_flavor.html", "class_h_p_cloud_1_1_services_1_1_d_baa_s_1_1_flavor" ]
+    ] ],
+    [ "FlavorDetails.php", "_flavor_details_8php.html", [
+      [ "FlavorDetails", "class_h_p_cloud_1_1_services_1_1_d_baa_s_1_1_flavor_details.html", "class_h_p_cloud_1_1_services_1_1_d_baa_s_1_1_flavor_details" ]
+    ] ],
     [ "Instance.php", "_instance_8php.html", [
       [ "Instance", "class_h_p_cloud_1_1_services_1_1_d_baa_s_1_1_instance.html", "class_h_p_cloud_1_1_services_1_1_d_baa_s_1_1_instance" ]
     ] ],

@@ -22,6 +22,7 @@ var hierarchy =
       ] ],
       [ "UnprocessableEntityException", "class_h_p_cloud_1_1_transport_1_1_unprocessable_entity_exception.html", null ]
     ] ],
+    [ "FlavorDetails", "class_h_p_cloud_1_1_services_1_1_d_baa_s_1_1_flavor_details.html", null ],
     [ "IdentityServices", "class_h_p_cloud_1_1_services_1_1_identity_services.html", null ],
     [ "InstanceDetails", "class_h_p_cloud_1_1_services_1_1_d_baa_s_1_1_instance_details.html", null ],
     [ "Object", "class_h_p_cloud_1_1_storage_1_1_object_storage_1_1_object.html", [
@@ -29,6 +30,7 @@ var hierarchy =
     ] ],
     [ "ObjectStorage", "class_h_p_cloud_1_1_storage_1_1_object_storage.html", null ],
     [ "Operations", "class_h_p_cloud_1_1_services_1_1_d_baa_s_1_1_operations.html", [
+      [ "Flavor", "class_h_p_cloud_1_1_services_1_1_d_baa_s_1_1_flavor.html", null ],
       [ "Instance", "class_h_p_cloud_1_1_services_1_1_d_baa_s_1_1_instance.html", null ],
       [ "Snapshot", "class_h_p_cloud_1_1_services_1_1_d_baa_s_1_1_snapshot.html", null ]
     ] ],

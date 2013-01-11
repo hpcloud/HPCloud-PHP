@@ -1,6 +1,7 @@
 var class_h_p_cloud_1_1_services_1_1_d_baa_s =
 [
     [ "__construct", "class_h_p_cloud_1_1_services_1_1_d_baa_s.html#ac27ca1db0d8af01fade8291ded6094fe", null ],
+    [ "flavor", "class_h_p_cloud_1_1_services_1_1_d_baa_s.html#a9b3485d16b9466e71ce53732c52521e5", null ],
     [ "instance", "class_h_p_cloud_1_1_services_1_1_d_baa_s.html#ad4931a504a0385d67dee9a66bd891be3", null ],
     [ "newFromIdentity", "class_h_p_cloud_1_1_services_1_1_d_baa_s.html#ac0c13bf633c8a2ac32c5c851a1db594c", null ],
     [ "projectId", "class_h_p_cloud_1_1_services_1_1_d_baa_s.html#a3c0708f94a4c81bcd8cb22510cf919d7", null ],

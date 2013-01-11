@@ -28,7 +28,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">HPCloud-PHP
-   &#160;<span id="projectnumber">1.1.0</span>
+   &#160;<span id="projectnumber">1.2.0</span>
    </div>
    <div id="projectbrief">PHP bindings for HPCloud and OpenStack services.</div>
   </td>
@@ -124,6 +124,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:ac27ca1db0d8af01fade8291ded6094fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build a new <a class="el" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html" title="Database As A Service.">DBaaS</a> object.  <a href="#ac27ca1db0d8af01fade8291ded6094fe"></a><br/></td></tr>
 <tr class="memitem:ad4931a504a0385d67dee9a66bd891be3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#ad4931a504a0385d67dee9a66bd891be3">instance</a> ()</td></tr>
 <tr class="memitem:adde0c57ed2b9fa407a395deacf5f91be"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#adde0c57ed2b9fa407a395deacf5f91be">snapshot</a> ()</td></tr>
+<tr class="memitem:a9b3485d16b9466e71ce53732c52521e5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#a9b3485d16b9466e71ce53732c52521e5">flavor</a> ()</td></tr>
 <tr class="memitem:a3c0708f94a4c81bcd8cb22510cf919d7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#a3c0708f94a4c81bcd8cb22510cf919d7">projectId</a> ()</td></tr>
 <tr class="memdesc:a3c0708f94a4c81bcd8cb22510cf919d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the project ID for this session.  <a href="#a3c0708f94a4c81bcd8cb22510cf919d7"></a><br/></td></tr>
 <tr class="memitem:abc5ed2ad3f9365fb31cc1eb625b974d9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html#abc5ed2ad3f9365fb31cc1eb625b974d9">url</a> ()</td></tr>
@@ -161,7 +162,7 @@ Protected Attributes</h2></td></tr>
 <p>Upon creating a new database instance, this library will return login credentials (username and password) from HPCloud::Services::DBaaS::Instance::create(). <em>This is the only time that credentials are returned</em>. Make note of them.</p>
 <p>Those credentials can then be used to connect to the database instance, and create new databases, users, and tables. </p>
 
-<p>Definition at line <a class="el" href="_d_baa_s_8php_source.html#l00072">72</a> of file <a class="el" href="_d_baa_s_8php_source.html">DBaaS.php</a>.</p>
+<p>Definition at line <a class="el" href="_d_baa_s_8php_source.html#l00073">73</a> of file <a class="el" href="_d_baa_s_8php_source.html">DBaaS.php</a>.</p>
 </div><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="ac27ca1db0d8af01fade8291ded6094fe"></a>
 <div class="memitem">
@@ -203,13 +204,32 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_d_baa_s_8php_source.html#l00123">123</a> of file <a class="el" href="_d_baa_s_8php_source.html">DBaaS.php</a>.</p>
+<p>Definition at line <a class="el" href="_d_baa_s_8php_source.html#l00124">124</a> of file <a class="el" href="_d_baa_s_8php_source.html">DBaaS.php</a>.</p>
 
-<p>References <a class="el" href="oo-tutorial-code_8php_source.html#l00016">$endpoint</a>, <a class="el" href="_d_baa_s_8php_source.html#l00093">DBaaS\$projectId</a>, <a class="el" href="_d_baa_s_8php_source.html#l00083">DBaaS\$token</a>, <a class="el" href="_d_baa_s_8php_source.html#l00145">DBaaS\projectId()</a>, and <a class="el" href="_d_baa_s_8php_source.html#l00156">DBaaS\url()</a>.</p>
+<p>References <a class="el" href="oo-tutorial-code_8php_source.html#l00016">$endpoint</a>, <a class="el" href="_d_baa_s_8php_source.html#l00094">DBaaS\$projectId</a>, <a class="el" href="_d_baa_s_8php_source.html#l00084">DBaaS\$token</a>, <a class="el" href="_d_baa_s_8php_source.html#l00150">DBaaS\projectId()</a>, and <a class="el" href="_d_baa_s_8php_source.html#l00161">DBaaS\url()</a>.</p>
 
 </div>
 </div>
 <h2>Member Function Documentation</h2>
+<a class="anchor" id="a9b3485d16b9466e71ce53732c52521e5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">flavor </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_d_baa_s_8php_source.html#l00139">139</a> of file <a class="el" href="_d_baa_s_8php_source.html">DBaaS.php</a>.</p>
+
+<p>References <a class="el" href="_d_baa_s_8php_source.html#l00150">DBaaS\projectId()</a>, and <a class="el" href="_d_baa_s_8php_source.html#l00161">DBaaS\url()</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="ad4931a504a0385d67dee9a66bd891be3"></a>
 <div class="memitem">
 <div class="memproto">
@@ -223,11 +243,11 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_d_baa_s_8php_source.html#l00130">130</a> of file <a class="el" href="_d_baa_s_8php_source.html">DBaaS.php</a>.</p>
+<p>Definition at line <a class="el" href="_d_baa_s_8php_source.html#l00131">131</a> of file <a class="el" href="_d_baa_s_8php_source.html">DBaaS.php</a>.</p>
 
-<p>References <a class="el" href="_d_baa_s_8php_source.html#l00145">DBaaS\projectId()</a>, and <a class="el" href="_d_baa_s_8php_source.html#l00156">DBaaS\url()</a>.</p>
+<p>References <a class="el" href="_d_baa_s_8php_source.html#l00150">DBaaS\projectId()</a>, and <a class="el" href="_d_baa_s_8php_source.html#l00161">DBaaS\url()</a>.</p>
 
-<p>Referenced by <a class="el" href="_instance_8php_source.html#l00039">Instance\__construct()</a>, and <a class="el" href="_snapshot_8php_source.html#l00055">Snapshot\__construct()</a>.</p>
+<p>Referenced by <a class="el" href="_instance_8php_source.html#l00039">Instance\__construct()</a>, <a class="el" href="_flavor_8php_source.html#l00042">Flavor\__construct()</a>, and <a class="el" href="_snapshot_8php_source.html#l00055">Snapshot\__construct()</a>.</p>
 
 </div>
 </div>
@@ -263,7 +283,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_d_baa_s_8php_source.html#l00095">95</a> of file <a class="el" href="_d_baa_s_8php_source.html">DBaaS.php</a>.</p>
+<p>Definition at line <a class="el" href="_d_baa_s_8php_source.html#l00096">96</a> of file <a class="el" href="_d_baa_s_8php_source.html">DBaaS.php</a>.</p>
 
 <p>References <a class="el" href="oo-tutorial-code_8php_source.html#l00021">$catalog</a>, and <a class="el" href="oo-tutorial-code_8php_source.html#l00016">$endpoint</a>.</p>
 
@@ -291,11 +311,11 @@ Protected Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>string The project ID. </dd></dl>
 
-<p>Definition at line <a class="el" href="_d_baa_s_8php_source.html#l00145">145</a> of file <a class="el" href="_d_baa_s_8php_source.html">DBaaS.php</a>.</p>
+<p>Definition at line <a class="el" href="_d_baa_s_8php_source.html#l00150">150</a> of file <a class="el" href="_d_baa_s_8php_source.html">DBaaS.php</a>.</p>
 
-<p>References <a class="el" href="_d_baa_s_8php_source.html#l00093">DBaaS\$projectId</a>.</p>
+<p>References <a class="el" href="_d_baa_s_8php_source.html#l00094">DBaaS\$projectId</a>.</p>
 
-<p>Referenced by <a class="el" href="_instance_8php_source.html#l00039">Instance\__construct()</a>, <a class="el" href="_snapshot_8php_source.html#l00055">Snapshot\__construct()</a>, <a class="el" href="_d_baa_s_8php_source.html#l00123">DBaaS\__construct()</a>, <a class="el" href="_operations_8php_source.html#l00023">Operations\headers()</a>, <a class="el" href="_d_baa_s_8php_source.html#l00130">DBaaS\instance()</a>, and <a class="el" href="_d_baa_s_8php_source.html#l00134">DBaaS\snapshot()</a>.</p>
+<p>Referenced by <a class="el" href="_instance_8php_source.html#l00039">Instance\__construct()</a>, <a class="el" href="_flavor_8php_source.html#l00042">Flavor\__construct()</a>, <a class="el" href="_snapshot_8php_source.html#l00055">Snapshot\__construct()</a>, <a class="el" href="_d_baa_s_8php_source.html#l00124">DBaaS\__construct()</a>, <a class="el" href="_instance_8php_source.html#l00087">Instance\create()</a>, <a class="el" href="_d_baa_s_8php_source.html#l00139">DBaaS\flavor()</a>, <a class="el" href="_operations_8php_source.html#l00023">Operations\headers()</a>, <a class="el" href="_d_baa_s_8php_source.html#l00131">DBaaS\instance()</a>, and <a class="el" href="_d_baa_s_8php_source.html#l00135">DBaaS\snapshot()</a>.</p>
 
 </div>
 </div>
@@ -312,9 +332,9 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_d_baa_s_8php_source.html#l00134">134</a> of file <a class="el" href="_d_baa_s_8php_source.html">DBaaS.php</a>.</p>
+<p>Definition at line <a class="el" href="_d_baa_s_8php_source.html#l00135">135</a> of file <a class="el" href="_d_baa_s_8php_source.html">DBaaS.php</a>.</p>
 
-<p>References <a class="el" href="_d_baa_s_8php_source.html#l00145">DBaaS\projectId()</a>, and <a class="el" href="_d_baa_s_8php_source.html#l00156">DBaaS\url()</a>.</p>
+<p>References <a class="el" href="_d_baa_s_8php_source.html#l00150">DBaaS\projectId()</a>, and <a class="el" href="_d_baa_s_8php_source.html#l00161">DBaaS\url()</a>.</p>
 
 </div>
 </div>
@@ -340,11 +360,11 @@ Protected Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>string The URL. </dd></dl>
 
-<p>Definition at line <a class="el" href="_d_baa_s_8php_source.html#l00156">156</a> of file <a class="el" href="_d_baa_s_8php_source.html">DBaaS.php</a>.</p>
+<p>Definition at line <a class="el" href="_d_baa_s_8php_source.html#l00161">161</a> of file <a class="el" href="_d_baa_s_8php_source.html">DBaaS.php</a>.</p>
 
-<p>References <a class="el" href="_d_baa_s_8php_source.html#l00087">DBaaS\$url</a>.</p>
+<p>References <a class="el" href="_d_baa_s_8php_source.html#l00088">DBaaS\$url</a>.</p>
 
-<p>Referenced by <a class="el" href="_instance_8php_source.html#l00039">Instance\__construct()</a>, <a class="el" href="_snapshot_8php_source.html#l00055">Snapshot\__construct()</a>, <a class="el" href="_d_baa_s_8php_source.html#l00123">DBaaS\__construct()</a>, <a class="el" href="_instance_8php_source.html#l00087">Instance\create()</a>, <a class="el" href="_snapshot_8php_source.html#l00111">Snapshot\create()</a>, <a class="el" href="_instance_8php_source.html#l00119">Instance\delete()</a>, <a class="el" href="_snapshot_8php_source.html#l00141">Snapshot\delete()</a>, <a class="el" href="_instance_8php_source.html#l00046">Instance\describe()</a>, <a class="el" href="_snapshot_8php_source.html#l00158">Snapshot\describe()</a>, <a class="el" href="_d_baa_s_8php_source.html#l00130">DBaaS\instance()</a>, <a class="el" href="_instance_8php_source.html#l00054">Instance\listInstances()</a>, <a class="el" href="_snapshot_8php_source.html#l00073">Snapshot\listSnapshots()</a>, <a class="el" href="_instance_8php_source.html#l00139">Instance\resetPassword()</a>, <a class="el" href="_instance_8php_source.html#l00125">Instance\restart()</a>, and <a class="el" href="_d_baa_s_8php_source.html#l00134">DBaaS\snapshot()</a>.</p>
+<p>Referenced by <a class="el" href="_instance_8php_source.html#l00039">Instance\__construct()</a>, <a class="el" href="_flavor_8php_source.html#l00042">Flavor\__construct()</a>, <a class="el" href="_snapshot_8php_source.html#l00055">Snapshot\__construct()</a>, <a class="el" href="_d_baa_s_8php_source.html#l00124">DBaaS\__construct()</a>, <a class="el" href="_instance_8php_source.html#l00087">Instance\create()</a>, <a class="el" href="_snapshot_8php_source.html#l00111">Snapshot\create()</a>, <a class="el" href="_instance_8php_source.html#l00124">Instance\delete()</a>, <a class="el" href="_snapshot_8php_source.html#l00141">Snapshot\delete()</a>, <a class="el" href="_instance_8php_source.html#l00046">Instance\describe()</a>, <a class="el" href="_snapshot_8php_source.html#l00158">Snapshot\describe()</a>, <a class="el" href="_d_baa_s_8php_source.html#l00139">DBaaS\flavor()</a>, <a class="el" href="_d_baa_s_8php_source.html#l00131">DBaaS\instance()</a>, <a class="el" href="_flavor_8php_source.html#l00057">Flavor\listFlavors()</a>, <a class="el" href="_instance_8php_source.html#l00054">Instance\listInstances()</a>, <a class="el" href="_snapshot_8php_source.html#l00073">Snapshot\listSnapshots()</a>, <a class="el" href="_instance_8php_source.html#l00144">Instance\resetPassword()</a>, <a class="el" href="_instance_8php_source.html#l00130">Instance\restart()</a>, and <a class="el" href="_d_baa_s_8php_source.html#l00135">DBaaS\snapshot()</a>.</p>
 
 </div>
 </div>
@@ -370,9 +390,9 @@ Protected Attributes</h2></td></tr>
 <p>The tenant name. </p>
 <p>Typically, this is an email address. </p>
 
-<p>Definition at line <a class="el" href="_d_baa_s_8php_source.html#l00093">93</a> of file <a class="el" href="_d_baa_s_8php_source.html">DBaaS.php</a>.</p>
+<p>Definition at line <a class="el" href="_d_baa_s_8php_source.html#l00094">94</a> of file <a class="el" href="_d_baa_s_8php_source.html">DBaaS.php</a>.</p>
 
-<p>Referenced by <a class="el" href="_instance_8php_source.html#l00039">Instance\__construct()</a>, <a class="el" href="_snapshot_8php_source.html#l00055">Snapshot\__construct()</a>, <a class="el" href="_d_baa_s_8php_source.html#l00123">DBaaS\__construct()</a>, and <a class="el" href="_d_baa_s_8php_source.html#l00145">DBaaS\projectId()</a>.</p>
+<p>Referenced by <a class="el" href="_instance_8php_source.html#l00039">Instance\__construct()</a>, <a class="el" href="_flavor_8php_source.html#l00042">Flavor\__construct()</a>, <a class="el" href="_snapshot_8php_source.html#l00055">Snapshot\__construct()</a>, <a class="el" href="_d_baa_s_8php_source.html#l00124">DBaaS\__construct()</a>, and <a class="el" href="_d_baa_s_8php_source.html#l00150">DBaaS\projectId()</a>.</p>
 
 </div>
 </div>
@@ -396,9 +416,9 @@ Protected Attributes</h2></td></tr>
 
 <p>The auth token for the current session. </p>
 
-<p>Definition at line <a class="el" href="_d_baa_s_8php_source.html#l00083">83</a> of file <a class="el" href="_d_baa_s_8php_source.html">DBaaS.php</a>.</p>
+<p>Definition at line <a class="el" href="_d_baa_s_8php_source.html#l00084">84</a> of file <a class="el" href="_d_baa_s_8php_source.html">DBaaS.php</a>.</p>
 
-<p>Referenced by <a class="el" href="_instance_8php_source.html#l00039">Instance\__construct()</a>, <a class="el" href="_snapshot_8php_source.html#l00055">Snapshot\__construct()</a>, and <a class="el" href="_d_baa_s_8php_source.html#l00123">DBaaS\__construct()</a>.</p>
+<p>Referenced by <a class="el" href="_instance_8php_source.html#l00039">Instance\__construct()</a>, <a class="el" href="_flavor_8php_source.html#l00042">Flavor\__construct()</a>, <a class="el" href="_snapshot_8php_source.html#l00055">Snapshot\__construct()</a>, and <a class="el" href="_d_baa_s_8php_source.html#l00124">DBaaS\__construct()</a>.</p>
 
 </div>
 </div>
@@ -422,9 +442,9 @@ Protected Attributes</h2></td></tr>
 
 <p>The base URL to the <a class="el" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html" title="Database As A Service.">DBaaS</a> for a given account. </p>
 
-<p>Definition at line <a class="el" href="_d_baa_s_8php_source.html#l00087">87</a> of file <a class="el" href="_d_baa_s_8php_source.html">DBaaS.php</a>.</p>
+<p>Definition at line <a class="el" href="_d_baa_s_8php_source.html#l00088">88</a> of file <a class="el" href="_d_baa_s_8php_source.html">DBaaS.php</a>.</p>
 
-<p>Referenced by <a class="el" href="_instance_8php_source.html#l00087">Instance\create()</a>, <a class="el" href="_snapshot_8php_source.html#l00111">Snapshot\create()</a>, <a class="el" href="_instance_8php_source.html#l00119">Instance\delete()</a>, <a class="el" href="_snapshot_8php_source.html#l00141">Snapshot\delete()</a>, <a class="el" href="_instance_8php_source.html#l00046">Instance\describe()</a>, <a class="el" href="_snapshot_8php_source.html#l00158">Snapshot\describe()</a>, <a class="el" href="_instance_8php_source.html#l00054">Instance\listInstances()</a>, <a class="el" href="_snapshot_8php_source.html#l00073">Snapshot\listSnapshots()</a>, <a class="el" href="_instance_8php_source.html#l00139">Instance\resetPassword()</a>, <a class="el" href="_instance_8php_source.html#l00125">Instance\restart()</a>, and <a class="el" href="_d_baa_s_8php_source.html#l00156">DBaaS\url()</a>.</p>
+<p>Referenced by <a class="el" href="_instance_8php_source.html#l00087">Instance\create()</a>, <a class="el" href="_snapshot_8php_source.html#l00111">Snapshot\create()</a>, <a class="el" href="_instance_8php_source.html#l00124">Instance\delete()</a>, <a class="el" href="_snapshot_8php_source.html#l00141">Snapshot\delete()</a>, <a class="el" href="_instance_8php_source.html#l00046">Instance\describe()</a>, <a class="el" href="_snapshot_8php_source.html#l00158">Snapshot\describe()</a>, <a class="el" href="_flavor_8php_source.html#l00057">Flavor\listFlavors()</a>, <a class="el" href="_instance_8php_source.html#l00054">Instance\listInstances()</a>, <a class="el" href="_snapshot_8php_source.html#l00073">Snapshot\listSnapshots()</a>, <a class="el" href="_instance_8php_source.html#l00144">Instance\resetPassword()</a>, <a class="el" href="_instance_8php_source.html#l00130">Instance\restart()</a>, <a class="el" href="_flavor_details_8php_source.html#l00099">FlavorDetails\url()</a>, and <a class="el" href="_d_baa_s_8php_source.html#l00161">DBaaS\url()</a>.</p>
 
 </div>
 </div>
@@ -438,7 +458,7 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_d_baa_s_8php_source.html#l00076">76</a> of file <a class="el" href="_d_baa_s_8php_source.html">DBaaS.php</a>.</p>
+<p>Definition at line <a class="el" href="_d_baa_s_8php_source.html#l00077">77</a> of file <a class="el" href="_d_baa_s_8php_source.html">DBaaS.php</a>.</p>
 
 </div>
 </div>
@@ -452,7 +472,7 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_d_baa_s_8php_source.html#l00078">78</a> of file <a class="el" href="_d_baa_s_8php_source.html">DBaaS.php</a>.</p>
+<p>Definition at line <a class="el" href="_d_baa_s_8php_source.html#l00079">79</a> of file <a class="el" href="_d_baa_s_8php_source.html">DBaaS.php</a>.</p>
 
 </div>
 </div>
@@ -466,7 +486,7 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_d_baa_s_8php_source.html#l00074">74</a> of file <a class="el" href="_d_baa_s_8php_source.html">DBaaS.php</a>.</p>
+<p>Definition at line <a class="el" href="_d_baa_s_8php_source.html#l00075">75</a> of file <a class="el" href="_d_baa_s_8php_source.html">DBaaS.php</a>.</p>
 
 </div>
 </div>
@@ -479,7 +499,7 @@ Protected Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_h_p_cloud.html">HPCloud</a></li><li class="navelem"><a class="el" href="namespace_h_p_cloud_1_1_services.html">Services</a></li><li class="navelem"><a class="el" href="class_h_p_cloud_1_1_services_1_1_d_baa_s.html">DBaaS</a></li>
-    <li class="footer">Generated on Tue Nov 6 2012 10:50:36 for HPCloud-PHP by
+    <li class="footer">Generated on Fri Jan 11 2013 09:17:48 for HPCloud-PHP by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.1.2 </li>
   </ul>

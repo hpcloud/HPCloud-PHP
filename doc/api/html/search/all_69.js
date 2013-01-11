@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['id',['id',['../class_h_p_cloud_1_1_services_1_1_d_baa_s_1_1_instance_details.html#a087060b582403885d08e89ad894ecc5d',1,'HPCloud\Services\DBaaS\InstanceDetails\id()'],['../class_h_p_cloud_1_1_services_1_1_d_baa_s_1_1_snapshot_details.html#a087060b582403885d08e89ad894ecc5d',1,'HPCloud\Services\DBaaS\SnapshotDetails\id()']]],
+  ['id',['id',['../class_h_p_cloud_1_1_services_1_1_d_baa_s_1_1_flavor_details.html#a087060b582403885d08e89ad894ecc5d',1,'HPCloud\Services\DBaaS\FlavorDetails\id()'],['../class_h_p_cloud_1_1_services_1_1_d_baa_s_1_1_instance_details.html#a087060b582403885d08e89ad894ecc5d',1,'HPCloud\Services\DBaaS\InstanceDetails\id()'],['../class_h_p_cloud_1_1_services_1_1_d_baa_s_1_1_snapshot_details.html#a087060b582403885d08e89ad894ecc5d',1,'HPCloud\Services\DBaaS\SnapshotDetails\id()']]],
   ['identity',['identity',['../class_h_p_cloud_1_1_bootstrap.html#af793edd670b37c084d417d4a54046567',1,'HPCloud::Bootstrap']]],
   ['identityservices',['IdentityServices',['../class_h_p_cloud_1_1_services_1_1_identity_services.html',1,'HPCloud::Services']]],
   ['identityservices_2ephp',['IdentityServices.php',['../_identity_services_8php.html',1,'']]],
