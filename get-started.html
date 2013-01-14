@@ -1,0 +1,192 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<title>Get Started With The HP Cloud PHP Library/Bindings</title>
+	<meta name="description" content="Getting started with HP Cloud through the PHP library.">
+  <meta name="keywords" content="OpenStack, Swift, Control Services, Identity Services, CDN, DBaaS, RDB, HP Cloud, PHP, Bindings">
+	<meta name="author" content="Matt Farina">
+
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+
+	<link rel="stylesheet" href="js/google-code-prettify/prettify.css">
+	<link rel="stylesheet" href="css/application.css">
+
+	<script src="js/modernizr-2.5.3.min.js"></script>
+</head>
+<body class="static">
+	<div id="wrapper">
+		<!--[if lte IE 8]>
+		<div id='ie-upgrade'>
+		Your version of Internet Explorer is out of date. Please
+		<a href="http://www.microsoft.com/windows/internet-explorer" target="_blank">upgrade</a>
+		or install
+		<a href="http://www.google.com/chromeframe" target="_blank">Chrome Frame</a>.
+		</div>
+		<![endif]-->
+
+		<div id="header-container">
+      <header class="wrapper clearfix" role="banner">
+      	<div id="nav-primary-container">
+	        <div id="nav-primary" class="container_16">
+						<div id="logo" class="grid_2 prefix_2">
+							<h1 id="site-name"><a href="index.html">HP Cloud</a></h1>
+						</div>
+						<nav id="site-navigation" class="grid_9">
+							<ul>
+                <li><a href="get-started.html" class="highlighted"><span>Get Started</span></a></li>
+                <li><a href="tutorials.html"><span>Tutorials</span></a></li>
+								<li><a href="doc/api/html/index.html"><span>API</span></a></li>
+								<li><a href="https://github.com/hpcloud/HPCloud-PHP"><span>Source</span></a></li>
+								<li><a href="https://github.com/hpcloud/HPCloud-PHP/tags"><span>Download</span></a></li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</header>
+		</div>
+		<div id="main-container">
+			<div id="main" class="wrapper clearfix container_16">
+				<div class="grid_16">
+		        </div>
+				<div id="content" class="grid_12 prefix_2 suffix_2">
+					<article>
+						<h1 id="an-introduction-to-the-php-library">Get Started With The PHP Library</h1>
+
+            <p>The <a href="hpcloud.github.com/HPCloud-PHP">HP Cloud PHP library</a> is built on top of HP Cloud APIs; taking away many of the complexities of working with the APIs to instead focus on writing applications in <a href="http://php.net">PHP</a>. The library is designed to be pulled into PHP applications where, through the use of PHP objects, methods, and functions, you can interact with HP Cloud services.</p>
+
+            <h2 id="getting-the-library">Getting The Library</h2>
+
+            <p>The HP Cloud PHP Library is available on <a href="https://github.com/hpcloud/HPCloud-PHP">Github</a> and <a href="https://packagist.org/packages/hpcloud/hpcloud-php">Packegist</a>. Packegist, for those who don't already know, is the package library for PHP commonly used with <a href="http://getcomposer.org/">composer</a>.</p>
+
+            <p>Using composer you can include the library by adding the following to your <code>composer.json</code> file:</p>
+
+            <pre><code>"require": {
+    "hpcloud/hpcloud-php": "1.*"
+}</code></pre>
+
+            <p>If you aren't using composer you can download the <a href="https://github.com/hpcloud/HPCloud-PHP/tags">library from Github</a>.</p>
+
+            <h2 id="including-the-library-and-autoloading">Including The Library and Autoloading</h2>
+
+            <p>The library is designed to work with a <a href="https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md">PSR-0</a> autoloader. If you are using the autoloader in composer the library will be available through that.</p>
+
+            <p>If you are not using composer or another autoloader one is included with the library. You can use it by including something like the following:</p>
+
+            <pre><code>require_once 'path/to/HPCloud-PHP/src/HPCloud/Bootstrap.php';
+use \HPCloud\Bootstrap;
+Bootstrap::useAutoloader();</code></pre>
+
+            <p>This includes the bootstrap process and registers the included autoloader with PHP.</p>
+
+            <h2 id="bootstrapping-the-library">Bootstrapping The Library</h2>
+
+            <p>While you can use the entire library without bootstrapping, we do have a small bootstrap process that sets up some nice to have components and lets you set some global options. For example, you can authenticate once and reuse that with the different services. Let's take a look at a few of these.</p>
+
+            <h3 id="registering-stream-wrappers">Registering Stream Wrappers</h3>
+
+            <p>Wouldn't it be nice to work with remote files through the normal file system calls? That would be stream wrappers and we provide some right out of the box.</p>
+
+            <pre><code>require_once 'path/to/HPCloud-PHP/src/HPCloud/Bootstrap.php';
+use \HPCloud\Bootstrap;
+Bootstrap::useStreamWrappers();
+
+// Provide credentials
+$settings = array(
+    'account' =&gt; YOUR_ACCESS_KEY_ID,
+    'secret' =&gt; YOUR_SECRET_KEY,
+    'tenantid' =&gt; YOUR_TENANT_ID,
+    'endpoint' =&gt; IDENTITY_SERVICES_URL,
+);
+Bootstrap::setConfiguration($settings);</code></pre>
+
+            <p>This bootstrap code registers a PHP stream wrapper to your object storage. For example, a URI in the format of <code>swift://foo/bar.baz</code> would be to an object named <code>bar.baz</code> in the container <code>foo</code> of your object storage. You can read this object, write to this object, and so much more. All of this through file system functions like <code>fopen</code>.</p>
+
+            <h3 id="transport-layers">Transport Layers</h3>
+
+            <p>The transport layer for making API calls to the HP Cloud services is pluggagle and out of the box provides curl and native PHP support. By default curl (with a tuned configuration) is used because it is significantly faster. If you are in an environment where curl is not an option you can specify the PHP transport layer be used.</p>
+
+            <pre><code>$settings = array(
+    'transport' =&gt; '\HPCloud\Transport\PHPStreamTransport',
+);</code></pre>
+
+            <p>In the settings array passed to <code>Bootstrap::setConfiguration()</code> tell the API calls to use the PHPStreamTransport plugin and that will be used instead.</p>
+
+            <h3 id="debugging">Debugging</h3>
+
+            <p>Debugging is an important part of working with APIs. We've built in debugging into the transport layer that can be globally enabled via the bootstrap process. This will help us see the calls being made to the APIs and the responses we are getting back.</p>
+
+            <pre><code>$settings = array(
+    'transport.debug' =&gt; TRUE,
+);</code></pre>
+
+            <p>In the settings array passed to <code>Bootstrap::setConfiguration()</code> tell the transport layer to work in debug mode. For example, when working with the curl transport layer this will enable <code>CURLOPT_VERBOSE</code> which will write out verbose details to <a href="http://us.php.net/manual/en/wrappers.php.php">STDERR</a>.</p>
+
+            <h3 id="glogal-context-configurations">Glogal Context Configurations</h3>
+
+            <p>Through the codebase there are a number of configuration options that can be contextually set. For example, If you are using stream wrappers and CDN on your object storage should the ssl or non-ssl URL be returned? Or, what should the timeout on the transport layer be? While, options like these can all be configured or overridden at the different class levels in the codebase they can also be configured globally through the bootstrap process by passing them into <code>Bootstrap::setConfiguration()</code>.</p>
+
+            <p>As these configuration options are discovered working with the codebase the bootstrap process provides a place to set them globally.</p>
+
+            <h2 id="a-quick-example">A Quick Example</h2>
+
+            <p>As a quick example we can write a file to object storage using the library.</p>
+
+            <pre><code>require_once 'path/to/HPCloud-PHP/src/HPCloud/Bootstrap.php';
+use \HPCloud\Bootstrap;
+Bootstrap::useAutoloader();
+Bootstrap::useStreamWrappers();
+
+// Provide credentials
+$settings = array(
+    'account' =&gt; YOUR_ACCESS_KEY_ID,
+    'secret' =&gt; YOUR_SECRET_KEY,
+    'tenantid' =&gt; YOUR_TENANT_ID,
+    'endpoint' =&gt; IDENTITY_SERVICES_URL,
+);
+Bootstrap::setConfiguration($settings);
+
+$newfile = fopen('swift://mycontainer/foo.txt', 'w');
+fwrite($newfile, "Hello World!");
+fclose($newfile);</code></pre>
+
+            <p>This code includes the PHP library, configures it for authentication, then uses file system functions to create a new object.</p>
+					</article>
+				</div>
+				
+			</div> <!-- #main -->
+		</div> <!-- #main-container -->
+	</div> <!-- #wrapper -->
+
+  <div id="footer-container">
+    <footer class="wrapper container_16">
+      <div id="content-info" role="contentinfo">
+        <div class="container_16">
+          <div class="grid_6 prefix_2">
+            <a href="http://hpcloud.com/legal_docs">HP Cloud Services Legal Documents</a>
+          </div>
+          <div class="grid_6 align-right suffix_2">
+            ©
+            2012
+            Hewlett-Packard Development Company, L.P.
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="js/jquery-1.8.2.min.js"></script>
+  <script src="js/google-code-prettify/prettify.js"></script>
+  <script src="js/highlight.js"></script>
+<!--[if lte IE 7 ]>
+	<script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
+	<script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script>
+<![endif]-->
+
+</body>
+</html>

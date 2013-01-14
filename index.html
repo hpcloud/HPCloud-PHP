@@ -7,8 +7,9 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-	<title></title>
+	<title>HP Cloud PHP Library/Bindings</title>
 	<meta name="description" content="PHP bindings for the HP Cloud. OpenStack, Swift, Control Services, Identity Services, and CDN Support.">
+  <meta name="keywords" content="OpenStack, Swift, Control Services, Identity Services, CDN, DBaaS, RDB, HP Cloud, PHP, Bindings">
 	<meta name="author" content="Matt Technosophos Butcher">
 
 	<meta name="viewport" content="width=device-width,initial-scale=1">
@@ -34,12 +35,13 @@
       	<div id="nav-primary-container">
 	        <div id="nav-primary" class="container_16">
 						<div id="logo" class="grid_2 prefix_2">
-							<h1 id="site-name"><a href="#">HP Cloud</a></h1>
+							<h1 id="site-name"><a href="index.html">HP Cloud</a></h1>
 						</div>
 						<nav id="site-navigation" class="grid_9">
 							<ul>
-								<li class="highlighted"><a href="#"><span>PHP Bindings</span></a></li>
-								<li><a href="doc/api/html/index.html"><span>Documentation</span></a></li>
+                <li><a href="get-started.html"><span>Get Started</span></a></li>
+                <li><a href="tutorials.html"><span>Tutorials</span></a></li>
+								<li><a href="doc/api/html/index.html"><span>API</span></a></li>
 								<li><a href="https://github.com/hpcloud/HPCloud-PHP"><span>Source</span></a></li>
 								<li><a href="https://github.com/hpcloud/HPCloud-PHP/tags"><span>Download</span></a></li>
 							</ul>
@@ -108,7 +110,7 @@ we're just getting started.
               We took advantage of PHP's built-in stream wrapper feature to expose object storage to PHP's file and stream functions. What does that mean?
               It means connecting to the cloud is as easy as this:
               </p>
-<pre class="prettyprint"><code>// Get all set up.
+<pre><code>// Get all set up.
 require_once '/HPCloud/Bootstrap.php';
 use \HPCloud\Bootstrap;
 Bootstrap::useAutoloader();
@@ -116,7 +118,7 @@ Bootstrap::useStreamWrappers();
 
 // Provide credentials
 $settings = array(
-  'account' =&gt; YOUR_ACCOUNT_NUMBER,
+  'account' =&gt; YOUR_ACCESS_KEY_ID,
   'secret' =&gt; YOUR_SECRET_KEY,
   'tenantid' =&gt; YOUR_TENANT_ID,
   'endpoint' =&gt; IDENTITY_SERVICES_URL,
@@ -157,13 +159,13 @@ print 'File: ' . $file . PHP_EOL;
               So what does this API look like? Here is a brief example:
               </p>
 						</section>
-<pre class="prettyprint"><code>// Set up.
+<pre><code>// Set up.
 require_once '/HPCloud/Bootstrap.php';
 use \HPCloud\Bootstrap;
 Bootstrap::useAutoloader();
 
 // Authenticate to HP Cloud
-$account = 'ADD ACCOUNT HERE';
+$account = 'ADD ACCESS KEY HERE';
 $secret = 'ADD KEY HERE';
 $tenantId = 'ADD TENANT ID HERE';
 $endpoint = 'ADD ENDPOINT URL HERE';
@@ -240,11 +242,9 @@ print $object-&gt;content() . PHP_EOL;
       </div>
     </footer>
   </div>
-
+  <script src="js/jquery-1.8.2.min.js"></script>
   <script src="js/google-code-prettify/prettify.js"></script>
-  <script>
-  	prettyPrint();
-  </script>
+  <script src="js/highlight.js"></script>
 <!--[if lte IE 7 ]>
 	<script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
 	<script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script>

@@ -1,0 +1,162 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<title>Identity Services, Authentication, and the PHP HP Cloud Library</title>
+	<meta name="description" content="PHP bindings for the HP Cloud. OpenStack, Swift, Control Services, Identity Services, and CDN Support.">
+	<meta name="author" content="Matt Technosophos Butcher">
+
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+
+	<link rel="stylesheet" href="js/google-code-prettify/prettify.css">
+	<link rel="stylesheet" href="css/application.css">
+
+	<script src="js/modernizr-2.5.3.min.js"></script>
+</head>
+<body class="static">
+	<div id="wrapper">
+		<!--[if lte IE 8]>
+		<div id='ie-upgrade'>
+		Your version of Internet Explorer is out of date. Please
+		<a href="http://www.microsoft.com/windows/internet-explorer" target="_blank">upgrade</a>
+		or install
+		<a href="http://www.google.com/chromeframe" target="_blank">Chrome Frame</a>.
+		</div>
+		<![endif]-->
+
+		<div id="header-container">
+      <header class="wrapper clearfix" role="banner">
+      	<div id="nav-primary-container">
+	        <div id="nav-primary" class="container_16">
+						<div id="logo" class="grid_2 prefix_2">
+							<h1 id="site-name"><a href="index.html">HP Cloud</a></h1>
+						</div>
+						<nav id="site-navigation" class="grid_9">
+							<ul>
+                <li><a href="get-started.html"><span>Get Started</span></a></li>
+                <li><a href="tutorials.html" class="highlighted"><span>Tutorials</span></a></li>
+								<li><a href="doc/api/html/index.html"><span>API</span></a></li>
+								<li><a href="https://github.com/hpcloud/HPCloud-PHP"><span>Source</span></a></li>
+								<li><a href="https://github.com/hpcloud/HPCloud-PHP/tags"><span>Download</span></a></li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</header>
+		</div>
+		<div id="main-container">
+			<div id="main" class="wrapper clearfix container_16">
+				<div class="grid_16">
+		        </div>
+				<div id="content" class="grid_12 prefix_2 suffix_2">
+					<article>
+						<h1 id="identity-services-authentication-and-the-php-hp-cloud-library">Identity Services, Authentication, and the PHP HP Cloud Library</h1>
+
+						<p>The <a href="https://docs.hpcloud.com/identity">Identity Services API</a> is central to using the APIs for the services by HP Cloud. Identity Services not only deals with authentication but also supplies the catalog of information around the activated and available services. For example, this API is where the API endpoints for services like the different compute regions, the CDN, Object Storage, and everything else is available.</p>
+
+						<p>The <a href="http://hpcloud.github.com/HPCloud-PHP/">HP Cloud PHP library</a> provides functionality to interact with identity services and authentication at a low level or, through the use of helpers, simply authenticate commonly and use it everywhere.</p>
+
+						<h2 id="authentication-and-tokens">Authentication and Tokens</h2>
+
+						<p>The first step is authenticating as a user and there are two ways to do this. The first option is to use the username and password used to log into the <a href="https://console.hpcloud.com">console</a>. The second option is to use an access key id and secret key available on the <a href="https://console.hpcloud.com/account/api_keys">API Keys page within the console</a>.</p>
+
+						<p>Since services are associated with tenants you need to use a tenantId or tenantName to get a valid token for a set of services.</p>
+
+						<p>Before you look at the helper function let's take a quick look at authenticating manually.</p>
+
+						<pre><code>$identity = new \HPCloud\Services\IdentityServices($endpoint);
+try {
+    $token = $identity-&gt;authenticateAsAccount($account, $secret, $tenantId, $tenantName);
+}
+catch (\Exception $e) {
+    // Authentication failed.
+}</code></pre>
+
+						<p>This example authenticates as an account with an access key id and secret key. Only the tenantId or tenantName needs to be supplied as the other is optional. If authentication passed, the identity object is authenticated and a token is returned.</p>
+
+						<p>If authentication failed or there was another error an exception is thrown. There are a number of exceptions that can be caught depending on the type of error that occurred.</p>
+
+						<p>If you want to authenticate as a user with your console username and password it looks almost the same as authenticating as an account.</p>
+
+						<pre><code>$identity = new \HPCloud\Services\IdentityServices($endpoint);
+try {
+    $token = $identity-&gt;authenticateAsUser($username, $password, $tenantId, $tenantName);
+}
+catch (\Exception $e) {
+    // Authentication failed.
+}</code></pre>
+
+						<p><em>Note, while you can authenticate with a username and password we recommend using the access key id and secret key method.</em></p>
+
+						<h3 id="a-bootstrap-identity-helper">A Bootstrap Identity Helper</h3>
+
+						<p>If the bootstrap mechanism to setup any global options was used there is a helper function to get an identity object. For example:</p>
+
+						<pre><code>require_once 'path/to/HPCloud-PHP/src/HPCloud/Bootstrap.php';
+use \HPCloud\Bootstrap;
+// Provide credentials
+$settings = array(
+    'account' =&gt; YOUR_ACCESS_KEY_ID,
+    'secret' =&gt; YOUR_SECRET_KEY,
+    'tenantid' =&gt; YOUR_TENANT_ID,
+    'endpoint' =&gt; IDENTITY_SERVICES_URL,
+);
+Bootstrap::setConfiguration($settings);</code></pre>
+
+						<p>Using the helper method <code>identity</code> an identity object is available.</p>
+
+						<pre><code>$identity = Bootstrap::identity();
+</code></pre>
+
+						<p>This object will be authenticated with the credentials provided to the bootstrap.</p>
+
+						<h2 id="service-catalog">Service Catalog</h2>
+
+						<p>The service catalog lists the available services. Accessing the catalog, which includes the API endpoints, is fairly simple through the use of the <code>serviceCatalog</code> method. To get the entire catalog call the method with no arguments.</p>
+
+						<pre><code>$identity = Bootstrap::identity();
+$catalog = $identity-&gt;serviceCatalog();</code></pre>
+
+						<p>Calling the <code>serviceCatalog</code> method with the name of a service will return the service catalog for just this service.</p>
+
+						<pre><code>$identity = Bootstrap::identity();
+$catalog = $identity-&gt;serviceCatalog('object-store');</code></pre>
+					</article>
+				</div>
+				
+			</div> <!-- #main -->
+		</div> <!-- #main-container -->
+	</div> <!-- #wrapper -->
+
+  <div id="footer-container">
+    <footer class="wrapper container_16">
+      <div id="content-info" role="contentinfo">
+        <div class="container_16">
+          <div class="grid_6 prefix_2">
+            <a href="http://hpcloud.com/legal_docs">HP Cloud Services Legal Documents</a>
+          </div>
+          <div class="grid_6 align-right suffix_2">
+            ©
+            2012
+            Hewlett-Packard Development Company, L.P.
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="js/jquery-1.8.2.min.js"></script>
+  <script src="js/google-code-prettify/prettify.js"></script>
+  <script src="js/highlight.js"></script>
+<!--[if lte IE 7 ]>
+	<script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
+	<script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script>
+<![endif]-->
+
+</body>
+</html>
