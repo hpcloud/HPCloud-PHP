@@ -1,0 +1,197 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<title>Working With Object Storage in PHP</title>
+	<meta name="description" content="Learn how to use HP Cloud Object Storage through PHP. This includes stream wrapper support.">
+	<meta name="keywords" content="Object Storage, Swift, OpenStack, HP Cloud, PHP, stream wrapper">
+	<meta name="author" content="Matt Farina">
+
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+
+	<link rel="stylesheet" href="js/google-code-prettify/prettify.css">
+	<link rel="stylesheet" href="css/application.css">
+
+	<script src="js/modernizr-2.5.3.min.js"></script>
+</head>
+<body class="static">
+	<div id="wrapper">
+		<!--[if lte IE 8]>
+		<div id='ie-upgrade'>
+		Your version of Internet Explorer is out of date. Please
+		<a href="http://www.microsoft.com/windows/internet-explorer" target="_blank">upgrade</a>
+		or install
+		<a href="http://www.google.com/chromeframe" target="_blank">Chrome Frame</a>.
+		</div>
+		<![endif]-->
+
+		<div id="header-container">
+      <header class="wrapper clearfix" role="banner">
+      	<div id="nav-primary-container">
+	        <div id="nav-primary" class="container_16">
+						<div id="logo" class="grid_2 prefix_2">
+							<h1 id="site-name"><a href="index.html">HP Cloud</a></h1>
+						</div>
+						<nav id="site-navigation" class="grid_9">
+							<ul>
+                <li><a href="get-started.html"><span>Get Started</span></a></li>
+                <li><a href="tutorials.html" class="highlighted"><span>Tutorials</span></a></li>
+								<li><a href="doc/api/html/index.html"><span>API</span></a></li>
+								<li><a href="https://github.com/hpcloud/HPCloud-PHP"><span>Source</span></a></li>
+								<li><a href="https://github.com/hpcloud/HPCloud-PHP/tags"><span>Download</span></a></li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</header>
+		</div>
+		<div id="main-container">
+			<div id="main" class="wrapper clearfix container_16">
+				<div class="grid_16">
+		        </div>
+				<div id="content" class="grid_12 prefix_2 suffix_2">
+					<article>
+						<h1 id="working-with-object-storage-in-php">Working With Object Storage in PHP</h1>
+
+						<p><a href="https://www.hpcloud.com/products/object-storage" title="HP Cloud Object Storage">Object Storage</a> is a web scale storage system. It provides private and public access, can optionally be backed by a CDN, and is accessible through a simple API. Within the <a href="hpcloud.github.com/HPCloud-PHP" title="HP Cloud PHP Bindings">PHP Library</a> a few ways to access this Object Storage are provided.</p>
+
+						<h2 id="stream-wrappers">Stream Wrappers</h2>
+
+						<p>The simplest method to access object storage is through stream wrappers and there are currently provide two of them. To setup the stream wrappers is fairly simple.</p>
+
+						<pre><code>require_once 'path/to/HPCloud-PHP/src/HPCloud/Bootstrap.php';
+use \HPCloud\Bootstrap;
+Bootstrap::useAutoloader();
+Bootstrap::useStreamWrappers();
+
+// Provide credentials
+$settings = array(
+  'account' =&gt; YOUR_ACCESS_KEY_ID,
+  'secret' =&gt; YOUR_SECRET_KEY,
+  'tenantid' =&gt; YOUR_TENANT_ID,
+  'endpoint' =&gt; IDENTITY_SERVICES_URL,
+);
+Bootstrap::setConfiguration($settings);</code></pre>
+
+						<p>This example includes the bootstrap, sets up the autoloader, enables the stream wrappers, and provides the credentials to use.</p>
+
+						<p>Calling <code>Bootstrap::useStreamWrappers()</code> sets up the <code>swift</code> and <code>swiftfs</code> stream wrappers. According to the <a href="http://www.php.net/manual/en/book.stream.php" title="PHP Stream Wrapper Documentation">PHP Stream Wrapper</a> documentation a stream should only implement the features used. This is what the <code>swift</code> stream wrapper provides. Since there are use cases to treat a container like a file system and, technically speaking, object storage doesn't support all those features the <code>swiftfs</code> stream was created to mimic those features.</p>
+
+						<p>To access a file with stream wrappers registered the existing file system utilities can be used. For example:</p>
+
+						<pre><code>$newfile = fopen('swift://mycontainer/foo.txt', 'w');
+fwrite($newfile, "Hello World!");
+fclose($newfile);</code></pre>
+
+						<p>The new file can then be read:</p>
+
+						<pre><code>print file_get_contents('swift://mycontainer/foo.txt');
+</code></pre>
+
+						<p>In this case the <code>swift</code> stream wrapper was used. <code>mycontainer</code> is the name of the container and <code>foo.txt</code> is the name of the file stored in the container. Just like a local file it can be opened, read, write to, and deleted.</p>
+
+						<h2 id="using-the-php-library-internals">Using The PHP Library Internals</h2>
+
+						<p>The stream wrappers are powered by a lower level API that can be used. It starts with identity services.</p>
+
+						<pre><code>use \HPCloud\Bootstrap;
+use \HPCloud\Storage\ObjectStorage;
+
+$identity = Bootstrap::identity();
+$storage = ObjectStorage::newFromIdentity($identity);</code></pre>
+
+						<p><code>ObjectStorage::newFromIdentity</code> is a factory for creating <code>ObjectStorage</code> objects from identities. There are other factories that can be used as well.</p>
+
+						<p>From here a container can be accessed. For example,</p>
+
+						<pre><code>$container = $storage-&gt;container('mycontainer');
+</code></pre>
+
+						<p>The following snippet obtains a file (a.k.a object) from within a container:</p>
+
+						<pre><code>try {
+    $object = $container-&gt;proxyObject('foo.txt');
+}
+catch (\HPCloud\Transport\FileNotFoundException $nf) {
+    // React because the requested object was not found.
+}
+catch (\HPCloud\Exception $e) {
+    // Uh-oh, we have a problem.
+}</code></pre>
+
+						<p>When fetching objects there are two methods to use in <code>proxyObject</code> and <code>object</code>. The <code>object</code> method returns a full object with all of its contents. For large files this can take some time. If you don't need the content or don't know if you will we have the <code>proxyObject</code> method that grabs the meta data around an object without grabbing the content immediately. If a call is made for the content it will be loaded at that time.</p>
+
+						<h3 id="creating-new-objects">Creating New Objects</h3>
+
+						<p>When objects are retrieved from storage they are the class <code>\HPCloud\Storage\ObjectStorage\RemoteObject</code>. When a new local object it created it is done with the class <code>\HPCloud\Storage\ObjectStorage\Object</code>. Creating a new object looks like:</p>
+
+						<pre><code>use \HPCloud\Storage\ObjectStorage\Object;
+$object = new Object('bar.txt');
+$object-&gt;setContent('Hello World!', 'text/plain');</code></pre>
+
+						<p>When using <code>setContent</code> the MIME type can optionally be set as the as the second parameter. This can be done later using <code>setContentType</code>. The file is saved through the container object. For example,</p>
+
+						<pre><code>$container-&gt;save($object);
+</code></pre>
+
+						<h3 id="crud">CRUD</h3>
+
+						<p>Create, Read, Update, and Delete operations happen on container objects and are fairly simple. For example,</p>
+
+						<pre><code>// Get an object and its content
+$object = $container-&gt;proxyObject('foo.txt');
+print $object-&gt;content();
+
+// Create/Update an object
+$container-&gt;save($object);
+
+// Delete an object
+$container-&gt;delete('bar.txt');</code></pre>
+
+						<h3 id="getting-a-cdn-url">Getting A CDN URL</h3>
+
+						<p>If <a href="https://www.hpcloud.com/products/CDN" title="HP Cloud CDN Service">CDN</a> is activated on a container getting the CDN url to a <code>RemoteObject</code> is simple.</p>
+
+						<pre><code>$url = $object-&gt;url(TRUE);
+</code></pre>
+
+						<p>The <code>url</code> method will get the url to the object and when <code>TRUE</code> is passed in the cached (CDN) url is retrieved if it is available. There are two versions of the CDN url. By default the ssl version is used. To use the non-ssl version of the url pass in a second argument of <code>FALSE</code> and opt out of ssl.</p>
+					</article>
+				</div>
+				
+			</div> <!-- #main -->
+		</div> <!-- #main-container -->
+	</div> <!-- #wrapper -->
+
+  <div id="footer-container">
+    <footer class="wrapper container_16">
+      <div id="content-info" role="contentinfo">
+        <div class="container_16">
+          <div class="grid_6 prefix_2">
+            <a href="http://hpcloud.com/legal_docs">HP Cloud Services Legal Documents</a>
+          </div>
+          <div class="grid_6 align-right suffix_2">
+            ©
+            2012
+            Hewlett-Packard Development Company, L.P.
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="js/jquery-1.8.2.min.js"></script>
+  <script src="js/google-code-prettify/prettify.js"></script>
+  <script src="js/highlight.js"></script>
+<!--[if lte IE 7 ]>
+	<script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
+	<script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script>
+<![endif]-->
+
+</body>
+</html>
