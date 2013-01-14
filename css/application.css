@@ -4062,7 +4062,7 @@ body.minimal.registrations #main-container {
 
 /* line 2, ../sass/_static.sass */
 body.static #footer-container {
-  height: 20px;
+  height: 30px;
   margin-top: -40px;
   background: transparent;
   color: gray;
