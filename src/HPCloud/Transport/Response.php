@@ -131,6 +131,13 @@ class Response {
     //fclose($this->handle);
   }
 
+  public function setFile($handle, $rewind = FALSE) {
+    if ($rewind) {
+      rewind($handle);
+    }
+    $this->handle = $handle;
+  }
+
   /**
    * Get the file handle.
    * This provides raw access to the IO stream. Users

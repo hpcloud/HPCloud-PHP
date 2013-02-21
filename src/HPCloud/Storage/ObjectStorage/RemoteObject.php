@@ -615,6 +615,70 @@ class RemoteObject extends Object {
    *   $fetchContent flag) optionally the data.
    */
   protected function fetchObject($fetchContent = FALSE) {
+    $cache = \HPCloud\Bootstrap::config('hpcloud.swift.cache');
+
+    if ($fetchContent && !empty($cache)) {
+      return $this->fetchObjectFromCache($cache, $method);
+    }
+    else {
+      return $this->fetchObjectWithoutCache($fetchContent, $method);
+    }
+  }
+
+  /**
+   * Fetch an object from cache, or from origin.
+   */
+  protected function fetchObjectFromCache($klass, $method) {
+    $cache = new $klass();
+
+    // Cache miss.
+    if (!$cache->has($this)) {
+      $res = $this->fetchObjectWithoutCache(true);
+      return $cache->put($this, $res);
+    }
+
+    // Check if we have most recent.
+    return $this->fetchIfModified($cache);
+  }
+
+  /**
+   * Get the latest version, caching if possible.
+   *
+   * If the object has been modified, serve the new version. Otherwise
+   * serve the cached version.
+   */
+  protected function fetchIfModified($cache) {
+    $client = \HPCloud\Transport::instance();
+    $headers = array(
+      'X-Auth-Token' => $this->token,
+      'If-None-Match' => $this->eTag(),
+    );
+    $url = empty($this->cdnUrl) ? $this->url : $this->cdnUrl;
+    $response = $client->doRequest($url, $method, $headers);
+    $status = $esponse->status;
+
+    // Object is changed. Return new one.
+    if ($status == 200) {
+      $response = $cache->put($this, $response);
+    }
+    // Object is not changed. Fetch cached copy.
+    else if ($status == 304) {
+      $response = $cache->get($this, $response);
+    }
+    // Something bad happened.
+    else {
+      throw new \HPCloud\Exception('An unknown exception occurred during transmission.');
+    }
+
+    $this->extractFromHeaders($response);
+
+    return $response;
+  }
+
+  /**
+   * Fetch an object without working with the cache at all.
+   */
+  protected function fetchObjectWithoutCache($fetchContent) {
     $method = $fetchContent ? 'GET' : 'HEAD';
 
     $client = \HPCloud\Transport::instance();
