@@ -190,8 +190,10 @@ class ObjectStorage {
    * The IdentityServices object contains a service catalog listing all of the
    * services to which the present account has access.
    *
-   * This builder can scan the catalog and generate a new ObjectStorage
-   * instance pointed to the first object storage endpoint in the catalog.
+   * This builder scans the catalog and generate a new ObjectStorage
+   * instance pointed to the object storage endpoing matching the region
+   * specied. If no region is specified, the first  object storage endpoint in
+   * the catalog is used.
    *
    * @param array $catalog
    *   The serice catalog from IdentityServices::serviceCatalog(). This
@@ -213,6 +215,24 @@ class ObjectStorage {
             //$cdn->url = $endpoint['publicURL'];
 
             return $os;
+          }
+        }
+      }
+    }
+
+// If no specific region was specified, we return the first endpoint of the
+// correct type as we did not match on a given region in the previous for loop.
+
+    if ($region == ObjectStorage::DEFAULT_REGION) {
+      for ($i = 0; $i < $c; ++$i) {
+        if ($catalog[$i]['type'] == self::SERVICE_TYPE) {
+          foreach ($catalog[$i]['endpoints'] as $endpoint) {
+            if (isset($endpoint['publicURL'])) {
+              $os= new ObjectStorage($authToken, $endpoint['publicURL']);
+              //$cdn->url = $endpoint['publicURL'];
+  
+              return $os;
+            }
           }
         }
       }
