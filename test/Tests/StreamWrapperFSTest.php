@@ -11,7 +11,7 @@ subject to the following conditions:
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE  LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
@@ -66,7 +66,7 @@ class StreamWrapperFSTest extends \HPCloud\Tests\TestCase {
 
     // Delete the container and all the contents.
     $cname = self::$settings['hpcloud.swift.container'];
-    
+
     try {
       $container = $store->container($cname);
     }
@@ -175,6 +175,13 @@ class StreamWrapperFSTest extends \HPCloud\Tests\TestCase {
     );
     \HPCloud\Bootstrap::setConfiguration($opts);
 
+  }
+
+  protected function createResource() {
+    $url = $this->newUrl(self::FNAME);
+    $res = fopen($url, 'c+', FALSE, $this->basicSwiftContext());
+
+    return $res;
   }
 
   // Canary. There are UTF-8 encoding issues in stream wrappers.
@@ -308,10 +315,9 @@ class StreamWrapperFSTest extends \HPCloud\Tests\TestCase {
    * @depends testOpen
    */
   public function testOpenCreateMode() {
-    $url = $this->newUrl(self::FNAME);
-    $res = fopen($url, 'c+', FALSE, $this->basicSwiftContext());
+    $res = $this->createResource();
     $this->assertTrue(is_resource($res));
-    //fclose($res);
+    fclose($res);
 
     return $res;
   }
@@ -320,8 +326,13 @@ class StreamWrapperFSTest extends \HPCloud\Tests\TestCase {
    * @depends testOpenCreateMode
    */
   public function testTell($res) {
-    // Sould be at the beginning of the buffer.
+    // Should be at the beginning of the buffer.
+    $res = $this->createResource();
+    $this->assertTrue(is_resource($res));
+
     $this->assertEquals(0, ftell($res));
+
+    fclose($res);
 
     return $res;
   }
@@ -330,9 +341,14 @@ class StreamWrapperFSTest extends \HPCloud\Tests\TestCase {
    * @depends testTell
    */
   public function testWrite($res) {
+    $res = $this->createResource();
+    $this->assertTrue(is_resource($res));
+
     $str = 'To be is to be the value of a bound variable. -- Quine';
     fwrite($res, $str);
     $this->assertGreaterThan(0, ftell($res));
+
+    fclose($res);
 
     return $res;
   }
@@ -341,9 +357,12 @@ class StreamWrapperFSTest extends \HPCloud\Tests\TestCase {
    * @depends testWrite
    */
   public function testStat($res) {
+    $res = $this->createResource();
+    $this->assertTrue(is_resource($res));
     $stat = fstat($res);
-
     $this->assertGreaterThan(0, $stat['size']);
+
+    fclose($res);
 
     return $res;
   }
@@ -352,28 +371,34 @@ class StreamWrapperFSTest extends \HPCloud\Tests\TestCase {
    * @depends testStat
    */
   public function testSeek($res) {
+    $res = $this->createResource();
+    $this->assertTrue(is_resource($res));
+
     $then = ftell($res);
     rewind($res);
 
     $now = ftell($res);
 
     // $now should be 0
-    $this->assertLessThan($then, $now);
     $this->assertEquals(0, $now);
 
     fseek($res, 0, SEEK_END);
     $final = ftell($res);
 
-    $this->assertEquals($then, $final);
+    $this->assertLessThan($final, $then);
+
+    fclose($res);
 
     return $res;
-
   }
 
   /**
    * @depends testSeek
    */
   public function testEof($res) {
+    $res = $this->createResource();
+    $this->assertTrue(is_resource($res));
+
     rewind($res);
 
     $this->assertEquals(0, ftell($res));
@@ -389,6 +414,8 @@ class StreamWrapperFSTest extends \HPCloud\Tests\TestCase {
 
     $this->assertTrue(feof($res));
 
+    fclose($res);
+
     return $res;
   }
 
@@ -396,6 +423,8 @@ class StreamWrapperFSTest extends \HPCloud\Tests\TestCase {
    * @depends testEof
    */
   public function testFlush($res) {
+    $res = $this->createResource();
+    $this->assertTrue(is_resource($res));
 
     $stat1 = fstat($res);
 
@@ -409,6 +438,8 @@ class StreamWrapperFSTest extends \HPCloud\Tests\TestCase {
 
     $this->assertEquals($stat1['size'], $stat2['size']);
 
+    fclose($res);
+
     return $res;
   }
 
@@ -416,6 +447,9 @@ class StreamWrapperFSTest extends \HPCloud\Tests\TestCase {
    * @depends testFlush
    */
   public function testStreamGetMetadata($res) {
+    $res = $this->createResource();
+    $this->assertTrue(is_resource($res));
+
     // Grab a copy of the object.
     $url = $this->newUrl(self::FNAME);
     $newObj = fopen($url, 'r', FALSE, $this->basicSwiftContext());
@@ -428,13 +462,16 @@ class StreamWrapperFSTest extends \HPCloud\Tests\TestCase {
 
     $this->assertEquals(self::FTYPE, $obj->contentType());
 
+    fclose($res);
   }
 
   /**
    * @depends testFlush
    */
   public function testClose($res) {
+    $res = $this->createResource();
     $this->assertTrue(is_resource($res));
+    fseek($res, 0, SEEK_END);
     fwrite($res, '~~~~');
     //throw new \Exception(stream_get_contents($res));
     fflush($res);
@@ -450,7 +487,6 @@ class StreamWrapperFSTest extends \HPCloud\Tests\TestCase {
     $contents = stream_get_contents($res2);
     fclose($res2);
     $this->assertRegExp('/~{4}$/', $contents);
-
   }
 
   /**
@@ -578,14 +614,18 @@ class StreamWrapperFSTest extends \HPCloud\Tests\TestCase {
 
     $this->assertTrue(is_resource($dir));
 
-    return $dir;
+    closedir($dir);
 
+    return $dir;
   }
 
   /**
    * @depends testOpenDir
    */
   public function testReaddir($dir){
+    $dirUrl = $this->newUrl('');
+    $dir = opendir($dirUrl, $this->basicSwiftContext());
+
     // Order should be newest to oldest.
     $expects = array('bar/', 'foo/', 'test1.txt');
 
@@ -596,15 +636,22 @@ class StreamWrapperFSTest extends \HPCloud\Tests\TestCase {
     }
     $this->assertFalse(readdir($dir));
 
+    closedir($dir);
+
     return $dir;
   }
   /**
    * @depends testReaddir
    */
   public function testRewindDir($dir){
-    $this->assertFalse(readdir($dir));
+    $dirUrl = $this->newUrl('');
+    $dir = opendir($dirUrl, $this->basicSwiftContext());
+
     rewinddir($dir);
     $this->assertEquals('bar/', readdir($dir));
+
+    closedir($dir);
+
     return $dir;
   }
 
@@ -612,7 +659,10 @@ class StreamWrapperFSTest extends \HPCloud\Tests\TestCase {
    * @depends testRewindDir
    */
   public function testCloseDir($dir) {
+    $dirUrl = $this->newUrl('');
+    $dir = opendir($dirUrl, $this->basicSwiftContext());
     $this->assertTrue(is_resource($dir));
+
     closedir($dir);
 
     // There is a bug in PHP where a
@@ -639,13 +689,14 @@ class StreamWrapperFSTest extends \HPCloud\Tests\TestCase {
     $array = scandir($url, -1, $this->basicSwiftContext());
     $this->assertEquals(2, count($array));
     $this->assertEquals('test3.txt', $array[0]);
-
   }
 
   /**
    * @depends testReaddir
    */
   public function testIsdir($dir) {
+    $dirUrl = $this->newUrl('');
+    $dir = opendir($dirUrl, $this->basicSwiftContext());
 
     // Object names are pathy. If objects exist starting with this path we can
     // consider the directory to exist.
@@ -654,7 +705,6 @@ class StreamWrapperFSTest extends \HPCloud\Tests\TestCase {
 
     $url = $this->newUrl('foo/');
     $this->assertTRUE(is_dir($url));
-
   }
 
   /**
