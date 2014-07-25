@@ -11,7 +11,7 @@ subject to the following conditions:
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE  LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
@@ -386,11 +386,6 @@ class IdentityServicesTest extends \HPCloud\Tests\TestCase {
     $details = $service->tokenDetails();
     $this->assertFalse(isset($details['tenant']));
 
-    // With no tenant ID, there should be only
-    // one entry in the catalog.
-    $catalog = $service->serviceCatalog();
-    $this->assertEquals(1, count($catalog));
-
     $service->rescopeUsingTenantId($tenantId);
 
     $details = $service->tokenDetails();
@@ -404,8 +399,6 @@ class IdentityServicesTest extends \HPCloud\Tests\TestCase {
     $details = $service->tokenDetails();
     $this->assertFalse(isset($details['tenant']));
     $catalog = $service->serviceCatalog();
-    $this->assertEquals(1, count($catalog));
-
   }
 
   /**
@@ -426,11 +419,6 @@ class IdentityServicesTest extends \HPCloud\Tests\TestCase {
     $details = $service->tokenDetails();
     $this->assertFalse(isset($details['tenant']));
 
-    // With no tenant ID, there should be only
-    // one entry in the catalog.
-    $catalog = $service->serviceCatalog();
-    $this->assertEquals(1, count($catalog));
-
     $service->rescopeUsingTenantName($tenantName);
 
     $details = $service->tokenDetails();
@@ -444,8 +432,6 @@ class IdentityServicesTest extends \HPCloud\Tests\TestCase {
     $details = $service->tokenDetails();
     $this->assertFalse(isset($details['tenant']));
     $catalog = $service->serviceCatalog();
-    $this->assertEquals(1, count($catalog));
-
   }
 
   /**

@@ -11,7 +11,7 @@ subject to the following conditions:
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE  LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
@@ -42,6 +42,8 @@ class StreamWrapperTest extends \HPCloud\Tests\TestCase {
   const FNAME = 'streamTest.txt';
   const FTYPE = 'application/x-tuna-fish; charset=iso-8859-13';
 
+  protected $resource;
+
   /**
    * Cleaning up the test container so we can reuse it for other tests.
    */
@@ -63,7 +65,7 @@ class StreamWrapperTest extends \HPCloud\Tests\TestCase {
 
     // Delete the container and all the contents.
     $cname = self::$settings['hpcloud.swift.container'];
-    
+
     try {
       $container = $store->container($cname);
     }
@@ -174,6 +176,13 @@ class StreamWrapperTest extends \HPCloud\Tests\TestCase {
 
   }
 
+  protected function createResource() {
+    $url = $this->newUrl(self::FNAME);
+    $res = fopen($url, 'c+', FALSE, $this->basicSwiftContext());
+
+    return $res;
+  }
+
   // Canary. There are UTF-8 encoding issues in stream wrappers.
   public function testStreamContext() {
     // Reset this in case something else left its
@@ -250,7 +259,6 @@ class StreamWrapperTest extends \HPCloud\Tests\TestCase {
     $this->assertTrue(is_resource($res));
 
     fclose($res);
-
   }
 
   /**
@@ -299,64 +307,59 @@ class StreamWrapperTest extends \HPCloud\Tests\TestCase {
   public function testOpenFailureWithRead() {
     $url = $this->newUrl(__FUNCTION__);
     $res = @fopen($url, 'r', FALSE, $this->basicSwiftContext());
-
     $this->assertFalse($res);
 
+    // Can't close this type of resouce since it's a boolean
   }
 
-  // DO we need to test other modes?
-
-  /**
-   * @depends testOpen
-   */
   public function testOpenCreateMode() {
-    $url = $this->newUrl(self::FNAME);
-    $res = fopen($url, 'c+', FALSE, $this->basicSwiftContext());
+    $res = $this->createResource();
     $this->assertTrue(is_resource($res));
-    //fclose($res);
 
-    return $res;
+    fclose($res);
   }
 
-  /**
-   * @depends testOpenCreateMode
-   */
-  public function testTell($res) {
-    // Sould be at the beginning of the buffer.
+  public function testTell() {
+    $res = $this->createResource();
+    $this->assertTrue(is_resource($res));
+
+    // Should be at the beginning of the buffer.
     $this->assertEquals(0, ftell($res));
 
-    return $res;
+    fclose($res);
   }
 
-  /**
-   * @depends testTell
-   */
-  public function testWrite($res) {
+  public function testWrite() {
+    $res = $this->createResource();
+    $this->assertTrue(is_resource($res));
+
     $str = 'To be is to be the value of a bound variable. -- Quine';
     fwrite($res, $str);
     $this->assertGreaterThan(0, ftell($res));
 
-    return $res;
+    fclose($res);
   }
 
-  /**
-   * @depends testWrite
-   */
-  public function testStat($res) {
-    $stat = fstat($res);
+  public function testStat() {
+    $res = $this->createResource();
+    $this->assertTrue(is_resource($res));
 
+    $stat = fstat($res);
     $this->assertGreaterThan(0, $stat['size']);
 
-    return $res;
+    fclose($res);
   }
 
-  /**
-   * @depends testStat
-   */
-  public function testSeek($res) {
+  public function testSeek() {
+    $res = $this->createResource();
+    $this->assertTrue(is_resource($res));
+
+    $str = 'To be is to be the value of a bound variable. -- Quine';
+    fwrite($res, $str);
+    $this->assertGreaterThan(0, ftell($res));
+
     $then = ftell($res);
     rewind($res);
-
     $now = ftell($res);
 
     // $now should be 0
@@ -368,14 +371,16 @@ class StreamWrapperTest extends \HPCloud\Tests\TestCase {
 
     $this->assertEquals($then, $final);
 
-    return $res;
-
+    fclose($res);
   }
 
   /**
    * @depends testSeek
    */
-  public function testEof($res) {
+  public function testEof() {
+    $res = $this->createResource();
+    $this->assertTrue(is_resource($res));
+
     rewind($res);
 
     $this->assertEquals(0, ftell($res));
@@ -391,13 +396,12 @@ class StreamWrapperTest extends \HPCloud\Tests\TestCase {
 
     $this->assertTrue(feof($res));
 
-    return $res;
+    fclose($res);
   }
 
-  /**
-   * @depends testEof
-   */
-  public function testFlush($res) {
+  public function testFlush() {
+    $res = $this->createResource();
+    $this->assertTrue(is_resource($res));
 
     $stat1 = fstat($res);
 
@@ -411,13 +415,10 @@ class StreamWrapperTest extends \HPCloud\Tests\TestCase {
 
     $this->assertEquals($stat1['size'], $stat2['size']);
 
-    return $res;
+    fclose($res);
   }
 
-  /**
-   * @depends testFlush
-   */
-  public function testStreamGetMetadata($res) {
+  public function testStreamGetMetadata() {
     // Grab a copy of the object.
     $url = $this->newUrl(self::FNAME);
     $newObj = fopen($url, 'r', FALSE, $this->basicSwiftContext());
@@ -430,13 +431,13 @@ class StreamWrapperTest extends \HPCloud\Tests\TestCase {
 
     $this->assertEquals(self::FTYPE, $obj->contentType());
 
+    fclose($newObj);
   }
 
-  /**
-   * @depends testFlush
-   */
-  public function testClose($res) {
+  public function testClose() {
+    $res = $this->createResource();
     $this->assertTrue(is_resource($res));
+    fseek($res, 0, SEEK_END);
     fwrite($res, '~~~~');
     //throw new \Exception(stream_get_contents($res));
     fflush($res);
@@ -452,7 +453,6 @@ class StreamWrapperTest extends \HPCloud\Tests\TestCase {
     $contents = stream_get_contents($res2);
     fclose($res2);
     $this->assertRegExp('/~{4}$/', $contents);
-
   }
 
   /**
@@ -467,6 +467,8 @@ class StreamWrapperTest extends \HPCloud\Tests\TestCase {
     $except = array();
     $num_changed = stream_select($read, $write, $except, 0);
     $this->assertGreaterThan(0, $num_changed);
+
+    fclose($res);
   }
 
   /**
@@ -580,14 +582,26 @@ class StreamWrapperTest extends \HPCloud\Tests\TestCase {
 
     $this->assertTrue(is_resource($dir));
 
-    return $dir;
-
+    closedir($dir);
   }
 
   /**
    * @depends testOpenDir
    */
-  public function testReaddir($dir){
+  public function testReaddir(){
+    $urls = array('test1.txt', 'foo/test2.txt', 'foo/test3.txt', 'bar/test4.txt');
+    foreach ($urls as $base) {
+      $url = $this->newUrl($base);
+      $f = fopen($url, 'c+', FALSE, $this->basicSwiftContext());
+      fwrite($f, 'Test.');
+      fclose($f);
+    }
+
+    $dirUrl = $this->newUrl('');
+    $dir = opendir($dirUrl, $this->basicSwiftContext());
+
+    $this->assertTrue(is_resource($dir));
+
     // Order should be newest to oldest.
     $expects = array('bar/', 'foo/', 'test1.txt');
 
@@ -598,34 +612,25 @@ class StreamWrapperTest extends \HPCloud\Tests\TestCase {
     }
     $this->assertFalse(readdir($dir));
 
-    return $dir;
+    closedir($dir);
   }
+
   /**
    * @depends testReaddir
    */
   public function testRewindDir($dir){
-    $this->assertFalse(readdir($dir));
+    $dirUrl = $this->newUrl('');
+    $dir = opendir($dirUrl, $this->basicSwiftContext());
+    $this->assertTrue(is_resource($dir));
+
     rewinddir($dir);
     $this->assertEquals('bar/', readdir($dir));
-    return $dir;
+
+    closedir($dir);
   }
 
   /**
    * @depends testRewindDir
-   */
-  public function testCloseDir($dir) {
-    $this->assertTrue(is_resource($dir));
-    closedir($dir);
-
-    // There is a bug in PHP where a
-    // resource buffer is not getting cleared.
-    // So this might return a value even though
-    // the underlying stream is cleared.
-    //$this->assertFalse(readdir($dir));
-  }
-
-  /**
-   * @depends testCloseDir
    */
   public function testOpenSubdir() {
 
@@ -641,6 +646,5 @@ class StreamWrapperTest extends \HPCloud\Tests\TestCase {
     $array = scandir($url, -1, $this->basicSwiftContext());
     $this->assertEquals(2, count($array));
     $this->assertEquals('test3.txt', $array[0]);
-
   }
 }
