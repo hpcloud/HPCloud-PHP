@@ -55,10 +55,8 @@ class CDNTest extends \HPCloud\Tests\TestCase {
     $token = $ident->token();
 
     if (empty($catalog)) {
-      trigger_error('CDN does not appear to be activated. Only HP Public Cloud
-                     provides CDN functionality. If you are not using HP Public
-                     Cloud, run the test suite without CDN tests.',
-                     E_USER_WARNING);
+      $this->markTestSkipped('CDN does not appear to be activated or available.
+                              CDN is available in the HP Helion Public Cloud.');
     }
 
     $cdnUrl = $catalog[0]['endpoints'][0]['publicURL'];
