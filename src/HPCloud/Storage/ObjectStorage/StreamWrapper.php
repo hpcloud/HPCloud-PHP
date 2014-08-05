@@ -11,7 +11,7 @@ subject to the following conditions:
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE  LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
@@ -183,7 +183,7 @@ use \HPCloud\Storage\ObjectStorage;
  * characters such as '/' to be used to designate namespaces on object
  * names. (For simplicity, this library uses only '/' as a separator).
  *
- * This allows for simulated directory listings. Requesting 
+ * This allows for simulated directory listings. Requesting
  * `scandir('swift://foo/bar/')` is really a request to "find all of the items
  * in the 'foo' container whose names start with 'bar/'".
  *
@@ -316,7 +316,7 @@ class StreamWrapper {
   /**
    * Indicate whether the local differs from remote.
    *
-   * When the file is modified in such a way that 
+   * When the file is modified in such a way that
    * it needs to be written remotely, the isDirty flag
    * is set to TRUE.
    */
@@ -725,7 +725,7 @@ class StreamWrapper {
   /*
    * Locking is currently unsupported.
    *
-   * There is no remote support for locking a 
+   * There is no remote support for locking a
    * file.
   public function stream_lock($operation) {
 
@@ -878,7 +878,7 @@ class StreamWrapper {
     try{
       // Now we fetch the file. Only under certain circumstances do we generate
       // an error if the file is not found.
-      // FIXME: We should probably allow a context param that can be set to 
+      // FIXME: We should probably allow a context param that can be set to
       // mark the file as lazily fetched.
       $this->obj = $this->container->object($objectName);
       $stream = $this->obj->stream();
@@ -1070,7 +1070,7 @@ class StreamWrapper {
    * Write data to stream.
    *
    * This writes data to the local stream buffer. Data
-   * is not pushed remotely until stream_close() or 
+   * is not pushed remotely until stream_close() or
    * stream_flush() is called.
    *
    * @param string $data
@@ -1269,7 +1269,7 @@ class StreamWrapper {
    *   the cached stat['size'] for the underlying buffer.
    */
   protected function generateStat($object, $container, $size) {
-    // This is not entirely accurate. Basically, if the 
+    // This is not entirely accurate. Basically, if the
     // file is marked public, it gets 100775, and if
     // it is private, it gets 100770.
     //
@@ -1511,8 +1511,11 @@ class StreamWrapper {
    *     the deprecated swiftAuth instead of IdentityServices authentication.
    *     In general, you should avoid using this.
    *
-   * To find these params, the method first checks the supplied context. If the 
+   * To find these params, the method first checks the supplied context. If the
    * key is not found there, it checks the Bootstrap::conf().
+   *
+   * @param string $region
+   *   The region being used for this service.
    *
    * @fixme This should be rewritten to use ObjectStorage::newFromServiceCatalog().
    */
@@ -1528,6 +1531,7 @@ class StreamWrapper {
     $tenantName = $this->cxt('tenantname');
     $authUrl = $this->cxt('endpoint');
     $endpoint = $this->cxt('swift_endpoint');
+    $region = $this->cxt('region');
 
     $serviceCatalog = NULL;
 
@@ -1542,7 +1546,6 @@ class StreamWrapper {
     }
     // DEPRECATED: For old swift auth.
     elseif ($this->cxt('use_swift_auth', FALSE)) {
-
       if (empty($authUrl) || empty($account) || empty($key)) {
         throw new \HPCloud\Exception('account, endpoint, key are required stream parameters.');
       }
@@ -1565,7 +1568,7 @@ class StreamWrapper {
       $serviceCatalog = $ident->serviceCatalog();
       self::$serviceCatalogCache[$token] = $serviceCatalog;
 
-      $this->store = ObjectStorage::newFromServiceCatalog($serviceCatalog, $token);
+      $this->store = ObjectStorage::newFromServiceCatalog($serviceCatalog, $token, $region);
 
       /*
       $catalog = $ident->serviceCatalog(ObjectStorage::SERVICE_TYPE);
@@ -1626,7 +1629,8 @@ class StreamWrapper {
         $catalog = $ident->serviceCatalog();
         $token = $ident->token();
       }
-      $this->cdn = \HPCloud\Storage\CDN::newFromServiceCatalog($catalog, $token);
+      $region = $this->cxt('region');
+      $this->cdn = \HPCloud\Storage\CDN::newFromServiceCatalog($catalog, $token, $region);
     }
 
     if (!empty($this->cdn)) {

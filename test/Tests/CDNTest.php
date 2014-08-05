@@ -11,7 +11,7 @@ subject to the following conditions:
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE  LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
@@ -54,7 +54,15 @@ class CDNTest extends \HPCloud\Tests\TestCase {
     $catalog = $ident->serviceCatalog(CDN::SERVICE_TYPE);
     $token = $ident->token();
 
-    $this->assertNotEmpty($catalog[0]['endpoints'][0]['publicURL']);
+    if (empty($catalog)) {
+      trigger_error('CDN does not appear to be activated. Only HP Public Cloud
+                     provides CDN functionality. If you are not using HP Public
+                     Cloud, run the test suite without CDN tests.',
+                     E_USER_WARNING);
+    }
+
+    $cdnUrl = $catalog[0]['endpoints'][0]['publicURL'];
+    $this->assertNotEmpty($cdnUrl);
     $parts = parse_url($catalog[0]['endpoints'][0]['publicURL']);
     $url = 'https://' . $parts['host'];
     $tenantId = $catalog[0]['endpoints'][0]['tenantId'];

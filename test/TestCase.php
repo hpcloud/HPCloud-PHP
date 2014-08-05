@@ -11,7 +11,7 @@ subject to the following conditions:
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE  LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
@@ -34,11 +34,8 @@ SOFTWARE.
 
 namespace HPCloud\Tests;
 
-#require_once  'mageekguy.atoum.phar';
 require_once 'PHPUnit/Autoload.php';
 require_once 'src/HPCloud/Bootstrap.php';
-
-//use \mageekguy\atoum;
 
 /**
  * @ingroup Tests
@@ -143,9 +140,10 @@ class TestCase extends \PHPUnit_Framework_TestCase {
   protected function objectStore($reset = FALSE) {
 
     if ($reset || empty(self::$ostore)) {
+      $region = self::conf('hpcloud.swift.region');
       $ident = $this->identity($reset);
 
-      $objStore = \HPCloud\Storage\ObjectStorage::newFromIdentity($ident);
+      $objStore = \HPCloud\Storage\ObjectStorage::newFromIdentity($ident, $region);
 
       self::$ostore = $objStore;
 
@@ -170,8 +168,11 @@ class TestCase extends \PHPUnit_Framework_TestCase {
       }
       // This is why PHP needs 'finally'.
       catch (\Exception $e) {
-        // Delete the container.
-        $store->deleteContainer($cname);
+        // Sometimes the test suite runs into situations where a container from
+        // a failed test may still have objects. Call destroyContainerFixture()
+        // to take care of deleting objects and the container.
+        //$store->deleteContainer($cname);
+        $this->destroyContainerFixture();
         throw $e;
       }
 
@@ -183,7 +184,7 @@ class TestCase extends \PHPUnit_Framework_TestCase {
   /**
    * Clear and destroy a container.
    *
-   * Destroy all of the files in a container, then destroy the 
+   * Destroy all of the files in a container, then destroy the
    * container.
    *
    * If the container doesn't exist, this will silently return.

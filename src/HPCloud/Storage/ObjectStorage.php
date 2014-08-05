@@ -11,7 +11,7 @@ subject to the following conditions:
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE  LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
@@ -78,7 +78,8 @@ class ObjectStorage {
 
   const API_VERSION = '1';
 
-  const DEFAULT_REGION = 'region-a.geo-1';
+  //const DEFAULT_REGION = 'region-a.geo-1';
+  //const DEFAULT_REGION = 'regionOne';
 
   /**
    * The authorization token.
@@ -174,11 +175,14 @@ class ObjectStorage {
    * @param HPCloud::Services::IdentityServices $identity
    *   An identity services object that already has a valid token and a
    *   service catalog.
+   * @param string $region
+   *   The region being used for this service.
+   *
    * @retval HPCloud::Storage::ObjectStorage
    * @return \HPCloud\Storage\ObjectStorage
    *   A new ObjectStorage instance.
    */
-  public static function newFromIdentity($identity, $region = ObjectStorage::DEFAULT_REGION) {
+  public static function newFromIdentity($identity, $region) {
     $cat = $identity->serviceCatalog();
     $tok = $identity->token();
     return self::newFromServiceCatalog($cat, $tok, $region);
@@ -199,26 +203,28 @@ class ObjectStorage {
    *   just ObjectStorage::SERVICE_TYPE.
    * @param string $authToken
    *   The auth token returned by IdentityServices.
+   * @param string $region
+   *   The region being used for this service.
+   *
    * @retval HPCloud::Storage::ObjectStorage
    * @return \HPCloud\Storage\ObjectStorage
    *   A new ObjectStorage instance.
    */
-  public static function newFromServiceCatalog($catalog, $authToken, $region = ObjectStorage::DEFAULT_REGION) {
+  public static function newFromServiceCatalog($catalog, $authToken, $region) {
     $c = count($catalog);
     for ($i = 0; $i < $c; ++$i) {
       if ($catalog[$i]['type'] == self::SERVICE_TYPE) {
         foreach ($catalog[$i]['endpoints'] as $endpoint) {
           if (isset($endpoint['publicURL']) && $endpoint['region'] == $region) {
             $os= new ObjectStorage($authToken, $endpoint['publicURL']);
-            //$cdn->url = $endpoint['publicURL'];
 
             return $os;
           }
         }
       }
     }
-    return FALSE;
 
+    return FALSE;
   }
 
   /**
@@ -430,8 +436,8 @@ class ObjectStorage {
   /**
    * Check to see if this container name exists.
    *
-   * This method directly checks the remote server. Calling container() 
-   * or containers() might be more efficient if you plan to work with 
+   * This method directly checks the remote server. Calling container()
+   * or containers() might be more efficient if you plan to work with
    * the resulting container.
    *
    * @param string $name
@@ -471,8 +477,8 @@ class ObjectStorage {
    * ACLs
    *
    * Swift supports an ACL stream that allows for specifying (with
-   * certain caveats) various levels of read and write access. However, 
-   * there are two standard settings that cover the vast majority of 
+   * certain caveats) various levels of read and write access. However,
+   * there are two standard settings that cover the vast majority of
    * cases.
    *
    * - Make the resource private: This grants read and write access to
@@ -486,7 +492,7 @@ class ObjectStorage {
    * container public will allow access to ALL objects inside of the
    * container.
    *
-   * To find out whether an existing container is public, you can 
+   * To find out whether an existing container is public, you can
    * write something like this:
    *
    * @code

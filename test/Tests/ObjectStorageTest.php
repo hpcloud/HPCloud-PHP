@@ -11,7 +11,7 @@ subject to the following conditions:
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE  LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
@@ -80,7 +80,9 @@ class ObjectStorageTest extends \HPCloud\Tests\TestCase {
     $ident = $this->identity();
     $tok = $ident->token();
     $cat = $ident->serviceCatalog();
-    $ostore = \HPCloud\Storage\ObjectStorage::newFromServiceCatalog($cat, $tok);
+    $region = self::conf('hpcloud.swift.region');
+
+    $ostore = \HPCloud\Storage\ObjectStorage::newFromServiceCatalog($cat, $tok, $region);
     $this->assertInstanceOf('\HPCloud\Storage\ObjectStorage', $ostore);
     $this->assertTrue(strlen($ostore->token()) > 0);
   }
@@ -93,22 +95,12 @@ class ObjectStorageTest extends \HPCloud\Tests\TestCase {
     $this->assertEmpty($ostore);
   }
 
-  public function testNewFromIdnetity() {
+  public function testNewFromIdentity() {
     $ident = $this->identity();
-    $ostore = \HPCloud\Storage\ObjectStorage::newFromIdentity($ident);
+    $region = self::conf('hpcloud.swift.region');
+    $ostore = \HPCloud\Storage\ObjectStorage::newFromIdentity($ident, $region);
     $this->assertInstanceOf('\HPCloud\Storage\ObjectStorage', $ostore);
     $this->assertTrue(strlen($ostore->token()) > 0);
-  }
-
-  public function testNewFromIdentityAltRegion() {
-    $ident = $this->identity();
-    $ostore = \HPCloud\Storage\ObjectStorage::newFromIdentity($ident, 'region-b.geo-1');
-    $this->assertInstanceOf('\HPCloud\Storage\ObjectStorage', $ostore);
-    $this->assertTrue(strlen($ostore->token()) > 0);
-
-    // Make sure the store is not the same as the default region.
-    $ostoreDefault = \HPCloud\Storage\ObjectStorage::newFromIdentity($ident);
-    $this->assertNotEquals($ostore, $ostoreDefault);
   }
 
   /**

@@ -11,7 +11,7 @@ subject to the following conditions:
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE  LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
@@ -30,6 +30,10 @@ namespace HPCloud\Storage;
 /**
  * Provides CDN services for ObjectStorage.
  *
+ * CDN is an HP Public Cloud extension service and is not presently part of
+ * OpenStack or HP Helion private cloud distributions. Therefore, these API
+ * calls will not work unless you use HP Public Cloud.
+ *
  * CDN stands for "Content Distribution Network." It provides distributed
  * caching in the cloud. When a Container is CDN-enabled, objects will be
  * stored not @em just in the ObjectStorage, but temporary cached copies
@@ -39,10 +43,6 @@ namespace HPCloud\Storage;
  * Caches are not protected by authentication. If you store an object in
  * a CDN, cached versions of that object are publically accessible. Setting
  * an ACL will have very little impact on this.
- *
- * CDN is an HPCloud extension service, and is not presently part of OpenStack
- * proper. The current REST API documentation can be found at
- * http://api-docs.hpcloud.com/
  *
  * <b>Usage</b>
  *
@@ -390,7 +390,7 @@ class CDN {
    * service. There is no "CDN-disable".
    * 2. To "enable" a container means to cache that container's
    * content in a publically available CDN server. There is also a
-   * way to "disable" in this sense -- which blocks a container from 
+   * way to "disable" in this sense -- which blocks a container from
    * caching.
    *
    * This method does the first -- it adds a container to the CDN
