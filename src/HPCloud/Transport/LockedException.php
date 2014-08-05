@@ -29,7 +29,5 @@ namespace HPCloud\Transport;
  *
  * This can occur when a remote resources is not yet in a state where it can
  * process requests.
- *
- * @see DBaaS
  */
 class LockedException extends \HPCloud\Exception {}
