@@ -88,7 +88,7 @@ class PHPStreamTransport implements Transporter {
     }
 
     $metadata = stream_get_meta_data($res);
-    if (\HPCloud\Bootstrap::hasConfig('transport.debug')) {
+    if (\HPCloud\Bootstrap::hasConfig('transport.debug') && \HPCloud\Bootstrap::config('transport.debug')) {
       $msg = implode(PHP_EOL, $metadata['wrapper_data']);
       $msg .= sprintf("\nWaiting to read %d bytes.\n", $metadata['unread_bytes']);
 
@@ -258,7 +258,7 @@ class PHPStreamTransport implements Transporter {
       $params['notification'] = $this->notificationCallback;
     }
     // Enable debugging:
-    elseif (\HPCloud\Bootstrap::hasConfig('transport.debug')) {
+    elseif (\HPCloud\Bootstrap::hasConfig('transport.debug') && \HPCloud\Bootstrap::config('transport.debug')) {
       //fwrite(STDOUT, "Sending debug messages to STDOUT\n");
       $params['notification'] = array($this, 'printNotifications');
     }
