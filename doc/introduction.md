@@ -1,11 +1,11 @@
 # Using the HPCloud PHP API
 
 This tutorial explains how you can use the PHP API to connect to your HP
-Cloud services and interact programmatically.
+Helion OpenStack and HP Helion Public Cloud services and interact programmatically.
 
 ## Object Storage (Swift)
 
-One of the services that HP Cloud offers is called "Object Storage".
+One of the services offered is called "Object Storage".
 This service provides a useful means of storing objects (usually files)
 on a service that you control, but that is available to other services
 in your cloud (and optionally is availably publically).
@@ -17,11 +17,11 @@ interact with the Object Storage service.
 
 There are two ways to authenticate to Object Storage:
 
-- Legacy Swift authentication
-- Control Services authentication (Coming soon!)
+- Legacy Swift authentication, available in the public cloud.
+- Identity Services
 
-For legacy swift authentication, you will need to use your Account ID
-and your secret Key, along with the URL to the Object Storage endpoint.
+For legacy swift authentication in the public cloud, you will need to use your
+Account ID and your secret Key, along with the URL to the Object Storage endpoint.
 If you are an existing HP Cloud customer, you can find all of this
 information on your console dashboard.
 
@@ -61,7 +61,7 @@ data-access layer.
 
 ## Slightly Irreverant Glossary
 
-*Account ID:* You service provider (ahem, HPCloud) will provide you with
+*Account ID:* You service provider (ahem, HP Helion Public Cloud) will provide you with
 an account ID and a secret key, along with a URL, that can be used to
 access the cloud APIs.
 

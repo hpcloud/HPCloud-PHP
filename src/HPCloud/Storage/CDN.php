@@ -28,9 +28,9 @@ SOFTWARE.
 namespace HPCloud\Storage;
 
 /**
- * Provides CDN services for ObjectStorage.
+ * Provides CDN services for ObjectStorage in the HP Helion Public Cloud.
  *
- * CDN is an HP Public Cloud extension service and is not presently part of
+ * CDN is a HP Helion Public Cloud extension service and is not presently part of
  * OpenStack or HP Helion private cloud distributions. Therefore, these API
  * calls will not work unless you use HP Public Cloud.
  *

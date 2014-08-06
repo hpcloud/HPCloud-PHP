@@ -1,19 +1,19 @@
 # HPCloud-PHP
 
-This package provides PHP OpenStack bindings for the HP Cloud.
+This package provides PHP OpenStack bindings for HP Helion OpenStack and the HP Helion Public Cloud.
 
 You can use this library to:
 
-* Authenticate your application to the HP Cloud.
+* Authenticate your application.
 * Interact with Object Storage (aka Swift).
-* Interact with CDN service (Content Delivery Network).
+* Interact with CDN service (Content Delivery Network) in the public cloud.
 
 Previously this library could be used to interact with our relational database (DBaaS and MySQL compatible). The relational database API has changed and the bindings do not currently support this feature.
 
 ## Requirements
 
 * PHP 5.3
-* An active HPCloud account with the desired services.
+* An active HP Helion Public Cloud account with the desired services or HP Helion OpenStack.
 
 ### Suggestions
 
@@ -24,7 +24,7 @@ is not as reliable. We recommend cURL.
 
 ## Versioning
 
-We have a goal to be as consistent as possible with [Semantic Versioning](http://semver.org/). For released HP Cloud services this is what you can expect. For products in beta expect the included components to be in beta. 
+We have a goal to be as consistent as possible with [Semantic Versioning](http://semver.org/). For released HP Cloud services this is what you can expect. For products in beta expect the included components to be in beta.
 
 ## Installation
 
@@ -50,7 +50,7 @@ Authenticate, authorize service usage, and retrieve account information.
 
 #### Object Storage
 
-Store files or other data objects in containers on your HP Cloud object
+Store files or other data objects in containers on your object
 storage instance. Create, modify and delete containers. Manage ACLs.
 Read, write, and delete objects. Expose objects in your object storage
 to other services.
@@ -61,8 +61,8 @@ reading and writing files into object storage.
 
 #### CDN
 
-With CDN service enabled, objects in Object Storage can be pushed onto
-the HP Cloud edge server network.
+With CDN service enabled (available in the public cloud), objects in Object
+Storage can be pushed onto the HP Helion Public Cloud edge server network.
 
 With this library, manage CDN integration for object storage containers,
 and manage individual objects. The library allows you to fetch cached
@@ -97,4 +97,4 @@ which is available at
 http://hpcloud.github.com/HPCloud-PHP/doc/api/html/index.html
 
 ----
-HPCloud-PHP is maintained by the Developer Experience team at HP Cloud Services.
+HPCloud-PHP is maintained by the Developer Experience team at HP Cloud.
