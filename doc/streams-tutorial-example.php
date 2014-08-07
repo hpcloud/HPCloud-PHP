@@ -7,8 +7,8 @@ Bootstrap::useStreamWrappers();
 
 $ini = parse_ini_file(getenv('HOME') . '/.hpcloud.ini');
 $settings = array(
-  'account' => $ini['account'],
-  'key' => $ini['secret'],
+  'username' => $ini['username'],
+  'password' => $ini['password'],
   'tenantid' => $ini['tenantId'],
   'endpoint' => $ini['url'],
 );

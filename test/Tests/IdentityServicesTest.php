@@ -70,8 +70,11 @@ class IdentityServicesTest extends \HPCloud\Tests\TestCase {
       'hpcloud.identity.username',
       'hpcloud.identity.password',
       'hpcloud.identity.tenantId',
-//       'hpcloud.identity.account',
-//       'hpcloud.identity.secret',
+
+      // Account and Secret are optional and specific to HP Helion Public
+      // Cloud. They are not supported in HP Helion OpenStack.
+      // 'hpcloud.identity.account',
+      // 'hpcloud.identity.secret',
     );
     foreach ($settings as $setting) {
       $this->assertNotEmpty(self::conf($setting), "Required param: " . $setting);
@@ -88,35 +91,15 @@ class IdentityServicesTest extends \HPCloud\Tests\TestCase {
     $tok = $service->authenticate($auth);
     $this->assertNotEmpty($tok);
 
-//     // We should get the same token if we request again.
-//     $service = new IdentityServices(self::conf('hpcloud.identity.url'));
-//     $tok2 = $service->authenticate($auth);
-//     $this->assertEquals($tok, $tok2);
-
     // Again with no tenant ID.
     $auth = array(
       'passwordCredentials' => array(
         'username' => self::conf('hpcloud.identity.username'),
         'password' => self::conf('hpcloud.identity.password'),
       ),
-      //'tenantId' => self::conf('hpcloud.identity.tenantId'),
     );
     $tok = $service->authenticate($auth);
     $this->assertNotEmpty($tok);
-
-
-    // Test account ID/secret key auth.
-//     $auth = array(
-//       'apiAccessKeyCredentials' => array(
-//         'accessKey' => self::conf('hpcloud.identity.account'),
-//         'secretKey' => self::conf('hpcloud.identity.secret'),
-//       ),
-//     );
-//     $service = new IdentityServices(self::conf('hpcloud.identity.url'));
-//     $tok3 = $service->authenticate($auth);
-
-//     $this->assertNotEmpty($tok3);
-
   }
 
   /**
@@ -129,42 +112,62 @@ class IdentityServicesTest extends \HPCloud\Tests\TestCase {
     $pass = self::conf('hpcloud.identity.password');
     $tenantId = self::conf('hpcloud.identity.tenantId');
 
+    // Try authenticating with no tenant ID.
+    $tok2 = $service->authenticateAsUser($user, $pass);
+    $this->assertNotEmpty($tok2);
+
+    $details = $service->tokenDetails();
+    $this->assertFalse(isset($details['tenant']));
+
+    // Authenticate with a tenant ID.
     $tok = $service->authenticateAsUser($user, $pass, $tenantId);
     $this->assertNotEmpty($tok);
-
-//     // Try again, this time with no tenant ID.
-//     $tok2 = $service->authenticateAsUser($user, $pass);
-//     $this->assertNotEmpty($tok2);
-
-//     $details = $service->tokenDetails();
-//     $this->assertFalse(isset($details['tenant']));
 
     return $service;
   }
 
-//   /**
-//    * @depends testAuthenticate
-//    */
-//   public function testAuthenticateAsAccount() {
-//     $service = new IdentityServices(self::conf('hpcloud.identity.url'));
+  /**
+   * @depends testAuthenticate
+   */
+  public function testAuthenticateAsAccount() {
+    $service = new IdentityServices(self::conf('hpcloud.identity.url'));
 
-//     $account = self::conf('hpcloud.identity.account');
-//     $secret = self::conf('hpcloud.identity.secret');
-//     $tenantId = self::conf('hpcloud.identity.tenantId');
+    $account = self::conf('hpcloud.identity.account');
+    $secret = self::conf('hpcloud.identity.secret');
+    $tenantId = self::conf('hpcloud.identity.tenantId');
 
-//     // No tenant ID.
-//     $tok = $service->authenticateAsAccount($account, $secret);
-//     $this->assertNotEmpty($tok);
-//     $this->assertEmpty($service->tenantId());
+    // Skip testing with access/secret key when credentials are not available.
+    if (empty($account) || empty($secret)) {
+      $this->markTestSkipped('Access/secret key authentication is only available in the
+        HP Helion Public Cloud.');
+    }
 
-//     // No tenant ID.
-//     $service = new IdentityServices(self::conf('hpcloud.identity.url'));
-//     $tok = $service->authenticateAsAccount($account, $secret, $tenantId);
-//     $this->assertNotEmpty($tok);
-//     $this->assertEquals($tenantId, $service->tenantId());
+    // No tenant ID.
+    $tok = $service->authenticateAsAccount($account, $secret);
+    $this->assertNotEmpty($tok);
+    $this->assertEmpty($service->tenantId());
 
-//     return $service;
-//   }
+    // No tenant ID.
+    $service = new IdentityServices(self::conf('hpcloud.identity.url'));
+    $tok = $service->authenticateAsAccount($account, $secret, $tenantId);
+    $this->assertNotEmpty($tok);
+    $this->assertEquals($tenantId, $service->tenantId());
+
+
+    //Test account ID/secret key auth.
+    $auth = array(
+      'apiAccessKeyCredentials' => array(
+        'accessKey' => $account,
+        'secretKey' => $secret,
+      ),
+    );
+    $service = new IdentityServices(self::conf('hpcloud.identity.url'));
+    $tok3 = $service->authenticate($auth);
+
+    $this->assertNotEmpty($tok3);
+
+    return $service;
+  }
 
   /**
    * @depends testAuthenticateAsUser
@@ -186,9 +189,7 @@ class IdentityServicesTest extends \HPCloud\Tests\TestCase {
   /**
    * @depends testAuthenticateAsUser
    */
-  public function testTenantName() {
-//     $account = self::conf('hpcloud.identity.account');
-//     $secret = self::conf('hpcloud.identity.secret');
+  public function testTenantNameAsUser() {
     $user = self::conf('hpcloud.identity.username');
     $pass = self::conf('hpcloud.identity.password');
     $tenantName = self::conf('hpcloud.identity.tenantName');
@@ -202,17 +203,25 @@ class IdentityServicesTest extends \HPCloud\Tests\TestCase {
     $service = new IdentityServices(self::conf('hpcloud.identity.url'));
     $ret = $service->authenticateAsUser($user, $pass, NULL, $tenantName);
     $this->assertNotEmpty($service->tenantName());
+  }
 
+  /**
+   * @depends testAuthenticateAsAccount
+   */
+  public function testTenantNameAsAccount() {
+    $account = self::conf('hpcloud.identity.account');
+    $secret = self::conf('hpcloud.identity.secret');
+    $tenantName = self::conf('hpcloud.identity.tenantName');
     $service = new IdentityServices(self::conf('hpcloud.identity.url'));
     $this->assertNull($service->tenantName());
 
-//     $service->authenticateAsAccount($account, $secret);
-//     $this->assertEmpty($service->tenantName());
+    $service->authenticateAsAccount($account, $secret);
+    $this->assertEmpty($service->tenantName());
 
-//     $service = new IdentityServices(self::conf('hpcloud.identity.url'));
-//     $ret = $service->authenticateAsAccount($account, $secret, NULL, $tenantName);
-//     $this->assertNotEmpty($service->tenantName());
-//     $this->assertEquals($tenantName, $service->tenantName());
+    $service = new IdentityServices(self::conf('hpcloud.identity.url'));
+    $ret = $service->authenticateAsAccount($account, $secret, NULL, $tenantName);
+    $this->assertNotEmpty($service->tenantName());
+    $this->assertEquals($tenantName, $service->tenantName());
   }
 
   /**
@@ -459,20 +468,6 @@ class IdentityServicesTest extends \HPCloud\Tests\TestCase {
     $is = Bootstrap::identity(TRUE);
     $this->assertInstanceOf('\HPCloud\Services\IdentityServices', $is);
 
-//     Bootstrap::$config = $reset;
-
-//     // Test authenticating as an account.
-//     $settings = array(
-//       'account' => self::conf('hpcloud.identity.account'),
-//       'secret' => self::conf('hpcloud.identity.secret'),
-//       'endpoint' => self::conf('hpcloud.identity.url'),
-//       'tenantid' => self::conf('hpcloud.identity.tenantId'),
-//     );
-//     Bootstrap::setConfiguration($settings);
-
-//     $is = Bootstrap::identity(TRUE);
-//     $this->assertInstanceOf('\HPCloud\Services\IdentityServices', $is);
-
     // Test getting a second instance from the cache.
     $is2 = Bootstrap::identity();
     $this->assertEquals($is, $is2);
@@ -482,18 +477,6 @@ class IdentityServicesTest extends \HPCloud\Tests\TestCase {
     $this->assertNotEquals($is, $is2);
 
     Bootstrap::$config = $reset;
-
-//     // Test with tenant name
-//     $settings = array(
-//       'account' => self::conf('hpcloud.identity.account'),
-//       'secret' => self::conf('hpcloud.identity.secret'),
-//       'endpoint' => self::conf('hpcloud.identity.url'),
-//       'tenantname' => self::conf('hpcloud.identity.tenantName'),
-//     );
-//     Bootstrap::setConfiguration($settings);
-
-//     $is = Bootstrap::identity(TRUE);
-//     $this->assertInstanceOf('\HPCloud\Services\IdentityServices', $is);
 
     $settings = array(
       'username' => self::conf('hpcloud.identity.username'),
@@ -505,5 +488,42 @@ class IdentityServicesTest extends \HPCloud\Tests\TestCase {
 
     $is = Bootstrap::identity(TRUE);
     $this->assertInstanceOf('\HPCloud\Services\IdentityServices', $is);
+  }
+
+  /**
+   * Testing the account options separately since they are only in HP Helion
+   * Public Cloud and made be skipped.
+   *
+   * @depends testAuthenticateAsAccount
+   */
+  function testBootstrapAsAccount() {
+    $reset = Bootstrap::$config;
+
+    // Test authenticating as an account.
+    $settings = array(
+      'account' => self::conf('hpcloud.identity.account'),
+      'secret' => self::conf('hpcloud.identity.secret'),
+      'endpoint' => self::conf('hpcloud.identity.url'),
+      'tenantid' => self::conf('hpcloud.identity.tenantId'),
+    );
+    Bootstrap::setConfiguration($settings);
+
+    $is = Bootstrap::identity(TRUE);
+    $this->assertInstanceOf('\HPCloud\Services\IdentityServices', $is);
+
+    Bootstrap::$config = $reset;
+
+    // Test with tenant name
+    $settings = array(
+      'account' => self::conf('hpcloud.identity.account'),
+      'secret' => self::conf('hpcloud.identity.secret'),
+      'endpoint' => self::conf('hpcloud.identity.url'),
+      'tenantname' => self::conf('hpcloud.identity.tenantName'),
+    );
+    Bootstrap::setConfiguration($settings);
+
+    $is = Bootstrap::identity(TRUE);
+    $this->assertInstanceOf('\HPCloud\Services\IdentityServices', $is);
+
   }
 }

@@ -131,15 +131,15 @@
  * $identity = new IdentityServices('http://get.url.from.hpcloud.com');
  *
  * // You can authenticate either with username/password (IdentityServices::authenticateAsUser())
- * // or as an account/secret key (IdentityServices::authenticateAsAccount()). In either
+ * // or as an account/secret key if connecting to the public cloud (IdentityServices::authenticateAsAccount()). In either
  * // case you can get the info you need from the console.
- * $account = '123456789098765';
- * $secret = 'dgasgasd';
+ * $username = 'foo';
+ * $password = 'bar';
  * $tenantId = '56545654';
  *
  * // $token will be your authorization key when you connect to other
  * // services. You can also get it from $identity->token().
- * $token = $identity->authenticateAsAccount($account, $secret, $tenantId);
+ * $token = $identity->authenticateAsUser($username, $password, $tenantId);
  *
  * // Get a listing of all of the services you currently have configured on
  * // HPCloud.
@@ -225,7 +225,7 @@
  * HPCloud classes providing access to various services.
  *
  * HPCloud offers a number of services, including Compute (Nova),
- * IdentityServices, and CDN.
+ * IdentityServices, and CDN (available in public cloud).
  *
  * This package is reserved for classes that provide access to
  * services.
@@ -237,7 +237,7 @@
  * Services for now and the future:
  *
  *- ObjectStorage
- *- CDN caching of storage
+ *- CDN caching of storage (available in public cloud)
  *- Others coming.
  *
  */
@@ -249,7 +249,7 @@
  */
 /*
  * @package HPCloud.Storage.CDN
- * Classes specific to CDN.
+ * Classes specific to public cloud CDN.
  */
 /**
  * @package HPCloud.Transport

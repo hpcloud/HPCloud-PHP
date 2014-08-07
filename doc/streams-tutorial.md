@@ -8,7 +8,7 @@ library](@ref 00-tutorial).)
 
 ## TL;DR
 
-With a few lines of setup code, you can fetch objects from HP Cloud's
+With a few lines of setup code, you can fetch objects from
 object storage using built-in PHP functions like this:
 
 ~~~{.php}
@@ -85,18 +85,17 @@ When working with remote HPCloud Object Storage, you must authenticate
 to the remote system. Authentication requires the following four pieces
 of information:
 
-- account: Your account ID
-- key: Your account's secret key
+- username: Your username
+- password: Your password for the username
 - tenantid: The tenant ID for the services you wish to use
 - endpoint: The endpoint URL for HPCloud's Identity Services. It usually
   looks something like this: `https://region-a.geo-1.identity.hpcloudsvc.com:35357`
 
-All four of these pieces of information can be found in the **API Keys**
-section of your [console](https://console.hpcloud.com) account.
+All four of these pieces of information can be found in your console.
 
-(Note: You can use your username and password instead of account and
-key, but you still must supply the tenant ID. Instead of supplying
-`account` and `key`, use `username` and `password`.)
+(Note: You can use your access and private kets instead of username and
+password for the public cloud, but you still must supply the tenant ID.
+Instead of supplying `username` and `password`, use `account` and `key`.)
 
 We are going to look at two ways to set authentication information. The
 first is global. That means we supply it once, and all stream and file
@@ -123,14 +122,10 @@ That said, here's how we set up a global configuration:
 
 ~~~{.php}
 $settings = array(
-  'account' => YOUR_ACCOUNT_NUMBER,
-  'key' => YOUR_SECRET_KEY,
+  'username' => YOUR_USERNAME,
+  'password' => YOUR_PASSWORD,
   'tenantid' => YOUR_TENANT_ID,
   'endpoint' => IDENTITY_SERVICES_URL,
-
-  // Instead of account/key you can use this:
-  // 'username' => YOUR_USERNAME,
-  // 'password' => YOUR_PASSWORD,
 );
 Bootstrap::setConfiguration($settings);
 ~~~
@@ -200,14 +195,10 @@ Bootstrap::useStreamWrappers();
 
 $cxt = stream_context_create(array(
   'swift' => array(
-    'account' => YOUR_ACCOUNT_NUMBER,
-    'key' => YOUR_SECRET_KEY,
+    'username' => YOUR_USERNAME,
+    'password' => YOUR_PASSWORD,
     'tenantid' => YOUR_TENANT_ID,
     'endpoint' => IDENTITY_SERVICES_URL,
-
-    // Instead of account/key you can use this:
-    // 'username' => YOUR_USERNAME,
-    // 'password' => YOUR_PASSWORD,
   ),
 ));
 

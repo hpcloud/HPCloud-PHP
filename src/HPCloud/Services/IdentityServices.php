@@ -299,9 +299,9 @@ class IdentityServices /*implements Serializable*/ {
    * Authenticate to Identity Services with username, password, and either 
    * tenant ID or tenant Name.
    *
-   * Given an HPCloud username and password, authenticate to Identity Services.
+   * Given a username and password, authenticate to Identity Services.
    * Identity Services will then issue a token that can be used to access other
-   * HPCloud services.
+   * services.
    *
    * If a tenant ID is provided, this will also associate the user with the
    * given tenant ID. If a tenant Name is provided, this will associate the user
@@ -352,7 +352,7 @@ class IdentityServices /*implements Serializable*/ {
     return $this->authenticate($ops);
   }
   /**
-   * Authenticate to HPCloud using your account ID and access key.
+   * Authenticate to HP Helion Public Cloud using your account ID and access key.
    *
    * Given an account ID and and access key (secret key), authenticate
    * to Identity Services. Identity Services will then issue a token that can be
@@ -361,11 +361,13 @@ class IdentityServices /*implements Serializable*/ {
    * The account ID and access key information can be found in the account
    * section of the console.
    *
-   * The third and fourth paramaters allow you to specify a tenant ID or 
+   * The third and fourth paramaters allow you to specify a tenant ID or
    * tenantName. In order to access services, this object will need a tenant ID
    * or tenant name. If none is specified, it can be set later using rescope().
    * The tenants() method can be used to get a list of all available tenant IDs
    * for this token.
+   *
+   * Note, this feature is only available in the HP Helion Public Cloud.
    *
    * Other authentication methods:
    *

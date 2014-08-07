@@ -10,13 +10,13 @@ Bootstrap::useAutoloader();
 
 // Load these from an ini file.
 $ini = parse_ini_file(getenv('HOME') . '/.hpcloud.ini');
-$account = $ini['account'];
-$key = $ini['secret'];
+$username = $ini['username'];
+$password = $ini['password'];
 $tenantId = $ini['tenantId'];
 $endpoint = $ini['url'];
 
 $idService = new IdentityServices($endpoint);
-$token = $idService->authenticateAsAccount($account, $key, $tenantId);
+$token = $idService->authenticateAsAccount($username, $password, $tenantId);
 
 $catalog = $idService->serviceCatalog();
 

@@ -6,3 +6,6 @@ test/settings.ini*
 doc/api
 curl-output.txt
 hpcloud-logo.png
+build/
+vendor/
+composer.lock

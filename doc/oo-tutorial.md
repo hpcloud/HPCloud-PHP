@@ -1,12 +1,12 @@
 Tutorial: Using HPCloud-PHP           {#oo-tutorial}
 =================
 
-HPCloud-PHP provides PHP language bindings for the HPCloud APIs. HPCloud
-is an OpenStack-based cloud service offering a wide (and ever-expanding)
-variety of services.
+HPCloud-PHP provides PHP language bindings for the HP Helion OpenStack and HP
+Helion Public Cloud APIs. These are OpenStack-based cloud service offering a wide
+(and ever-expanding) variety of services.
 
 In this tutorial, we will walk through the process of creating a simple
-tool that interacts with HP Cloud's Object Storage. The emphasis in this
+tool that interacts with object storage. The emphasis in this
 article is on getting started and learning the concepts, not building a
 polished product.
 
@@ -133,31 +133,29 @@ Our library is boostrapped. Next up: Let's connect to our account.
 
 ## Step 3: Connecting
 
-Our programming goal, in this tutorial, is to interact with the Object
-Storage service on HP Cloud. (Object Storage is, for all intents and
+Our programming goal, in this tutorial, is to interact with the object
+storage service. (Object Storage is, for all intents and
 purposes, basically a service for storing files in the cloud.)
 
-But before we can interact directly with Object Storage, we need to
+But before we can interact directly with object storage, we need to
 authenticate to the system. And to do this, we need the following four
 pieces of information:
 
-- Account ID: The account number.
-- Secret key: The shared secret that, when paired with account number,
-  authenticates the client.
+- Username: A username.
+- Password: The password for the username.
 - Tenant ID: An identifier that maps an account to a set of services.
-  (In theory at least, one account can have multiple tenant IDs, and one 
+  (In theory at least, one account can have multiple tenant IDs, and one
   tenant ID can be linked to multiple accounts.)
-- Endpoint URL: The URL to the Identity Services endpoint at HPCloud.
+- Endpoint URL: The URL to the identity service endpoint.
 
 Before you issue a forlorn sigh, envisioning some laborious task, let us
 point out that all of this information is available in one place, Log
-into [the console](https://console.hpcloud.com) and go to the `API Keys`
-page. It's all there.
+into the console(https://console.hpcloud.com). It's all there.
 
 ### Identity Services
 
-The HPCloud is composed of numerous services. There's the Compute
-service, the Object Storage service, the CDN service... and so on.
+The HP Helion OpenStack and HP Helion Public Clour are composed of numerous services.
+There's the Compute service, the Object Storage service, the public cloud CDN service... and so on.
 
 Authenticating separately to each of these would be a collosal waste of
 network resources. And behind the scenes, account management would be
@@ -174,11 +172,11 @@ it works as follows:
 
 The *token* is valid for some fixed period of time (say, 30 minutes),
 during which time it can be used for every other service. Each request
-to an HPCloud service should send (along with other info) the token. The
+to a service should send (along with other info) the token. The
 remote service then validates the token with identity services, saving
 our app the trouble of making another round trip.
 
-The *service catalog* lists all of the HPCloud services that the present
+The *service catalog* lists all of the services that the present
 account can access.
 
 ### Authenticating
@@ -188,28 +186,28 @@ authenticating.
 
 ~~~{.php}
 <?php
-$account = 'ADD ACCOUNT HERE';
-$key = 'ADD KEY HERE';
+$username = 'ADD USERNAME HERE';
+$password = 'ADD PASSWORD HERE';
 $tenantId = 'ADD TENANT ID HERE';
 $endpoint = 'ADD ENDPOINT URL HERE';
 
 $idService = new \HPCloud\Services\IdentityServices($endpoint);
-$token = $idService->authenticateAsAccount($account, $key, $tenantId);
+$token = $idService->authenticateAsUser($username, $password, $tenantId);
 ?>
 ~~~
 
 Assuming the variables above have been set to include valid data, this
-script can connect to HPCloud and authenticate.
+script can connect and authenticate.
 
 When we construct a new HPCloud::Services::IdentityServices object, we must pass it the
-endpoint URL for HPCloud Identity Services. Typically, that URL will
+endpoint URL for Identity Services. Typically, that URL will
 look something like this:
 
 ~~~
 https://region-a.geo-1.identity.hpcloudsvc.com:35357
 ~~~
 
-The `authenticateAsAccount()` method will authenticate to the
+The `authenticateAsUser()` method will authenticate to the
 Identity Services endpoint. For convenience, it returns the
 authorization token (`$token`), though we can also get the token from
 `$idService->token()`.
@@ -270,8 +268,8 @@ $catalog = $idService->serviceCatalog();
 
 $store = ObjectStorage::newFromServiceCatalog($catalog, $token);
 
-// UPDATE: As of Beta 6, you can use newFromIdentity():
-// $store = ObjectStorage::newFromIdentity($idService);
+// Alternately, you can use newFromIdentity():
+$store = ObjectStorage::newFromIdentity($idService);
 ?>
 ~~~
 
@@ -295,12 +293,12 @@ container.
 
 ### ObjectStorage in a Nutshell
 
-Instances of HPCloud::Storage::ObjectStorage are responsbile for:
+Instances of HPCloud::Storage::ObjectStorage are responsible for:
 
 - Providing high-level information about the Object Storage service
 - Creating, deleting, loading, and listing Containers
 - Modifying Container ACLs
-- Attaching a HPCloud::Storage::CDN service object to a Container (advanced)
+- Attaching a HPCloud::Storage::CDN service object to a Container (public cloud)
 
 ## Step 5: Adding a Container
 
