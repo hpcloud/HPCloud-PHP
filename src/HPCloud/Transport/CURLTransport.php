@@ -135,6 +135,7 @@ class CURLTransport implements Transporter {
 
     // A majority of curl users suggest allowing curl to automatically calculate
     // the content-length header. Ensure that the header is not set in code.
+    // http://stackoverflow.com/questions/9152165/php-curl-content-length-und-content-type-wrong
     if (!empty($headers['Content-Length'])) {
       unset($headers['Content-Length']);
     }
