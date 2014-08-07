@@ -11,7 +11,7 @@ subject to the following conditions:
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE  LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
@@ -133,6 +133,12 @@ class CURLTransport implements Transporter {
       throw new \HPCloud\Exception('The CURL library is not available.');
     }
 
+    // A majority of curl users suggest allowing curl to automatically calculate
+    // the content-length header. Ensure that the header is not set in code.
+    if (!empty($headers['Content-Length'])) {
+      unset($headers['Content-Length']);
+    }
+
     //syslog(LOG_WARNING, "Real Operation: $method $uri");
 
     //$urlParts = parse_url($uri);
@@ -160,13 +166,11 @@ class CURLTransport implements Transporter {
       //CURLOPT_INFILESIZE => NULL,
     );
 
-
     // Write to in-mem handle backed by a temp file.
     $out = fopen('php://temp', 'wb+');
     $headerFile = fopen('php://temp', 'w+');
 
     $curl = curl_init($uri);
-    //$curl = $this->curl($uri);
 
     // Set method
     $this->determineMethod($curl, $method);
@@ -174,55 +178,37 @@ class CURLTransport implements Transporter {
     // Set the upload
     $copy = NULL;
 
-    // If we get a string, we send the string
-    // data.
+    // If we get a string, we send the string data.
     if (is_string($in)) {
-      //curl_setopt($curl, CURLOPT_POSTFIELDS, $in);
       $opts[CURLOPT_POSTFIELDS] = $in;
-      if (!isset($headers['Content-Length'])) {
-        $headers['Content-Length'] = strlen($in);
-      }
     }
     // If we get a resource, we treat it like a stream
     // and pass it into CURL as a file.
     elseif (is_resource($in)) {
-      //curl_setopt($curl, CURLOPT_INFILE, $in);
       $opts[CURLOPT_INFILE] = $in;
-
-      // Tell CURL about the content length if we know it.
-      if (!empty($headers['Content-Length'])) {
-        //curl_setopt($curl, CURLOPT_INFILESIZE, $headers['Content-Length']);
-        $opts[CURLOPT_INFILESIZE] = $headers['Content-Length'];
-        unset($headers['Content-Length']);
-      }
     }
 
     // Set headers.
     $this->setHeaders($curl, $headers);
 
     // Get the output.
-    //curl_setopt($curl, CURLOPT_FILE, $out);
     $opts[CURLOPT_FILE] = $out;
 
     // We need to capture the headers, too.
-    //curl_setopt($curl, CURLOPT_WRITEHEADER, $headerFile);
     $opts[CURLOPT_WRITEHEADER] = $headerFile;
 
 
     if (Bootstrap::hasConfig('transport.debug')) {
       $debug = Bootstrap::config('transport.debug', NULL);
-      //curl_setopt($curl, CURLOPT_VERBOSE, (int) $debug);
       $opts[CURLOPT_VERBOSE] = (int) $debug;
     }
 
     if (Bootstrap::hasConfig('transport.timeout')) {
-      //curl_setopt($curl, CURLOPT_TIMEOUT, (int) Bootstrap::config('transport.timeout'));
       $opts[CURLOPT_TIMEOUT] = (int) Bootstrap::config('transport.timeout');
     }
 
     if (Bootstrap::hasConfig('transport.ssl.verify')) {
       $validate = (boolean) Bootstrap::config('transport.ssl.verify', TRUE);
-      //curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, $validate);
       $opts[CURLOPT_SSL_VERIFYPEER] = $validate;
     }
 
@@ -235,6 +221,7 @@ class CURLTransport implements Transporter {
       'proxy.type' => CURLOPT_PROXYTYPE,
       'proxy.userpwd' => CURLOPT_PROXYUSERPWD,
     );
+
     foreach ($proxyMap as $conf => $opt) {
       if (Bootstrap::hasConfig($conf)) {
         $val = Bootstrap::config($conf);
@@ -242,10 +229,9 @@ class CURLTransport implements Transporter {
       }
     }
 
-
     // Set all of the curl opts and then execute.
     curl_setopt_array($curl, $opts);
-    $ret = $this->execCurl($curl);//curl_exec($curl);
+    $ret = $this->execCurl($curl);
     $info = curl_getinfo($curl);
     $status = $info['http_code'];
 
@@ -277,7 +263,6 @@ class CURLTransport implements Transporter {
 
     return $resp;
   }
-
 
   /**
    * Poor man's connection pooling.
@@ -328,7 +313,6 @@ class CURLTransport implements Transporter {
     //curl_multi_close($multi);
 
     return TRUE;
-
   }
 
   /**
@@ -361,9 +345,9 @@ class CURLTransport implements Transporter {
   /**
    * Set the appropriate constant on the CURL object.
    *
-   * Curl handles method name setting in a slightly counter-intuitive 
-   * way, so we have a special function for setting the method 
-   * correctly. Note that since we do not POST as www-form-*, we 
+   * Curl handles method name setting in a slightly counter-intuitive
+   * way, so we have a special function for setting the method
+   * correctly. Note that since we do not POST as www-form-*, we
    * use a custom post.
    *
    * @param resource $curl
