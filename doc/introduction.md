@@ -61,7 +61,7 @@ data-access layer.
 
 ## Slightly Irreverant Glossary
 
-*Account ID:* You service provider (ahem, HP Helion Public Cloud) will provide you with
+*Account ID:* Your service provider (ahem, HP Helion Public Cloud) will provide you with
 an account ID and a secret key, along with a URL, that can be used to
 access the cloud APIs.
 

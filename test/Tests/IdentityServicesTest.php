@@ -492,7 +492,7 @@ class IdentityServicesTest extends \HPCloud\Tests\TestCase {
 
   /**
    * Testing the account options separately since they are only in HP Helion
-   * Public Cloud and made be skipped.
+   * Public Cloud and may be skipped.
    *
    * @depends testAuthenticateAsAccount
    */
