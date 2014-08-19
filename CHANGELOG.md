@@ -7,6 +7,8 @@ This changelog contains the relevant feature additions and bug fixes. To obtain 
   * Removed DBaaS support. The support was for a private beta version with a now deprecated API.
   * Updated the documentation surrounding CDN and access/secret keys with HP Helion OpenStack and HP Helion Public Cloud.
   * #14: Fixed bug where transport.debug was ignored by the PHP Stream transport layer.
+  * #13: Fixed, we think, a bug where setting the content length while using curl caused an issue with proxies.
+  * #3: Fixed a bug where the curl transport layer failed under Windows and newer version of Linux and OS X.
 
 * 1.2.1 (2013-09-26)
 
