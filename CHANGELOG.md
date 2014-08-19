@@ -9,6 +9,7 @@ This changelog contains the relevant feature additions and bug fixes. To obtain 
   * #14: Fixed bug where transport.debug was ignored by the PHP Stream transport layer.
   * #13: Fixed, we think, a bug where setting the content length while using curl caused an issue with proxies.
   * #3: Fixed a bug where the curl transport layer failed under Windows and newer version of Linux and OS X.
+  * #15: Fixed issue where posix_geteuid was being called, even in windows.
 
 * 1.2.1 (2013-09-26)
 
