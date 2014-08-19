@@ -299,16 +299,13 @@ class CURLTransport implements Transporter {
     // Initialize all of the listeners
     $active = NULL;
     do {
-      $ret = curl_multi_exec($multi, $active);
-    } while ($ret == CURLM_CALL_MULTI_PERFORM);
-
-    while ($active && $ret == CURLM_OK) {
-      if (curl_multi_select($multi) != -1) {
-        do {
-           $mrc = curl_multi_exec($multi, $active);
-        } while ($mrc == CURLM_CALL_MULTI_PERFORM);
+      while (($mrc = curl_multi_exec($multi, $active)) == CURLM_CALL_MULTI_PERFORM);
+      if ($active && curl_multi_select($multi) === -1) {
+        // Sleep when a select returns a -1.
+        // https://bugs.php.net/bug.php?id=61141
+        usleep(250);
       }
-    }
+    } while ($active && $mrc == CURLM_OK);
 
     curl_multi_remove_handle($multi, $handle);
     //curl_multi_close($multi);
