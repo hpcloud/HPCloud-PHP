@@ -204,8 +204,8 @@ class StreamWrapperFS extends StreamWrapper {
       'ino' => 0,
       'mode' => $mode,
       'nlink' => 0,
-      'uid' => posix_getuid(),
-      'gid' => posix_getgid(),
+      'uid' => 0,
+      'gid' => 0,
       'rdev' => 0,
       'size' => 0,
       'atime' => $request_time,
@@ -214,6 +214,13 @@ class StreamWrapperFS extends StreamWrapper {
       'blksize' => -1,
       'blocks' => -1,
     );
+
+    // We have to fake the UID value in order for is_readible()/is_writable()
+    // to work. Note that on Windows systems, stat does not look for a UID.
+    if (function_exists('posix_geteuid')) {
+      $values['uid'] = posix_geteuid();
+      $values['gid'] = posix_getegid();
+    }
 
     $final = array_values($values) + $values;
 
