@@ -10,6 +10,7 @@ This changelog contains the relevant feature additions and bug fixes. To obtain 
   * #13: Fixed, we think, a bug where setting the content length while using curl caused an issue with proxies.
   * #3: Fixed a bug where the curl transport layer failed under Windows and newer version of Linux and OS X.
   * #15: Fixed issue where posix_geteuid was being called, even in windows.
+  * #13: Fixed issue where temp directory was assumed to be tmp which fails on Windows.
 
 * 1.2.1 (2013-09-26)
 
