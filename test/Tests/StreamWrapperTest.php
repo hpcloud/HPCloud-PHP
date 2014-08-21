@@ -517,7 +517,8 @@ class StreamWrapperTest extends \HPCloud\Tests\TestCase {
     $contents = file_get_contents($url);
     $this->assertGreaterThan(5, strlen($contents));
 
-    $fsCopy = '/tmp/hpcloud-copy-test.txt';
+    $tmpDir = sys_get_temp_dir();
+    $fsCopy = tempnam($tmpDir, 'hpc');
     copy($url, $fsCopy, $this->basicSwiftContext());
     $this->assertTrue(file_exists($fsCopy));
     unlink($fsCopy);
