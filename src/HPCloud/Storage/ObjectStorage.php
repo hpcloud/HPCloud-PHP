@@ -418,7 +418,7 @@ class ObjectStorage {
     $data = $this->req($url, 'HEAD', FALSE);
 
     $status = $data->status();
-    if ($status == 204) {
+    if ($status == 200 || $status == 204) {
       $container = Container::newFromResponse($name, $data, $this->token(), $this->url());
 
       if (isset($this->cdnContainers[$name])) {
@@ -429,7 +429,7 @@ class ObjectStorage {
       return $container;
     }
 
-    // If we get here, it's not a 404 and it's not a 204.
+    // If we get here, it's not a 404, and it's not an expected 2xx.
     throw new \HPCloud\Exception("Unknown status: $status");
   }
 
