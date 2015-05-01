@@ -12,8 +12,8 @@ Previously this library could be used to interact with our relational database (
 
 ## Requirements
 
-* PHP 5.3
-* An active HP Helion Public Cloud account with the desired services or HP Helion OpenStack. Please note that the services you wish to use (e.g. Object Storage) must be activated on your account. Services may be activated through your account's Horizon user interface (aka HP Helion Public Cloud Console). The Public Cloud Console can be accessed at (http://www.hpcloud.com/console). 
+* PHP 5.3+ (currently tested against 5.3, 5.4, 5.5)
+* An active HP Helion Public Cloud account with the desired services or HP Helion OpenStack. Please note that the services you wish to use (e.g. Object Storage) must be activated on your account. Services may be activated through your account's Horizon user interface (aka HP Helion Public Cloud Console). The Public Cloud Console can be accessed at (http://www.hpcloud.com/console).
 
 ### Suggestions
 
